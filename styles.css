@@ -76,6 +76,10 @@
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
+[data-theme="dark"] .tab-navigation {
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.5);
+}
+
 html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
@@ -168,6 +172,7 @@ body {
 .main {
     flex: 1;
     padding: var(--spacing-xl) 0;
+    padding-bottom: calc(80px + var(--spacing-xl));
 }
 
 /* ==========================================
@@ -767,6 +772,7 @@ body {
 .footer {
     background: var(--surface);
     padding: var(--spacing-xl) 0;
+    padding-bottom: calc(80px + var(--spacing-xl));
     text-align: center;
     border-top: 1px solid var(--border-color);
     margin-top: auto;
@@ -911,23 +917,28 @@ select:focus-visible {
 }
 
 /* ==========================================
-   Tab Navigation
+   Tab Navigation (Bottom Navigation Bar)
    ========================================== */
 .tab-navigation {
     background: var(--surface);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 72px;
-    z-index: 90;
-    box-shadow: var(--shadow-sm);
+    border-top: 1px solid var(--border-color);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .tab-buttons {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .tab-buttons::-webkit-scrollbar {
@@ -939,15 +950,17 @@ select:focus-visible {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-xs);
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-xs);
+    min-height: 64px;
     background: none;
     border: none;
-    border-bottom: 3px solid transparent;
+    border-top: 3px solid transparent;
     color: var(--text-secondary);
     cursor: pointer;
     transition: all var(--transition-base);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     font-weight: 500;
     white-space: nowrap;
 }
@@ -964,7 +977,7 @@ select:focus-visible {
 
 .tab-btn.active {
     color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
+    border-top-color: var(--primary-color);
 }
 
 .tab-content {
@@ -1517,13 +1530,18 @@ select:focus-visible {
    Responsive Updates for New Features
    ========================================== */
 @media (max-width: 480px) {
+    .tab-btn {
+        min-height: 56px;
+        padding: var(--spacing-xs);
+    }
+
     .tab-btn span {
-        font-size: var(--font-size-xs);
+        font-size: 0.625rem;
     }
 
     .tab-btn svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
     }
 
     .audio-player {
@@ -1569,12 +1587,21 @@ select:focus-visible {
 }
 
 @media (max-width: 360px) {
-    .tab-navigation {
-        top: 64px;
+    .tab-btn {
+        min-height: 52px;
+    }
+
+    .tab-btn svg {
+        width: 20px;
+        height: 20px;
     }
 
     .zikir-btn-main {
         width: 70px;
         height: 70px;
+    }
+
+    .main {
+        padding-bottom: calc(70px + var(--spacing-xl));
     }
 }
