@@ -469,6 +469,22 @@
                         </svg>
                     </div>
 
+                    <!-- Medya ve Icerik Module -->
+                    <div class="feature-card" id="medyaCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Medya ve İçerik</h3>
+                            <p>Canlı yayınlar, podcast ve dini sohbetler</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
                 </div>
 
                 <!-- Ramazan Module (Hidden by default) -->
@@ -2614,6 +2630,344 @@
                         <div class="note-icon">🎯</div>
                         <h4>Yol Tarifi</h4>
                         <p>Harita uygulaması için cami adresine tıklayın ve yol tarifini alın.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medya ve Icerik Module (Hidden by default) -->
+    <div class="medya-module" id="medyaModule" style="display: none;">
+        <button class="back-btn" id="medyaBackBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Geri
+        </button>
+
+        <div class="container">
+            <!-- Info Card -->
+            <div class="medya-info-card">
+                <div class="card-icon">📺</div>
+                <h2>Medya ve İçerik</h2>
+                <p class="info-text">Kabe ve Mescid-i Haram canlı yayınları, podcast koleksiyonları ve dini sohbetler ile manevi dünyanızı zenginleştirin.</p>
+            </div>
+
+            <!-- Live Streams Section -->
+            <div class="live-streams-section">
+                <h3>📡 Canlı Yayınlar</h3>
+                <p class="section-intro">Kutsal mekanlardan 7/24 canlı yayın izleyin</p>
+
+                <div class="streams-grid">
+                    <!-- Kabe Canli -->
+                    <div class="stream-card featured">
+                        <div class="stream-thumbnail">
+                            <div class="live-badge">
+                                <span class="live-dot"></span>
+                                CANLI
+                            </div>
+                            <div class="stream-icon">🕋</div>
+                        </div>
+                        <div class="stream-info">
+                            <h4>Kabe Canlı Yayını</h4>
+                            <p>Mescid-i Haram içinden Kabe görüntüleri</p>
+                            <div class="stream-stats">
+                                <span class="viewers">👥 125K izleyici</span>
+                                <span class="quality">📶 HD</span>
+                            </div>
+                        </div>
+                        <button class="watch-btn" data-stream="kabe">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            İzle
+                        </button>
+                    </div>
+
+                    <!-- Mescid-i Haram -->
+                    <div class="stream-card">
+                        <div class="stream-thumbnail">
+                            <div class="live-badge">
+                                <span class="live-dot"></span>
+                                CANLI
+                            </div>
+                            <div class="stream-icon">🕌</div>
+                        </div>
+                        <div class="stream-info">
+                            <h4>Mescid-i Haram Canlı</h4>
+                            <p>Harem-i Şerif genel görünüm</p>
+                            <div class="stream-stats">
+                                <span class="viewers">👥 98K izleyici</span>
+                                <span class="quality">📶 HD</span>
+                            </div>
+                        </div>
+                        <button class="watch-btn" data-stream="haram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            İzle
+                        </button>
+                    </div>
+
+                    <!-- Mescid-i Nebevi -->
+                    <div class="stream-card">
+                        <div class="stream-thumbnail">
+                            <div class="live-badge">
+                                <span class="live-dot"></span>
+                                CANLI
+                            </div>
+                            <div class="stream-icon">🏛️</div>
+                        </div>
+                        <div class="stream-info">
+                            <h4>Mescid-i Nebevi Canlı</h4>
+                            <p>Peygamber Efendimizin Mescidi</p>
+                            <div class="stream-stats">
+                                <span class="viewers">👥 76K izleyici</span>
+                                <span class="quality">📶 HD</span>
+                            </div>
+                        </div>
+                        <button class="watch-btn" data-stream="nebevi">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            İzle
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Player (Hidden by default) -->
+            <div class="video-player-container" id="videoPlayerContainer" style="display: none;">
+                <div class="video-header">
+                    <h4 id="videoTitle">Canlı Yayın</h4>
+                    <button class="close-video-btn" id="closeVideoBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="video-wrapper">
+                    <div id="videoPlayer" class="video-placeholder">
+                        <div class="video-placeholder-content">
+                            <div class="play-icon-large">▶</div>
+                            <p>Yayın yükleniyor...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <p id="videoDescription">Canlı yayın açıklaması</p>
+                </div>
+            </div>
+
+            <!-- Podcasts Section -->
+            <div class="podcasts-section">
+                <h3>🎙️ Dini Sohbetler ve Podcast</h3>
+                <p class="section-intro">Zengin podcast koleksiyonumuzdan dinleyin</p>
+
+                <!-- Category Filters -->
+                <div class="podcast-categories">
+                    <button class="category-btn active" data-category="all">Tümü</button>
+                    <button class="category-btn" data-category="tefsir">Tefsir</button>
+                    <button class="category-btn" data-category="siyer">Siyer</button>
+                    <button class="category-btn" data-category="hadis">Hadis</button>
+                    <button class="category-btn" data-category="akaid">Akaid</button>
+                    <button class="category-btn" data-category="ahlak">Ahlak</button>
+                </div>
+
+                <!-- Podcast List -->
+                <div class="podcasts-list">
+                    <!-- Tefsir -->
+                    <div class="podcast-card" data-category="tefsir">
+                        <div class="podcast-image">
+                            <div class="podcast-icon">📖</div>
+                            <div class="podcast-duration">45 dk</div>
+                        </div>
+                        <div class="podcast-info">
+                            <h4>Bakara Suresi Tefsiri</h4>
+                            <p class="podcast-speaker">Hoca: Prof. Dr. Mehmet Ali Şengül</p>
+                            <p class="podcast-desc">Bakara Suresinin ilk 20 ayetinin detaylı tefsiri</p>
+                            <div class="podcast-meta">
+                                <span>📁 Tefsir</span>
+                                <span>⭐ 4.8</span>
+                                <span>👂 12.5K dinlenme</span>
+                            </div>
+                        </div>
+                        <button class="play-podcast-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Siyer -->
+                    <div class="podcast-card" data-category="siyer">
+                        <div class="podcast-image">
+                            <div class="podcast-icon">🌙</div>
+                            <div class="podcast-duration">38 dk</div>
+                        </div>
+                        <div class="podcast-info">
+                            <h4>Hz. Muhammed'in Hayatı</h4>
+                            <p class="podcast-speaker">Hoca: Dr. Ramazan Altıntaş</p>
+                            <p class="podcast-desc">Peygamber Efendimizin Medine döneminde yaşananlar</p>
+                            <div class="podcast-meta">
+                                <span>📁 Siyer</span>
+                                <span>⭐ 4.9</span>
+                                <span>👂 18.2K dinlenme</span>
+                            </div>
+                        </div>
+                        <button class="play-podcast-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Hadis -->
+                    <div class="podcast-card" data-category="hadis">
+                        <div class="podcast-image">
+                            <div class="podcast-icon">📚</div>
+                            <div class="podcast-duration">32 dk</div>
+                        </div>
+                        <div class="podcast-info">
+                            <h4>40 Hadis Dersleri</h4>
+                            <p class="podcast-speaker">Hoca: Ömer Döngeloğlu</p>
+                            <p class="podcast-desc">İmam Nevevi'nin meşhur 40 Hadis şerhi</p>
+                            <div class="podcast-meta">
+                                <span>📁 Hadis</span>
+                                <span>⭐ 4.7</span>
+                                <span>👂 9.8K dinlenme</span>
+                            </div>
+                        </div>
+                        <button class="play-podcast-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Akaid -->
+                    <div class="podcast-card" data-category="akaid">
+                        <div class="podcast-image">
+                            <div class="podcast-icon">💫</div>
+                            <div class="podcast-duration">50 dk</div>
+                        </div>
+                        <div class="podcast-info">
+                            <h4>İman Esasları</h4>
+                            <p class="podcast-speaker">Hoca: Prof. Dr. İbrahim Coşkun</p>
+                            <p class="podcast-desc">İslam inancının temel esasları ve delilleri</p>
+                            <div class="podcast-meta">
+                                <span>📁 Akaid</span>
+                                <span>⭐ 4.8</span>
+                                <span>👂 15.3K dinlenme</span>
+                            </div>
+                        </div>
+                        <button class="play-podcast-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Ahlak -->
+                    <div class="podcast-card" data-category="ahlak">
+                        <div class="podcast-image">
+                            <div class="podcast-icon">❤️</div>
+                            <div class="podcast-duration">28 dk</div>
+                        </div>
+                        <div class="podcast-info">
+                            <h4>Güzel Ahlak Dersleri</h4>
+                            <p class="podcast-speaker">Hoca: Fatma Serap Karamollaoğlu</p>
+                            <p class="podcast-desc">İslam'da güzel ahlakın önemi ve uygulamaları</p>
+                            <div class="podcast-meta">
+                                <span>📁 Ahlak</span>
+                                <span>⭐ 4.9</span>
+                                <span>👂 21.7K dinlenme</span>
+                            </div>
+                        </div>
+                        <button class="play-podcast-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Tefsir 2 -->
+                    <div class="podcast-card" data-category="tefsir">
+                        <div class="podcast-image">
+                            <div class="podcast-icon">📖</div>
+                            <div class="podcast-duration">55 dk</div>
+                        </div>
+                        <div class="podcast-info">
+                            <h4>Yasin Suresi Tefsiri</h4>
+                            <p class="podcast-speaker">Hoca: Dr. Ahmet Kalkan</p>
+                            <p class="podcast-desc">Kuran'ın kalbi olan Yasin Suresi tefsiri</p>
+                            <div class="podcast-meta">
+                                <span>📁 Tefsir</span>
+                                <span>⭐ 4.9</span>
+                                <span>👂 24.1K dinlenme</span>
+                            </div>
+                        </div>
+                        <button class="play-podcast-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="medya-stats-section">
+                <h3>📊 Platform İstatistikleri</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-icon">🎙️</div>
+                        <h4>250+</h4>
+                        <p>Podcast Bölümü</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">👨‍🏫</div>
+                        <h4>50+</h4>
+                        <p>Değerli Hoca</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">📺</div>
+                        <h4>3</h4>
+                        <p>Canlı Yayın</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">👂</div>
+                        <h4>500K+</h4>
+                        <p>Toplam Dinlenme</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Notes -->
+            <div class="important-notes">
+                <h3>💡 Önemli Bilgiler</h3>
+                <div class="notes-grid">
+                    <div class="note-card info">
+                        <div class="note-icon">ℹ️</div>
+                        <h4>İnternet Bağlantısı</h4>
+                        <p>Canlı yayınlar ve podcast'ler için stabil internet bağlantısı gerekmektedir.</p>
+                    </div>
+                    <div class="note-card success">
+                        <div class="note-icon">✅</div>
+                        <h4>7/24 Canlı</h4>
+                        <p>Kabe ve Mescid-i Haram yayınları kesintisiz 24 saat yayındadır.</p>
+                    </div>
+                    <div class="note-card warning">
+                        <div class="note-icon">⚠️</div>
+                        <h4>Veri Kullanımı</h4>
+                        <p>HD kalitede canlı yayın izlemek yüksek veri kullanımına sebep olabilir.</p>
+                    </div>
+                    <div class="note-card primary">
+                        <div class="note-icon">🎯</div>
+                        <h4>Yeni İçerikler</h4>
+                        <p>Her hafta yeni podcast bölümleri ve sohbetler eklenmektedir.</p>
                     </div>
                 </div>
             </div>

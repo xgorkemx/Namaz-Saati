@@ -2827,6 +2827,159 @@ const CamilerModule = {
     }
 };
 
+// Medya Module
+const MedyaModule = {
+    init() {
+        const medyaCard = document.getElementById('medyaCard');
+        const medyaModule = document.getElementById('medyaModule');
+        const medyaBackBtn = document.getElementById('medyaBackBtn');
+        const moreMenu = document.querySelector('.more-menu');
+        const watchBtns = document.querySelectorAll('.watch-btn');
+        const closeVideoBtn = document.getElementById('closeVideoBtn');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const playPodcastBtns = document.querySelectorAll('.play-podcast-btn');
+
+        // Navigate to Medya module
+        if (medyaCard) {
+            medyaCard.addEventListener('click', () => {
+                if (moreMenu) moreMenu.style.display = 'none';
+                if (medyaModule) medyaModule.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Navigate back to More menu
+        if (medyaBackBtn) {
+            medyaBackBtn.addEventListener('click', () => {
+                if (medyaModule) medyaModule.style.display = 'none';
+                if (moreMenu) moreMenu.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Watch stream buttons
+        watchBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const streamType = btn.dataset.stream;
+                this.playStream(streamType);
+            });
+        });
+
+        // Close video button
+        if (closeVideoBtn) {
+            closeVideoBtn.addEventListener('click', () => {
+                this.closeVideo();
+            });
+        }
+
+        // Category filter buttons
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.filterPodcasts(btn.dataset.category);
+            });
+        });
+
+        // Play podcast buttons
+        playPodcastBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const podcastCard = btn.closest('.podcast-card');
+                const title = podcastCard.querySelector('h4').textContent;
+                this.playPodcast(title);
+            });
+        });
+    },
+
+    playStream(streamType) {
+        const videoPlayerContainer = document.getElementById('videoPlayerContainer');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoDescription = document.getElementById('videoDescription');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        // Stream data
+        const streams = {
+            kabe: {
+                title: 'Kabe Canlı Yayını',
+                description: 'Mescid-i Haram içinden Kabe\'nin canlı görüntüleri. 7/24 kesintisiz yayın.',
+                url: 'https://www.youtube.com/embed/8vAyxIp_sUQ?autoplay=1'
+            },
+            haram: {
+                title: 'Mescid-i Haram Canlı',
+                description: 'Harem-i Şerif\'in genel görünümü ve cemaat manzarası.',
+                url: 'https://www.youtube.com/embed/EU8BfX_Vo08?autoplay=1'
+            },
+            nebevi: {
+                title: 'Mescid-i Nebevi Canlı',
+                description: 'Peygamber Efendimizin Mescidi\'nden canlı yayın.',
+                url: 'https://www.youtube.com/embed/kQRaEbh38v4?autoplay=1'
+            }
+        };
+
+        const stream = streams[streamType];
+        if (!stream) return;
+
+        // Update video info
+        if (videoTitle) videoTitle.textContent = stream.title;
+        if (videoDescription) videoDescription.textContent = stream.description;
+
+        // Create iframe for YouTube embed
+        if (videoPlayer) {
+            videoPlayer.innerHTML = `
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src="${stream.url}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                ></iframe>
+            `;
+        }
+
+        // Show video player and scroll to it
+        if (videoPlayerContainer) {
+            videoPlayerContainer.style.display = 'block';
+            setTimeout(() => {
+                videoPlayerContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+    },
+
+    closeVideo() {
+        const videoPlayerContainer = document.getElementById('videoPlayerContainer');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        if (videoPlayerContainer) videoPlayerContainer.style.display = 'none';
+        if (videoPlayer) {
+            videoPlayer.innerHTML = `
+                <div class="video-placeholder-content">
+                    <div class="play-icon-large">▶</div>
+                    <p>Yayın yükleniyor...</p>
+                </div>
+            `;
+        }
+    },
+
+    filterPodcasts(category) {
+        const podcastCards = document.querySelectorAll('.podcast-card');
+
+        podcastCards.forEach(card => {
+            const cardCategory = card.dataset.category;
+            if (category === 'all' || cardCategory === category) {
+                card.style.display = 'grid';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    },
+
+    playPodcast(title) {
+        alert(`Podcast oynatıcı: "${title}"\n\nBu özellik yakında eklenecek. Podcast dinleme için lütfen bizi takip etmeye devam edin!`);
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
@@ -2834,4 +2987,5 @@ document.addEventListener('DOMContentLoaded', () => {
     NamazModule.init();
     ZekatModule.init();
     CamilerModule.init();
+    MedyaModule.init();
 });
