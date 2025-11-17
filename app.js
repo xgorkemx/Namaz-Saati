@@ -1652,6 +1652,322 @@ const RamazanModule = {
     }
 };
 
+// Prayer Tracker Module
+const PrayerTracker = {
+    prayerData: {},
+    currentViewDate: new Date(),
+    prayerNames: ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'],
+    prayerNamesTurkish: {
+        'fajr': 'Sabah',
+        'dhuhr': 'Öğle',
+        'asr': 'İkindi',
+        'maghrib': 'Akşam',
+        'isha': 'Yatsı'
+    },
+    monthNames: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+                 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+
+    init() {
+        this.loadData();
+        this.updateCurrentDate();
+        this.loadTodaysPrayerTimes();
+        this.setupPrayerCheckboxes();
+        this.renderMonthlyCalendar();
+        this.setupMonthNavigation();
+        this.updateAllStats();
+    },
+
+    loadData() {
+        const saved = localStorage.getItem('prayerTrackerData');
+        this.prayerData = saved ? JSON.parse(saved) : {};
+    },
+
+    saveData() {
+        localStorage.setItem('prayerTrackerData', JSON.stringify(this.prayerData));
+    },
+
+    getDateKey(date) {
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    },
+
+    updateCurrentDate() {
+        const currentDateEl = document.getElementById('currentDate');
+        if (currentDateEl) {
+            const today = new Date();
+            const dayName = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'][today.getDay()];
+            currentDateEl.textContent = `${dayName}, ${today.getDate()} ${this.monthNames[today.getMonth()]} ${today.getFullYear()}`;
+        }
+    },
+
+    loadTodaysPrayerTimes() {
+        // Get prayer times from the main app if available
+        const prayerTimes = window.prayerTimes || {};
+
+        const timeMapping = {
+            'fajr': 'Fajr',
+            'dhuhr': 'Dhuhr',
+            'asr': 'Asr',
+            'maghrib': 'Maghrib',
+            'isha': 'Isha'
+        };
+
+        this.prayerNames.forEach(prayer => {
+            const timeEl = document.getElementById(`${prayer}Time`);
+            if (timeEl) {
+                const prayerKey = timeMapping[prayer];
+                if (prayerTimes[prayerKey]) {
+                    timeEl.textContent = prayerTimes[prayerKey];
+                } else {
+                    timeEl.textContent = '--:--';
+                }
+            }
+        });
+    },
+
+    setupPrayerCheckboxes() {
+        const today = new Date();
+        const todayKey = this.getDateKey(today);
+
+        // Initialize today's data if not exists
+        if (!this.prayerData[todayKey]) {
+            this.prayerData[todayKey] = {};
+        }
+
+        // Setup each prayer checkbox
+        const checkBtns = document.querySelectorAll('.prayer-check-btn');
+        checkBtns.forEach(btn => {
+            const prayer = btn.getAttribute('data-prayer');
+            const card = btn.closest('.prayer-check-card');
+
+            // Restore saved state
+            if (this.prayerData[todayKey][prayer]) {
+                btn.classList.add('checked');
+                card.classList.add('checked');
+            }
+
+            // Add click handler
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.togglePrayer(prayer, btn, card);
+            });
+
+            // Also allow clicking the card
+            card.addEventListener('click', () => {
+                this.togglePrayer(prayer, btn, card);
+            });
+        });
+    },
+
+    togglePrayer(prayer, btn, card) {
+        const today = new Date();
+        const todayKey = this.getDateKey(today);
+
+        if (!this.prayerData[todayKey]) {
+            this.prayerData[todayKey] = {};
+        }
+
+        if (this.prayerData[todayKey][prayer]) {
+            delete this.prayerData[todayKey][prayer];
+            btn.classList.remove('checked');
+            card.classList.remove('checked');
+        } else {
+            this.prayerData[todayKey][prayer] = true;
+            btn.classList.add('checked');
+            card.classList.add('checked');
+        }
+
+        this.saveData();
+        this.updateAllStats();
+        this.renderMonthlyCalendar();
+    },
+
+    updateAllStats() {
+        this.updateTodayStats();
+        this.updateWeekStats();
+        this.updateMonthStats();
+        this.updateStreak();
+    },
+
+    updateTodayStats() {
+        const today = new Date();
+        const todayKey = this.getDateKey(today);
+        const todayData = this.prayerData[todayKey] || {};
+        const completedCount = Object.keys(todayData).length;
+
+        const todayPrayersEl = document.getElementById('todayPrayers');
+        if (todayPrayersEl) {
+            todayPrayersEl.textContent = `${completedCount}/5`;
+        }
+    },
+
+    updateWeekStats() {
+        const today = new Date();
+        const weekStart = new Date(today);
+        weekStart.setDate(today.getDate() - today.getDay()); // Start of week (Sunday)
+
+        let totalPrayers = 0;
+        let completedPrayers = 0;
+
+        for (let i = 0; i <= today.getDay(); i++) {
+            const date = new Date(weekStart);
+            date.setDate(weekStart.getDate() + i);
+            const dateKey = this.getDateKey(date);
+            const dayData = this.prayerData[dateKey] || {};
+
+            totalPrayers += 5;
+            completedPrayers += Object.keys(dayData).length;
+        }
+
+        const percentage = totalPrayers > 0 ? Math.round((completedPrayers / totalPrayers) * 100) : 0;
+        const weekPrayersEl = document.getElementById('weekPrayers');
+        if (weekPrayersEl) {
+            weekPrayersEl.textContent = `${percentage}%`;
+        }
+    },
+
+    updateMonthStats() {
+        const today = new Date();
+        const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+
+        let totalPrayers = 0;
+        let completedPrayers = 0;
+
+        for (let d = new Date(monthStart); d <= today; d.setDate(d.getDate() + 1)) {
+            const dateKey = this.getDateKey(d);
+            const dayData = this.prayerData[dateKey] || {};
+
+            totalPrayers += 5;
+            completedPrayers += Object.keys(dayData).length;
+        }
+
+        const percentage = totalPrayers > 0 ? Math.round((completedPrayers / totalPrayers) * 100) : 0;
+        const monthPrayersEl = document.getElementById('monthPrayers');
+        if (monthPrayersEl) {
+            monthPrayersEl.textContent = `${percentage}%`;
+        }
+    },
+
+    updateStreak() {
+        let streak = 0;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // Check backwards from today
+        for (let d = new Date(today); ; d.setDate(d.getDate() - 1)) {
+            const dateKey = this.getDateKey(d);
+            const dayData = this.prayerData[dateKey] || {};
+
+            // Consider a day complete if all 5 prayers are done
+            if (Object.keys(dayData).length === 5) {
+                streak++;
+            } else {
+                break;
+            }
+
+            // Don't go back more than a year
+            if (streak > 365) break;
+        }
+
+        const streakEl = document.getElementById('prayerStreak');
+        if (streakEl) {
+            streakEl.textContent = streak;
+        }
+    },
+
+    renderMonthlyCalendar() {
+        const calendarGrid = document.getElementById('monthlyCalendar');
+        if (!calendarGrid) return;
+
+        const year = this.currentViewDate.getFullYear();
+        const month = this.currentViewDate.getMonth();
+
+        // Update month display
+        const currentMonthEl = document.getElementById('currentMonth');
+        if (currentMonthEl) {
+            currentMonthEl.textContent = `${this.monthNames[month]} ${year}`;
+        }
+
+        // Clear calendar
+        calendarGrid.innerHTML = '';
+
+        // Get first day of month and total days
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        const startDay = firstDay.getDay(); // 0 = Sunday
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // Add empty cells for days before month starts
+        for (let i = 0; i < startDay; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.className = 'calendar-day-cell empty';
+            calendarGrid.appendChild(emptyCell);
+        }
+
+        // Add cells for each day of month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const date = new Date(year, month, day);
+            const dateKey = this.getDateKey(date);
+            const dayData = this.prayerData[dateKey] || {};
+            const completedCount = Object.keys(dayData).length;
+
+            const cell = document.createElement('div');
+            cell.className = 'calendar-day-cell';
+
+            // Check if it's today
+            const cellDate = new Date(date);
+            cellDate.setHours(0, 0, 0, 0);
+            if (cellDate.getTime() === today.getTime()) {
+                cell.classList.add('today');
+            }
+
+            // Check if it's in the future
+            if (cellDate > today) {
+                cell.classList.add('future');
+            } else {
+                // Add completion class based on count
+                if (completedCount === 5) {
+                    cell.classList.add('perfect');
+                } else if (completedCount >= 3) {
+                    cell.classList.add('good');
+                } else if (completedCount > 0) {
+                    cell.classList.add('partial');
+                } else {
+                    cell.classList.add('none');
+                }
+            }
+
+            cell.innerHTML = `
+                <span class="day-number">${day}</span>
+                <span class="day-count">${cellDate <= today ? completedCount + '/5' : ''}</span>
+            `;
+
+            calendarGrid.appendChild(cell);
+        }
+    },
+
+    setupMonthNavigation() {
+        const prevBtn = document.getElementById('prevMonth');
+        const nextBtn = document.getElementById('nextMonth');
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                this.currentViewDate.setMonth(this.currentViewDate.getMonth() - 1);
+                this.renderMonthlyCalendar();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                this.currentViewDate.setMonth(this.currentViewDate.getMonth() + 1);
+                this.renderMonthlyCalendar();
+            });
+        }
+    }
+};
+
 // Feature Cards Click Handlers
 function setupMoreFeatures() {
     // Ramazan Module
@@ -1715,9 +2031,21 @@ function setupMoreFeatures() {
 
     // Prayer Tracker
     const prayerTrackerCard = document.getElementById('prayerTrackerCard');
+    const prayerTrackerModule = document.getElementById('prayerTrackerModule');
+    const prayerTrackerBackBtn = document.getElementById('prayerTrackerBackBtn');
+
     if (prayerTrackerCard) {
         prayerTrackerCard.addEventListener('click', () => {
-            alert('Namaz Takip Defteri: Kıldığınız namazları takip etme özelliği yakında eklenecek!');
+            moreMenu.style.display = 'none';
+            prayerTrackerModule.style.display = 'block';
+            PrayerTracker.init();
+        });
+    }
+
+    if (prayerTrackerBackBtn) {
+        prayerTrackerBackBtn.addEventListener('click', () => {
+            prayerTrackerModule.style.display = 'none';
+            moreMenu.style.display = 'block';
         });
     }
 

@@ -836,6 +836,197 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Namaz Takip Defteri Module -->
+                <div class="prayer-tracker-module" id="prayerTrackerModule" style="display: none;">
+                    <button class="back-btn" id="prayerTrackerBackBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Geri
+                    </button>
+
+                    <div class="prayer-tracker-header">
+                        <h2>Namaz Takip Defteri</h2>
+                        <p class="prayer-tracker-subtitle">Kıldığınız Namazları Takip Edin</p>
+                        <div class="current-date" id="currentDate"></div>
+                    </div>
+
+                    <!-- İstatistikler -->
+                    <div class="prayer-stats-grid">
+                        <div class="prayer-stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-content">
+                                <span class="stat-value" id="todayPrayers">0/5</span>
+                                <span class="stat-label">Bugün</span>
+                            </div>
+                        </div>
+                        <div class="prayer-stat-card">
+                            <div class="stat-icon">📅</div>
+                            <div class="stat-content">
+                                <span class="stat-value" id="weekPrayers">0%</span>
+                                <span class="stat-label">Bu Hafta</span>
+                            </div>
+                        </div>
+                        <div class="prayer-stat-card">
+                            <div class="stat-icon">🗓️</div>
+                            <div class="stat-content">
+                                <span class="stat-value" id="monthPrayers">0%</span>
+                                <span class="stat-label">Bu Ay</span>
+                            </div>
+                        </div>
+                        <div class="prayer-stat-card">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-content">
+                                <span class="stat-value" id="prayerStreak">0</span>
+                                <span class="stat-label">Seri (Gün)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bugünkü Namazlar -->
+                    <div class="today-prayers-section">
+                        <h3>Bugünkü Namazlar</h3>
+                        <p class="section-subtitle">Kıldığınız namazları işaretleyin</p>
+
+                        <div class="prayers-grid">
+                            <div class="prayer-check-card" data-prayer="fajr">
+                                <div class="prayer-check-icon">🌅</div>
+                                <div class="prayer-check-info">
+                                    <h4>Sabah</h4>
+                                    <p class="prayer-time" id="fajrTime">--:--</p>
+                                </div>
+                                <button class="prayer-check-btn" data-prayer="fajr">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="prayer-check-card" data-prayer="dhuhr">
+                                <div class="prayer-check-icon">☀️</div>
+                                <div class="prayer-check-info">
+                                    <h4>Öğle</h4>
+                                    <p class="prayer-time" id="dhuhrTime">--:--</p>
+                                </div>
+                                <button class="prayer-check-btn" data-prayer="dhuhr">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="prayer-check-card" data-prayer="asr">
+                                <div class="prayer-check-icon">🌤️</div>
+                                <div class="prayer-check-info">
+                                    <h4>İkindi</h4>
+                                    <p class="prayer-time" id="asrTime">--:--</p>
+                                </div>
+                                <button class="prayer-check-btn" data-prayer="asr">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="prayer-check-card" data-prayer="maghrib">
+                                <div class="prayer-check-icon">🌆</div>
+                                <div class="prayer-check-info">
+                                    <h4>Akşam</h4>
+                                    <p class="prayer-time" id="maghribTime">--:--</p>
+                                </div>
+                                <button class="prayer-check-btn" data-prayer="maghrib">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="prayer-check-card" data-prayer="isha">
+                                <div class="prayer-check-icon">🌙</div>
+                                <div class="prayer-check-info">
+                                    <h4>Yatsı</h4>
+                                    <p class="prayer-time" id="ishaTime">--:--</p>
+                                </div>
+                                <button class="prayer-check-btn" data-prayer="isha">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aylık Takip -->
+                    <div class="monthly-tracking-section">
+                        <h3>Bu Ay</h3>
+                        <p class="section-subtitle">Namaz tamamlama durumunuz</p>
+
+                        <div class="month-navigation">
+                            <button class="month-nav-btn" id="prevMonth">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <h4 id="currentMonth"></h4>
+                            <button class="month-nav-btn" id="nextMonth">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="calendar-grid" id="monthlyCalendar">
+                            <!-- Calendar will be generated by JavaScript -->
+                        </div>
+
+                        <div class="calendar-legend">
+                            <div class="legend-item">
+                                <div class="legend-color perfect"></div>
+                                <span>Tam (5/5)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color good"></div>
+                                <span>İyi (3-4)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color partial"></div>
+                                <span>Kısmi (1-2)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color none"></div>
+                                <span>Yok (0)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Namaz Tavsiyeleri -->
+                    <div class="prayer-tips-section">
+                        <h3>💡 Namazda Kalbi Gönle Tavsiyeler</h3>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">🕌</div>
+                                <h4>Cemaatle Kılın</h4>
+                                <p>Cemaatle kılınan namaz, tek başına kılınan namazdan 27 kat daha sevaptır.</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">⏰</div>
+                                <h4>Vaktinde Kılın</h4>
+                                <p>Namazı ilk vaktinde kılmak, son vaktinde kılmaktan çok daha faziletlidir.</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🤲</div>
+                                <h4>Huşu ile Kılın</h4>
+                                <p>Namazda Allah'ın huzurunda olduğunuzu düşünerek huşu ile kılın.</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">📿</div>
+                                <h4>Sünnetleri Unutmayın</h4>
+                                <p>Farz namazların öncesi ve sonrasındaki sünnetleri kılmaya özen gösterin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
