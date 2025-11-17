@@ -2376,7 +2376,34 @@ function setupMoreFeatures() {
     }
 }
 
+// Abdest Module
+const AbdestModule = {
+    init() {
+        const abdestCard = document.getElementById('abdestCard');
+        const abdestModule = document.getElementById('abdestModule');
+        const abdestBackBtn = document.getElementById('abdestBackBtn');
+        const moreMenu = document.querySelector('.more-menu');
+
+        if (abdestCard) {
+            abdestCard.addEventListener('click', () => {
+                if (moreMenu) moreMenu.style.display = 'none';
+                if (abdestModule) abdestModule.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        if (abdestBackBtn) {
+            abdestBackBtn.addEventListener('click', () => {
+                if (abdestModule) abdestModule.style.display = 'none';
+                if (moreMenu) moreMenu.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
+    AbdestModule.init();
 });
