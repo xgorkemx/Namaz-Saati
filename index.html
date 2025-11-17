@@ -399,6 +399,79 @@
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
                     </div>
+
+                    <!-- Zekat Calculator -->
+                    <div class="feature-card" id="zekatCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v6l4 2"></path>
+                                <path d="M16.24 7.76l-2.12 2.12"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Zekat Hesaplayıcı</h3>
+                            <p>Zekat miktarınızı kolayca hesaplayın</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
+                    <!-- Ezan Player -->
+                    <div class="feature-card" id="ezanPlayerCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Ezan Dinleme</h3>
+                            <p>Meşhur müezzinlerden ezan dinleyin</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
+                    <!-- Nearby Mosques -->
+                    <div class="feature-card" id="nearbyMosquesCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Yakındaki Camiler</h3>
+                            <p>Çevrenizde ki camileri keşfedin</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
+                    <!-- Prayer Guide -->
+                    <div class="feature-card" id="prayerGuideCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                <path d="M8 7h8"></path>
+                                <path d="M8 11h8"></path>
+                                <path d="M8 15h5"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Namaz Öğrenme Rehberi</h3>
+                            <p>Abdest ve namaz kılmayı öğrenin</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Ramazan Module (Hidden by default) -->
@@ -1476,6 +1549,566 @@
                                 <div class="reminder-icon">🕌</div>
                                 <p>"Kim sabah 100 defa, akşam 100 defa 'Subhanallahi ve bihamdihi' derse, kıyamet günü hiç kimse onun getirdiğinden daha hayırlısını getirmez."</p>
                                 <span class="reminder-source">Sahih Müslim</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zekat Calculator Module -->
+                <div class="zekat-module" id="zekatModule" style="display: none;">
+                    <button class="back-btn" id="zekatBackBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Geri
+                    </button>
+
+                    <div class="zekat-header">
+                        <h2>💰 Zekat Hesaplayıcı</h2>
+                        <p class="zekat-subtitle">Zekat miktarınızı hesaplayın</p>
+                    </div>
+
+                    <div class="zekat-info-card">
+                        <h3>Zekat Nedir?</h3>
+                        <p>Zekat, İslam'ın beş şartından biridir. Belirli miktarda mala sahip olan müslümanların, mallarının %2.5'ini (1/40) ihtiyaç sahiplerine vermesi farklı bir ibadettir.</p>
+                    </div>
+
+                    <div class="zekat-calculator">
+                        <h3>Para Zekatı</h3>
+                        <div class="calculator-input-group">
+                            <label for="totalMoney">Toplam Paranız (TL)</label>
+                            <input type="number" id="totalMoney" placeholder="Örn: 100000" class="calculator-input">
+                        </div>
+
+                        <div class="nisab-info">
+                            <p>📊 <strong>Nisab:</strong> 2024 yılı için yaklaşık 71,000 TL (Gümüş değerine göre)</p>
+                        </div>
+
+                        <button class="calculate-btn" id="calculateMoneyZekat">Zekat Hesapla</button>
+
+                        <div class="zekat-result" id="moneyZekatResult" style="display: none;">
+                            <h4>Zekat Miktarınız:</h4>
+                            <p class="result-amount" id="moneyZekatAmount">0 TL</p>
+                            <p class="result-note">Malınız nisap miktarını geçiyorsa, %2.5 oranında zekat vermeniz gerekmektedir.</p>
+                        </div>
+                    </div>
+
+                    <div class="zekat-calculator">
+                        <h3>Altın Zekatı</h3>
+                        <div class="calculator-input-group">
+                            <label for="goldGrams">Altın Miktarı (gram)</label>
+                            <input type="number" id="goldGrams" placeholder="Örn: 100" class="calculator-input">
+                        </div>
+                        <div class="calculator-input-group">
+                            <label for="goldPrice">Gram Altın Fiyatı (TL)</label>
+                            <input type="number" id="goldPrice" placeholder="Örn: 2500" class="calculator-input">
+                        </div>
+
+                        <div class="nisab-info">
+                            <p>📊 <strong>Nisab:</strong> 85 gram altın (Has altın)</p>
+                        </div>
+
+                        <button class="calculate-btn" id="calculateGoldZekat">Zekat Hesapla</button>
+
+                        <div class="zekat-result" id="goldZekatResult" style="display: none;">
+                            <h4>Altın Zekatınız:</h4>
+                            <p class="result-amount" id="goldZekatAmount">0 TL</p>
+                            <p class="result-amount-gram" id="goldZekatGrams">0 gram</p>
+                        </div>
+                    </div>
+
+                    <div class="zekat-faq">
+                        <h3>❓ Sık Sorulan Sorular</h3>
+                        <div class="faq-item">
+                            <strong>Zekat kime verilir?</strong>
+                            <p>Fakirler, düşkünler, borçlular, yolda kalanlar, Allah yolunda cihad edenler ve zekat memurlarına verilir.</p>
+                        </div>
+                        <div class="faq-item">
+                            <strong>Ne zaman verilir?</strong>
+                            <p>Malınız üzerinden bir kameri yıl geçtikten sonra zekat verilir.</p>
+                        </div>
+                        <div class="faq-item">
+                            <strong>Hangi mallara zekat gerekir?</strong>
+                            <p>Altın, gümüş, para, ticaret malları ve hayvanlar gibi artıcı mallara zekat verilir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ezan Player Module -->
+                <div class="ezan-player-module" id="ezanPlayerModule" style="display: none;">
+                    <button class="back-btn" id="ezanPlayerBackBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Geri
+                    </button>
+
+                    <div class="ezan-header">
+                        <h2>🔊 Ezan Dinleme</h2>
+                        <p class="ezan-subtitle">Meşhur müezzinlerden ezan dinleyin</p>
+                    </div>
+
+                    <div class="ezan-info-card">
+                        <h3>Ezan Nedir?</h3>
+                        <p>Ezan, namaz vaktinin geldiğini müslümanlara duyurmak için okunan kutsal çağrıdır. "Allahu Ekber" (Allah en büyüktür) ile başlayan bu mübarek sözler, günde beş vakit okunur.</p>
+                    </div>
+
+                    <div class="muezzin-list">
+                        <h3>Müezzin Seçin</h3>
+
+                        <div class="muezzin-card">
+                            <div class="muezzin-info">
+                                <div class="muezzin-avatar">🕌</div>
+                                <div>
+                                    <h4>Hafız Mustafa Özcan</h4>
+                                    <p>Mekke-i Mükerreme</p>
+                                </div>
+                            </div>
+                            <button class="play-ezan-btn" data-muezzin="mustafa-ozcan">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="muezzin-card">
+                            <div class="muezzin-info">
+                                <div class="muezzin-avatar">🕌</div>
+                                <div>
+                                    <h4>Ali Molla</h4>
+                                    <p>Mescid-i Nebevi</p>
+                                </div>
+                            </div>
+                            <button class="play-ezan-btn" data-muezzin="ali-molla">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="muezzin-card">
+                            <div class="muezzin-info">
+                                <div class="muezzin-avatar">🕌</div>
+                                <div>
+                                    <h4>Hafız İshak Daniş</h4>
+                                    <p>Sultanahmet Camii</p>
+                                </div>
+                            </div>
+                            <button class="play-ezan-btn" data-muezzin="ishak-danis">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="muezzin-card">
+                            <div class="muezzin-info">
+                                <div class="muezzin-avatar">🕌</div>
+                                <div>
+                                    <h4>Abdulbasit Abdussamed</h4>
+                                    <p>Kahire, Mısır</p>
+                                </div>
+                            </div>
+                            <button class="play-ezan-btn" data-muezzin="abdulbasit">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="ezan-player-controls" id="ezanPlayerControls" style="display: none;">
+                        <div class="now-playing">
+                            <span id="nowPlayingMuezzin">Müezzin</span>
+                        </div>
+                        <div class="player-buttons">
+                            <button class="player-btn" id="pauseEzanBtn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <rect x="6" y="4" width="4" height="16"></rect>
+                                    <rect x="14" y="4" width="4" height="16"></rect>
+                                </svg>
+                            </button>
+                            <button class="player-btn" id="stopEzanBtn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <rect x="6" y="6" width="12" height="12"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="ezan-text-card">
+                        <h3>Ezan Sözleri</h3>
+                        <div class="ezan-text-arabic">
+                            <p>اَللهُ أَكْبَر</p>
+                            <p>أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ</p>
+                            <p>أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللهِ</p>
+                            <p>حَيَّ عَلَى الصَّلَاةِ</p>
+                            <p>حَيَّ عَلَى الْفَلَاحِ</p>
+                            <p>اَللهُ أَكْبَر</p>
+                            <p>لَا إِلَهَ إِلَّا اللهُ</p>
+                        </div>
+                        <div class="ezan-text-turkish">
+                            <p><strong>Allah en büyüktür</strong></p>
+                            <p><strong>Şehadet ederim ki Allah'tan başka ilah yoktur</strong></p>
+                            <p><strong>Şehadet ederim ki Muhammed Allah'ın elçisidir</strong></p>
+                            <p><strong>Haydi namaza</strong></p>
+                            <p><strong>Haydi felaha (kurtuluşa)</strong></p>
+                            <p><strong>Allah en büyüktür</strong></p>
+                            <p><strong>Allah'tan başka ilah yoktur</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nearby Mosques Module -->
+                <div class="nearby-mosques-module" id="nearbyMosquesModule" style="display: none;">
+                    <button class="back-btn" id="nearbyMosquesBackBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Geri
+                    </button>
+
+                    <div class="mosques-header">
+                        <h2>🕌 Yakındaki Camiler</h2>
+                        <p class="mosques-subtitle">Çevrenizde ki camileri keşfedin</p>
+                    </div>
+
+                    <div class="location-permission-card">
+                        <div class="permission-icon">📍</div>
+                        <h3>Konum İzni Gerekiyor</h3>
+                        <p>Yakındaki camileri görebilmek için konum izni vermeniz gerekmektedir.</p>
+                        <button class="permission-btn" id="requestLocationBtn">Konuma İzin Ver</button>
+                    </div>
+
+                    <div class="mosques-list" id="mosquesList" style="display: none;">
+                        <h3>En Yakın Camiler</h3>
+                        <div id="mosquesContainer">
+                            <!-- Camiler dinamik olarak buraya eklenecek -->
+                        </div>
+                    </div>
+
+                    <div class="mosque-info-section">
+                        <h3>📖 Camiye Giderken</h3>
+                        <div class="info-card">
+                            <h4>Camiye Girerken Okunacak Dua:</h4>
+                            <p class="info-arabic">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</p>
+                            <p class="info-translation">Allah'ım! Rahmet kapılarını bana aç.</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>Camiden Çıkarken Okunacak Dua:</h4>
+                            <p class="info-arabic">اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ</p>
+                            <p class="info-translation">Allah'ım! Senden lütfunu dilerim.</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>Camide Namaz Kılmanın Fazileti:</h4>
+                            <p>Peygamber Efendimiz (s.a.v) buyurdu ki: "Cemaatle kılınan namaz, kişinin evinde ve çarşıda kıldığı namazdan yirmi yedi derece daha faziletlidir." (Buhari, Müslim)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prayer Guide Module -->
+                <div class="prayer-guide-module" id="prayerGuideModule" style="display: none;">
+                    <button class="back-btn" id="prayerGuideBackBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Geri
+                    </button>
+
+                    <div class="guide-header">
+                        <h2>📿 Namaz Öğrenme Rehberi</h2>
+                        <p class="guide-subtitle">Abdest ve namaz kılmayı öğrenin</p>
+                    </div>
+
+                    <div class="guide-tabs">
+                        <button class="guide-tab-btn active" data-guide="abdest">Abdest</button>
+                        <button class="guide-tab-btn" data-guide="namaz">Namaz</button>
+                        <button class="guide-tab-btn" data-guide="sureler">Sureler</button>
+                    </div>
+
+                    <!-- Abdest Guide -->
+                    <div class="guide-content active" id="abdestGuide">
+                        <div class="guide-section">
+                            <h3>Abdest Nasıl Alınır?</h3>
+                            <div class="step-card">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Niyet</h4>
+                                    <p>Kalben abdest almaya niyet edilir.</p>
+                                    <p class="step-arabic">نَوَيْتُ أَنْ أَتَوَضَّأَ لِرَفْعِ الْحَدَثِ</p>
+                                    <p class="step-translation">"Hadesten (abdest bozukluğundan) kurtulmak için abdest almaya niyet ettim."</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Besmele</h4>
+                                    <p>Besmele çekilir.</p>
+                                    <p class="step-arabic">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                                    <p class="step-translation">"Rahman ve Rahim olan Allah'ın adıyla."</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Elleri Yıkama</h4>
+                                    <p>Her iki el bileklere kadar üç kez yıkanır.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Ağız Çalkalama</h4>
+                                    <p>Ağız üç kez çalkalanır.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>Burna Su Verme</h4>
+                                    <p>Buruna üç kez su verilir ve temizlenir.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">6</div>
+                                <div class="step-content">
+                                    <h4>Yüz Yıkama (FARZ)</h4>
+                                    <p>Yüz alından çeneye, kulaktan kulağa kadar üç kez yıkanır.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">7</div>
+                                <div class="step-content">
+                                    <h4>Kolları Yıkama (FARZ)</h4>
+                                    <p>Sağ sonra sol kol dirseklerle birlikte üç kez yıkanır.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">8</div>
+                                <div class="step-content">
+                                    <h4>Başı Mesh Etme (FARZ)</h4>
+                                    <p>Başın dörtte biri ıslak elle meshedilir.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">9</div>
+                                <div class="step-content">
+                                    <h4>Kulakları Mesh</h4>
+                                    <p>İşaret parmağıyla kulak içi, baş parmakla dışı meshedir.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">10</div>
+                                <div class="step-content">
+                                    <h4>Ayakları Yıkama (FARZ)</h4>
+                                    <p>Sağ sonra sol ayak topuklarla birlikte üç kez yıkanır.</p>
+                                </div>
+                            </div>
+
+                            <div class="abdest-dua-card">
+                                <h4>Abdest Sonrası Dua:</h4>
+                                <p class="step-arabic">أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</p>
+                                <p class="step-translation">"Şehadet ederim ki Allah'tan başka ilah yoktur, O tektir, ortağı yoktur ve yine şehadet ederim ki Muhammed O'nun kulu ve elçisidir."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Namaz Guide -->
+                    <div class="guide-content" id="namazGuide" style="display: none;">
+                        <div class="guide-section">
+                            <h3>Namaz Nasıl Kılınır?</h3>
+
+                            <div class="namaz-rakaat-selector">
+                                <button class="rakaat-btn active" data-rakaat="2">2 Rekat</button>
+                                <button class="rakaat-btn" data-rakaat="3">3 Rekat</button>
+                                <button class="rakaat-btn" data-rakaat="4">4 Rekat</button>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Kıbleye Yönelme ve Niyet</h4>
+                                    <p>Kıbleye dönülür ve kalben namaza niyet edilir.</p>
+                                    <p class="step-example">Örnek: "Farz olan sabah namazını kılmaya niyet ettim."</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>İftitah Tekbiri (FARZ)</h4>
+                                    <p>Eller kulak hizasına kaldırılıp "Allahu Ekber" denir ve iftitah tekbiri alınır.</p>
+                                    <p class="step-arabic">اللهُ أَكْبَر</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Subhaneke Duası</h4>
+                                    <p class="step-arabic">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلَا إِلَهَ غَيْرُكَ</p>
+                                    <p class="step-translation">"Seni her türlü eksiklikten tenzih ederim Allah'ım! Sana hamd olsun. Senin adın ne yücedir, şanın ne yüksektir. Senden başka ilah yoktur."</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Euzü-Besmele ve Fatiha (FARZ)</h4>
+                                    <p>Euzü-Besmele çekilir, Fatiha suresi okunur.</p>
+                                    <p class="step-note">Not: Fatiha suresi namazın her rekatında okunur.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>Zamm-ı Sure</h4>
+                                    <p>Fatiha'dan sonra bir sure veya en az üç ayet okunur.</p>
+                                    <p class="step-note">Not: İlk iki rekatta okunur.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">6</div>
+                                <div class="step-content">
+                                    <h4>Rükû (FARZ)</h4>
+                                    <p>"Allahu Ekber" denerek rükûa gidilir.</p>
+                                    <p class="step-arabic">سُبْحَانَ رَبِّيَ الْعَظِيمِ (3 defa)</p>
+                                    <p class="step-translation">"Yüce Rabbimi her türlü eksiklikten tenzih ederim."</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">7</div>
+                                <div class="step-content">
+                                    <h4>Kıyam (Rükûdan Kalkma)</h4>
+                                    <p class="step-arabic">سَمِعَ اللهُ لِمَنْ حَمِدَهُ</p>
+                                    <p class="step-translation">"Allah, kendisine hamd edeni işitir."</p>
+                                    <p class="step-arabic">رَبَّنَا لَكَ الْحَمْدُ</p>
+                                    <p class="step-translation">"Rabbimiz! Hamd sana mahsustur."</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">8</div>
+                                <div class="step-content">
+                                    <h4>Secde (FARZ)</h4>
+                                    <p>"Allahu Ekber" denerek secdeye gidilir.</p>
+                                    <p class="step-arabic">سُبْحَانَ رَبِّيَ الْأَعْلَى (3 defa)</p>
+                                    <p class="step-translation">"Yüce Rabbimi her türlü eksiklikten tenzih ederim."</p>
+                                    <p class="step-note">Not: İki secde yapılır, arasında oturulur.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">9</div>
+                                <div class="step-content">
+                                    <h4>Ka'de (Oturuş)</h4>
+                                    <p>İlk iki rekat sonunda Ettehiyyatü okunur.</p>
+                                    <p class="step-arabic">اَلتَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ...</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">10</div>
+                                <div class="step-content">
+                                    <h4>Selam Verme (FARZ)</h4>
+                                    <p>Son oturuşta Salli-Barik ve Rabbena dualarından sonra selam verilir.</p>
+                                    <p class="step-arabic">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ</p>
+                                    <p class="step-translation">"Allah'ın selamı ve rahmeti üzerinize olsun."</p>
+                                    <p class="step-note">Önce sağa, sonra sola selam verilir.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sureler Guide -->
+                    <div class="guide-content" id="surelerGuide" style="display: none;">
+                        <div class="guide-section">
+                            <h3>Namaz Sureleri</h3>
+
+                            <div class="sure-card">
+                                <h4>Fatiha Suresi</h4>
+                                <div class="sure-text-arabic">
+                                    <p>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                                    <p>اَلْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
+                                    <p>اَلرَّحْمَنِ الرَّحِيمِ</p>
+                                    <p>مَالِكِ يَوْمِ الدِّينِ</p>
+                                    <p>إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ</p>
+                                    <p>اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ</p>
+                                    <p>صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</p>
+                                </div>
+                                <div class="sure-translation">
+                                    <p>Hamd, âlemlerin Rabbi Allah'a mahsustur. O, Rahman'dır, Rahim'dir. Din (ceza ve hesap) gününün sahibidir. (Rabbimiz!) Yalnız sana ibadet eder ve yalnız senden yardım dileriz. Bizi doğru yola, kendilerine nimet verdiklerinin yoluna ilet; gazaba uğrayanların ve sapıtanların yoluna değil!</p>
+                                </div>
+                            </div>
+
+                            <div class="sure-card">
+                                <h4>İhlas Suresi</h4>
+                                <div class="sure-text-arabic">
+                                    <p>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                                    <p>قُلْ هُوَ اللهُ أَحَدٌ</p>
+                                    <p>اَللهُ الصَّمَدُ</p>
+                                    <p>لَمْ يَلِدْ وَلَمْ يُولَدْ</p>
+                                    <p>وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ</p>
+                                </div>
+                                <div class="sure-translation">
+                                    <p>De ki: O, Allah'tır, bir tek'tir. Allah Samed'dir (her şey O'na muhtaçtır, O, hiçbir şeye muhtaç değildir). O, doğurmamıştır ve doğrulmamıştır. Hiçbir şey O'na denk ve benzer değildir.</p>
+                                </div>
+                            </div>
+
+                            <div class="sure-card">
+                                <h4>Felak Suresi</h4>
+                                <div class="sure-text-arabic">
+                                    <p>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                                    <p>قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ</p>
+                                    <p>مِنْ شَرِّ مَا خَلَقَ</p>
+                                    <p>وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ</p>
+                                    <p>وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ</p>
+                                    <p>وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ</p>
+                                </div>
+                                <div class="sure-translation">
+                                    <p>De ki: Sığınırım sabahın Rabbine, yarattığı şeylerin şerrinden, karanlığı çöktüğü zaman gecenin şerrinden, düğümlere üfleyenlerin şerrinden ve haset ettiği zaman hasetçinin şerrinden.</p>
+                                </div>
+                            </div>
+
+                            <div class="sure-card">
+                                <h4>Nas Suresi</h4>
+                                <div class="sure-text-arabic">
+                                    <p>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                                    <p>قُلْ أَعُوذُ بِرَبِّ النَّاسِ</p>
+                                    <p>مَلِكِ النَّاسِ</p>
+                                    <p>إِلَهِ النَّاسِ</p>
+                                    <p>مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ</p>
+                                    <p>الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ</p>
+                                    <p>مِنَ الْجِنَّةِ وَالنَّاسِ</p>
+                                </div>
+                                <div class="sure-translation">
+                                    <p>De ki: Sığınırım insanların Rabbine, insanların Melik'ine, insanların İlah'ına, cinlerden ve insanlardan, sinsi vesvesecinin şerrinden; o ki, insanların göğüslerine vesvese verir.</p>
+                                </div>
+                            </div>
+
+                            <div class="sure-card">
+                                <h4>Kevser Suresi</h4>
+                                <div class="sure-text-arabic">
+                                    <p>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                                    <p>إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ</p>
+                                    <p>فَصَلِّ لِرَبِّكَ وَانْحَرْ</p>
+                                    <p>إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ</p>
+                                </div>
+                                <div class="sure-translation">
+                                    <p>Şüphesiz biz sana Kevser'i verdik. O hâlde Rabbin için namaz kıl ve kurban kes. Asıl soyu kesik olan, sana kin besleyendir.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
