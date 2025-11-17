@@ -2376,7 +2376,213 @@ function setupMoreFeatures() {
     }
 }
 
+// ==========================================
+// NEW MODULES FUNCTIONALITY
+// ==========================================
+
+// Zekat Calculator Module
+const ZekatCalculator = {
+    init() {
+        const zekatCard = document.getElementById('zekatCard');
+        const zekatModule = document.getElementById('zekatModule');
+        const zekatBackBtn = document.getElementById('zekatBackBtn');
+        const calculateMoneyBtn = document.getElementById('calculateMoneyZekat');
+        const calculateGoldBtn = document.getElementById('calculateGoldZekat');
+
+        if (zekatCard) {
+            zekatCard.addEventListener('click', () => {
+                document.getElementById('moreMenu').style.display = 'none';
+                zekatModule.style.display = 'block';
+            });
+        }
+
+        if (zekatBackBtn) {
+            zekatBackBtn.addEventListener('click', () => {
+                zekatModule.style.display = 'none';
+                document.getElementById('moreMenu').style.display = 'block';
+            });
+        }
+
+        if (calculateMoneyBtn) {
+            calculateMoneyBtn.addEventListener('click', () => {
+                const totalMoney = parseFloat(document.getElementById('totalMoney').value);
+                const resultDiv = document.getElementById('moneyZekatResult');
+                const amountSpan = document.getElementById('moneyZekatAmount');
+
+                if (isNaN(totalMoney) || totalMoney <= 0) {
+                    alert('Lütfen geçerli bir miktar giriniz.');
+                    return;
+                }
+
+                const zekat = (totalMoney * 2.5) / 100;
+                amountSpan.textContent = `${zekat.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} TL`;
+                resultDiv.style.display = 'block';
+            });
+        }
+
+        if (calculateGoldBtn) {
+            calculateGoldBtn.addEventListener('click', () => {
+                const goldGrams = parseFloat(document.getElementById('goldGrams').value);
+                const goldPrice = parseFloat(document.getElementById('goldPrice').value);
+                const resultDiv = document.getElementById('goldZekatResult');
+                const amountSpan = document.getElementById('goldZekatAmount');
+                const gramsSpan = document.getElementById('goldZekatGrams');
+
+                if (isNaN(goldGrams) || goldGrams <= 0 || isNaN(goldPrice) || goldPrice <= 0) {
+                    alert('Lütfen geçerli değerler giriniz.');
+                    return;
+                }
+
+                const zekatGrams = (goldGrams * 2.5) / 100;
+                const zekatAmount = zekatGrams * goldPrice;
+
+                amountSpan.textContent = `${zekatAmount.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} TL`;
+                gramsSpan.textContent = `${zekatGrams.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} gram`;
+                resultDiv.style.display = 'block';
+            });
+        }
+    }
+};
+
+// Ezan Player Module
+const EzanPlayer = {
+    init() {
+        const ezanPlayerCard = document.getElementById('ezanPlayerCard');
+        const ezanPlayerModule = document.getElementById('ezanPlayerModule');
+        const ezanPlayerBackBtn = document.getElementById('ezanPlayerBackBtn');
+        const playBtns = document.querySelectorAll('.play-ezan-btn');
+
+        if (ezanPlayerCard) {
+            ezanPlayerCard.addEventListener('click', () => {
+                document.getElementById('moreMenu').style.display = 'none';
+                ezanPlayerModule.style.display = 'block';
+            });
+        }
+
+        if (ezanPlayerBackBtn) {
+            ezanPlayerBackBtn.addEventListener('click', () => {
+                ezanPlayerModule.style.display = 'none';
+                document.getElementById('moreMenu').style.display = 'block';
+            });
+        }
+
+        playBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const muezzin = btn.getAttribute('data-muezzin');
+                const muezzinNames = {
+                    'mustafa-ozcan': 'Hafız Mustafa Özcan',
+                    'ali-molla': 'Ali Molla',
+                    'ishak-danis': 'Hafız İshak Daniş',
+                    'abdulbasit': 'Abdulbasit Abdussamed'
+                };
+
+                alert(`${muezzinNames[muezzin]} ezan sesi çalmaya başlayacaktı.\n\nNot: Bu özellik demo amaçlıdır. Gerçek ezan sesleri için ses dosyaları eklenmelidir.`);
+            });
+        });
+    }
+};
+
+// Nearby Mosques Module
+const NearbyMosques = {
+    init() {
+        const nearbyMosquesCard = document.getElementById('nearbyMosquesCard');
+        const nearbyMosquesModule = document.getElementById('nearbyMosquesModule');
+        const nearbyMosquesBackBtn = document.getElementById('nearbyMosquesBackBtn');
+        const requestLocationBtn = document.getElementById('requestLocationBtn');
+
+        if (nearbyMosquesCard) {
+            nearbyMosquesCard.addEventListener('click', () => {
+                document.getElementById('moreMenu').style.display = 'none';
+                nearbyMosquesModule.style.display = 'block';
+            });
+        }
+
+        if (nearbyMosquesBackBtn) {
+            nearbyMosquesBackBtn.addEventListener('click', () => {
+                nearbyMosquesModule.style.display = 'none';
+                document.getElementById('moreMenu').style.display = 'block';
+            });
+        }
+
+        if (requestLocationBtn) {
+            requestLocationBtn.addEventListener('click', () => {
+                if ('geolocation' in navigator) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            alert(`Konum alındı!\nEnlem: ${position.coords.latitude}\nBoylam: ${position.coords.longitude}\n\nNot: Bu özellik demo amaçlıdır. Gerçek cami verileri için bir API entegrasyonu gereklidir.`);
+                        },
+                        (error) => {
+                            alert('Konum alınamadı. Lütfen konum izni veriniz.');
+                        }
+                    );
+                } else {
+                    alert('Tarayıcınız konum özelliğini desteklemiyor.');
+                }
+            });
+        }
+    }
+};
+
+// Prayer Guide Module
+const PrayerGuide = {
+    init() {
+        const prayerGuideCard = document.getElementById('prayerGuideCard');
+        const prayerGuideModule = document.getElementById('prayerGuideModule');
+        const prayerGuideBackBtn = document.getElementById('prayerGuideBackBtn');
+        const guideTabBtns = document.querySelectorAll('.guide-tab-btn');
+        const rakaatBtns = document.querySelectorAll('.rakaat-btn');
+
+        if (prayerGuideCard) {
+            prayerGuideCard.addEventListener('click', () => {
+                document.getElementById('moreMenu').style.display = 'none';
+                prayerGuideModule.style.display = 'block';
+            });
+        }
+
+        if (prayerGuideBackBtn) {
+            prayerGuideBackBtn.addEventListener('click', () => {
+                prayerGuideModule.style.display = 'none';
+                document.getElementById('moreMenu').style.display = 'block';
+            });
+        }
+
+        // Guide tabs switching
+        guideTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetGuide = btn.getAttribute('data-guide');
+
+                // Remove active from all tabs and contents
+                guideTabBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.guide-content').forEach(c => c.classList.remove('active'));
+
+                // Add active to clicked tab and its content
+                btn.classList.add('active');
+                const contentMap = {
+                    'abdest': 'abdestGuide',
+                    'namaz': 'namazGuide',
+                    'sureler': 'surelerGuide'
+                };
+                document.getElementById(contentMap[targetGuide]).classList.add('active');
+            });
+        });
+
+        // Rakaat selector (visual only)
+        rakaatBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                rakaatBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
+
+    // Initialize new modules
+    ZekatCalculator.init();
+    EzanPlayer.init();
+    NearbyMosques.init();
+    PrayerGuide.init();
 });

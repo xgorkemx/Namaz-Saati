@@ -3744,3 +3744,748 @@ select:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================
+   ZEKAT CALCULATOR MODULE
+   ========================================== */
+
+.zekat-module {
+    padding: var(--spacing-xl) 0;
+}
+
+.zekat-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.zekat-header h2 {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.zekat-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.zekat-info-card {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    color: white;
+}
+
+.zekat-info-card h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.25rem;
+}
+
+.zekat-info-card p {
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.zekat-calculator {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.zekat-calculator h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.25rem;
+}
+
+.calculator-input-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.calculator-input-group label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+}
+
+.calculator-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: border-color var(--transition-base);
+    background: var(--background);
+    color: var(--text-primary);
+}
+
+.calculator-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.nisab-info {
+    background: var(--surface-hover);
+    border-left: 4px solid var(--secondary-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.nisab-info p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.calculate-btn {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--transition-base);
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+}
+
+.zekat-result {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    color: white;
+}
+
+.zekat-result h4 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+}
+
+.result-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.result-amount-gram {
+    font-size: 1.25rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.result-note {
+    margin-top: var(--spacing-md);
+    font-size: 0.85rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.zekat-faq {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.zekat-faq h3 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+}
+
+.faq-item {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.faq-item strong {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.05rem;
+}
+
+.faq-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ==========================================
+   EZAN PLAYER MODULE
+   ========================================== */
+
+.ezan-player-module {
+    padding: var(--spacing-xl) 0;
+}
+
+.ezan-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.ezan-header h2 {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.ezan-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.ezan-info-card {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    color: white;
+}
+
+.ezan-info-card h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.25rem;
+}
+
+.ezan-info-card p {
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.muezzin-list {
+    margin-bottom: var(--spacing-xl);
+}
+
+.muezzin-list h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.25rem;
+}
+
+.muezzin-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base);
+}
+
+.muezzin-card:hover {
+    transform: translateY(-2px);
+}
+
+.muezzin-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.muezzin-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.muezzin-info h4 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.05rem;
+}
+
+.muezzin-info p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.play-ezan-btn {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.play-ezan-btn:hover {
+    transform: scale(1.1);
+}
+
+.play-ezan-btn svg {
+    width: 20px;
+    height: 20px;
+    color: white;
+}
+
+.ezan-player-controls {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.now-playing {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.player-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.player-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.player-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.player-btn svg {
+    width: 20px;
+    height: 20px;
+    color: white;
+}
+
+.ezan-text-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.ezan-text-card h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.ezan-text-arabic {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--background);
+    border-radius: var(--radius-md);
+}
+
+.ezan-text-arabic p {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+    direction: rtl;
+}
+
+.ezan-text-turkish p {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   NEARBY MOSQUES MODULE
+   ========================================== */
+
+.nearby-mosques-module {
+    padding: var(--spacing-xl) 0;
+}
+
+.mosques-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.mosques-header h2 {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.mosques-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.location-permission-card {
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+    color: white;
+    margin-bottom: var(--spacing-xl);
+}
+
+.permission-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.location-permission-card h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.25rem;
+}
+
+.location-permission-card p {
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.permission-btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: white;
+    color: #0d9488;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--transition-base);
+}
+
+.permission-btn:hover {
+    transform: translateY(-2px);
+}
+
+.mosque-info-section {
+    margin-top: var(--spacing-xl);
+}
+
+.mosque-info-section h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.25rem;
+}
+
+.info-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+}
+
+.info-card h4 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.05rem;
+}
+
+.info-arabic {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+    direction: rtl;
+    text-align: center;
+    font-weight: 500;
+}
+
+.info-translation {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.info-card p:not(.info-arabic):not(.info-translation) {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   PRAYER GUIDE MODULE
+   ========================================== */
+
+.prayer-guide-module {
+    padding: var(--spacing-xl) 0;
+}
+
+.guide-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.guide-header h2 {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.guide-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.guide-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-sm);
+}
+
+.guide-tab-btn {
+    flex: 1;
+    padding: var(--spacing-md);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.guide-tab-btn.active {
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+    color: white;
+}
+
+.guide-content {
+    display: none;
+}
+
+.guide-content.active {
+    display: block;
+}
+
+.guide-section h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.25rem;
+}
+
+.step-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h4 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.05rem;
+}
+
+.step-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.step-arabic {
+    font-size: 1.15rem;
+    color: var(--primary-color);
+    direction: rtl;
+    text-align: right;
+    margin: var(--spacing-md) 0;
+    font-weight: 500;
+}
+
+.step-translation {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.step-note {
+    background: var(--surface-hover);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: var(--spacing-sm);
+}
+
+.step-example {
+    background: var(--surface-hover);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.abdest-dua-card {
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    color: white;
+}
+
+.abdest-dua-card h4 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+}
+
+.abdest-dua-card .step-arabic {
+    color: white;
+    opacity: 0.95;
+}
+
+.abdest-dua-card .step-translation {
+    color: white;
+    opacity: 0.9;
+}
+
+.namaz-rakaat-selector {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-sm);
+}
+
+.rakaat-btn {
+    flex: 1;
+    padding: var(--spacing-md);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.rakaat-btn.active {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.sure-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.sure-card h4 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.sure-text-arabic {
+    background: var(--background);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.sure-text-arabic p {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    direction: rtl;
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    line-height: 2;
+    font-weight: 500;
+}
+
+.sure-translation {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    padding: var(--spacing-md);
+}
+
+.sure-translation p {
+    margin: 0;
+}
+
+/* Responsive for new modules */
+@media (max-width: 768px) {
+    .guide-tabs {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .guide-tab-btn {
+        white-space: nowrap;
+    }
+
+    .muezzin-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .muezzin-info {
+        flex-direction: column;
+    }
+}
