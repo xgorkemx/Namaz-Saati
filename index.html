@@ -434,6 +434,22 @@
                         </svg>
                     </div>
 
+                    <!-- Zekat Module -->
+                    <div class="feature-card" id="zekatCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Zekat Hesaplayıcı</h3>
+                            <p>Mallarınızın zekatını kolayca hesaplayın</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
                 </div>
 
                 <!-- Ramazan Module (Hidden by default) -->
@@ -2147,6 +2163,237 @@
                     <div class="reminder-icon-namaz">📖</div>
                     <h4>Kur'an Öğrenin</h4>
                     <p>Namazda okumak için kısa sureleri ezberleyin. Her gün biraz daha öğrenmeye çalışın.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zekat Module (Hidden by default) -->
+    <div class="zekat-module" id="zekatModule" style="display: none;">
+        <button class="back-btn" id="zekatBackBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Geri
+        </button>
+
+        <div class="container">
+            <!-- Info Card -->
+            <div class="zekat-info-card">
+                <div class="card-icon">💰</div>
+                <h2>Zekat Nedir?</h2>
+                <p class="info-text">Zekat, İslam'ın beş şartından biridir. Belirli miktarda malı olan müslümanların, mallarının %2.5'ini (1/40'ını) yoksullara vermesidir.</p>
+                <div class="verse-box">
+                    <p class="arabic-text">"وَأَقِيمُواْ ٱلصَّلَوٰةَ وَءَاتُواْ ٱلزَّكَوٰةَ"</p>
+                    <p class="translation">"Namazı kılın, zekatı verin." (Bakara Suresi, 43)</p>
+                </div>
+            </div>
+
+            <!-- Nisab Info -->
+            <div class="nisab-card">
+                <h3>💎 Zekat Nisabı</h3>
+                <p>Zekat vermek için malınızın <strong>85 gram altın</strong> veya <strong>595 gram gümüş</strong> değerinde olması gerekir.</p>
+                <div class="nisab-values">
+                    <div class="nisab-item">
+                        <span class="nisab-label">85 gram altın ≈</span>
+                        <span class="nisab-value">~250,000 TL</span>
+                    </div>
+                    <div class="nisab-item">
+                        <span class="nisab-label">595 gram gümüş ≈</span>
+                        <span class="nisab-value">~30,000 TL</span>
+                    </div>
+                </div>
+                <p class="nisab-note">📌 Güncel altın ve gümüş fiyatlarını takip ederek hesaplama yapınız.</p>
+            </div>
+
+            <!-- Calculator Section -->
+            <div class="calculator-card">
+                <h3>🧮 Zekat Hesaplama</h3>
+                <p class="calculator-desc">Aşağıdaki alanlara sahip olduğunuz mal ve paraları giriniz. Zekat oranı %2.5'tir.</p>
+
+                <!-- Altın/Gümüş -->
+                <div class="calc-section">
+                    <h4>⭐ Altın ve Gümüş</h4>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="goldGram">Altın (gram)</label>
+                            <input type="number" id="goldGram" placeholder="0" min="0" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="goldPrice">Gram Fiyatı (TL)</label>
+                            <input type="number" id="goldPrice" placeholder="3000" min="0" step="0.01">
+                        </div>
+                        <div class="input-group">
+                            <label for="silverGram">Gümüş (gram)</label>
+                            <input type="number" id="silverGram" placeholder="0" min="0" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="silverPrice">Gram Fiyatı (TL)</label>
+                            <input type="number" id="silverPrice" placeholder="50" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Para -->
+                <div class="calc-section">
+                    <h4>💵 Nakit Para ve Banka</h4>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="cash">Nakit Para (TL)</label>
+                            <input type="number" id="cash" placeholder="0" min="0" step="0.01">
+                        </div>
+                        <div class="input-group">
+                            <label for="bank">Bankadaki Para (TL)</label>
+                            <input type="number" id="bank" placeholder="0" min="0" step="0.01">
+                        </div>
+                        <div class="input-group">
+                            <label for="investments">Yatırımlar (TL)</label>
+                            <input type="number" id="investments" placeholder="0" min="0" step="0.01">
+                        </div>
+                        <div class="input-group">
+                            <label for="otherAssets">Diğer Varlıklar (TL)</label>
+                            <input type="number" id="otherAssets" placeholder="0" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ticaret Malları -->
+                <div class="calc-section">
+                    <h4>🏪 Ticaret Malları</h4>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="tradeGoods">Ticaret Malları Değeri (TL)</label>
+                            <input type="number" id="tradeGoods" placeholder="0" min="0" step="0.01">
+                        </div>
+                        <div class="input-group">
+                            <label for="receivables">Alacaklar (TL)</label>
+                            <input type="number" id="receivables" placeholder="0" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Borçlar (Düşülecek) -->
+                <div class="calc-section debt-section">
+                    <h4>📉 Borçlar (Toplam Maldan Düşülür)</h4>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="debts">Borçlar (TL)</label>
+                            <input type="number" id="debts" placeholder="0" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculate Button -->
+                <button class="calculate-btn" id="calculateZekat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    Zekat Hesapla
+                </button>
+            </div>
+
+            <!-- Results Card -->
+            <div class="results-card" id="zekatResults" style="display: none;">
+                <h3>📊 Hesaplama Sonucu</h3>
+                <div class="result-grid">
+                    <div class="result-item">
+                        <span class="result-label">Toplam Mal Varlığı:</span>
+                        <span class="result-value" id="totalWealth">0 TL</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Düşülen Borçlar:</span>
+                        <span class="result-value debt-value" id="totalDebts">0 TL</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Net Mal Varlığı:</span>
+                        <span class="result-value" id="netWealth">0 TL</span>
+                    </div>
+                    <div class="result-item zekat-amount">
+                        <span class="result-label">Verilecek Zekat:</span>
+                        <span class="result-value zekat-value" id="zekatAmount">0 TL</span>
+                    </div>
+                </div>
+                <div class="nisab-check" id="nisabCheck"></div>
+            </div>
+
+            <!-- Zekat Kimlere Verilir -->
+            <div class="zekat-recipients">
+                <h3>🤲 Zekat Kimlere Verilir?</h3>
+                <p class="section-intro">Kur'an-ı Kerim'de zekat verilecek 8 grup belirtilmiştir:</p>
+                <div class="recipients-grid">
+                    <div class="recipient-card">
+                        <div class="recipient-icon">👥</div>
+                        <h4>Fakirler</h4>
+                        <p>Hiçbir geliri ve malı olmayan kimseler</p>
+                    </div>
+                    <div class="recipient-card">
+                        <div class="recipient-icon">🙏</div>
+                        <h4>Miskinler</h4>
+                        <p>Çok az geliri olan, ihtiyaçlarını karşılayamayan kimseler</p>
+                    </div>
+                    <div class="recipient-card">
+                        <div class="recipient-icon">💼</div>
+                        <h4>Zekat Görevlileri</h4>
+                        <p>Zekatı toplama ve dağıtma işiyle görevli kimseler</p>
+                    </div>
+                    <div class="recipient-card">
+                        <div class="recipient-icon">❤️</div>
+                        <h4>Gönülleri İslam'a Isındırılacaklar</h4>
+                        <p>İslam'a yeni girmiş veya girmeye meyilli kimseler</p>
+                    </div>
+                    <div class="recipient-card">
+                        <div class="recipient-icon">⛓️</div>
+                        <h4>Köleler</h4>
+                        <p>Özgürlüklerini kazanmak isteyen köleler</p>
+                    </div>
+                    <div class="recipient-card">
+                        <div class="recipient-icon">💳</div>
+                        <h4>Borçlular</h4>
+                        <p>Borç altında ezilen, borcunu ödeyemeyen kimseler</p>
+                    </div>
+                    <div class="recipient-card">
+                        <div class="recipient-icon">☪️</div>
+                        <h4>Allah Yolunda Olanlar</h4>
+                        <p>Cihad, ilim tahsili gibi Allah için çalışanlar</p>
+                    </div>
+                    <div class="recipient-card">
+                        <div class="recipient-icon">🧳</div>
+                        <h4>Yolda Kalanlar</h4>
+                        <p>Seyahatte parası bitmiş yardıma muhtaç kimseler</p>
+                    </div>
+                </div>
+                <div class="verse-box">
+                    <p class="arabic-text">"إِنَّمَا ٱلصَّدَقَـٰتُ لِلْفُقَرَآءِ وَٱلْمَسَـٰكِينِ..."</p>
+                    <p class="translation">"Sadakalar (zekatlar) ancak fakirler, miskinler, zekat toplayan memurlar, kalpleri İslam'a ısındırılacak olanlar için, köleleri (azat etmede), borçlulara, Allah yolunda ve yolda kalmışlara mahsustur..." (Tevbe Suresi, 60)</p>
+                </div>
+            </div>
+
+            <!-- Önemli Notlar -->
+            <div class="important-notes">
+                <h3>📝 Önemli Hatırlatmalar</h3>
+                <div class="notes-grid">
+                    <div class="note-card info">
+                        <div class="note-icon">ℹ️</div>
+                        <h4>Nisap Şartı</h4>
+                        <p>Malınız bir yıl boyunca nisap miktarına ulaşmışsa zekat verilir. Nisap hesabında gümüş fiyatı esas alınması fakirler lehine olur.</p>
+                    </div>
+                    <div class="note-card success">
+                        <div class="note-icon">✅</div>
+                        <h4>Hesaplama Zamanı</h4>
+                        <p>Zekat, malınızın nisaba ulaştığı tarihten itibaren bir kameri yıl sonra hesaplanır ve verilir.</p>
+                    </div>
+                    <div class="note-card warning">
+                        <div class="note-icon">⚠️</div>
+                        <h4>Güncel Değerler</h4>
+                        <p>Hesaplama yaparken güncel altın ve gümüş fiyatlarını kullanınız. Bu hesaplayıcı tahmini sonuç verir.</p>
+                    </div>
+                    <div class="note-card primary">
+                        <div class="note-icon">🎯</div>
+                        <h4>Zekat Oranı</h4>
+                        <p>Standart zekat oranı %2.5'tir (1/40). Tarım ürünlerinde oran %5-10 arasında değişebilir.</p>
+                    </div>
                 </div>
             </div>
         </div>

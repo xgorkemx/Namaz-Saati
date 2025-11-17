@@ -2441,9 +2441,110 @@ const NamazModule = {
     }
 };
 
+// Zekat Module
+const ZekatModule = {
+    init() {
+        const zekatCard = document.getElementById('zekatCard');
+        const zekatModule = document.getElementById('zekatModule');
+        const zekatBackBtn = document.getElementById('zekatBackBtn');
+        const moreMenu = document.querySelector('.more-menu');
+        const calculateBtn = document.getElementById('calculateZekat');
+
+        // Navigate to Zekat module
+        if (zekatCard) {
+            zekatCard.addEventListener('click', () => {
+                if (moreMenu) moreMenu.style.display = 'none';
+                if (zekatModule) zekatModule.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Navigate back to More menu
+        if (zekatBackBtn) {
+            zekatBackBtn.addEventListener('click', () => {
+                if (zekatModule) zekatModule.style.display = 'none';
+                if (moreMenu) moreMenu.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Calculate Zekat
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', () => {
+                this.calculateZekat();
+            });
+        }
+    },
+
+    calculateZekat() {
+        // Get input values
+        const goldGram = parseFloat(document.getElementById('goldGram')?.value || 0);
+        const goldPrice = parseFloat(document.getElementById('goldPrice')?.value || 0);
+        const silverGram = parseFloat(document.getElementById('silverGram')?.value || 0);
+        const silverPrice = parseFloat(document.getElementById('silverPrice')?.value || 0);
+        const cash = parseFloat(document.getElementById('cash')?.value || 0);
+        const bank = parseFloat(document.getElementById('bank')?.value || 0);
+        const investments = parseFloat(document.getElementById('investments')?.value || 0);
+        const otherAssets = parseFloat(document.getElementById('otherAssets')?.value || 0);
+        const tradeGoods = parseFloat(document.getElementById('tradeGoods')?.value || 0);
+        const receivables = parseFloat(document.getElementById('receivables')?.value || 0);
+        const debts = parseFloat(document.getElementById('debts')?.value || 0);
+
+        // Calculate values
+        const goldValue = goldGram * goldPrice;
+        const silverValue = silverGram * silverPrice;
+        const totalWealth = goldValue + silverValue + cash + bank + investments + otherAssets + tradeGoods + receivables;
+        const netWealth = totalWealth - debts;
+        const zekatAmount = netWealth * 0.025; // 2.5%
+
+        // Nisab check (approximately 30,000 TL based on silver)
+        const nisabThreshold = 30000;
+        const isAboveNisab = netWealth >= nisabThreshold;
+
+        // Display results
+        const resultsCard = document.getElementById('zekatResults');
+        const totalWealthEl = document.getElementById('totalWealth');
+        const totalDebtsEl = document.getElementById('totalDebts');
+        const netWealthEl = document.getElementById('netWealth');
+        const zekatAmountEl = document.getElementById('zekatAmount');
+        const nisabCheck = document.getElementById('nisabCheck');
+
+        if (resultsCard) resultsCard.style.display = 'block';
+        if (totalWealthEl) totalWealthEl.textContent = this.formatCurrency(totalWealth);
+        if (totalDebtsEl) totalDebtsEl.textContent = this.formatCurrency(debts);
+        if (netWealthEl) netWealthEl.textContent = this.formatCurrency(netWealth);
+        if (zekatAmountEl) zekatAmountEl.textContent = this.formatCurrency(zekatAmount);
+
+        if (nisabCheck) {
+            if (isAboveNisab) {
+                nisabCheck.className = 'nisab-check sufficient';
+                nisabCheck.textContent = '✅ Malınız nisap miktarının üzerinde. Zekat vermekle yükümlüsünüz.';
+            } else {
+                nisabCheck.className = 'nisab-check insufficient';
+                nisabCheck.textContent = '❌ Malınız nisap miktarının altında. Zekat vermek zorunlu değil, ancak sadaka verebilirsiniz.';
+            }
+        }
+
+        // Scroll to results
+        if (resultsCard) {
+            resultsCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    },
+
+    formatCurrency(amount) {
+        return new Intl.NumberFormat('tr-TR', {
+            style: 'currency',
+            currency: 'TRY',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }).format(amount);
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
     AbdestModule.init();
     NamazModule.init();
+    ZekatModule.init();
 });
