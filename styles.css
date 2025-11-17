@@ -6993,3 +6993,479 @@ select:focus-visible {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* ==========================================
+   Advanced Notifications
+   ========================================== */
+.advanced-notifications-settings {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    border: 2px solid #3b82f6;
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.settings-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.test-notification-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.test-notification-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.test-notification-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Master Toggle */
+.notification-master-toggle {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+
+.notification-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    font-size: 0.9rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fbbf24;
+    animation: pulse-dot 2s infinite;
+}
+
+.notification-status.granted .status-dot {
+    background: #10b981;
+    animation: none;
+}
+
+.notification-status.denied .status-dot {
+    background: #ef4444;
+    animation: none;
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.status-text {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Section Styles */
+.notification-prayers-section,
+.notification-timing-section,
+.notification-sound-section,
+.notification-vibration-section,
+.notification-dnd-section,
+.notification-history-section,
+.notification-advanced-section {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+/* Prayer Notifications Grid */
+.prayer-notifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.prayer-notification-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.prayer-notification-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.prayer-notification-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    background: var(--background);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.prayer-notification-item input[type="checkbox"]:checked + .prayer-notification-label {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-color: #3b82f6;
+}
+
+.prayer-icon {
+    font-size: 1.8rem;
+}
+
+.prayer-notification-label span:last-child {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Timing Options */
+.timing-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.timing-option {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.timing-option label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* Sound Options */
+.sound-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.sound-option {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.sound-option label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.volume-slider {
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #e5e7eb 0%, #3b82f6 100%);
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #3b82f6;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #3b82f6;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    border: none;
+}
+
+.volume-value {
+    display: inline-block;
+    margin-top: var(--spacing-xs);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #3b82f6;
+}
+
+/* Vibration Pattern */
+.vibration-pattern {
+    margin-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.vibration-pattern label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* Do Not Disturb */
+.dnd-time-range {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.time-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.time-input-group label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.time-input {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    background: var(--surface);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.time-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Notification History */
+.notification-history-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.notification-history-empty {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--text-secondary);
+}
+
+.notification-history-empty svg {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto var(--spacing-md);
+    opacity: 0.5;
+}
+
+.notification-history-empty p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.notification-history-item {
+    display: flex;
+    align-items: start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--background);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    border-left: 4px solid #3b82f6;
+}
+
+.notification-history-item:last-child {
+    margin-bottom: 0;
+}
+
+.notification-history-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.notification-history-content {
+    flex: 1;
+}
+
+.notification-history-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+}
+
+.notification-history-body {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0 0 4px 0;
+}
+
+.notification-history-time {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+}
+
+/* Advanced Options */
+.advanced-options-details {
+    border: none;
+}
+
+.advanced-options-details summary {
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    background: var(--background);
+    border-radius: var(--radius-md);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all 0.3s ease;
+}
+
+.advanced-options-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.advanced-options-details summary:hover {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+}
+
+.advanced-options-content {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Notification Info Card */
+.notification-info-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    border-left: 4px solid #f59e0b;
+}
+
+.notification-info-card h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #92400e;
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.notification-info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notification-info-card li {
+    font-size: 0.85rem;
+    color: #78350f;
+    margin-bottom: var(--spacing-xs);
+    padding-left: 20px;
+    position: relative;
+}
+
+.notification-info-card li::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    font-size: 1.2rem;
+    color: #f59e0b;
+}
+
+.notification-info-card li:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Design for Notifications */
+@media (max-width: 480px) {
+    .settings-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .test-notification-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .prayer-notifications-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dnd-time-range {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 360px) {
+    .prayer-notifications-grid {
+        grid-template-columns: 1fr;
+    }
+}

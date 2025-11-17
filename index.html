@@ -3765,26 +3765,220 @@
                         <option value="1">University of Islamic Sciences, Karachi</option>
                     </select>
                 </div>
-                <div class="settings-group">
-                    <h3>Bildirimler</h3>
-                    <label class="settings-toggle">
-                        <input type="checkbox" id="notificationsEnabled">
-                        <span class="toggle-slider"></span>
-                        <span class="toggle-label">Ezan vakti bildirimleri</span>
-                    </label>
-                    <label class="settings-toggle">
-                        <input type="checkbox" id="notificationSound">
-                        <span class="toggle-slider"></span>
-                        <span class="toggle-label">Ezan sesi çal</span>
-                    </label>
-                    <div class="notification-timing">
-                        <label for="notificationBefore">Bildirim zamanı:</label>
-                        <select id="notificationBefore" class="settings-select">
-                            <option value="0">Tam vakti</option>
-                            <option value="5">5 dakika önce</option>
-                            <option value="10">10 dakika önce</option>
-                            <option value="15">15 dakika önce</option>
-                        </select>
+                <div class="settings-group advanced-notifications-settings">
+                    <div class="settings-header">
+                        <h3>🔔 Gelişmiş Bildirimler</h3>
+                        <button class="test-notification-btn" id="testNotificationBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                            </svg>
+                            Test Et
+                        </button>
+                    </div>
+
+                    <!-- Master Toggle -->
+                    <div class="notification-master-toggle">
+                        <label class="settings-toggle">
+                            <input type="checkbox" id="notificationsEnabled">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Bildirimleri Etkinleştir</span>
+                        </label>
+                        <div class="notification-status" id="notificationStatus">
+                            <span class="status-dot"></span>
+                            <span class="status-text">İzin Bekleniyor</span>
+                        </div>
+                    </div>
+
+                    <!-- Prayer-Specific Notifications -->
+                    <div class="notification-prayers-section" id="notificationPrayersSection">
+                        <h4 class="section-subtitle">📿 Vakit Bildirimleri</h4>
+                        <div class="prayer-notifications-grid">
+                            <label class="prayer-notification-item">
+                                <input type="checkbox" id="notifyFajr" checked>
+                                <span class="prayer-notification-label">
+                                    <span class="prayer-icon">🌅</span>
+                                    <span>İmsak</span>
+                                </span>
+                            </label>
+                            <label class="prayer-notification-item">
+                                <input type="checkbox" id="notifyDhuhr" checked>
+                                <span class="prayer-notification-label">
+                                    <span class="prayer-icon">☀️</span>
+                                    <span>Öğle</span>
+                                </span>
+                            </label>
+                            <label class="prayer-notification-item">
+                                <input type="checkbox" id="notifyAsr" checked>
+                                <span class="prayer-notification-label">
+                                    <span class="prayer-icon">🌤️</span>
+                                    <span>İkindi</span>
+                                </span>
+                            </label>
+                            <label class="prayer-notification-item">
+                                <input type="checkbox" id="notifyMaghrib" checked>
+                                <span class="prayer-notification-label">
+                                    <span class="prayer-icon">🌆</span>
+                                    <span>Akşam</span>
+                                </span>
+                            </label>
+                            <label class="prayer-notification-item">
+                                <input type="checkbox" id="notifyIsha" checked>
+                                <span class="prayer-notification-label">
+                                    <span class="prayer-icon">🌙</span>
+                                    <span>Yatsı</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Notification Timing -->
+                    <div class="notification-timing-section">
+                        <h4 class="section-subtitle">⏰ Bildirim Zamanlaması</h4>
+                        <div class="timing-options">
+                            <div class="timing-option">
+                                <label for="notificationBefore">Ana Bildirim:</label>
+                                <select id="notificationBefore" class="settings-select">
+                                    <option value="0">Tam vakti</option>
+                                    <option value="5">5 dakika önce</option>
+                                    <option value="10">10 dakika önce</option>
+                                    <option value="15">15 dakika önce</option>
+                                    <option value="30">30 dakika önce</option>
+                                </select>
+                            </div>
+                            <div class="timing-option">
+                                <label class="settings-toggle">
+                                    <input type="checkbox" id="reminderEnabled">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Ek hatırlatma</span>
+                                </label>
+                                <select id="reminderBefore" class="settings-select" disabled>
+                                    <option value="1">1 dakika önce</option>
+                                    <option value="3">3 dakika önce</option>
+                                    <option value="5">5 dakika önce</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sound Settings -->
+                    <div class="notification-sound-section">
+                        <h4 class="section-subtitle">🔊 Ses Ayarları</h4>
+                        <label class="settings-toggle">
+                            <input type="checkbox" id="notificationSound">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Ezan sesi çal</span>
+                        </label>
+                        <div class="sound-options">
+                            <div class="sound-option">
+                                <label for="adhanStyle">Ezan üslubu:</label>
+                                <select id="adhanStyle" class="settings-select">
+                                    <option value="default">Varsayılan</option>
+                                    <option value="makkah">Mekke</option>
+                                    <option value="madinah">Medine</option>
+                                    <option value="egypt">Mısır</option>
+                                    <option value="turkey">Türkiye</option>
+                                </select>
+                            </div>
+                            <div class="sound-option">
+                                <label for="notificationVolume">Ses seviyesi:</label>
+                                <input type="range" id="notificationVolume" min="0" max="100" value="70" class="volume-slider">
+                                <span class="volume-value" id="volumeValue">70%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vibration Settings -->
+                    <div class="notification-vibration-section">
+                        <h4 class="section-subtitle">📳 Titreşim</h4>
+                        <label class="settings-toggle">
+                            <input type="checkbox" id="vibrationEnabled">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Titreşim etkinleştir</span>
+                        </label>
+                        <div class="vibration-pattern">
+                            <label for="vibrationPattern">Titreşim deseni:</label>
+                            <select id="vibrationPattern" class="settings-select">
+                                <option value="short">Kısa (1 kez)</option>
+                                <option value="medium">Orta (2 kez)</option>
+                                <option value="long">Uzun (3 kez)</option>
+                                <option value="custom">Özel</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Do Not Disturb -->
+                    <div class="notification-dnd-section">
+                        <h4 class="section-subtitle">🌙 Rahatsız Etme</h4>
+                        <label class="settings-toggle">
+                            <input type="checkbox" id="dndEnabled">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Rahatsız etme modu</span>
+                        </label>
+                        <div class="dnd-time-range">
+                            <div class="time-input-group">
+                                <label for="dndStart">Başlangıç:</label>
+                                <input type="time" id="dndStart" class="time-input" value="23:00">
+                            </div>
+                            <div class="time-input-group">
+                                <label for="dndEnd">Bitiş:</label>
+                                <input type="time" id="dndEnd" class="time-input" value="07:00">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification History -->
+                    <div class="notification-history-section">
+                        <h4 class="section-subtitle">📋 Son Bildirimler</h4>
+                        <div class="notification-history-list" id="notificationHistoryList">
+                            <div class="notification-history-empty">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                </svg>
+                                <p>Henüz bildirim yok</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Options -->
+                    <div class="notification-advanced-section">
+                        <details class="advanced-options-details">
+                            <summary>⚙️ Gelişmiş Seçenekler</summary>
+                            <div class="advanced-options-content">
+                                <label class="settings-toggle">
+                                    <input type="checkbox" id="persistentNotification">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Kalıcı bildirimler (kapanmaz)</span>
+                                </label>
+                                <label class="settings-toggle">
+                                    <input type="checkbox" id="showLocationInNotification">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Bildirimlerde konum göster</span>
+                                </label>
+                                <label class="settings-toggle">
+                                    <input type="checkbox" id="notificationActions">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Bildirim butonları (Erteleme, Kapat)</span>
+                                </label>
+                                <label class="settings-toggle">
+                                    <input type="checkbox" id="dailyReminder">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Günlük özet bildirimi</span>
+                                </label>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- Info Card -->
+                    <div class="notification-info-card">
+                        <h5>💡 Bilgi</h5>
+                        <ul>
+                            <li>Bildirimlerin düzgün çalışması için tarayıcınızda izin vermeniz gerekir</li>
+                            <li>Rahatsız etme modunda sadece önemli bildirimler gösterilir</li>
+                            <li>Test butonu ile bildirim ayarlarınızı kontrol edebilirsiniz</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="settings-group">

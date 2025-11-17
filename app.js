@@ -1725,84 +1725,550 @@ const DailyHadith = {
 };
 
 // ==========================================
-// Enhanced Notifications
 // ==========================================
-function setupEnhancedNotifications() {
-    const notificationSound = document.getElementById('notificationSound');
-    const notificationBefore = document.getElementById('notificationBefore');
+// Advanced Notifications Manager
+// ==========================================
+const AdvancedNotificationsManager = {
+    history: [],
+    settings: {
+        notificationsEnabled: false,
+        prayerNotifications: {
+            Fajr: true,
+            Dhuhr: true,
+            Asr: true,
+            Maghrib: true,
+            Isha: true
+        },
+        notificationBefore: 0,
+        reminderEnabled: false,
+        reminderBefore: 3,
+        soundEnabled: false,
+        adhanStyle: 'default',
+        volume: 70,
+        vibrationEnabled: false,
+        vibrationPattern: 'medium',
+        dndEnabled: false,
+        dndStart: '23:00',
+        dndEnd: '07:00',
+        persistentNotification: false,
+        showLocationInNotification: true,
+        notificationActions: true,
+        dailyReminder: false
+    },
 
-    // Load settings
-    if (notificationSound) {
-        const soundEnabled = localStorage.getItem('notificationSound') === 'true';
-        notificationSound.checked = soundEnabled;
-        notificationSound.addEventListener('change', (e) => {
-            localStorage.setItem('notificationSound', e.target.checked);
+    init() {
+        this.loadSettings();
+        this.setupEventListeners();
+        this.updateNotificationStatus();
+        this.loadHistory();
+        this.renderHistory();
+    },
+
+    loadSettings() {
+        const saved = localStorage.getItem('advancedNotificationSettings');
+        if (saved) {
+            this.settings = { ...this.settings, ...JSON.parse(saved) };
+        }
+        this.applySettingsToUI();
+    },
+
+    saveSettings() {
+        localStorage.setItem('advancedNotificationSettings', JSON.stringify(this.settings));
+    },
+
+    applySettingsToUI() {
+        // Main toggle
+        const notificationsEnabled = document.getElementById('notificationsEnabled');
+        if (notificationsEnabled) {
+            notificationsEnabled.checked = this.settings.notificationsEnabled;
+        }
+
+        // Prayer notifications
+        Object.keys(this.settings.prayerNotifications).forEach(prayer => {
+            const checkbox = document.getElementById(`notify${prayer}`);
+            if (checkbox) {
+                checkbox.checked = this.settings.prayerNotifications[prayer];
+            }
         });
-    }
 
-    if (notificationBefore) {
-        const beforeMinutes = localStorage.getItem('notificationBefore') || '0';
-        notificationBefore.value = beforeMinutes;
-        notificationBefore.addEventListener('change', (e) => {
-            localStorage.setItem('notificationBefore', e.target.value);
-        });
-    }
-}
+        // Other settings
+        this.setValueIfExists('notificationBefore', this.settings.notificationBefore);
+        this.setValueIfExists('reminderEnabled', this.settings.reminderEnabled);
+        this.setValueIfExists('reminderBefore', this.settings.reminderBefore);
+        this.setValueIfExists('notificationSound', this.settings.soundEnabled);
+        this.setValueIfExists('adhanStyle', this.settings.adhanStyle);
+        this.setValueIfExists('notificationVolume', this.settings.volume);
+        this.setValueIfExists('volumeValue', `${this.settings.volume}%`);
+        this.setValueIfExists('vibrationEnabled', this.settings.vibrationEnabled);
+        this.setValueIfExists('vibrationPattern', this.settings.vibrationPattern);
+        this.setValueIfExists('dndEnabled', this.settings.dndEnabled);
+        this.setValueIfExists('dndStart', this.settings.dndStart);
+        this.setValueIfExists('dndEnd', this.settings.dndEnd);
+        this.setValueIfExists('persistentNotification', this.settings.persistentNotification);
+        this.setValueIfExists('showLocationInNotification', this.settings.showLocationInNotification);
+        this.setValueIfExists('notificationActions', this.settings.notificationActions);
+        this.setValueIfExists('dailyReminder', this.settings.dailyReminder);
 
-function playAdhanSound() {
-    const soundEnabled = localStorage.getItem('notificationSound') === 'true';
-    if (!soundEnabled) return;
+        // Update reminder dropdown state
+        const reminderBefore = document.getElementById('reminderBefore');
+        if (reminderBefore) {
+            reminderBefore.disabled = !this.settings.reminderEnabled;
+        }
+    },
 
-    const audio = document.getElementById('adhanAudio');
-    if (audio) {
-        audio.currentTime = 0;
-        audio.play().catch(err => console.log('Audio play failed:', err));
-    }
-}
-
-// Enhanced notification check with sound
-function checkEnhancedPrayerNotification() {
-    if (!AppState.settings.notificationsEnabled) return;
-    if (!('Notification' in window)) return;
-    if (Notification.permission !== 'granted') return;
-
-    const now = new Date();
-    const beforeMinutes = parseInt(localStorage.getItem('notificationBefore') || '0');
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
-
-    const prayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
-
-    for (const prayer of prayerOrder) {
-        const prayerTime = AppState.prayerTimes[prayer];
-        if (prayerTime) {
-            const [hours, minutes] = prayerTime.split(':').map(Number);
-            const prayerMinutes = hours * 60 + minutes - beforeMinutes;
-
-            if (prayerMinutes === currentMinutes) {
-                const message = beforeMinutes > 0
-                    ? `${prayerNamesMap[prayer]} vaktine ${beforeMinutes} dakika kaldı`
-                    : `${prayerNamesMap[prayer]} vakti geldi`;
-
-                new Notification('Ezan Vakti Pro', {
-                    body: message,
-                    icon: '/icon.png',
-                    tag: 'prayer-time',
-                    requireInteraction: true
-                });
-
-                if (beforeMinutes === 0) {
-                    playAdhanSound();
-                }
-                break;
+    setValueIfExists(id, value) {
+        const element = document.getElementById(id);
+        if (element) {
+            if (element.type === 'checkbox') {
+                element.checked = value;
+            } else if (element.tagName === 'SPAN') {
+                element.textContent = value;
+            } else {
+                element.value = value;
             }
         }
+    },
+
+    setupEventListeners() {
+        // Test notification button
+        const testBtn = document.getElementById('testNotificationBtn');
+        if (testBtn) {
+            testBtn.addEventListener('click', () => this.testNotification());
+        }
+
+        // Main toggle
+        const notificationsEnabled = document.getElementById('notificationsEnabled');
+        if (notificationsEnabled) {
+            notificationsEnabled.addEventListener('change', async (e) => {
+                if (e.target.checked) {
+                    await this.requestPermission();
+                } else {
+                    this.settings.notificationsEnabled = false;
+                    this.saveSettings();
+                    this.updateNotificationStatus();
+                }
+            });
+        }
+
+        // Prayer notifications
+        Object.keys(this.settings.prayerNotifications).forEach(prayer => {
+            const checkbox = document.getElementById(`notify${prayer}`);
+            if (checkbox) {
+                checkbox.addEventListener('change', (e) => {
+                    this.settings.prayerNotifications[prayer] = e.target.checked;
+                    this.saveSettings();
+                });
+            }
+        });
+
+        // Timing settings
+        const notificationBefore = document.getElementById('notificationBefore');
+        if (notificationBefore) {
+            notificationBefore.addEventListener('change', (e) => {
+                this.settings.notificationBefore = parseInt(e.target.value);
+                this.saveSettings();
+            });
+        }
+
+        const reminderEnabled = document.getElementById('reminderEnabled');
+        const reminderBefore = document.getElementById('reminderBefore');
+        if (reminderEnabled) {
+            reminderEnabled.addEventListener('change', (e) => {
+                this.settings.reminderEnabled = e.target.checked;
+                if (reminderBefore) {
+                    reminderBefore.disabled = !e.target.checked;
+                }
+                this.saveSettings();
+            });
+        }
+
+        if (reminderBefore) {
+            reminderBefore.addEventListener('change', (e) => {
+                this.settings.reminderBefore = parseInt(e.target.value);
+                this.saveSettings();
+            });
+        }
+
+        // Sound settings
+        const notificationSound = document.getElementById('notificationSound');
+        if (notificationSound) {
+            notificationSound.addEventListener('change', (e) => {
+                this.settings.soundEnabled = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        const adhanStyle = document.getElementById('adhanStyle');
+        if (adhanStyle) {
+            adhanStyle.addEventListener('change', (e) => {
+                this.settings.adhanStyle = e.target.value;
+                this.saveSettings();
+            });
+        }
+
+        const volumeSlider = document.getElementById('notificationVolume');
+        const volumeValue = document.getElementById('volumeValue');
+        if (volumeSlider) {
+            volumeSlider.addEventListener('input', (e) => {
+                this.settings.volume = parseInt(e.target.value);
+                if (volumeValue) {
+                    volumeValue.textContent = `${this.settings.volume}%`;
+                }
+                this.saveSettings();
+            });
+        }
+
+        // Vibration settings
+        const vibrationEnabled = document.getElementById('vibrationEnabled');
+        if (vibrationEnabled) {
+            vibrationEnabled.addEventListener('change', (e) => {
+                this.settings.vibrationEnabled = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        const vibrationPattern = document.getElementById('vibrationPattern');
+        if (vibrationPattern) {
+            vibrationPattern.addEventListener('change', (e) => {
+                this.settings.vibrationPattern = e.target.value;
+                this.saveSettings();
+            });
+        }
+
+        // DND settings
+        const dndEnabled = document.getElementById('dndEnabled');
+        if (dndEnabled) {
+            dndEnabled.addEventListener('change', (e) => {
+                this.settings.dndEnabled = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        const dndStart = document.getElementById('dndStart');
+        if (dndStart) {
+            dndStart.addEventListener('change', (e) => {
+                this.settings.dndStart = e.target.value;
+                this.saveSettings();
+            });
+        }
+
+        const dndEnd = document.getElementById('dndEnd');
+        if (dndEnd) {
+            dndEnd.addEventListener('change', (e) => {
+                this.settings.dndEnd = e.target.value;
+                this.saveSettings();
+            });
+        }
+
+        // Advanced options
+        const advancedOptions = [
+            'persistentNotification',
+            'showLocationInNotification',
+            'notificationActions',
+            'dailyReminder'
+        ];
+
+        advancedOptions.forEach(option => {
+            const element = document.getElementById(option);
+            if (element) {
+                element.addEventListener('change', (e) => {
+                    this.settings[option] = e.target.checked;
+                    this.saveSettings();
+                });
+            }
+        });
+    },
+
+    async requestPermission() {
+        if (!('Notification' in window)) {
+            alert('❌ Tarayıcınız bildirimleri desteklemiyor.');
+            return false;
+        }
+
+        try {
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+                this.settings.notificationsEnabled = true;
+                this.saveSettings();
+                this.updateNotificationStatus();
+                return true;
+            } else {
+                this.settings.notificationsEnabled = false;
+                this.saveSettings();
+                this.updateNotificationStatus();
+                alert('⚠️ Bildirim izni verilmedi. Tarayıcı ayarlarından izin verebilirsiniz.');
+                return false;
+            }
+        } catch (error) {
+            console.error('Notification permission error:', error);
+            return false;
+        }
+    },
+
+    updateNotificationStatus() {
+        const statusElement = document.getElementById('notificationStatus');
+        if (!statusElement) return;
+
+        if (!('Notification' in window)) {
+            statusElement.className = 'notification-status denied';
+            statusElement.querySelector('.status-text').textContent = 'Desteklenmiyor';
+            return;
+        }
+
+        const permission = Notification.permission;
+        if (permission === 'granted' && this.settings.notificationsEnabled) {
+            statusElement.className = 'notification-status granted';
+            statusElement.querySelector('.status-text').textContent = 'Etkin';
+        } else if (permission === 'denied') {
+            statusElement.className = 'notification-status denied';
+            statusElement.querySelector('.status-text').textContent = 'Reddedildi';
+        } else {
+            statusElement.className = 'notification-status';
+            statusElement.querySelector('.status-text').textContent = 'İzin Bekleniyor';
+        }
+    },
+
+    async testNotification() {
+        if (!this.settings.notificationsEnabled) {
+            const granted = await this.requestPermission();
+            if (!granted) return;
+        }
+
+        if (Notification.permission !== 'granted') {
+            await this.requestPermission();
+            return;
+        }
+
+        const options = {
+            body: 'Bu bir test bildirimidir. Ayarlarınız düzgün çalışıyor! ✅',
+            icon: '/icon.png',
+            badge: '/badge.png',
+            tag: 'test-notification',
+            requireInteraction: this.settings.persistentNotification,
+            silent: !this.settings.soundEnabled
+        };
+
+        if (this.settings.notificationActions) {
+            options.actions = [
+                { action: 'close', title: 'Kapat' }
+            ];
+        }
+
+        const notification = new Notification('🔔 Test Bildirimi - Ezan Vakti Pro', options);
+
+        // Add to history
+        this.addToHistory('Test Bildirimi', options.body, '🔔');
+
+        // Vibrate if enabled
+        if (this.settings.vibrationEnabled && 'vibrate' in navigator) {
+            this.vibrate();
+        }
+
+        notification.onclick = () => {
+            window.focus();
+            notification.close();
+        };
+    },
+
+    checkPrayerNotifications() {
+        if (!this.settings.notificationsEnabled) return;
+        if (Notification.permission !== 'granted') return;
+        if (this.isInDNDPeriod()) return;
+
+        const now = new Date();
+        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+        const prayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+        const prayerIcons = {
+            Fajr: '🌅',
+            Dhuhr: '☀️',
+            Asr: '🌤️',
+            Maghrib: '🌆',
+            Isha: '🌙'
+        };
+
+        for (const prayer of prayerOrder) {
+            if (!this.settings.prayerNotifications[prayer]) continue;
+
+            const prayerTime = AppState.prayerTimes[prayer];
+            if (!prayerTime) continue;
+
+            const [hours, minutes] = prayerTime.split(':').map(Number);
+
+            // Main notification
+            const mainNotifMinutes = hours * 60 + minutes - this.settings.notificationBefore;
+            if (mainNotifMinutes === currentMinutes) {
+                this.sendPrayerNotification(prayer, this.settings.notificationBefore, prayerIcons[prayer]);
+            }
+
+            // Reminder notification
+            if (this.settings.reminderEnabled) {
+                const reminderMinutes = hours * 60 + minutes - this.settings.reminderBefore;
+                if (reminderMinutes === currentMinutes) {
+                    this.sendPrayerNotification(prayer, this.settings.reminderBefore, prayerIcons[prayer], true);
+                }
+            }
+        }
+    },
+
+    sendPrayerNotification(prayer, beforeMinutes, icon, isReminder = false) {
+        const prayerName = prayerNamesMap[prayer];
+        const title = isReminder ? `⏰ Hatırlatma: ${prayerName}` : `🕌 ${prayerName} Vakti`;
+
+        let body = beforeMinutes > 0
+            ? `${prayerName} vaktine ${beforeMinutes} dakika kaldı`
+            : `${prayerName} vakti geldi`;
+
+        if (this.settings.showLocationInNotification && AppState.currentLocation?.city) {
+            body += ` - ${AppState.currentLocation.city}`;
+        }
+
+        const options = {
+            body,
+            icon: '/icon.png',
+            badge: '/badge.png',
+            tag: `prayer-${prayer}-${beforeMinutes}`,
+            requireInteraction: this.settings.persistentNotification,
+            silent: !this.settings.soundEnabled || beforeMinutes > 0
+        };
+
+        if (this.settings.notificationActions) {
+            options.actions = [
+                { action: 'snooze', title: '⏰ Ertele (5 dk)' },
+                { action: 'close', title: '✕ Kapat' }
+            ];
+        }
+
+        const notification = new Notification(title, options);
+
+        // Add to history
+        this.addToHistory(title, body, icon);
+
+        // Play sound if enabled and it's the exact prayer time
+        if (beforeMinutes === 0 && this.settings.soundEnabled) {
+            this.playAdhanSound();
+        }
+
+        // Vibrate if enabled
+        if (this.settings.vibrationEnabled && 'vibrate' in navigator) {
+            this.vibrate();
+        }
+
+        notification.onclick = () => {
+            window.focus();
+            notification.close();
+        };
+    },
+
+    playAdhanSound() {
+        const audio = document.getElementById('adhanAudio');
+        if (audio) {
+            audio.volume = this.settings.volume / 100;
+            audio.currentTime = 0;
+            audio.play().catch(err => console.log('Audio play failed:', err));
+        }
+    },
+
+    vibrate() {
+        const patterns = {
+            short: [200],
+            medium: [200, 100, 200],
+            long: [200, 100, 200, 100, 200],
+            custom: [100, 50, 100, 50, 100, 50, 200]
+        };
+
+        const pattern = patterns[this.settings.vibrationPattern] || patterns.medium;
+        navigator.vibrate(pattern);
+    },
+
+    isInDNDPeriod() {
+        if (!this.settings.dndEnabled) return false;
+
+        const now = new Date();
+        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+        const [startHours, startMinutes] = this.settings.dndStart.split(':').map(Number);
+        const [endHours, endMinutes] = this.settings.dndEnd.split(':').map(Number);
+
+        const dndStartMinutes = startHours * 60 + startMinutes;
+        const dndEndMinutes = endHours * 60 + endMinutes;
+
+        if (dndStartMinutes < dndEndMinutes) {
+            return currentMinutes >= dndStartMinutes && currentMinutes < dndEndMinutes;
+        } else {
+            return currentMinutes >= dndStartMinutes || currentMinutes < dndEndMinutes;
+        }
+    },
+
+    addToHistory(title, body, icon) {
+        const historyItem = {
+            title,
+            body,
+            icon,
+            timestamp: new Date().toISOString()
+        };
+
+        this.history.unshift(historyItem);
+        if (this.history.length > 20) {
+            this.history = this.history.slice(0, 20);
+        }
+
+        this.saveHistory();
+        this.renderHistory();
+    },
+
+    loadHistory() {
+        const saved = localStorage.getItem('notificationHistory');
+        if (saved) {
+            this.history = JSON.parse(saved);
+        }
+    },
+
+    saveHistory() {
+        localStorage.setItem('notificationHistory', JSON.stringify(this.history));
+    },
+
+    renderHistory() {
+        const historyList = document.getElementById('notificationHistoryList');
+        if (!historyList) return;
+
+        if (this.history.length === 0) {
+            historyList.innerHTML = `
+                <div class="notification-history-empty">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                    </svg>
+                    <p>Henüz bildirim yok</p>
+                </div>
+            `;
+            return;
+        }
+
+        historyList.innerHTML = this.history.map(item => {
+            const time = new Date(item.timestamp);
+            const timeStr = time.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+            const dateStr = time.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
+
+            return `
+                <div class="notification-history-item">
+                    <div class="notification-history-icon">${item.icon}</div>
+                    <div class="notification-history-content">
+                        <div class="notification-history-title">${item.title}</div>
+                        <div class="notification-history-body">${item.body}</div>
+                        <div class="notification-history-time">${dateStr} ${timeStr}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
     }
-}
+};
 
 // Initialize all new features
 document.addEventListener('DOMContentLoaded', () => {
     setupTabNavigation();
-    setupEnhancedNotifications();
+    AdvancedNotificationsManager.init();
 
     // Initialize features
     setTimeout(() => {
@@ -1812,8 +2278,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 });
 
-// Override the old notification check with enhanced version
-setInterval(checkEnhancedPrayerNotification, 60000);
+// Check notifications every minute
+setInterval(() => {
+    AdvancedNotificationsManager.checkPrayerNotifications();
+}, 60000);
 
 // ==========================================
 // More Tab Features
