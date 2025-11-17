@@ -1596,9 +1596,437 @@ select:focus-visible {
         height: 20px;
     }
 
-    .zikir-btn-main {
-        width: 70px;
-        height: 70px;
+    .tab-navigation {
+        bottom: 0;
+    }
+
+    .tesbihat-btn-main {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* ==========================================
+   Enhanced Tesbihat
+   ========================================== */
+.tesbihat-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.tesbihat-card h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xl);
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.tesbihat-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.tesbihat-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-size: var(--font-size-sm);
+}
+
+.tesbihat-btn:hover {
+    border-color: var(--primary-color);
+    background: var(--surface-hover);
+}
+
+.tesbihat-btn.active {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: var(--text-on-primary);
+    border-color: var(--primary-color);
+}
+
+.tesbihat-arabic {
+    font-size: var(--font-size-lg);
+    font-family: 'Traditional Arabic', 'Al Qalam Quran Majeed', serif;
+    direction: rtl;
+}
+
+.tesbihat-name {
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+.tesbihat-counter {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.tesbihat-counter .counter-display {
+    font-size: 6rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: var(--spacing-sm);
+    font-variant-numeric: tabular-nums;
+    transition: transform var(--transition-base);
+}
+
+.tesbihat-counter .counter-label {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.tesbihat-counter .counter-target {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+}
+
+.tesbihat-main-control {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.tesbihat-btn-main {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border: 8px solid rgba(26, 71, 42, 0.2);
+    color: var(--text-on-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: 0 8px 24px rgba(26, 71, 42, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tesbihat-btn-main:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(26, 71, 42, 0.4);
+}
+
+.tesbihat-btn-main:active {
+    transform: scale(0.98);
+}
+
+.tesbihat-btn-main .tap-text {
+    font-size: var(--font-size-lg);
+    letter-spacing: 0.05em;
+}
+
+.tesbihat-controls {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.control-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.control-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: var(--surface-hover);
+}
+
+.control-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.tesbihat-presets {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+
+.tesbihat-presets .preset-btn {
+    min-width: 60px;
+}
+
+/* ==========================================
+   Esma-ül Hüsna
+   ========================================== */
+.esma-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.esma-card h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.esma-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.esma-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.esma-item {
+    background: linear-gradient(135deg, var(--surface-hover) 0%, var(--surface) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.esma-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.esma-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.esma-number {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    color: var(--text-on-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+}
+
+.esma-arabic {
+    font-size: var(--font-size-3xl);
+    font-family: 'Traditional Arabic', 'Al Qalam Quran Majeed', serif;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+    direction: rtl;
+}
+
+.esma-transliteration {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.esma-meaning {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   Daily Hadith
+   ========================================== */
+.hadith-card {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-on-primary);
+}
+
+.hadith-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hadith-header svg:first-child {
+    width: 28px;
+    height: 28px;
+    color: var(--secondary-color);
+}
+
+.hadith-header h3 {
+    flex: 1;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin: 0 var(--spacing-md);
+}
+
+.hadith-refresh-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.hadith-refresh-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.hadith-refresh-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-on-primary);
+    transition: transform var(--transition-base);
+}
+
+.hadith-content {
+    padding: var(--spacing-md) 0;
+}
+
+.hadith-text {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    font-style: italic;
+    text-align: center;
+    padding: 0 var(--spacing-md);
+}
+
+.hadith-source {
+    font-size: var(--font-size-sm);
+    text-align: center;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* ==========================================
+   Bottom Navigation Update
+   ========================================== */
+.tab-navigation {
+    background: var(--surface);
+    border-top: 1px solid var(--border-color);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.main {
+    flex: 1;
+    padding: var(--spacing-xl) 0;
+    padding-bottom: calc(80px + var(--spacing-xl) + env(safe-area-inset-bottom));
+}
+
+.footer {
+    padding-bottom: calc(80px + var(--spacing-xl) + env(safe-area-inset-bottom));
+}
+
+/* ==========================================
+   Responsive Updates for New Features
+   ========================================== */
+@media (max-width: 480px) {
+    .tesbihat-selection {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tesbihat-counter .counter-display {
+        font-size: 4.5rem;
+    }
+
+    .tesbihat-btn-main {
+        width: 140px;
+        height: 140px;
+    }
+
+    .tesbihat-controls {
+        flex-direction: column;
+    }
+
+    .control-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .esma-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hadith-text {
+        font-size: var(--font-size-base);
+    }
+
+    .tesbihat-presets {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 360px) {
+    .tesbihat-btn-main {
+        width: 120px;
+        height: 120px;
+    }
+
+    .tesbihat-counter .counter-display {
+        font-size: 3.5rem;
+    }
+
+    .esma-arabic {
+        font-size: var(--font-size-2xl);
     }
 
     .main {

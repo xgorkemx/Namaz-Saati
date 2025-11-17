@@ -987,67 +987,71 @@ const QuranReader = {
 };
 
 // ==========================================
-// Zikirmatik
+// Enhanced Tesbihat System
 // ==========================================
-const Zikirmatik = {
+const Tesbihat = {
     count: 0,
-    target: null,
+    target: 33,
+    currentPrayer: 'subhanallah',
+    history: [],
+
+    prayers: {
+        subhanallah: { arabic: 'سُبْحَانَ اللهِ', name: 'Subhanallah', meaning: 'Allah\'ı noksan sıfatlardan tenzih ederim' },
+        alhamdulillah: { arabic: 'اَلْحَمْدُ لِلّهِ', name: 'Alhamdulillah', meaning: 'Hamd Allah\'a mahsustur' },
+        allahuakbar: { arabic: 'اَللهُ أَكْبَرُ', name: 'Allahu Akbar', meaning: 'Allah en büyüktür' },
+        lailaha: { arabic: 'لَا إِلَهَ إِلَّا اللهُ', name: 'Lâ ilâhe illallah', meaning: 'Allah\'tan başka ilah yoktur' },
+        custom: { arabic: '', name: 'Serbest', meaning: 'Serbest zikir' }
+    },
 
     init() {
-        this.loadCount();
+        this.loadData();
         this.updateDisplay();
         this.setupButtons();
     },
 
-    loadCount() {
-        const saved = localStorage.getItem('zikirCount');
+    loadData() {
+        const saved = localStorage.getItem('tesbihatData');
         if (saved) {
-            this.count = parseInt(saved);
+            const data = JSON.parse(saved);
+            this.count = data.count || 0;
+            this.target = data.target || 33;
+            this.currentPrayer = data.currentPrayer || 'subhanallah';
+            this.history = data.history || [];
         }
     },
 
-    saveCount() {
-        localStorage.setItem('zikirCount', this.count.toString());
+    saveData() {
+        const data = {
+            count: this.count,
+            target: this.target,
+            currentPrayer: this.currentPrayer,
+            history: this.history.slice(-50) // Keep last 50 entries
+        };
+        localStorage.setItem('tesbihatData', JSON.stringify(data));
     },
 
-    updateDisplay() {
-        const display = document.getElementById('zikirCount');
-        if (display) {
-            display.textContent = this.count;
-
-            // Vibrate on milestones
-            if (this.target && this.count === this.target) {
-                if ('vibrate' in navigator) {
-                    navigator.vibrate([200, 100, 200]);
-                }
-                this.clearTarget();
-            }
-        }
-    },
-
-    increment() {
-        this.count++;
-        this.saveCount();
+    setPrayer(prayer) {
+        this.currentPrayer = prayer;
+        this.count = 0;
+        this.saveData();
         this.updateDisplay();
 
-        // Haptic feedback
-        if ('vibrate' in navigator) {
-            navigator.vibrate(50);
-        }
-    },
-
-    reset() {
-        if (confirm('Zikir sayacını sıfırlamak istediğinize emin misiniz?')) {
-            this.count = 0;
-            this.clearTarget();
-            this.saveCount();
-            this.updateDisplay();
-        }
+        // Update active button
+        document.querySelectorAll('.tesbihat-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.prayer === prayer) {
+                btn.classList.add('active');
+            }
+        });
     },
 
     setTarget(target) {
         this.target = target;
-        document.querySelectorAll('.preset-btn').forEach(btn => {
+        this.saveData();
+        this.updateDisplay();
+
+        // Update active preset button
+        document.querySelectorAll('.tesbihat-presets .preset-btn').forEach(btn => {
             btn.classList.remove('active');
             if (parseInt(btn.dataset.target) === target) {
                 btn.classList.add('active');
@@ -1055,26 +1059,386 @@ const Zikirmatik = {
         });
     },
 
-    clearTarget() {
-        this.target = null;
-        document.querySelectorAll('.preset-btn').forEach(btn => {
-            btn.classList.remove('active');
+    updateDisplay() {
+        const countEl = document.getElementById('tesbihatCount');
+        const labelEl = document.getElementById('tesbihatLabel');
+        const targetEl = document.getElementById('tesbihatTarget');
+
+        if (countEl) countEl.textContent = this.count;
+        if (labelEl) labelEl.textContent = this.prayers[this.currentPrayer].name;
+        if (targetEl) targetEl.textContent = `Hedef: ${this.target}`;
+
+        // Progress animation
+        if (this.count === this.target) {
+            this.celebrateGoal();
+        }
+    },
+
+    increment() {
+        this.count++;
+        this.saveData();
+        this.updateDisplay();
+
+        // Haptic feedback
+        if ('vibrate' in navigator) {
+            navigator.vibrate(30);
+        }
+
+        // Check if goal reached
+        if (this.count === this.target) {
+            // Save to history
+            this.history.push({
+                prayer: this.currentPrayer,
+                count: this.count,
+                date: new Date().toISOString()
+            });
+            this.saveData();
+        }
+    },
+
+    celebrateGoal() {
+        if ('vibrate' in navigator) {
+            navigator.vibrate([100, 50, 100, 50, 100]);
+        }
+
+        // Visual feedback
+        const counterEl = document.getElementById('tesbihatCount');
+        if (counterEl) {
+            counterEl.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                counterEl.style.transform = 'scale(1)';
+            }, 300);
+        }
+    },
+
+    reset() {
+        if (this.count === 0) return;
+
+        if (confirm('Sayacı sıfırlamak istediğinize emin misiniz?')) {
+            this.count = 0;
+            this.saveData();
+            this.updateDisplay();
+        }
+    },
+
+    showHistory() {
+        if (this.history.length === 0) {
+            alert('Henüz tesbihat geçmişiniz yok.');
+            return;
+        }
+
+        const today = new Date().toLocaleDateString('tr-TR');
+        const todayHistory = this.history.filter(h => {
+            const historyDate = new Date(h.date).toLocaleDateString('tr-TR');
+            return historyDate === today;
         });
+
+        const totalToday = todayHistory.reduce((sum, h) => sum + h.count, 0);
+        const totalAll = this.history.reduce((sum, h) => sum + h.count, 0);
+
+        alert(`📊 Tesbihat İstatistikleri\n\nBugün: ${totalToday} tesbihat\nToplam: ${totalAll} tesbihat\nKayıt: ${this.history.length} tamamlama`);
     },
 
     setupButtons() {
-        const incrementBtn = document.getElementById('zikirIncrement');
-        const resetBtn = document.getElementById('zikirReset');
-        const presetBtns = document.querySelectorAll('.preset-btn');
+        // Prayer selection buttons
+        document.querySelectorAll('.tesbihat-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const prayer = btn.dataset.prayer;
+                this.setPrayer(prayer);
+            });
+        });
 
+        // Main increment button
+        const incrementBtn = document.getElementById('tesbihatIncrement');
         incrementBtn?.addEventListener('click', () => this.increment());
-        resetBtn?.addEventListener('click', () => this.reset());
 
-        presetBtns.forEach(btn => {
+        // Control buttons
+        const resetBtn = document.getElementById('tesbihatReset');
+        const historyBtn = document.getElementById('tesbihatHistory');
+
+        resetBtn?.addEventListener('click', () => this.reset());
+        historyBtn?.addEventListener('click', () => this.showHistory());
+
+        // Preset targets
+        document.querySelectorAll('.tesbihat-presets .preset-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const target = parseInt(btn.dataset.target);
                 this.setTarget(target);
             });
+        });
+
+        // Set initial active states
+        this.setTarget(this.target);
+        document.querySelector(`[data-prayer="${this.currentPrayer}"]`)?.classList.add('active');
+    }
+};
+
+// ==========================================
+// Esma-ül Hüsna (99 Names of Allah)
+// ==========================================
+const EsmaulHusna = {
+    names: [
+        { number: 1, arabic: 'الرَّحْمَنُ', transliteration: 'Ar-Rahman', meaning: 'Sınırsız merhamet sahibi' },
+        { number: 2, arabic: 'الرَّحِيمُ', transliteration: 'Ar-Rahim', meaning: 'Çok merhametli' },
+        { number: 3, arabic: 'الْمَلِكُ', transliteration: 'Al-Malik', meaning: 'Hükümdar, malik' },
+        { number: 4, arabic: 'الْقُدُّوسُ', transliteration: 'Al-Quddus', meaning: 'Mukaddes, kusursuz' },
+        { number: 5, arabic: 'السَّلاَمُ', transliteration: 'As-Salam', meaning: 'Esenlik veren' },
+        { number: 6, arabic: 'الْمُؤْمِنُ', transliteration: 'Al-Mumin', meaning: 'Güven veren' },
+        { number: 7, arabic: 'الْمُهَيْمِنُ', transliteration: 'Al-Muhaymin', meaning: 'Gözetleyici' },
+        { number: 8, arabic: 'الْعَزِيزُ', transliteration: 'Al-Aziz', meaning: 'Mutlak güç sahibi' },
+        { number: 9, arabic: 'الْجَبَّارُ', transliteration: 'Al-Jabbar', meaning: 'Kahhar, celal sahibi' },
+        { number: 10, arabic: 'الْمُتَكَبِّرُ', transliteration: 'Al-Mutakabbir', meaning: 'Kibirli (yalnızca Allah için)' },
+        { number: 11, arabic: 'الْخَالِقُ', transliteration: 'Al-Khaliq', meaning: 'Yaratan' },
+        { number: 12, arabic: 'الْبَارِئُ', transliteration: 'Al-Bari', meaning: 'Kusursuz yaratan' },
+        { number: 13, arabic: 'الْمُصَوِّرُ', transliteration: 'Al-Musawwir', meaning: 'Şekil veren' },
+        { number: 14, arabic: 'الْغَفَّارُ', transliteration: 'Al-Ghaffar', meaning: 'Çok bağışlayan' },
+        { number: 15, arabic: 'الْقَهَّارُ', transliteration: 'Al-Qahhar', meaning: 'Kahredici' },
+        { number: 16, arabic: 'الْوَهَّابُ', transliteration: 'Al-Wahhab', meaning: 'Çok bahşeden' },
+        { number: 17, arabic: 'الرَّزَّاقُ', transliteration: 'Ar-Razzaq', meaning: 'Rızık veren' },
+        { number: 18, arabic: 'الْفَتَّاحُ', transliteration: 'Al-Fattah', meaning: 'Açan, fetheden' },
+        { number: 19, arabic: 'اَلْعَلِيْمُ', transliteration: 'Al-Alim', meaning: 'Her şeyi bilen' },
+        { number: 20, arabic: 'الْقَابِضُ', transliteration: 'Al-Qabid', meaning: 'Daraltan' },
+        { number: 21, arabic: 'الْبَاسِطُ', transliteration: 'Al-Basit', meaning: 'Genişleten' },
+        { number: 22, arabic: 'الْخَافِضُ', transliteration: 'Al-Khafid', meaning: 'Alçaltan' },
+        { number: 23, arabic: 'الرَّافِعُ', transliteration: 'Ar-Rafi', meaning: 'Yükselten' },
+        { number: 24, arabic: 'الْمُعِزُّ', transliteration: 'Al-Muizz', meaning: 'İzzet veren' },
+        { number: 25, arabic: 'المُذِلُّ', transliteration: 'Al-Muzill', meaning: 'Zelil eden' },
+        { number: 26, arabic: 'السَّمِيعُ', transliteration: 'As-Sami', meaning: 'Her şeyi işiten' },
+        { number: 27, arabic: 'الْبَصِيرُ', transliteration: 'Al-Basir', meaning: 'Her şeyi gören' },
+        { number: 28, arabic: 'الْحَكَمُ', transliteration: 'Al-Hakam', meaning: 'Hakim' },
+        { number: 29, arabic: 'الْعَدْلُ', transliteration: 'Al-Adl', meaning: 'Adil' },
+        { number: 30, arabic: 'اللَّطِيفُ', transliteration: 'Al-Latif', meaning: 'Latif, nazik' },
+        { number: 31, arabic: 'الْخَبِيرُ', transliteration: 'Al-Khabir', meaning: 'Her şeyden haberdar' },
+        { number: 32, arabic: 'الْحَلِيمُ', transliteration: 'Al-Halim', meaning: 'Halim, yumuşak' },
+        { number: 33, arabic: 'الْعَظِيمُ', transliteration: 'Al-Azim', meaning: 'Azim, büyük' },
+        { number: 34, arabic: 'الْغَفُورُ', transliteration: 'Al-Ghafur', meaning: 'Bağışlayan' },
+        { number: 35, arabic: 'الشَّكُورُ', transliteration: 'Ash-Shakur', meaning: 'Şükreden' },
+        { number: 36, arabic: 'الْعَلِيُّ', transliteration: 'Al-Aliyy', meaning: 'Yüce' },
+        { number: 37, arabic: 'الْكَبِيرُ', transliteration: 'Al-Kabir', meaning: 'Büyük' },
+        { number: 38, arabic: 'الْحَفِيظُ', transliteration: 'Al-Hafiz', meaning: 'Koruyan' },
+        { number: 39, arabic: 'المُقيِت', transliteration: 'Al-Muqit', meaning: 'Rızık veren' },
+        { number: 40, arabic: 'الْحسِيبُ', transliteration: 'Al-Hasib', meaning: 'Hesap gören' },
+        { number: 41, arabic: 'الْجَلِيلُ', transliteration: 'Al-Jalil', meaning: 'Celil, şanlı' },
+        { number: 42, arabic: 'الْكَرِيمُ', transliteration: 'Al-Karim', meaning: 'Cömert, kerem sahibi' },
+        { number: 43, arabic: 'الرَّقِيبُ', transliteration: 'Ar-Raqib', meaning: 'Gözetleyen' },
+        { number: 44, arabic: 'الْمُجِيبُ', transliteration: 'Al-Mujib', meaning: 'Duaları kabul eden' },
+        { number: 45, arabic: 'الْوَاسِعُ', transliteration: 'Al-Wasi', meaning: 'Geniş, vasi' },
+        { number: 46, arabic: 'الْحَكِيمُ', transliteration: 'Al-Hakim', meaning: 'Hakim, hikmet sahibi' },
+        { number: 47, arabic: 'الْوَدُودُ', transliteration: 'Al-Wadud', meaning: 'Sever ve sevilen' },
+        { number: 48, arabic: 'الْمَجِيدُ', transliteration: 'Al-Majid', meaning: 'Şanlı, yüce' },
+        { number: 49, arabic: 'الْبَاعِثُ', transliteration: 'Al-Baith', meaning: 'Diriltici' },
+        { number: 50, arabic: 'الشَّهِيدُ', transliteration: 'Ash-Shahid', meaning: 'Şahit' },
+        { number: 51, arabic: 'الْحَقُّ', transliteration: 'Al-Haqq', meaning: 'Hak' },
+        { number: 52, arabic: 'الْوَكِيلُ', transliteration: 'Al-Wakil', meaning: 'Vekil' },
+        { number: 53, arabic: 'الْقَوِيُّ', transliteration: 'Al-Qawiyy', meaning: 'Kuvvetli' },
+        { number: 54, arabic: 'الْمَتِينُ', transliteration: 'Al-Matin', meaning: 'Sağlam' },
+        { number: 55, arabic: 'الْوَلِيُّ', transliteration: 'Al-Waliyy', meaning: 'Dost, veli' },
+        { number: 56, arabic: 'الْحَمِيدُ', transliteration: 'Al-Hamid', meaning: 'Hamde layık' },
+        { number: 57, arabic: 'الْمُحْصِي', transliteration: 'Al-Muhsi', meaning: 'Sayıp döken' },
+        { number: 58, arabic: 'الْمُبْدِئُ', transliteration: 'Al-Mubdi', meaning: 'Başlatan' },
+        { number: 59, arabic: 'الْمُعِيدُ', transliteration: 'Al-Muid', meaning: 'Yeniden diriltici' },
+        { number: 60, arabic: 'الْمُحْيِي', transliteration: 'Al-Muhyi', meaning: 'Diriltici' },
+        { number: 61, arabic: 'اَلْمُمِيتُ', transliteration: 'Al-Mumit', meaning: 'Öldürücü' },
+        { number: 62, arabic: 'الْحَيُّ', transliteration: 'Al-Hayy', meaning: 'Diri, hayat sahibi' },
+        { number: 63, arabic: 'الْقَيُّومُ', transliteration: 'Al-Qayyum', meaning: 'Kayyum, ayakta tutan' },
+        { number: 64, arabic: 'الْوَاجِدُ', transliteration: 'Al-Wajid', meaning: 'Bulan' },
+        { number: 65, arabic: 'الْمَاجِدُ', transliteration: 'Al-Majid', meaning: 'Şerefli' },
+        { number: 66, arabic: 'الْواحِدُ', transliteration: 'Al-Wahid', meaning: 'Bir, tek' },
+        { number: 67, arabic: 'اَلاَحَدُ', transliteration: 'Al-Ahad', meaning: 'Bir, eşsiz' },
+        { number: 68, arabic: 'الصَّمَدُ', transliteration: 'As-Samad', meaning: 'Samed, hiçbir şeye muhtaç olmayan' },
+        { number: 69, arabic: 'الْقَادِرُ', transliteration: 'Al-Qadir', meaning: 'Kadir, güç sahibi' },
+        { number: 70, arabic: 'الْمُقْتَدِرُ', transliteration: 'Al-Muqtadir', meaning: 'Muktedir' },
+        { number: 71, arabic: 'الْمُقَدِّمُ', transliteration: 'Al-Muqaddim', meaning: 'Öne alan' },
+        { number: 72, arabic: 'الْمُؤَخِّرُ', transliteration: 'Al-Muakhkhir', meaning: 'Geri bırakan' },
+        { number: 73, arabic: 'الأوَّلُ', transliteration: 'Al-Awwal', meaning: 'İlk, evvel' },
+        { number: 74, arabic: 'الآخِرُ', transliteration: 'Al-Akhir', meaning: 'Son, ahir' },
+        { number: 75, arabic: 'الظَّاهِرُ', transliteration: 'Az-Zahir', meaning: 'Zahir, açık' },
+        { number: 76, arabic: 'الْبَاطِنُ', transliteration: 'Al-Batin', meaning: 'Batın, gizli' },
+        { number: 77, arabic: 'الْوَالِي', transliteration: 'Al-Wali', meaning: 'Vali, yöneten' },
+        { number: 78, arabic: 'الْمُتَعَالِي', transliteration: 'Al-Mutaali', meaning: 'Yüce' },
+        { number: 79, arabic: 'الْبَرُّ', transliteration: 'Al-Barr', meaning: 'İyilik eden' },
+        { number: 80, arabic: 'التَّوَابُ', transliteration: 'At-Tawwab', meaning: 'Tevbeyi kabul eden' },
+        { number: 81, arabic: 'الْمُنْتَقِمُ', transliteration: 'Al-Muntaqim', meaning: 'İntikam alan' },
+        { number: 82, arabic: 'العَفُوُّ', transliteration: 'Al-Afuww', meaning: 'Affedici' },
+        { number: 83, arabic: 'الرَّؤُوفُ', transliteration: 'Ar-Rauf', meaning: 'Şefkatli' },
+        { number: 84, arabic: 'مَالِكُ الْمُلْكِ', transliteration: 'Malik-ul-Mulk', meaning: 'Mülkün sahibi' },
+        { number: 85, arabic: 'ذُوالْجَلاَلِ وَالإكْرَامِ', transliteration: 'Zul-Jalali wal-Ikram', meaning: 'Celal ve ikram sahibi' },
+        { number: 86, arabic: 'الْمُقْسِطُ', transliteration: 'Al-Muqsit', meaning: 'Adaletli' },
+        { number: 87, arabic: 'الْجَامِعُ', transliteration: 'Al-Jami', meaning: 'Toplayan' },
+        { number: 88, arabic: 'الْغَنِيُّ', transliteration: 'Al-Ghani', meaning: 'Zengin, muhtaç olmayan' },
+        { number: 89, arabic: 'الْمُغْنِي', transliteration: 'Al-Mughni', meaning: 'Zenginleştiren' },
+        { number: 90, arabic: 'اَلْمَانِعُ', transliteration: 'Al-Mani', meaning: 'Engelleyen' },
+        { number: 91, arabic: 'الضَّارَّ', transliteration: 'Ad-Darr', meaning: 'Zarar veren' },
+        { number: 92, arabic: 'النَّافِعُ', transliteration: 'An-Nafi', meaning: 'Fayda veren' },
+        { number: 93, arabic: 'النُّورُ', transliteration: 'An-Nur', meaning: 'Nur' },
+        { number: 94, arabic: 'الْهَادِي', transliteration: 'Al-Hadi', meaning: 'Hidayet veren' },
+        { number: 95, arabic: 'الْبَدِيعُ', transliteration: 'Al-Badi', meaning: 'Eşsiz yaratan' },
+        { number: 96, arabic: 'اَلْبَاقِي', transliteration: 'Al-Baqi', meaning: 'Baki, sonsuz' },
+        { number: 97, arabic: 'الْوَارِثُ', transliteration: 'Al-Warith', meaning: 'Varis' },
+        { number: 98, arabic: 'الرَّشِيدُ', transliteration: 'Ar-Rashid', meaning: 'Doğru yola iletici' },
+        { number: 99, arabic: 'الصَّبُورُ', transliteration: 'As-Sabur', meaning: 'Sabırlı' }
+    ],
+
+    init() {
+        this.render();
+    },
+
+    render() {
+        const grid = document.getElementById('esmaGrid');
+        if (!grid) return;
+
+        grid.innerHTML = '';
+
+        this.names.forEach(name => {
+            const item = document.createElement('div');
+            item.className = 'esma-item';
+            item.innerHTML = `
+                <div class="esma-number">${name.number}</div>
+                <div class="esma-arabic">${name.arabic}</div>
+                <div class="esma-transliteration">${name.transliteration}</div>
+                <div class="esma-meaning">${name.meaning}</div>
+            `;
+            grid.appendChild(item);
+        });
+    }
+};
+
+// ==========================================
+// Daily Hadith
+// ==========================================
+const DailyHadith = {
+    hadiths: [
+        {
+            text: '"Müslüman, Müslümanın kardeşidir. Ona zulmetmez ve onu düşmanına teslim etmez."',
+            source: 'Buhari, Mezalim 3'
+        },
+        {
+            text: '"İnsanların hayırlısı, insanlara faydalı olandır."',
+            source: 'Camiu\'s-Sağir'
+        },
+        {
+            text: '"Mü\'minin mü\'mine karşı durumu, birbirini tamamlayan bina gibidir."',
+            source: 'Buhari, Salat 88'
+        },
+        {
+            text: '"Komşusu açken tok yatan bizden değildir."',
+            source: 'Hakim, Müstedrek'
+        },
+        {
+            text: '"Gözler uyur ama kalp uyanıktır."',
+            source: 'Buhari, Tefsir'
+        },
+        {
+            text: '"En hayırlı amel, Allah için sevmek ve Allah için buğz etmektir."',
+            source: 'Ebu Davud, Sünnet 2'
+        },
+        {
+            text: '"Güzel ahlak, cennetin en ağır tartılan amalidir."',
+            source: 'Tirmizi, Birr 62'
+        },
+        {
+            text: '"Allah\'a itaat için mahlûka itaat yoktur."',
+            source: 'Ahmed bin Hanbel, Müsned'
+        },
+        {
+            text: '"İman, kalbin tasdiki ve organlarla ameldir."',
+            source: 'Buhari'
+        },
+        {
+            text: '"Sabır, musibet başa geldiği anda gösterilir."',
+            source: 'Buhari, Cenaiz 32'
+        },
+        {
+            text: '"Ameller niyetlere göredir."',
+            source: 'Buhari, Bed\'ü\'l-Vahy 1'
+        },
+        {
+            text: '"Tebessümün kardeşinin yüzüne, senin için sadakadır."',
+            source: 'Tirmizi, Birr 36'
+        },
+        {
+            text: '"Allah, güzel işlemeyi her şeye farz kıldı."',
+            source: 'Müslim, Sayd 57'
+        },
+        {
+            text: '"İlim, Çin\'de de olsa alınız."',
+            source: 'Beyhaki'
+        },
+        {
+            text: '"Babana ve annene iyilik et ki çocukların da sana iyilik etsin."',
+            source: 'Taberani'
+        },
+        {
+            text: '"Kişi, dostunun diniyle beraberdir. Öyleyse kiminle dost olacağına iyi baksın."',
+            source: 'Ebu Davud, Edeb 16'
+        },
+        {
+            text: '"Zenginlik, malın çokluğu ile değil, kalbin zenginliğiyledir."',
+            source: 'Buhari, Rikak 15'
+        },
+        {
+            text: '"İki nimet vardır ki çoğu insan onların değerini bilmez: Sıhhat ve boş vakit."',
+            source: 'Buhari, Rikak 1'
+        },
+        {
+            text: '"Kul bir günah işlediği zaman kalbinde bir siyah nokta oluşur."',
+            source: 'Tirmizi, Tefsir 83'
+        },
+        {
+            text: '"Allah, sizin şekillerinize ve mallarınıza bakmaz, ancak kalplerinize ve amellerinize bakar."',
+            source: 'Müslim, Birr 34'
+        },
+        {
+            text: '"Allah\'tan başkasından korkma, Allah\'tan başkasına güvenme."',
+            source: 'Tirmizi, Kıyamet 60'
+        },
+        {
+            text: '"Kendisi için istediğini kardeşi için de istemedikçe, kul iman etmiş olmaz."',
+            source: 'Buhari, İman 7'
+        },
+        {
+            text: '"Güçlü olan, güreşte rakibini yenen değil, öfkelendiği zaman nefsine hakim olandır."',
+            source: 'Buhari, Edeb 76'
+        },
+        {
+            text: '"En hayırlınız aile halkına karşı en hayırlı olanınızdır."',
+            source: 'Tirmizi, Menakıb 63'
+        },
+        {
+            text: '"Temizlik imandandır."',
+            source: 'Müslim, Taharet 1'
+        }
+    ],
+
+    init() {
+        this.showHadith();
+        this.setupRefreshButton();
+    },
+
+    showHadith() {
+        const hadith = this.getRandomHadith();
+        const textEl = document.getElementById('hadithText');
+        const sourceEl = document.getElementById('hadithSource');
+
+        if (textEl) textEl.textContent = hadith.text;
+        if (sourceEl) sourceEl.textContent = `— ${hadith.source}`;
+    },
+
+    getRandomHadith() {
+        const randomIndex = Math.floor(Math.random() * this.hadiths.length);
+        return this.hadiths[randomIndex];
+    },
+
+    setupRefreshButton() {
+        const refreshBtn = document.getElementById('refreshHadith');
+        refreshBtn?.addEventListener('click', () => {
+            this.showHadith();
+
+            // Rotate animation
+            refreshBtn.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                refreshBtn.style.transform = 'rotate(0deg)';
+            }, 300);
         });
     }
 };
@@ -1160,11 +1524,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setupAudioPlayer();
     setupEnhancedNotifications();
 
-    // Initialize on Quran tab
+    // Initialize features
     setTimeout(() => {
         HatimTracker.init();
         QuranReader.init();
-        Zikirmatik.init();
+        Tesbihat.init();
+        EsmaulHusna.init();
+        DailyHadith.init();
     }, 500);
 });
 
