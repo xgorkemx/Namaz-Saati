@@ -450,6 +450,25 @@
                         </svg>
                     </div>
 
+                    <!-- Yakindaki Camiler Module -->
+                    <div class="feature-card" id="camilerCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L12 6M12 6C10.5 6 9 7 9 9L9 22L15 22L15 9C15 7 13.5 6 12 6Z"></path>
+                                <path d="M6 10L6 22M18 10L18 22"></path>
+                                <ellipse cx="12" cy="9" rx="6" ry="2"></ellipse>
+                                <path d="M6 10C6 11 8 12 12 12C16 12 18 11 18 10"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Yakındaki Camiler</h3>
+                            <p>Size en yakın camileri bulun ve yol tarifi alın</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
                 </div>
 
                 <!-- Ramazan Module (Hidden by default) -->
@@ -2393,6 +2412,208 @@
                         <div class="note-icon">🎯</div>
                         <h4>Zekat Oranı</h4>
                         <p>Standart zekat oranı %2.5'tir (1/40). Tarım ürünlerinde oran %5-10 arasında değişebilir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yakindaki Camiler Module (Hidden by default) -->
+    <div class="camiler-module" id="camilerModule" style="display: none;">
+        <button class="back-btn" id="camilerBackBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Geri
+        </button>
+
+        <div class="container">
+            <!-- Info Card -->
+            <div class="camiler-info-card">
+                <div class="card-icon">🕌</div>
+                <h2>Yakındaki Camiler</h2>
+                <p class="info-text">Size en yakın camileri bulun, mesafelerini görün ve yol tarifi alın. Konum izni vererek yakınınızdaki camileri keşfedin.</p>
+            </div>
+
+            <!-- Location Permission -->
+            <div class="location-permission-card" id="locationPermissionCard">
+                <div class="permission-icon">📍</div>
+                <h3>Konum İzni Gerekli</h3>
+                <p>Yakınınızdaki camileri görebilmek için konum izni vermeniz gerekmektedir.</p>
+                <button class="permission-btn" id="requestLocationBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <line x1="12" y1="1" x2="12" y2="5"></line>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="7.05" y2="7.05"></line>
+                        <line x1="16.95" y1="16.95" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="5" y2="12"></line>
+                        <line x1="19" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="7.05" y2="16.95"></line>
+                        <line x1="16.95" y1="7.05" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    Konumu Paylaş
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-card" id="camilerLoading" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p>Yakındaki camiler aranıyor...</p>
+            </div>
+
+            <!-- Error State -->
+            <div class="error-card" id="camilerError" style="display: none;">
+                <div class="error-icon">⚠️</div>
+                <h3>Konum Alınamadı</h3>
+                <p id="errorMessage">Konum bilgisi alınamadı. Lütfen tarayıcı ayarlarınızdan konum iznini kontrol edin.</p>
+                <button class="retry-btn" id="retryLocationBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 4v6h6M23 20v-6h-6"></path>
+                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                    </svg>
+                    Tekrar Dene
+                </button>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="search-filter-section" id="searchFilterSection" style="display: none;">
+                <div class="search-box-camiler">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="camilerSearch" placeholder="Cami adı ara...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        <span>Tümü</span>
+                        <span class="count" id="countAll">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="nearby">
+                        <span>En Yakın</span>
+                        <span class="count" id="countNearby">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="open">
+                        <span>Açık Olanlar</span>
+                        <span class="count" id="countOpen">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Camiler List -->
+            <div class="camiler-list" id="camilerList" style="display: none;">
+                <!-- Mosque cards will be inserted here dynamically -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">🔍</div>
+                <h3>Cami Bulunamadı</h3>
+                <p>Arama kriterlerinize uygun cami bulunamadı. Lütfen farklı bir arama yapın.</p>
+            </div>
+
+            <!-- Cami Bilgileri -->
+            <div class="cami-info-section">
+                <h3>🕌 Türkiye'deki Önemli Camiler</h3>
+                <p class="section-intro">Türkiye'nin dört bir yanında binlerce tarihi ve modern cami bulunmaktadır.</p>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">📊</div>
+                        <h4>90,000+</h4>
+                        <p>Toplam Cami Sayısı</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🏛️</div>
+                        <h4>500+</h4>
+                        <p>Tarihi Cami</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">⭐</div>
+                        <h4>3,200+</h4>
+                        <p>İstanbul'daki Camiler</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🌍</div>
+                        <h4>81</h4>
+                        <p>İlde Cami</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cami Adabı -->
+            <div class="cami-adabi-section">
+                <h3>📖 Cami Adabı</h3>
+                <p class="section-intro">Camiye giderken ve camideyken uyulması gereken adab kuralları:</p>
+                <div class="adab-grid">
+                    <div class="adab-card">
+                        <div class="adab-icon">🧼</div>
+                        <h4>Temiz Olun</h4>
+                        <p>Camiye abdestli ve temiz giysilerle gidin. Kötü koku yaymaktan sakının.</p>
+                    </div>
+                    <div class="adab-card">
+                        <div class="adab-icon">👞</div>
+                        <h4>Ayakkabılarınızı Çıkarın</h4>
+                        <p>Camiye girerken ayakkabılarınızı uygun yere bırakın ve dikkatli yerleştirin.</p>
+                    </div>
+                    <div class="adab-card">
+                        <div class="adab-icon">🤫</div>
+                        <h4>Sessiz Olun</h4>
+                        <p>Camide yüksek sesle konuşmaktan, gürültü yapmaktan kaçının.</p>
+                    </div>
+                    <div class="adab-card">
+                        <div class="adab-icon">🕌</div>
+                        <h4>Tahiyyetül Mescid</h4>
+                        <p>Camiye girdiğinizde oturmadan önce 2 rekat tahiyyetül mescid namazı kılın.</p>
+                    </div>
+                    <div class="adab-card">
+                        <div class="adab-icon">📿</div>
+                        <h4>Zikir ve Dua</h4>
+                        <p>Camide zikir, Kuran okuma ve dua ile vakit geçirin.</p>
+                    </div>
+                    <div class="adab-card">
+                        <div class="adab-icon">🚶</div>
+                        <h4>Saf Arasından Geçmeyin</h4>
+                        <p>Namaz kılanların önünden geçmekten sakının. Saflara düzenli girin.</p>
+                    </div>
+                    <div class="adab-card">
+                        <div class="adab-icon">📱</div>
+                        <h4>Telefonunuzu Susturun</h4>
+                        <p>Cami içinde telefon görüşmesi yapmayın, sesli modda kullanmayın.</p>
+                    </div>
+                    <div class="adab-card">
+                        <div class="adab-icon">👨‍👩‍👧‍👦</div>
+                        <h4>Çocuklarınıza Dikkat Edin</h4>
+                        <p>Çocuklarınızın cami adabına uymasını sağlayın ve onlara öğretin.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Önemli Hatırlatmalar -->
+            <div class="important-notes">
+                <h3>💡 Önemli Hatırlatmalar</h3>
+                <div class="notes-grid">
+                    <div class="note-card info">
+                        <div class="note-icon">ℹ️</div>
+                        <h4>Konum Doğruluğu</h4>
+                        <p>Gösterilen mesafeler tahminidir. GPS sinyaline göre değişiklik gösterebilir.</p>
+                    </div>
+                    <div class="note-card success">
+                        <div class="note-icon">✅</div>
+                        <h4>Cemaatle Namaz</h4>
+                        <p>Camide cemaatle namaz kılmak sevaptır. Özellikle beş vakit namazı cemaatle kılmaya özen gösterin.</p>
+                    </div>
+                    <div class="note-card warning">
+                        <div class="note-icon">⚠️</div>
+                        <h4>Namaz Vakitleri</h4>
+                        <p>Camiye gitmeden önce namaz vaktini kontrol edin. Erken gitmeniz önerilir.</p>
+                    </div>
+                    <div class="note-card primary">
+                        <div class="note-icon">🎯</div>
+                        <h4>Yol Tarifi</h4>
+                        <p>Harita uygulaması için cami adresine tıklayın ve yol tarifini alın.</p>
                     </div>
                 </div>
             </div>

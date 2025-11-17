@@ -2541,10 +2541,297 @@ const ZekatModule = {
     }
 };
 
+// Camiler Module
+const CamilerModule = {
+    userLocation: null,
+    allMosques: [],
+    filteredMosques: [],
+    currentFilter: 'all',
+
+    init() {
+        const camilerCard = document.getElementById('camilerCard');
+        const camilerModule = document.getElementById('camilerModule');
+        const camilerBackBtn = document.getElementById('camilerBackBtn');
+        const moreMenu = document.querySelector('.more-menu');
+        const requestLocationBtn = document.getElementById('requestLocationBtn');
+        const retryLocationBtn = document.getElementById('retryLocationBtn');
+        const searchInput = document.getElementById('camilerSearch');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        // Navigate to Camiler module
+        if (camilerCard) {
+            camilerCard.addEventListener('click', () => {
+                if (moreMenu) moreMenu.style.display = 'none';
+                if (camilerModule) camilerModule.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Navigate back to More menu
+        if (camilerBackBtn) {
+            camilerBackBtn.addEventListener('click', () => {
+                if (camilerModule) camilerModule.style.display = 'none';
+                if (moreMenu) moreMenu.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Request location permission
+        if (requestLocationBtn) {
+            requestLocationBtn.addEventListener('click', () => {
+                this.requestLocation();
+            });
+        }
+
+        // Retry location request
+        if (retryLocationBtn) {
+            retryLocationBtn.addEventListener('click', () => {
+                this.requestLocation();
+            });
+        }
+
+        // Search functionality
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.searchMosques(e.target.value);
+            });
+        }
+
+        // Filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.currentFilter = btn.dataset.filter;
+                this.filterMosques();
+            });
+        });
+    },
+
+    requestLocation() {
+        // Hide permission card, show loading
+        const permissionCard = document.getElementById('locationPermissionCard');
+        const loadingCard = document.getElementById('camilerLoading');
+        const errorCard = document.getElementById('camilerError');
+
+        if (permissionCard) permissionCard.style.display = 'none';
+        if (errorCard) errorCard.style.display = 'none';
+        if (loadingCard) loadingCard.style.display = 'block';
+
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    this.userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    this.loadMosques();
+                },
+                (error) => {
+                    this.showError(error.message);
+                },
+                { enableHighAccuracy: true, timeout: 10000 }
+            );
+        } else {
+            this.showError('Tarayıcınız konum özelliğini desteklemiyor.');
+        }
+    },
+
+    showError(message) {
+        const loadingCard = document.getElementById('camilerLoading');
+        const errorCard = document.getElementById('camilerError');
+        const errorMessage = document.getElementById('errorMessage');
+
+        if (loadingCard) loadingCard.style.display = 'none';
+        if (errorCard) errorCard.style.display = 'block';
+        if (errorMessage) errorMessage.textContent = message || 'Konum bilgisi alınamadı.';
+    },
+
+    loadMosques() {
+        // Generate mock mosque data based on user location
+        this.allMosques = this.generateMockMosques();
+        this.filteredMosques = [...this.allMosques];
+
+        // Hide loading, show content
+        const loadingCard = document.getElementById('camilerLoading');
+        const searchFilterSection = document.getElementById('searchFilterSection');
+        const camilerList = document.getElementById('camilerList');
+
+        if (loadingCard) loadingCard.style.display = 'none';
+        if (searchFilterSection) searchFilterSection.style.display = 'block';
+        if (camilerList) camilerList.style.display = 'block';
+
+        this.updateCounts();
+        this.renderMosques();
+    },
+
+    generateMockMosques() {
+        const mosqueNames = [
+            'Merkez Camii', 'Fatih Camii', 'Selimiye Camii', 'Yeşil Camii',
+            'Muradiye Camii', 'Şehitlik Camii', 'Hünkar Camii', 'Kılıçarslan Camii',
+            'Yeni Camii', 'Eski Camii', 'Üç Şerefeli Camii', 'Kurşunlu Camii',
+            'Hacı Bayram Camii', 'Kocatepe Camii', 'Maltepe Camii', 'Beştepe Camii'
+        ];
+
+        const mosques = [];
+        const baseTime = new Date();
+
+        for (let i = 0; i < 12; i++) {
+            const distance = (Math.random() * 5 + 0.5).toFixed(1); // 0.5 - 5.5 km
+            const walkTime = Math.ceil(distance * 12); // ~12 min per km
+
+            mosques.push({
+                id: i + 1,
+                name: mosqueNames[i],
+                address: `${['Merkez', 'Fatih', 'Yıldırım', 'Osmangazi', 'Çankaya'][Math.floor(Math.random() * 5)]} Mah. ${Math.floor(Math.random() * 200 + 1)}. Sok. No: ${Math.floor(Math.random() * 50 + 1)}`,
+                distance: parseFloat(distance),
+                walkTime: walkTime,
+                capacity: Math.floor(Math.random() * 1000 + 200),
+                hasParking: Math.random() > 0.5,
+                hasWudu: true,
+                isOpen: Math.random() > 0.2,
+                lat: this.userLocation.lat + (Math.random() - 0.5) * 0.05,
+                lng: this.userLocation.lng + (Math.random() - 0.5) * 0.05
+            });
+        }
+
+        // Sort by distance
+        return mosques.sort((a, b) => a.distance - b.distance);
+    },
+
+    filterMosques() {
+        const searchTerm = document.getElementById('camilerSearch')?.value.toLowerCase() || '';
+
+        this.filteredMosques = this.allMosques.filter(mosque => {
+            // Apply search filter
+            const matchesSearch = mosque.name.toLowerCase().includes(searchTerm) ||
+                                 mosque.address.toLowerCase().includes(searchTerm);
+
+            // Apply category filter
+            let matchesFilter = true;
+            if (this.currentFilter === 'nearby') {
+                matchesFilter = mosque.distance <= 2; // Within 2 km
+            } else if (this.currentFilter === 'open') {
+                matchesFilter = mosque.isOpen;
+            }
+
+            return matchesSearch && matchesFilter;
+        });
+
+        this.updateCounts();
+        this.renderMosques();
+    },
+
+    searchMosques(searchTerm) {
+        this.filterMosques();
+    },
+
+    updateCounts() {
+        const countAll = document.getElementById('countAll');
+        const countNearby = document.getElementById('countNearby');
+        const countOpen = document.getElementById('countOpen');
+
+        if (countAll) countAll.textContent = this.allMosques.length;
+        if (countNearby) countNearby.textContent = this.allMosques.filter(m => m.distance <= 2).length;
+        if (countOpen) countOpen.textContent = this.allMosques.filter(m => m.isOpen).length;
+    },
+
+    renderMosques() {
+        const camilerList = document.getElementById('camilerList');
+        const emptyState = document.getElementById('emptyState');
+
+        if (!camilerList) return;
+
+        if (this.filteredMosques.length === 0) {
+            camilerList.style.display = 'none';
+            if (emptyState) emptyState.style.display = 'block';
+            return;
+        }
+
+        if (emptyState) emptyState.style.display = 'none';
+        camilerList.style.display = 'block';
+
+        camilerList.innerHTML = this.filteredMosques.map(mosque => `
+            <div class="mosque-card">
+                <div class="mosque-header">
+                    <div class="mosque-info">
+                        <h4>${mosque.name}</h4>
+                        <p class="mosque-address">${mosque.address}</p>
+                    </div>
+                    <div class="mosque-distance">
+                        <span class="distance-badge">${mosque.distance} km</span>
+                        <div class="distance-time">~${mosque.walkTime} dk yürüyüş</div>
+                    </div>
+                </div>
+                <div class="mosque-details">
+                    <div class="detail-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span>${mosque.capacity} kişi</span>
+                    </div>
+                    ${mosque.hasParking ? `
+                    <div class="detail-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <span>Otopark</span>
+                    </div>
+                    ` : ''}
+                    ${mosque.hasWudu ? `
+                    <div class="detail-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        <span>Abdesthane</span>
+                    </div>
+                    ` : ''}
+                    <div class="detail-item" style="color: ${mosque.isOpen ? '#10b981' : '#dc2626'};">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>${mosque.isOpen ? 'Açık' : 'Kapalı'}</span>
+                    </div>
+                </div>
+                <div class="mosque-actions">
+                    <button class="action-btn primary" onclick="CamilerModule.getDirections(${mosque.lat}, ${mosque.lng})">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 11l19-9-9 19-2-8-8-2z"></path>
+                        </svg>
+                        Yol Tarifi
+                    </button>
+                    <button class="action-btn" onclick="CamilerModule.callMosque()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        Ara
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    },
+
+    getDirections(lat, lng) {
+        // Open Google Maps with directions
+        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+        window.open(url, '_blank');
+    },
+
+    callMosque() {
+        alert('Cami iletişim bilgileri için lütfen yerel telefon rehberini kullanın.');
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
     AbdestModule.init();
     NamazModule.init();
     ZekatModule.init();
+    CamilerModule.init();
 });
