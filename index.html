@@ -36,8 +36,41 @@
         </div>
     </header>
 
+    <!-- Tab Navigation -->
+    <nav class="tab-navigation">
+        <div class="container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="home">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>Anasayfa</span>
+                </button>
+                <button class="tab-btn" data-tab="quran">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        <line x1="10" y1="8" x2="16" y2="8"></line>
+                        <line x1="10" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                    <span>Kur'an & Hatim</span>
+                </button>
+                <button class="tab-btn" data-tab="qibla">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                    </svg>
+                    <span>Kıble & Dualar</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
     <!-- Main Content -->
     <main class="main">
+        <!-- Home Tab -->
+        <div class="tab-content active" id="homeTab">
         <div class="container">
             <!-- Location Section -->
             <div class="location-section">
@@ -159,25 +192,199 @@
                 </div>
             </div>
 
-            <!-- Qibla Direction -->
-            <div class="qibla-card">
-                <h3 class="qibla-title">Kıble Yönü</h3>
-                <div class="qibla-compass">
-                    <div class="compass-circle">
-                        <div class="compass-arrow" id="qiblaArrow">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
-                            </svg>
+            <!-- Audio Player Card -->
+            <div class="audio-player-card">
+                <h3 class="audio-player-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                    Ezan Sesi
+                </h3>
+                <div class="audio-player">
+                    <audio id="adhanAudio" preload="none">
+                        <source src="https://www.islamcan.com/audio/adhan/adhan-makkah.mp3" type="audio/mpeg">
+                    </audio>
+                    <button class="play-btn" id="playAdhanBtn">
+                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                            <rect x="6" y="4" width="4" height="16"></rect>
+                            <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                    </button>
+                    <div class="audio-info">
+                        <p class="audio-title">Mekke Ezanı</p>
+                        <div class="audio-progress">
+                            <div class="progress-bar" id="progressBar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <div class="audio-time">
+                                <span id="currentTime">0:00</span>
+                                <span id="duration">0:00</span>
+                            </div>
                         </div>
-                        <div class="compass-directions">
-                            <span class="compass-n">K</span>
-                            <span class="compass-e">D</span>
-                            <span class="compass-s">G</span>
-                            <span class="compass-w">B</span>
+                    </div>
+                    <div class="volume-control">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="70" class="volume-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Quran & Hatim Tab -->
+        <div class="tab-content" id="quranTab">
+            <div class="container">
+                <!-- Hatim Progress Card -->
+                <div class="hatim-progress-card">
+                    <div class="hatim-header">
+                        <h2>Hatim Takibi</h2>
+                        <button class="reset-hatim-btn" id="resetHatimBtn">Sıfırla</button>
+                    </div>
+                    <div class="hatim-stats">
+                        <div class="stat-item">
+                            <span class="stat-value" id="completedJuz">0</span>
+                            <span class="stat-label">Cüz Tamamlandı</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="hatimProgress">0%</span>
+                            <span class="stat-label">Hatim İlerlemesi</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar-large">
+                        <div class="progress-fill-large" id="hatimProgressBar"></div>
+                    </div>
+                </div>
+
+                <!-- Juz Tracker -->
+                <div class="juz-tracker-card">
+                    <h3>Cüz Listesi</h3>
+                    <div class="juz-grid" id="juzGrid">
+                        <!-- Juz items will be generated by JS -->
+                    </div>
+                </div>
+
+                <!-- Quran Reader -->
+                <div class="quran-reader-card">
+                    <h2>Kur'an-ı Kerim</h2>
+                    <div class="surah-selector">
+                        <label for="surahSelect">Sure Seçin:</label>
+                        <select id="surahSelect" class="settings-select">
+                            <option value="">Sure seçin...</option>
+                        </select>
+                    </div>
+                    <div class="quran-content" id="quranContent">
+                        <div class="quran-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                            <p>Okumak istediğiniz sureyi seçin</p>
                         </div>
                     </div>
                 </div>
-                <p class="qibla-degree" id="qiblaDegree">Hesaplanıyor...</p>
+            </div>
+        </div>
+
+        <!-- Qibla & Prayers Tab -->
+        <div class="tab-content" id="qiblaTab">
+            <div class="container">
+                <!-- Qibla Direction -->
+                <div class="qibla-card">
+                    <h3 class="qibla-title">Kıble Yönü</h3>
+                    <div class="qibla-compass">
+                        <div class="compass-circle">
+                            <div class="compass-arrow" id="qiblaArrow">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
+                                </svg>
+                            </div>
+                            <div class="compass-directions">
+                                <span class="compass-n">K</span>
+                                <span class="compass-e">D</span>
+                                <span class="compass-s">G</span>
+                                <span class="compass-w">B</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="qibla-degree" id="qiblaDegree">Hesaplanıyor...</p>
+                </div>
+
+                <!-- Prayers Section -->
+                <div class="prayers-section">
+                    <h2>Dualar</h2>
+                    <div class="prayers-list">
+                        <div class="prayer-card">
+                            <h3>Sabah Duası</h3>
+                            <p class="prayer-arabic">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
+                            <p class="prayer-translation">Sabahlara erdik ve bütün mülk Allah'ın oldu. Alemlerin Rabbi Allah için hamd ederiz.</p>
+                        </div>
+                        <div class="prayer-card">
+                            <h3>Akşam Duası</h3>
+                            <p class="prayer-arabic">أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
+                            <p class="prayer-translation">Akşama erdik ve bütün mülk Allah'ın oldu. Alemlerin Rabbi Allah için hamd ederiz.</p>
+                        </div>
+                        <div class="prayer-card">
+                            <h3>Yemek Öncesi Duası</h3>
+                            <p class="prayer-arabic">بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ</p>
+                            <p class="prayer-translation">Rahman ve Rahim olan Allah'ın adıyla (başlarım).</p>
+                        </div>
+                        <div class="prayer-card">
+                            <h3>Yemek Sonrası Duası</h3>
+                            <p class="prayer-arabic">اَلْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ</p>
+                            <p class="prayer-translation">Bizi yedirip, içiren ve Müslüman yapan Allah'a hamd olsun.</p>
+                        </div>
+                        <div class="prayer-card">
+                            <h3>Uyku Duası</h3>
+                            <p class="prayer-arabic">بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا</p>
+                            <p class="prayer-translation">Allah'ım! Senin adınla ölür ve diriliri.</p>
+                        </div>
+                        <div class="prayer-card">
+                            <h3>Uyanma Duası</h3>
+                            <p class="prayer-arabic">اَلْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ</p>
+                            <p class="prayer-translation">Bizi öldürdükten sonra dirilten Allah'a hamd olsun. Dönüş ancak O'nadır.</p>
+                        </div>
+                        <div class="prayer-card">
+                            <h3>Namaza Çıkarken Duası</h3>
+                            <p class="prayer-arabic">اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا وَفِي لِسَانِي نُورًا</p>
+                            <p class="prayer-translation">Allah'ım! Kalbimde bir nur, dilimde bir nur kıl.</p>
+                        </div>
+                        <div class="prayer-card">
+                            <h3>Seyahat Duası</h3>
+                            <p class="prayer-arabic">سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ</p>
+                            <p class="prayer-translation">Bunu emrimize veren Allah'ı tesbih ederim. Yoksa biz buna gücümüz yetmezdi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zikirmatik -->
+                <div class="zikirmatik-card">
+                    <h2>Zikirmatik</h2>
+                    <div class="zikirmatik-counter">
+                        <div class="counter-display" id="zikirCount">0</div>
+                        <div class="counter-label">Zikir Sayısı</div>
+                    </div>
+                    <div class="zikirmatik-controls">
+                        <button class="zikir-btn zikir-btn-main" id="zikirIncrement">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+                        <button class="zikir-btn" id="zikirReset">Sıfırla</button>
+                    </div>
+                    <div class="zikir-presets">
+                        <button class="preset-btn" data-target="33">33</button>
+                        <button class="preset-btn" data-target="99">99</button>
+                        <button class="preset-btn" data-target="100">100</button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -246,6 +453,20 @@
                         <span class="toggle-slider"></span>
                         <span class="toggle-label">Ezan vakti bildirimleri</span>
                     </label>
+                    <label class="settings-toggle">
+                        <input type="checkbox" id="notificationSound">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">Ezan sesi çal</span>
+                    </label>
+                    <div class="notification-timing">
+                        <label for="notificationBefore">Bildirim zamanı:</label>
+                        <select id="notificationBefore" class="settings-select">
+                            <option value="0">Tam vakti</option>
+                            <option value="5">5 dakika önce</option>
+                            <option value="10">10 dakika önce</option>
+                            <option value="15">15 dakika önce</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="settings-group">
                     <h3>Tema</h3>
