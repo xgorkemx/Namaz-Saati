@@ -1,0 +1,911 @@
+/* ==========================================
+   CSS Reset & Base Styles
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --primary-color: #1a472a;
+    --primary-dark: #0f2d1a;
+    --primary-light: #2d6b45;
+    --secondary-color: #d4af37;
+    --secondary-light: #f0d87d;
+
+    --background: #f5f7fa;
+    --surface: #ffffff;
+    --surface-hover: #f8f9fa;
+
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --text-light: #999999;
+    --text-on-primary: #ffffff;
+
+    --border-color: #e1e4e8;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Border Radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 350ms ease;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --background: #0f1419;
+    --surface: #1a1f28;
+    --surface-hover: #242933;
+
+    --text-primary: #e8eaed;
+    --text-secondary: #9aa0a6;
+    --text-light: #6c7278;
+
+    --border-color: #2d3139;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================
+   Container
+   ========================================== */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* ==========================================
+   Header
+   ========================================== */
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--text-on-primary);
+    padding: var(--spacing-lg) 0;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--secondary-color);
+}
+
+.logo h1 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.settings-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.settings-btn svg {
+    width: 24px;
+    height: 24px;
+    color: var(--text-on-primary);
+}
+
+/* ==========================================
+   Main Content
+   ========================================== */
+.main {
+    flex: 1;
+    padding: var(--spacing-xl) 0;
+}
+
+/* ==========================================
+   Location Section
+   ========================================== */
+.location-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.location-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.location-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.location-name {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.change-location-btn {
+    background: var(--primary-color);
+    color: var(--text-on-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.change-location-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ==========================================
+   Date Section
+   ========================================== */
+.date-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.hijri-date {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.gregorian-date {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   Next Prayer Card
+   ========================================== */
+.next-prayer-card {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-on-primary);
+}
+
+.next-prayer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.next-prayer-label {
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+}
+
+.next-prayer-name {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-value {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown-label {
+    font-size: var(--font-size-xs);
+    opacity: 0.8;
+    margin-top: var(--spacing-xs);
+}
+
+.countdown-separator {
+    font-size: var(--font-size-3xl);
+    font-weight: 300;
+    opacity: 0.6;
+    margin: 0 var(--spacing-sm);
+    align-self: flex-start;
+    padding-top: 0.25rem;
+}
+
+.next-prayer-time {
+    text-align: center;
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================
+   Prayer Times List
+   ========================================== */
+.prayer-times-list {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.prayer-time-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+}
+
+.prayer-time-item:last-child {
+    border-bottom: none;
+}
+
+.prayer-time-item:hover {
+    background: var(--surface-hover);
+}
+
+.prayer-time-item.highlighted {
+    background: linear-gradient(90deg, rgba(26, 71, 42, 0.05) 0%, rgba(26, 71, 42, 0.02) 100%);
+}
+
+.prayer-time-item.active {
+    background: linear-gradient(90deg, rgba(26, 71, 42, 0.1) 0%, rgba(26, 71, 42, 0.05) 100%);
+    border-left: 4px solid var(--primary-color);
+}
+
+.prayer-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.prayer-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+}
+
+.prayer-name {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.prayer-time {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--primary-color);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================
+   Qibla Card
+   ========================================== */
+.qibla-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.qibla-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xl);
+    color: var(--text-primary);
+}
+
+.qibla-compass {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.compass-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compass-arrow {
+    color: var(--secondary-color);
+    transition: transform var(--transition-slow);
+    width: 60px;
+    height: 60px;
+}
+
+.compass-arrow svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.compass-directions {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.compass-directions span {
+    position: absolute;
+    color: var(--text-on-primary);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+.compass-n {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.compass-e {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.compass-s {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.compass-w {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.qibla-degree {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   Modal
+   ========================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    padding: var(--spacing-md);
+    overflow-y: auto;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn var(--transition-base);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+    animation: slideUp var(--transition-base);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-xl);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: var(--surface-hover);
+}
+
+.modal-close svg {
+    width: 24px;
+    height: 24px;
+    color: var(--text-secondary);
+}
+
+.modal-body {
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+}
+
+/* ==========================================
+   Search Box
+   ========================================== */
+.search-box {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+}
+
+.search-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+#citySearch {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 2.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    background: var(--surface);
+    color: var(--text-primary);
+    transition: all var(--transition-base);
+}
+
+#citySearch:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
+}
+
+/* ==========================================
+   Use Location Button
+   ========================================== */
+.use-location-btn {
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--text-on-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.use-location-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.use-location-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ==========================================
+   Cities List
+   ========================================== */
+.cities-list {
+    display: grid;
+    gap: var(--spacing-sm);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.city-item {
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    background: var(--surface);
+}
+
+.city-item:hover {
+    border-color: var(--primary-color);
+    background: var(--surface-hover);
+    transform: translateX(4px);
+}
+
+.city-item.selected {
+    background: var(--primary-color);
+    color: var(--text-on-primary);
+    border-color: var(--primary-color);
+}
+
+/* ==========================================
+   Settings
+   ========================================== */
+.settings-group {
+    margin-bottom: var(--spacing-xl);
+}
+
+.settings-group:last-child {
+    margin-bottom: 0;
+}
+
+.settings-group h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.settings-select {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    background: var(--surface);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.settings-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
+}
+
+.settings-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    cursor: pointer;
+}
+
+.settings-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-slider {
+    position: relative;
+    width: 48px;
+    height: 28px;
+    background: var(--border-color);
+    border-radius: 14px;
+    transition: all var(--transition-base);
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--surface);
+    top: 3px;
+    left: 3px;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.settings-toggle input[type="checkbox"]:checked + .toggle-slider {
+    background: var(--primary-color);
+}
+
+.settings-toggle input[type="checkbox"]:checked + .toggle-slider::before {
+    transform: translateX(20px);
+}
+
+.toggle-label {
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+.footer {
+    background: var(--surface);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.footer p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   Responsive Design
+   ========================================== */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+
+    .header {
+        padding: var(--spacing-md) 0;
+    }
+
+    .logo h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .location-section {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: stretch;
+    }
+
+    .change-location-btn {
+        width: 100%;
+    }
+
+    .countdown-value {
+        font-size: var(--font-size-3xl);
+    }
+
+    .countdown-separator {
+        font-size: var(--font-size-2xl);
+    }
+
+    .next-prayer-time {
+        font-size: var(--font-size-xl);
+    }
+
+    .prayer-time-item {
+        padding: var(--spacing-md);
+    }
+
+    .compass-circle {
+        width: 160px;
+        height: 160px;
+    }
+
+    .compass-arrow {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .countdown {
+        gap: var(--spacing-xs);
+    }
+
+    .countdown-separator {
+        margin: 0;
+    }
+}
+
+/* ==========================================
+   Animations
+   ========================================== */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ==========================================
+   Scrollbar Styling
+   ========================================== */
+.cities-list::-webkit-scrollbar,
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cities-list::-webkit-scrollbar-track,
+.modal-body::-webkit-scrollbar-track {
+    background: var(--background);
+    border-radius: var(--radius-sm);
+}
+
+.cities-list::-webkit-scrollbar-thumb,
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: var(--radius-sm);
+}
+
+.cities-list::-webkit-scrollbar-thumb:hover,
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--text-light);
+}
+
+/* ==========================================
+   Accessibility
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}

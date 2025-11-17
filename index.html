@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Ezan Vakti Pro - Türkiye'nin en kapsamlı namaz vakitleri uygulaması">
+    <meta name="theme-color" content="#1a472a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Ezan Vakti Pro - Namaz Vakitleri</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                        <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+                    </svg>
+                    <h1>Ezan Vakti Pro</h1>
+                </div>
+                <button class="settings-btn" id="settingsBtn" aria-label="Ayarlar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Location Section -->
+            <div class="location-section">
+                <div class="location-info">
+                    <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <div>
+                        <p class="location-label">Konum</p>
+                        <h2 class="location-name" id="locationName">Konum seçiliyor...</h2>
+                    </div>
+                </div>
+                <button class="change-location-btn" id="changeLocationBtn">Değiştir</button>
+            </div>
+
+            <!-- Date Section -->
+            <div class="date-section">
+                <div class="date-info">
+                    <p class="hijri-date" id="hijriDate">--</p>
+                    <p class="gregorian-date" id="gregorianDate">--</p>
+                </div>
+            </div>
+
+            <!-- Next Prayer Card -->
+            <div class="next-prayer-card">
+                <div class="next-prayer-header">
+                    <span class="next-prayer-label">Bir sonraki vakit</span>
+                    <span class="next-prayer-name" id="nextPrayerName">--</span>
+                </div>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="hoursValue">00</span>
+                        <span class="countdown-label">Saat</span>
+                    </div>
+                    <span class="countdown-separator">:</span>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="minutesValue">00</span>
+                        <span class="countdown-label">Dakika</span>
+                    </div>
+                    <span class="countdown-separator">:</span>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="secondsValue">00</span>
+                        <span class="countdown-label">Saniye</span>
+                    </div>
+                </div>
+                <div class="next-prayer-time" id="nextPrayerTime">--:--</div>
+            </div>
+
+            <!-- Prayer Times List -->
+            <div class="prayer-times-list">
+                <div class="prayer-time-item" data-prayer="Imsak">
+                    <div class="prayer-info">
+                        <svg class="prayer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                        </svg>
+                        <span class="prayer-name">İmsak</span>
+                    </div>
+                    <span class="prayer-time" id="imsakTime">--:--</span>
+                </div>
+
+                <div class="prayer-time-item" data-prayer="Fajr">
+                    <div class="prayer-info">
+                        <svg class="prayer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v6m0 4v10m-7-7h14"></path>
+                        </svg>
+                        <span class="prayer-name">Güneş</span>
+                    </div>
+                    <span class="prayer-time" id="sunriseTime">--:--</span>
+                </div>
+
+                <div class="prayer-time-item highlighted" data-prayer="Dhuhr">
+                    <div class="prayer-info">
+                        <svg class="prayer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"></path>
+                        </svg>
+                        <span class="prayer-name">Öğle</span>
+                    </div>
+                    <span class="prayer-time" id="dhuhrTime">--:--</span>
+                </div>
+
+                <div class="prayer-time-item" data-prayer="Asr">
+                    <div class="prayer-info">
+                        <svg class="prayer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 5v2m0 10v2M7.05 7.05l1.42 1.42m7.07 7.07l1.42 1.42M5 12h2m10 0h2M7.05 16.95l1.42-1.42m7.07-7.07l1.42-1.42"></path>
+                        </svg>
+                        <span class="prayer-name">İkindi</span>
+                    </div>
+                    <span class="prayer-time" id="asrTime">--:--</span>
+                </div>
+
+                <div class="prayer-time-item" data-prayer="Maghrib">
+                    <div class="prayer-info">
+                        <svg class="prayer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 18a5 5 0 0 0-10 0"></path>
+                            <line x1="12" y1="9" x2="12" y2="2"></line>
+                            <line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line>
+                            <line x1="1" y1="18" x2="3" y2="18"></line>
+                            <line x1="21" y1="18" x2="23" y2="18"></line>
+                            <line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line>
+                        </svg>
+                        <span class="prayer-name">Akşam</span>
+                    </div>
+                    <span class="prayer-time" id="maghribTime">--:--</span>
+                </div>
+
+                <div class="prayer-time-item" data-prayer="Isha">
+                    <div class="prayer-info">
+                        <svg class="prayer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                        </svg>
+                        <span class="prayer-name">Yatsı</span>
+                    </div>
+                    <span class="prayer-time" id="ishaTime">--:--</span>
+                </div>
+            </div>
+
+            <!-- Qibla Direction -->
+            <div class="qibla-card">
+                <h3 class="qibla-title">Kıble Yönü</h3>
+                <div class="qibla-compass">
+                    <div class="compass-circle">
+                        <div class="compass-arrow" id="qiblaArrow">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
+                            </svg>
+                        </div>
+                        <div class="compass-directions">
+                            <span class="compass-n">K</span>
+                            <span class="compass-e">D</span>
+                            <span class="compass-s">G</span>
+                            <span class="compass-w">B</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="qibla-degree" id="qiblaDegree">Hesaplanıyor...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Location Modal -->
+    <div class="modal" id="locationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Konum Seçin</h2>
+                <button class="modal-close" id="closeModal" aria-label="Kapat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="citySearch" placeholder="Şehir ara..." autocomplete="off">
+                </div>
+                <button class="use-location-btn" id="useLocationBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="10" r="3"></circle>
+                        <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path>
+                    </svg>
+                    Konumumu Kullan
+                </button>
+                <div class="cities-list" id="citiesList">
+                    <!-- Cities will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Ayarlar</h2>
+                <button class="modal-close" id="closeSettingsModal" aria-label="Kapat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-group">
+                    <h3>Hesaplama Yöntemi</h3>
+                    <select id="calculationMethod" class="settings-select">
+                        <option value="13">Türkiye Diyanet İşleri</option>
+                        <option value="2">Islamic Society of North America (ISNA)</option>
+                        <option value="5">Muslim World League</option>
+                        <option value="3">Makkah</option>
+                        <option value="1">University of Islamic Sciences, Karachi</option>
+                    </select>
+                </div>
+                <div class="settings-group">
+                    <h3>Bildirimler</h3>
+                    <label class="settings-toggle">
+                        <input type="checkbox" id="notificationsEnabled">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">Ezan vakti bildirimleri</span>
+                    </label>
+                </div>
+                <div class="settings-group">
+                    <h3>Tema</h3>
+                    <select id="themeSelect" class="settings-select">
+                        <option value="light">Açık</option>
+                        <option value="dark">Koyu</option>
+                        <option value="auto">Otomatik</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Ezan Vakti Pro. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
