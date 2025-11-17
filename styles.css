@@ -2397,6 +2397,272 @@ select:focus-visible {
     line-height: 1.6;
 }
 
+/* ==========================================
+   Cuma Hatırlatıcı Module
+   ========================================== */
+.cuma-module {
+    animation: fadeIn var(--transition-base);
+}
+
+.cuma-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.cuma-header h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.cuma-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+}
+
+.cuma-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid transparent;
+    transition: all var(--transition-base);
+}
+
+.cuma-section:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-color);
+}
+
+.cuma-section.special-section {
+    background: linear-gradient(to right, rgba(212, 175, 55, 0.08), var(--surface));
+}
+
+.cuma-section.warning-section {
+    background: linear-gradient(to right, rgba(239, 68, 68, 0.05), var(--surface));
+}
+
+.section-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.cuma-section h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.section-text {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Hadith Box */
+.hadith-box {
+    background: linear-gradient(135deg, rgba(26, 71, 42, 0.08), rgba(26, 71, 42, 0.02));
+    border-left: 4px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.hadith-arabic {
+    font-size: var(--font-size-xl);
+    color: var(--primary-color);
+    text-align: right;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    direction: rtl;
+}
+
+.hadith-translation {
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hadith-source {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+/* Requirements */
+.cuma-requirements {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--surface-hover);
+    border-radius: var(--radius-md);
+}
+
+.req-icon {
+    width: 24px;
+    height: 24px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Todo List */
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.todo-item {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--surface-hover);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+}
+
+.todo-item:hover {
+    background: var(--primary-light);
+    transform: translateX(4px);
+}
+
+.todo-number {
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.todo-content h4 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.todo-content p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Dua Cards */
+.dua-card {
+    background: var(--surface-hover);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    border-left: 3px solid var(--secondary-color);
+}
+
+.dua-card h4 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.dua-arabic {
+    font-size: var(--font-size-xl);
+    color: var(--primary-color);
+    text-align: right;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    direction: rtl;
+}
+
+.dua-translation {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Salavat Box */
+.salavat-box {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-top: var(--spacing-md);
+}
+
+.salavat-arabic {
+    font-size: var(--font-size-xl);
+    color: var(--primary-color);
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    direction: rtl;
+    line-height: 1.8;
+}
+
+.salavat-translation {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Warning List */
+.warning-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.warning-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: rgba(239, 68, 68, 0.08);
+    border-radius: var(--radius-md);
+    border-left: 3px solid #ef4444;
+}
+
+.warning-icon {
+    width: 24px;
+    height: 24px;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
 /* Responsive adjustments for 5 tabs */
 @media (max-width: 480px) {
     .tab-btn {

@@ -1696,9 +1696,20 @@ function setupMoreFeatures() {
 
     // Cuma Reminder
     const cumaCard = document.getElementById('cumaCard');
+    const cumaModule = document.getElementById('cumaModule');
+    const cumaBackBtn = document.getElementById('cumaBackBtn');
+
     if (cumaCard) {
         cumaCard.addEventListener('click', () => {
-            alert('Cuma Hatırlatıcı: Cuma namazı bilgileri ve duaları yakında eklenecek!');
+            moreMenu.style.display = 'none';
+            cumaModule.style.display = 'block';
+        });
+    }
+
+    if (cumaBackBtn) {
+        cumaBackBtn.addEventListener('click', () => {
+            cumaModule.style.display = 'none';
+            moreMenu.style.display = 'block';
         });
     }
 
