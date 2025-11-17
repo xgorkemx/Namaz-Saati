@@ -80,6 +80,101 @@
     box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* Blue Theme */
+[data-theme="blue"] {
+    --primary-color: #1e40af;
+    --primary-dark: #1e3a8a;
+    --primary-light: #3b82f6;
+    --secondary-color: #60a5fa;
+    --secondary-light: #93c5fd;
+
+    --background: #eff6ff;
+    --surface: #dbeafe;
+    --surface-hover: #bfdbfe;
+
+    --text-primary: #1e3a8a;
+    --text-secondary: #1e40af;
+    --text-light: #60a5fa;
+
+    --border-color: #93c5fd;
+}
+
+/* Purple Theme */
+[data-theme="purple"] {
+    --primary-color: #7c3aed;
+    --primary-dark: #6d28d9;
+    --primary-light: #8b5cf6;
+    --secondary-color: #a78bfa;
+    --secondary-light: #c4b5fd;
+
+    --background: #faf5ff;
+    --surface: #f3e8ff;
+    --surface-hover: #e9d5ff;
+
+    --text-primary: #5b21b6;
+    --text-secondary: #6d28d9;
+    --text-light: #8b5cf6;
+
+    --border-color: #c4b5fd;
+}
+
+/* Green Theme */
+[data-theme="green"] {
+    --primary-color: #059669;
+    --primary-dark: #047857;
+    --primary-light: #10b981;
+    --secondary-color: #34d399;
+    --secondary-light: #6ee7b7;
+
+    --background: #ecfdf5;
+    --surface: #d1fae5;
+    --surface-hover: #a7f3d0;
+
+    --text-primary: #065f46;
+    --text-secondary: #047857;
+    --text-light: #059669;
+
+    --border-color: #6ee7b7;
+}
+
+/* Rose Theme */
+[data-theme="rose"] {
+    --primary-color: #e11d48;
+    --primary-dark: #be123c;
+    --primary-light: #f43f5e;
+    --secondary-color: #fb7185;
+    --secondary-light: #fda4af;
+
+    --background: #fff1f2;
+    --surface: #ffe4e6;
+    --surface-hover: #fecdd3;
+
+    --text-primary: #9f1239;
+    --text-secondary: #be123c;
+    --text-light: #e11d48;
+
+    --border-color: #fda4af;
+}
+
+/* Orange Theme */
+[data-theme="orange"] {
+    --primary-color: #ea580c;
+    --primary-dark: #c2410c;
+    --primary-light: #f97316;
+    --secondary-color: #fb923c;
+    --secondary-light: #fdba74;
+
+    --background: #fff7ed;
+    --surface: #ffedd5;
+    --surface-hover: #fed7aa;
+
+    --text-primary: #9a3412;
+    --text-secondary: #c2410c;
+    --text-light: #ea580c;
+
+    --border-color: #fdba74;
+}
+
 html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
