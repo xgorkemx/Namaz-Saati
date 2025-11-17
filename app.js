@@ -2980,6 +2980,166 @@ const MedyaModule = {
     }
 };
 
+// 40 Hadis Module
+const HadisModule = {
+    allHadithCards: [],
+    currentCategory: 'all',
+
+    init() {
+        const hadisCard = document.getElementById('hadisCard');
+        const hadisBackBtn = document.getElementById('hadisBackBtn');
+        const hadisSearch = document.getElementById('hadisSearch');
+        const categoryBtns = document.querySelectorAll('.hadis-category-btn');
+        const expandBtns = document.querySelectorAll('.hadis-expand-btn');
+
+        // Store all hadith cards
+        this.allHadithCards = document.querySelectorAll('.hadis-card');
+
+        // Navigation
+        if (hadisCard) {
+            hadisCard.addEventListener('click', () => {
+                document.querySelector('.more-features').style.display = 'none';
+                document.querySelector('.hadis-module').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        if (hadisBackBtn) {
+            hadisBackBtn.addEventListener('click', () => {
+                document.querySelector('.hadis-module').style.display = 'none';
+                document.querySelector('.more-features').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Search functionality
+        if (hadisSearch) {
+            hadisSearch.addEventListener('input', (e) => {
+                this.searchHadith(e.target.value);
+            });
+        }
+
+        // Category filtering
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter by category
+                const category = btn.dataset.category;
+                this.currentCategory = category;
+                this.filterByCategory(category);
+            });
+        });
+
+        // Expand/collapse hadith details
+        expandBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const hadisCard = e.target.closest('.hadis-card');
+                const details = hadisCard.querySelector('.hadis-details');
+                const button = e.target.closest('.hadis-expand-btn');
+                const buttonText = button.querySelector('span');
+
+                if (details.style.display === 'none' || !details.style.display) {
+                    // Expand
+                    details.style.display = 'block';
+                    button.classList.add('expanded');
+                    buttonText.textContent = 'Gizle';
+                } else {
+                    // Collapse
+                    details.style.display = 'none';
+                    button.classList.remove('expanded');
+                    buttonText.textContent = 'Detayları Gör';
+                }
+            });
+        });
+    },
+
+    searchHadith(query) {
+        const searchTerm = query.toLowerCase().trim();
+
+        this.allHadithCards.forEach(card => {
+            const title = card.querySelector('.hadis-title h3').textContent.toLowerCase();
+            const arabic = card.querySelector('.hadis-arabic p').textContent.toLowerCase();
+            const meal = card.querySelector('.hadis-meal p').textContent.toLowerCase();
+            const details = card.querySelector('.hadis-details p')?.textContent.toLowerCase() || '';
+
+            const matches = title.includes(searchTerm) ||
+                          arabic.includes(searchTerm) ||
+                          meal.includes(searchTerm) ||
+                          details.includes(searchTerm);
+
+            // Also check category filter
+            const categoryMatches = this.currentCategory === 'all' ||
+                                  card.dataset.category === this.currentCategory;
+
+            if (matches && categoryMatches) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Show "no results" message if needed
+        this.updateNoResultsMessage(searchTerm);
+    },
+
+    filterByCategory(category) {
+        const searchTerm = document.getElementById('hadisSearch')?.value.toLowerCase().trim() || '';
+
+        this.allHadithCards.forEach(card => {
+            const cardCategory = card.dataset.category;
+            const categoryMatches = category === 'all' || cardCategory === category;
+
+            // Also check search term
+            let searchMatches = true;
+            if (searchTerm) {
+                const title = card.querySelector('.hadis-title h3').textContent.toLowerCase();
+                const arabic = card.querySelector('.hadis-arabic p').textContent.toLowerCase();
+                const meal = card.querySelector('.hadis-meal p').textContent.toLowerCase();
+                const details = card.querySelector('.hadis-details p')?.textContent.toLowerCase() || '';
+
+                searchMatches = title.includes(searchTerm) ||
+                              arabic.includes(searchTerm) ||
+                              meal.includes(searchTerm) ||
+                              details.includes(searchTerm);
+            }
+
+            if (categoryMatches && searchMatches) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Update no results message
+        this.updateNoResultsMessage(searchTerm);
+    },
+
+    updateNoResultsMessage(searchTerm) {
+        const hadisGrid = document.querySelector('.hadis-grid');
+        const visibleCards = Array.from(this.allHadithCards).filter(card => card.style.display !== 'none');
+
+        // Remove existing no results message
+        const existingMessage = hadisGrid?.querySelector('.no-results-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+
+        // Show message if no cards visible
+        if (hadisGrid && visibleCards.length === 0) {
+            const message = document.createElement('div');
+            message.className = 'no-results-message';
+            message.style.cssText = 'grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-secondary);';
+            message.innerHTML = searchTerm
+                ? `<p style="font-size: 1.1rem; margin-bottom: 0.5rem;">🔍 Arama sonucu bulunamadı</p><p style="font-size: 0.9rem;">Lütfen farklı kelimelerle arayın</p>`
+                : `<p style="font-size: 1.1rem; margin-bottom: 0.5rem;">Bu kategoride hadis bulunamadı</p>`;
+            hadisGrid.appendChild(message);
+        }
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
@@ -2988,4 +3148,5 @@ document.addEventListener('DOMContentLoaded', () => {
     ZekatModule.init();
     CamilerModule.init();
     MedyaModule.init();
+    HadisModule.init();
 });

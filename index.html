@@ -485,6 +485,23 @@
                         </svg>
                     </div>
 
+                    <!-- 40 Hadis Module -->
+                    <div class="feature-card" id="hadisCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>40 Hadis Koleksiyonu</h3>
+                            <p>İmam Nevevi'nin seçtiği 40 hadis-i şerif</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
                 </div>
 
                 <!-- Ramazan Module (Hidden by default) -->
@@ -2968,6 +2985,563 @@
                         <div class="note-icon">🎯</div>
                         <h4>Yeni İçerikler</h4>
                         <p>Her hafta yeni podcast bölümleri ve sohbetler eklenmektedir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 40 Hadis Module (Hidden by default) -->
+    <div class="hadis-module" id="hadisModule" style="display: none;">
+        <button class="back-btn" id="hadisBackBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Geri
+        </button>
+
+        <div class="container">
+            <!-- Info Card -->
+            <div class="hadis-info-card">
+                <div class="card-icon">📚</div>
+                <h2>40 Hadis-i Şerif</h2>
+                <p class="info-text">İmam Nevevi'nin derlediği, İslam'ın temel esaslarını içeren kırk hadis-i şerif koleksiyonu. Her hadis, dini hayatımızın farklı bir yönünü aydınlatır.</p>
+            </div>
+
+            <!-- Search Box -->
+            <div class="hadis-search-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" id="hadisSearch" placeholder="Hadis ara (konu, anahtar kelime...)">
+            </div>
+
+            <!-- Category Filters -->
+            <div class="hadis-categories">
+                <button class="hadis-category-btn active" data-category="all">Tümü (40)</button>
+                <button class="hadis-category-btn" data-category="iman">İman</button>
+                <button class="hadis-category-btn" data-category="ibadet">İbadet</button>
+                <button class="hadis-category-btn" data-category="ahlak">Ahlak</button>
+                <button class="hadis-category-btn" data-category="muamelat">Muamelat</button>
+            </div>
+
+            <!-- Hadis List -->
+            <div class="hadis-list">
+                <!-- Hadis 1 -->
+                <div class="hadis-card" data-category="iman" data-number="1">
+                    <div class="hadis-header">
+                        <div class="hadis-number">1</div>
+                        <div class="hadis-title">
+                            <h3>Niyetlerin Önemi</h3>
+                            <span class="hadis-category-badge iman">İman</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Ameller niyetlere göredir ve herkes için ancak niyet ettiği şey vardır."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari ve Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, İslam dininin temel prensiplerinden biridir. Her ibadetin ve amelin değerli olması için iyi bir niyetle yapılması gerektiğini öğretir. Niyetsiz yapılan hiçbir amel Allah katında kabul görmez.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 2 -->
+                <div class="hadis-card" data-category="iman" data-number="2">
+                    <div class="hadis-header">
+                        <div class="hadis-number">2</div>
+                        <div class="hadis-title">
+                            <h3>İman, İslam ve İhsan</h3>
+                            <span class="hadis-category-badge iman">İman</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"الإِسْلاَمُ أَنْ تَشْهَدَ أَنْ لاَ إِلَهَ إِلاَّ اللهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللهِ..."</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"İslam: Allah'tan başka ilah olmadığına ve Muhammed'in Allah'ın Resulü olduğuna şehadet etmen, namazı kılman, zekatı vermen, Ramazan orucunu tutman ve gücün yeterse Kâbe'yi ziyaret etmendir."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari ve Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Cebrail hadisi olarak bilinen bu hadis, İslam'ın beş şartını, imanın altı rüknünü ve ihsanın mahiyetini açıklar. Dinin üç temel boyutunu (İslam, İman, İhsan) öğretir.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 3 -->
+                <div class="hadis-card" data-category="iman" data-number="3">
+                    <div class="hadis-header">
+                        <div class="hadis-number">3</div>
+                        <div class="hadis-title">
+                            <h3>İslam'ın Temelleri</h3>
+                            <span class="hadis-category-badge iman">İman</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"بُنِيَ الإِسْلاَمُ عَلَى خَمْسٍ: شَهَادَةِ أَنْ لاَ إِلَهَ إِلاَّ اللهُ..."</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"İslam beş temel üzerine bina edilmiştir: Allah'tan başka ilah olmadığına şehadet etmek, namaz kılmak, zekat vermek, Ramazan orucunu tutmak ve Kâbe'yi ziyaret etmek."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari ve Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis İslam dininin beş temel şartını açıklar. Bu beş şart İslam'ın yapı taşlarıdır ve her müslümanın yerine getirmesi gereken temel görevlerdir.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 6 -->
+                <div class="hadis-card" data-category="ahlak" data-number="6">
+                    <div class="hadis-header">
+                        <div class="hadis-number">6</div>
+                        <div class="hadis-title">
+                            <h3>Helal ve Haram</h3>
+                            <span class="hadis-category-badge ahlak">Ahlak</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"إِنَّ الْحَلاَلَ بَيِّنٌ، وَإِنَّ الْحَرَامَ بَيِّنٌ، وَبَيْنَهُمَا مُشْتَبِهَاتٌ..."</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Şüphesiz helal açıktır, haram da açıktır. İkisi arasında ise şüpheli şeyler vardır. Kim şüpheli şeylerden sakınırsa, dinini ve ırzını korumuş olur."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari ve Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, helal ve haramın açık olduğunu, şüpheli şeylerden de kaçınılması gerektiğini öğretir. Takva sahibi olmak için şüpheli şeylerden uzak durmak gerekir.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 7 -->
+                <div class="hadis-card" data-category="ahlak" data-number="7">
+                    <div class="hadis-header">
+                        <div class="hadis-number">7</div>
+                        <div class="hadis-title">
+                            <h3>Din Nasihattir</h3>
+                            <span class="hadis-category-badge ahlak">Ahlak</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"الدِّينُ النَّصِيحَةُ"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Din nasihattir." Sahabeler "Kime?" diye sordular. Buyurdu ki: "Allah'a, Kitabına, Resulüne, müslümanların liderlerine ve halkına."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, dinin özünün nasihat (öğüt verme, iyiliği emretme) olduğunu gösterir. Müslümanlar birbirlerine karşı samimi, iyi niyetli ve yardımsever olmalıdır.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 9 -->
+                <div class="hadis-card" data-category="ibadet" data-number="9">
+                    <div class="hadis-header">
+                        <div class="hadis-number">9</div>
+                        <div class="hadis-title">
+                            <h3>Yasaklardan Kaçının</h3>
+                            <span class="hadis-category-badge ibadet">İbadet</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"مَا نَهَيْتُكُمْ عَنْهُ فَاجْتَنِبُوهُ، وَمَا أَمَرْتُكُمْ بِهِ فَأْتُوا مِنْهُ مَا اسْتَطَعْتُمْ"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Size neyi yasakladımsa ondan uzak durun, neyi emrettiysem de gücünüz yettiğince onu yapın."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari ve Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, yasaklardan tamamen kaçınmamız, emirleri ise gücümüz yettiğince yerine getirmemiz gerektiğini öğretir. Din kolaylıktır prensibi bu hadiste de görülür.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 10 -->
+                <div class="hadis-card" data-category="ibadet" data-number="10">
+                    <div class="hadis-header">
+                        <div class="hadis-number">10</div>
+                        <div class="hadis-title">
+                            <h3>Helal Kazanç</h3>
+                            <span class="hadis-category-badge muamelat">Muamelat</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"إِنَّ اللَّهَ طَيِّبٌ لاَ يَقْبَلُ إِلاَّ طَيِّبًا"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Allah temizdir, sadece temiz olanı kabul eder."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, kazancın helal olması gerektiğini vurgular. Haram yollardan kazanılan mal ile yapılan ibadetler Allah katında kabul görmez.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 13 -->
+                <div class="hadis-card" data-category="iman" data-number="13">
+                    <div class="hadis-header">
+                        <div class="hadis-number">13</div>
+                        <div class="hadis-title">
+                            <h3>İmanın Kemali</h3>
+                            <span class="hadis-category-badge iman">İman</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"لاَ يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Sizden biriniz, kendisi için istediğini kardeşi için de istemedikçe iman etmiş olmaz."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari ve Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, kardeşlik ve paylaşma duygusunun önemini vurgular. Mü'min kardeşine aynı kendisi gibi davranmalı, onun mutluluğunu kendi mutluluğu gibi görmelidir.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 15 -->
+                <div class="hadis-card" data-category="ahlak" data-number="15">
+                    <div class="hadis-header">
+                        <div class="hadis-number">15</div>
+                        <div class="hadis-title">
+                            <h3>İyi Söz Söylemek</h3>
+                            <span class="hadis-category-badge ahlak">Ahlak</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"مَنْ كَانَ يُؤْمِنُ بِاللهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Kim Allah'a ve ahiret gününe iman ediyorsa ya hayır söylesin ya da sussun."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari ve Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, konuşmanın sorumluluğunu ve dilin önemini vurgular. Mü'min ya faydalı konuşmalı ya da susmalıdır. Boş ve zararlı sözlerden kaçınmalıdır.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 16 -->
+                <div class="hadis-card" data-category="ahlak" data-number="16">
+                    <div class="hadis-header">
+                        <div class="hadis-number">16</div>
+                        <div class="hadis-title">
+                            <h3>Öfkeden Kaçının</h3>
+                            <span class="hadis-category-badge ahlak">Ahlak</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"لاَ تَغْضَبْ"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>Bir adam Peygamber'e (sav) gelip "Bana öğüt ver" dedi. "Öfkelenme" buyurdu. Adam aynı soruyu birkaç kez tekrar etti. Her defasında "Öfkelenme" buyurdu.</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, öfkenin kontrol edilmesi gerektiğini öğretir. Öfke pek çok kötülüğün kaynağıdır ve mü'min öfkesine hakim olmalıdır.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 18 -->
+                <div class="hadis-card" data-category="ahlak" data-number="18">
+                    <div class="hadis-header">
+                        <div class="hadis-number">18</div>
+                        <div class="hadis-title">
+                            <h3>Takva ve Güzel Ahlak</h3>
+                            <span class="hadis-category-badge ahlak">Ahlak</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"اتَّقِ اللهَ حَيْثُمَا كُنْتَ، وَأَتْبِعِ السَّيِّئَةَ الْحَسَنَةَ تَمْحُهَا، وَخَالِقِ النَّاسَ بِخُلُقٍ حَسَنٍ"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Nerede olursan ol Allah'tan kork, kötülüğün ardından iyilik yap ki onu silsin, insanlara güzel ahlakla muamele et."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Tirmizi</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis üç önemli prensibi içerir: Her yerde Allah'a karşı sorumlu olmak, hatayı iyilikle telafi etmek ve insanlara güzel davranmak.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 24 -->
+                <div class="hadis-card" data-category="muamelat" data-number="24">
+                    <div class="hadis-header">
+                        <div class="hadis-number">24</div>
+                        <div class="hadis-title">
+                            <h3>Haramları Yasaklama</h3>
+                            <span class="hadis-category-badge muamelat">Muamelat</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"لاَ ضَرَرَ وَلاَ ضِرَارَ"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Zarar vermek yoktur, zarara karşı zarar vermek de yoktur."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>İbn Mace ve Darekutni</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, İslam hukukunun temel prensiplerinden biridir. Ne kendine ne de başkasına zarar vermek caiz değildir.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 25 -->
+                <div class="hadis-card" data-category="ibadet" data-number="25">
+                    <div class="hadis-header">
+                        <div class="hadis-number">25</div>
+                        <div class="hadis-title">
+                            <h3>Sadaka Vermek</h3>
+                            <span class="hadis-category-badge ibadet">İbadet</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"كُلُّ سُلاَمَى مِنَ النَّاسِ عَلَيْهِ صَدَقَةٌ، كُلَّ يَوْمٍ تَطْلُعُ فِيهِ الشَّمْسُ"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"İnsanın her eklemi için her gün güneş doğarken bir sadaka gerekir. İnsanlar arasında adaletle davranmak sadakadır, birini binmesine yardım etmek veya eşyasını yüklemek sadakadır..."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari ve Müslim</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, sadakanın sadece para vermek olmadığını öğretir. Her türlü iyilik, yardım ve güzel davranış sadaka sayılır.</p>
+                    </div>
+                </div>
+
+                <!-- Hadis 40 -->
+                <div class="hadis-card" data-category="ahlak" data-number="40">
+                    <div class="hadis-header">
+                        <div class="hadis-number">40</div>
+                        <div class="hadis-title">
+                            <h3>Dünyada Garip Ol</h3>
+                            <span class="hadis-category-badge ahlak">Ahlak</span>
+                        </div>
+                    </div>
+                    <div class="hadis-content">
+                        <div class="hadis-arabic">
+                            <p>"كُنْ فِي الدُّنْيَا كَأَنَّكَ غَرِيبٌ أَوْ عَابِرُ سَبِيلٍ"</p>
+                        </div>
+                        <div class="hadis-meal">
+                            <p>"Dünyada garip biri veya yolcu gibi ol."</p>
+                        </div>
+                        <div class="hadis-source">
+                            <span class="source-icon">📖</span>
+                            <span>Buhari</span>
+                        </div>
+                    </div>
+                    <button class="hadis-expand-btn">
+                        <span>Detayları Gör</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="hadis-details" style="display: none;">
+                        <h4>Açıklama:</h4>
+                        <p>Bu hadis, dünyaya aşırı bağlanmamayı, asıl yurdumuzun ahiret olduğunu hatırlatır. Mü'min dünyayı geçici bir konaklama yeri olarak görmelidir.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="hadis-stats-section">
+                <h3>📊 Koleksiyon Bilgileri</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-icon">📚</div>
+                        <h4>40</h4>
+                        <p>Hadis-i Şerif</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">📖</div>
+                        <h4>9</h4>
+                        <p>Kaynak Kitap</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">🕌</div>
+                        <h4>İmam Nevevi</h4>
+                        <p>Derleyen</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">📜</div>
+                        <h4>13. Yüzyıl</h4>
+                        <p>Derleme Dönemi</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Notes -->
+            <div class="important-notes">
+                <h3>💡 Hadisler Hakkında</h3>
+                <div class="notes-grid">
+                    <div class="note-card info">
+                        <div class="note-icon">ℹ️</div>
+                        <h4>40 Hadis Nedir?</h4>
+                        <p>İmam Nevevi'nin derlediği, İslam'ın temel esaslarını içeren kırk hadis koleksiyonudur. Her müslümanın bilmesi gereken hadislerdir.</p>
+                    </div>
+                    <div class="note-card success">
+                        <div class="note-icon">✅</div>
+                        <h4>Sahih Kaynak</h4>
+                        <p>Bu hadislerin tamamı Buhari, Müslim gibi sahih hadis kitaplarından alınmıştır.</p>
+                    </div>
+                    <div class="note-card warning">
+                        <div class="note-icon">⚠️</div>
+                        <h4>Ezberleme</h4>
+                        <p>Bu hadisleri ezberlemek büyük sevaptır. Peygamberimiz bu konuda müjde vermiştir.</p>
+                    </div>
+                    <div class="note-card primary">
+                        <div class="note-icon">🎯</div>
+                        <h4>Uygulama</h4>
+                        <p>Hadisleri sadece bilmek yetmez, hayatımıza uygulamalıyız.</p>
                     </div>
                 </div>
             </div>
