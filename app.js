@@ -1526,7 +1526,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize features
     setTimeout(() => {
-        HatimTracker.init();
         QuranReader.init();
         Tesbihat.init();
         EsmaulHusna.init();
