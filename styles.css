@@ -3135,3 +3135,517 @@ select:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================
+   ZİKİR & DUA İSTATİSTİKLERİ
+   ========================================== */
+
+.zikir-module {
+    animation: fadeIn var(--transition-base);
+}
+
+.zikir-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.zikir-header h2 {
+    font-size: var(--font-size-3xl);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.zikir-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+}
+
+/* Zikir Statistics */
+.zikir-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.zikir-stat-card {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+    color: white;
+    transition: transform var(--transition-base);
+}
+
+.zikir-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.zikir-stat-card .stat-icon {
+    font-size: var(--font-size-3xl);
+    flex-shrink: 0;
+}
+
+.zikir-stat-card .stat-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.zikir-stat-card .stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+}
+
+.zikir-stat-card .stat-label {
+    font-size: var(--font-size-xs);
+    opacity: 0.9;
+}
+
+/* Digital Tasbih Section */
+.digital-tasbih-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.digital-tasbih-section h3 {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    text-align: center;
+}
+
+.tasbih-selector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+    margin: var(--spacing-lg) 0;
+}
+
+.tasbih-type-btn {
+    background: var(--background);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.tasbih-type-btn:hover {
+    border-color: #06b6d4;
+    background: rgba(6, 182, 212, 0.05);
+}
+
+.tasbih-type-btn.active {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    border-color: #06b6d4;
+    color: white;
+}
+
+.tasbih-type-btn .type-name {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+.tasbih-type-btn .type-target {
+    font-size: var(--font-size-xs);
+    opacity: 0.8;
+}
+
+.tasbih-counter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.current-zikir-text {
+    font-size: var(--font-size-lg);
+    color: #06b6d4;
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+}
+
+.tasbih-counter {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.counter-display {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+.counter-target {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    margin-top: var(--spacing-sm);
+}
+
+.tasbih-button {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    border: none;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+    margin-bottom: var(--spacing-lg);
+}
+
+.tasbih-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(6, 182, 212, 0.4);
+}
+
+.tasbih-button:active {
+    transform: scale(0.95);
+}
+
+.tasbih-icon {
+    font-size: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.tasbih-ripple {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.tasbih-controls {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.control-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--surface-hover);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.control-btn:hover {
+    border-color: #06b6d4;
+    background: rgba(6, 182, 212, 0.1);
+}
+
+.control-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Popular Zikir Section */
+.popular-zikir-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.popular-zikir-section h3 {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.zikir-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.zikir-card {
+    background: var(--background);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.zikir-card:hover {
+    border-color: #06b6d4;
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.zikir-card-icon {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.zikir-card h4 {
+    font-size: var(--font-size-lg);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.zikir-arabic {
+    font-size: var(--font-size-xl);
+    color: #06b6d4;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    direction: rtl;
+}
+
+.zikir-meaning {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
+}
+
+.zikir-card-count {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: #06b6d4;
+    background: rgba(6, 182, 212, 0.1);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    display: inline-block;
+}
+
+/* Daily Duas Section */
+.daily-duas-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.daily-duas-section h3 {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    text-align: center;
+}
+
+.duas-accordion {
+    margin-top: var(--spacing-lg);
+}
+
+.dua-accordion-item {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.dua-accordion-item:hover {
+    border-color: #06b6d4;
+}
+
+.dua-accordion-header {
+    width: 100%;
+    background: var(--surface-hover);
+    border: none;
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.dua-accordion-header:hover {
+    background: rgba(6, 182, 212, 0.05);
+}
+
+.dua-accordion-header.active {
+    background: rgba(6, 182, 212, 0.1);
+}
+
+.dua-icon {
+    font-size: var(--font-size-2xl);
+    flex-shrink: 0;
+}
+
+.dua-title {
+    flex: 1;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.accordion-arrow {
+    width: 20px;
+    height: 20px;
+    stroke: var(--text-secondary);
+    transition: transform var(--transition-base);
+    flex-shrink: 0;
+}
+
+.dua-accordion-header.active .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+.dua-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: var(--background);
+}
+
+.dua-accordion-content.active {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in;
+}
+
+.dua-item {
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+.dua-item:first-child {
+    border-top: none;
+}
+
+.dua-item h5 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.dua-item .dua-arabic {
+    font-size: var(--font-size-lg);
+    color: #06b6d4;
+    font-weight: 600;
+    text-align: right;
+    direction: rtl;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.8;
+}
+
+.dua-item .dua-translation {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Zikir Reminder Section */
+.zikir-reminder-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.zikir-reminder-section h3 {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.reminder-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.reminder-card {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05));
+    border: 2px solid #06b6d4;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+}
+
+.reminder-icon {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.reminder-card p {
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+}
+
+.reminder-source {
+    font-size: var(--font-size-sm);
+    color: #06b6d4;
+    font-weight: 600;
+}
+
+/* Responsive adjustments for Zikir */
+@media (max-width: 480px) {
+    .zikir-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tasbih-selector {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tasbih-button {
+        width: 140px;
+        height: 140px;
+    }
+
+    .tasbih-icon {
+        font-size: 3rem;
+    }
+
+    .counter-display {
+        font-size: 3rem;
+    }
+
+    .zikir-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reminder-cards {
+        grid-template-columns: 1fr;
+    }
+}

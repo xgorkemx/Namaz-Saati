@@ -1027,6 +1027,296 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Zikir & Dua İstatistikleri Module -->
+                <div class="zikir-module" id="zikirModule" style="display: none;">
+                    <button class="back-btn" id="zikirBackBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Geri
+                    </button>
+
+                    <div class="zikir-header">
+                        <h2>Zikir & Dua</h2>
+                        <p class="zikir-subtitle">Dijital Tesbihat ve İstatistikler</p>
+                    </div>
+
+                    <!-- Zikir İstatistikleri -->
+                    <div class="zikir-stats-grid">
+                        <div class="zikir-stat-card">
+                            <div class="stat-icon">📿</div>
+                            <div class="stat-content">
+                                <span class="stat-value" id="todayZikir">0</span>
+                                <span class="stat-label">Bugün</span>
+                            </div>
+                        </div>
+                        <div class="zikir-stat-card">
+                            <div class="stat-icon">📅</div>
+                            <div class="stat-content">
+                                <span class="stat-value" id="weekZikir">0</span>
+                                <span class="stat-label">Bu Hafta</span>
+                            </div>
+                        </div>
+                        <div class="zikir-stat-card">
+                            <div class="stat-icon">🗓️</div>
+                            <div class="stat-content">
+                                <span class="stat-value" id="monthZikir">0</span>
+                                <span class="stat-label">Bu Ay</span>
+                            </div>
+                        </div>
+                        <div class="zikir-stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-content">
+                                <span class="stat-value" id="totalZikir">0</span>
+                                <span class="stat-label">Toplam</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dijital Tesbihat Sayacı -->
+                    <div class="digital-tasbih-section">
+                        <h3>Dijital Tesbihat</h3>
+                        <p class="section-subtitle">Zikir türünü seçin ve sayımı başlatın</p>
+
+                        <div class="tasbih-selector">
+                            <button class="tasbih-type-btn active" data-type="custom" data-target="100">
+                                <span class="type-name">Serbest</span>
+                                <span class="type-target">∞</span>
+                            </button>
+                            <button class="tasbih-type-btn" data-type="subhanallah" data-target="33">
+                                <span class="type-name">Subhanallah</span>
+                                <span class="type-target">33x</span>
+                            </button>
+                            <button class="tasbih-type-btn" data-type="alhamdulillah" data-target="33">
+                                <span class="type-name">Alhamdulillah</span>
+                                <span class="type-target">33x</span>
+                            </button>
+                            <button class="tasbih-type-btn" data-type="allahuakbar" data-target="34">
+                                <span class="type-name">Allahu Akbar</span>
+                                <span class="type-target">34x</span>
+                            </button>
+                        </div>
+
+                        <div class="tasbih-counter-container">
+                            <div class="current-zikir-text" id="currentZikirText">Serbest Zikir</div>
+                            <div class="tasbih-counter">
+                                <div class="counter-display" id="counterDisplay">0</div>
+                                <div class="counter-target" id="counterTarget"></div>
+                            </div>
+                            <button class="tasbih-button" id="tasbihButton">
+                                <span class="tasbih-ripple"></span>
+                                <span class="tasbih-icon">📿</span>
+                            </button>
+                            <div class="tasbih-controls">
+                                <button class="control-btn" id="resetBtn">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="1 4 1 10 7 10"></polyline>
+                                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                                    </svg>
+                                    Sıfırla
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Popüler Zikirler -->
+                    <div class="popular-zikir-section">
+                        <h3>Popüler Zikirler</h3>
+                        <div class="zikir-cards-grid">
+                            <div class="zikir-card" data-zikir="subhanallah">
+                                <div class="zikir-card-icon">✨</div>
+                                <h4>Subhanallah</h4>
+                                <p class="zikir-arabic">سُبْحَانَ اللهِ</p>
+                                <p class="zikir-meaning">Allah'ı noksan sıfatlardan tenzih ederim</p>
+                                <div class="zikir-card-count" id="subhanallahCount">0 defa</div>
+                            </div>
+
+                            <div class="zikir-card" data-zikir="alhamdulillah">
+                                <div class="zikir-card-icon">🌟</div>
+                                <h4>Alhamdulillah</h4>
+                                <p class="zikir-arabic">الْحَمْدُ لِلَّهِ</p>
+                                <p class="zikir-meaning">Her türlü hamd ve övgü Allah'a mahsustur</p>
+                                <div class="zikir-card-count" id="alhamdulillahCount">0 defa</div>
+                            </div>
+
+                            <div class="zikir-card" data-zikir="allahuakbar">
+                                <div class="zikir-card-icon">⭐</div>
+                                <h4>Allahu Akbar</h4>
+                                <p class="zikir-arabic">اللهُ أَكْبَرُ</p>
+                                <p class="zikir-meaning">Allah en büyüktür</p>
+                                <div class="zikir-card-count" id="allahuakbarCount">0 defa</div>
+                            </div>
+
+                            <div class="zikir-card" data-zikir="lailahaillallah">
+                                <div class="zikir-card-icon">🌙</div>
+                                <h4>La ilahe illallah</h4>
+                                <p class="zikir-arabic">لَا إِلَهَ إِلَّا اللهُ</p>
+                                <p class="zikir-meaning">Allah'tan başka ilah yoktur</p>
+                                <div class="zikir-card-count" id="lailahaillallahCount">0 defa</div>
+                            </div>
+
+                            <div class="zikir-card" data-zikir="salawat">
+                                <div class="zikir-card-icon">✨</div>
+                                <h4>Salavatı Şerife</h4>
+                                <p class="zikir-arabic">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ</p>
+                                <p class="zikir-meaning">Allah'ım, Muhammed'e rahmet eyle</p>
+                                <div class="zikir-card-count" id="salawatCount">0 defa</div>
+                            </div>
+
+                            <div class="zikir-card" data-zikir="astagfirullah">
+                                <div class="zikir-card-icon">💫</div>
+                                <h4>Estağfirullah</h4>
+                                <p class="zikir-arabic">أَسْتَغْفِرُ اللهَ</p>
+                                <p class="zikir-meaning">Allah'tan bağışlanma dilerim</p>
+                                <div class="zikir-card-count" id="astagfirullahCount">0 defa</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Günlük Dualar -->
+                    <div class="daily-duas-section">
+                        <h3>Günlük Dualar</h3>
+                        <p class="section-subtitle">Hayatımızın her anı için dualar</p>
+
+                        <div class="duas-accordion">
+                            <!-- Sabah Akşam Duaları -->
+                            <div class="dua-accordion-item">
+                                <button class="dua-accordion-header" data-target="sabahAksam">
+                                    <span class="dua-icon">🌅</span>
+                                    <span class="dua-title">Sabah & Akşam Duaları</span>
+                                    <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="dua-accordion-content" id="sabahAksam">
+                                    <div class="dua-item">
+                                        <p class="dua-arabic">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ</p>
+                                        <p class="dua-translation">Sabahlara erdik ve mülk Allah'ındır.</p>
+                                    </div>
+                                    <div class="dua-item">
+                                        <p class="dua-arabic">اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا</p>
+                                        <p class="dua-translation">Allah'ım! Seninle sabahlara erdik ve seninle akşamlara eriyoruz.</p>
+                                    </div>
+                                    <div class="dua-item">
+                                        <p class="dua-arabic">أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ</p>
+                                        <p class="dua-translation">Allah'ın kusursuz kelimelerine sığınırım, yarattığı şerlerin şerrinden.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Yemek Duaları -->
+                            <div class="dua-accordion-item">
+                                <button class="dua-accordion-header" data-target="yemek">
+                                    <span class="dua-icon">🍽️</span>
+                                    <span class="dua-title">Yemek Duaları</span>
+                                    <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="dua-accordion-content" id="yemek">
+                                    <div class="dua-item">
+                                        <h5>Yemekten Önce:</h5>
+                                        <p class="dua-arabic">بِسْمِ اللهِ</p>
+                                        <p class="dua-translation">Allah'ın adıyla (başlarım)</p>
+                                    </div>
+                                    <div class="dua-item">
+                                        <h5>Yemekten Sonra:</h5>
+                                        <p class="dua-arabic">الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا</p>
+                                        <p class="dua-translation">Bize yedirip içiren Allah'a hamd olsun.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Uyku Duaları -->
+                            <div class="dua-accordion-item">
+                                <button class="dua-accordion-header" data-target="uyku">
+                                    <span class="dua-icon">🌙</span>
+                                    <span class="dua-title">Uyku Duaları</span>
+                                    <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="dua-accordion-content" id="uyku">
+                                    <div class="dua-item">
+                                        <p class="dua-arabic">بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا</p>
+                                        <p class="dua-translation">Allah'ım! Senin adınla ölür (uyur) ve senin adınla dirilir (uyanırım).</p>
+                                    </div>
+                                    <div class="dua-item">
+                                        <p class="dua-arabic">اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ</p>
+                                        <p class="dua-translation">Allah'ım! Kullarını dirilteceğin gün azabından beni koru.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Yolculuk Duaları -->
+                            <div class="dua-accordion-item">
+                                <button class="dua-accordion-header" data-target="yolculuk">
+                                    <span class="dua-icon">🚗</span>
+                                    <span class="dua-title">Yolculuk Duaları</span>
+                                    <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="dua-accordion-content" id="yolculuk">
+                                    <div class="dua-item">
+                                        <p class="dua-arabic">سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ</p>
+                                        <p class="dua-translation">Bunu emrimize veren Allah'ı tesbih ederim. Yoksa biz buna gücümüz yetmezdi.</p>
+                                    </div>
+                                    <div class="dua-item">
+                                        <p class="dua-arabic">اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى</p>
+                                        <p class="dua-translation">Allah'ım! Bu yolculuğumuzda senden iyilik ve takva isteriz.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Diğer Önemli Dualar -->
+                            <div class="dua-accordion-item">
+                                <button class="dua-accordion-header" data-target="diger">
+                                    <span class="dua-icon">🤲</span>
+                                    <span class="dua-title">Diğer Önemli Dualar</span>
+                                    <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="dua-accordion-content" id="diger">
+                                    <div class="dua-item">
+                                        <h5>İstiğfar:</h5>
+                                        <p class="dua-arabic">أَسْتَغْفِرُ اللهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ</p>
+                                        <p class="dua-translation">Kendisinden başka ilah olmayan, diri ve kayyum olan Azîm Allah'tan mağfiret diler ve O'na tevbe ederim.</p>
+                                    </div>
+                                    <div class="dua-item">
+                                        <h5>Hastalık Duası:</h5>
+                                        <p class="dua-arabic">أَذْهِبِ الْبَأْسَ رَبَّ النَّاسِ اشْفِ أَنْتَ الشَّافِي</p>
+                                        <p class="dua-translation">Ey insanların Rabbi! Hastalığı gider, şifa ver. Şifa veren ancak sensin.</p>
+                                    </div>
+                                    <div class="dua-item">
+                                        <h5>Bereket Duası:</h5>
+                                        <p class="dua-arabic">اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا</p>
+                                        <p class="dua-translation">Allah'ım! Bize verdiğin rızıkta bereket ver.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zikir Hatırlatıcısı -->
+                    <div class="zikir-reminder-section">
+                        <h3>💡 Zikrin Fazileti</h3>
+                        <div class="reminder-cards">
+                            <div class="reminder-card">
+                                <div class="reminder-icon">📖</div>
+                                <p>"Allah'ı çokça zikredenler ve zikreden kadınlar... Allah onlar için bir mağfiret ve büyük bir mükâfat hazırlamıştır."</p>
+                                <span class="reminder-source">Ahzab Suresi, 35</span>
+                            </div>
+                            <div class="reminder-card">
+                                <div class="reminder-icon">🕌</div>
+                                <p>"Kim sabah 100 defa, akşam 100 defa 'Subhanallahi ve bihamdihi' derse, kıyamet günü hiç kimse onun getirdiğinden daha hayırlısını getirmez."</p>
+                                <span class="reminder-source">Sahih Müslim</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

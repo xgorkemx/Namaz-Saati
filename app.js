@@ -1968,6 +1968,309 @@ const PrayerTracker = {
     }
 };
 
+// Zikir Module
+const ZikirModule = {
+    zikirData: {},
+    currentCounter: 0,
+    currentType: 'custom',
+    currentTarget: 100,
+
+    zikirTypes: {
+        'custom': { name: 'Serbest Zikir', target: null },
+        'subhanallah': { name: 'Subhanallah', target: 33 },
+        'alhamdulillah': { name: 'Alhamdulillah', target: 33 },
+        'allahuakbar': { name: 'Allahu Akbar', target: 34 }
+    },
+
+    init() {
+        this.loadData();
+        this.setupTasbihSelector();
+        this.setupTasbihButton();
+        this.setupAccordion();
+        this.updateAllStats();
+        this.updateZikirCardCounts();
+    },
+
+    loadData() {
+        const saved = localStorage.getItem('zikirData');
+        if (saved) {
+            this.zikirData = JSON.parse(saved);
+        } else {
+            // Initialize default structure
+            this.zikirData = {
+                daily: {},
+                totals: {
+                    subhanallah: 0,
+                    alhamdulillah: 0,
+                    allahuakbar: 0,
+                    lailahaillallah: 0,
+                    salawat: 0,
+                    astagfirullah: 0,
+                    custom: 0
+                }
+            };
+        }
+    },
+
+    saveData() {
+        localStorage.setItem('zikirData', JSON.stringify(this.zikirData));
+    },
+
+    getDateKey(date) {
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    },
+
+    setupTasbihSelector() {
+        const buttons = document.querySelectorAll('.tasbih-type-btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                buttons.forEach(b => b.classList.remove('active'));
+                // Add to clicked
+                btn.classList.add('active');
+
+                const type = btn.getAttribute('data-type');
+                const target = parseInt(btn.getAttribute('data-target'));
+
+                this.currentType = type;
+                this.currentTarget = target;
+                this.currentCounter = 0;
+
+                this.updateCounterDisplay();
+            });
+        });
+    },
+
+    setupTasbihButton() {
+        const button = document.getElementById('tasbihButton');
+        const resetBtn = document.getElementById('resetBtn');
+
+        if (button) {
+            button.addEventListener('click', () => {
+                this.incrementCounter();
+                this.animateButton(button);
+
+                // Vibrate if supported
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(50);
+                }
+            });
+        }
+
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                this.resetCounter();
+            });
+        }
+    },
+
+    incrementCounter() {
+        this.currentCounter++;
+        this.updateCounterDisplay();
+
+        // Record the zikir
+        this.recordZikir(this.currentType);
+
+        // Check if target reached
+        if (this.currentTarget && this.currentCounter >= this.currentTarget) {
+            this.onTargetReached();
+        }
+    },
+
+    resetCounter() {
+        this.currentCounter = 0;
+        this.updateCounterDisplay();
+    },
+
+    updateCounterDisplay() {
+        const display = document.getElementById('counterDisplay');
+        const targetEl = document.getElementById('counterTarget');
+        const textEl = document.getElementById('currentZikirText');
+
+        if (display) {
+            display.textContent = this.currentCounter;
+        }
+
+        if (targetEl) {
+            if (this.currentTarget && this.currentType !== 'custom') {
+                targetEl.textContent = `/ ${this.currentTarget}`;
+            } else {
+                targetEl.textContent = '';
+            }
+        }
+
+        if (textEl) {
+            textEl.textContent = this.zikirTypes[this.currentType].name;
+        }
+    },
+
+    animateButton(button) {
+        const ripple = button.querySelector('.tasbih-ripple');
+        if (ripple) {
+            ripple.style.animation = 'none';
+            setTimeout(() => {
+                ripple.style.animation = 'ripple 0.6s ease-out';
+            }, 10);
+        }
+    },
+
+    onTargetReached() {
+        // Show a subtle notification
+        const textEl = document.getElementById('currentZikirText');
+        if (textEl) {
+            const originalText = textEl.textContent;
+            textEl.textContent = '🎉 Tamamlandı!';
+            textEl.style.color = '#10b981';
+
+            setTimeout(() => {
+                textEl.textContent = originalText;
+                textEl.style.color = '#06b6d4';
+            }, 2000);
+        }
+
+        // Auto reset after target
+        setTimeout(() => {
+            this.resetCounter();
+        }, 2000);
+    },
+
+    recordZikir(type) {
+        const today = new Date();
+        const dateKey = this.getDateKey(today);
+
+        // Initialize today if not exists
+        if (!this.zikirData.daily[dateKey]) {
+            this.zikirData.daily[dateKey] = {
+                subhanallah: 0,
+                alhamdulillah: 0,
+                allahuakbar: 0,
+                lailahaillallah: 0,
+                salawat: 0,
+                astagfirullah: 0,
+                custom: 0
+            };
+        }
+
+        // Increment counters
+        this.zikirData.daily[dateKey][type]++;
+        this.zikirData.totals[type]++;
+
+        this.saveData();
+        this.updateAllStats();
+        this.updateZikirCardCounts();
+    },
+
+    updateAllStats() {
+        this.updateTodayStats();
+        this.updateWeekStats();
+        this.updateMonthStats();
+        this.updateTotalStats();
+    },
+
+    updateTodayStats() {
+        const today = new Date();
+        const dateKey = this.getDateKey(today);
+        const todayData = this.zikirData.daily[dateKey] || {};
+
+        let total = 0;
+        for (let key in todayData) {
+            total += todayData[key];
+        }
+
+        const el = document.getElementById('todayZikir');
+        if (el) el.textContent = total;
+    },
+
+    updateWeekStats() {
+        const today = new Date();
+        const weekStart = new Date(today);
+        weekStart.setDate(today.getDate() - today.getDay());
+
+        let total = 0;
+        for (let i = 0; i <= today.getDay(); i++) {
+            const date = new Date(weekStart);
+            date.setDate(weekStart.getDate() + i);
+            const dateKey = this.getDateKey(date);
+            const dayData = this.zikirData.daily[dateKey] || {};
+
+            for (let key in dayData) {
+                total += dayData[key];
+            }
+        }
+
+        const el = document.getElementById('weekZikir');
+        if (el) el.textContent = total;
+    },
+
+    updateMonthStats() {
+        const today = new Date();
+        const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+
+        let total = 0;
+        for (let d = new Date(monthStart); d <= today; d.setDate(d.getDate() + 1)) {
+            const dateKey = this.getDateKey(d);
+            const dayData = this.zikirData.daily[dateKey] || {};
+
+            for (let key in dayData) {
+                total += dayData[key];
+            }
+        }
+
+        const el = document.getElementById('monthZikir');
+        if (el) el.textContent = total;
+    },
+
+    updateTotalStats() {
+        let grandTotal = 0;
+        for (let key in this.zikirData.totals) {
+            grandTotal += this.zikirData.totals[key];
+        }
+
+        const el = document.getElementById('totalZikir');
+        if (el) el.textContent = grandTotal;
+    },
+
+    updateZikirCardCounts() {
+        const zikirTypes = ['subhanallah', 'alhamdulillah', 'allahuakbar', 'lailahaillallah', 'salawat', 'astagfirullah'];
+
+        zikirTypes.forEach(type => {
+            const el = document.getElementById(`${type}Count`);
+            if (el) {
+                const count = this.zikirData.totals[type] || 0;
+                el.textContent = `${count} defa`;
+            }
+        });
+    },
+
+    setupAccordion() {
+        const headers = document.querySelectorAll('.dua-accordion-header');
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const target = header.getAttribute('data-target');
+                const content = document.getElementById(target);
+                const isActive = header.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.dua-accordion-header').forEach(h => {
+                    h.classList.remove('active');
+                });
+                document.querySelectorAll('.dua-accordion-content').forEach(c => {
+                    c.classList.remove('active');
+                });
+
+                // Open clicked if it wasn't active
+                if (!isActive) {
+                    header.classList.add('active');
+                    if (content) {
+                        content.classList.add('active');
+                    }
+                }
+            });
+        });
+    }
+};
+
 // Feature Cards Click Handlers
 function setupMoreFeatures() {
     // Ramazan Module
@@ -2051,9 +2354,21 @@ function setupMoreFeatures() {
 
     // Zikir Stats
     const zikirStatsCard = document.getElementById('zikirStatsCard');
+    const zikirModule = document.getElementById('zikirModule');
+    const zikirBackBtn = document.getElementById('zikirBackBtn');
+
     if (zikirStatsCard) {
         zikirStatsCard.addEventListener('click', () => {
-            alert('Zikir & Dua İstatistikleri: Tesbihat geçmişinizi görüntüleme özelliği yakında eklenecek!');
+            moreMenu.style.display = 'none';
+            zikirModule.style.display = 'block';
+            ZikirModule.init();
+        });
+    }
+
+    if (zikirBackBtn) {
+        zikirBackBtn.addEventListener('click', () => {
+            zikirModule.style.display = 'none';
+            moreMenu.style.display = 'block';
         });
     }
 }
