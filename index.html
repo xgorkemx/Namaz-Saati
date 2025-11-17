@@ -539,78 +539,140 @@
                     </div>
                 </div>
 
-                <!-- Enhanced Tesbihat -->
-                <div class="tesbihat-card">
-                    <h2>Tesbihat</h2>
+                <!-- Kandil & Özel Günler Module (Hidden by default) -->
+                <div class="kandil-module" id="kandilModule" style="display: none;">
+                    <button class="back-btn" id="kandilBackBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Geri
+                    </button>
 
-                    <!-- Prayer Selection -->
-                    <div class="tesbihat-selection">
-                        <button class="tesbihat-btn active" data-prayer="subhanallah">
-                            <span class="tesbihat-arabic">سُبْحَانَ اللهِ</span>
-                            <span class="tesbihat-name">Subhanallah</span>
-                        </button>
-                        <button class="tesbihat-btn" data-prayer="alhamdulillah">
-                            <span class="tesbihat-arabic">اَلْحَمْدُ لِلّهِ</span>
-                            <span class="tesbihat-name">Alhamdulillah</span>
-                        </button>
-                        <button class="tesbihat-btn" data-prayer="allahuakbar">
-                            <span class="tesbihat-arabic">اَللهُ أَكْبَرُ</span>
-                            <span class="tesbihat-name">Allahu Akbar</span>
-                        </button>
-                        <button class="tesbihat-btn" data-prayer="laилаха">
-                            <span class="tesbihat-arabic">لَا إِلَهَ إِلَّا اللهُ</span>
-                            <span class="tesbihat-name">Lâ ilâhe illallah</span>
-                        </button>
-                        <button class="tesbihat-btn" data-prayer="custom">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                            </svg>
-                            <span class="tesbihat-name">Serbest</span>
-                        </button>
+                    <div class="kandil-header">
+                        <h2>Kandil & Özel Günler</h2>
+                        <p class="kandil-subtitle">İslami Takvim ve Önemli Günler</p>
                     </div>
 
-                    <!-- Counter Display -->
-                    <div class="tesbihat-counter">
-                        <div class="counter-display" id="tesbihatCount">0</div>
-                        <div class="counter-label" id="tesbihatLabel">Subhanallah</div>
-                        <div class="counter-target" id="tesbihatTarget">Hedef: 33</div>
-                    </div>
+                    <div class="kandil-list">
+                        <!-- Regaib Kandili -->
+                        <div class="kandil-card">
+                            <div class="kandil-icon">🕌</div>
+                            <div class="kandil-content">
+                                <h3>Regaib Kandili</h3>
+                                <p class="kandil-date">Recep ayının ilk Cuma gecesi</p>
+                                <p class="kandil-description">Recep ayının ilk Cuma gecesi, Mübarek üç ayların başlangıcı olarak kutlanır.</p>
+                            </div>
+                        </div>
 
-                    <!-- Main Control Button -->
-                    <div class="tesbihat-main-control">
-                        <button class="tesbihat-btn-main" id="tesbihatIncrement">
-                            <span class="tap-text">Dokun</span>
-                        </button>
-                    </div>
+                        <!-- Miraç Kandili -->
+                        <div class="kandil-card">
+                            <div class="kandil-icon">🌟</div>
+                            <div class="kandil-content">
+                                <h3>Miraç Kandili</h3>
+                                <p class="kandil-date">27 Recep</p>
+                                <p class="kandil-description">Hz. Muhammed'in (s.a.v) göğe yükselişi ve Miraç hadisesinin yaşandığı gece.</p>
+                            </div>
+                        </div>
 
-                    <!-- Control Buttons -->
-                    <div class="tesbihat-controls">
-                        <button class="control-btn" id="tesbihatReset">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
-                                <path d="M21 3v5h-5"></path>
-                                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
-                                <path d="M3 21v-5h5"></path>
-                            </svg>
-                            Sıfırla
-                        </button>
-                        <button class="control-btn" id="tesbihatHistory">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 3h7v7H3z"></path>
-                                <path d="M14 3h7v7h-7z"></path>
-                                <path d="M14 14h7v7h-7z"></path>
-                                <path d="M3 14h7v7H3z"></path>
-                            </svg>
-                            Geçmiş
-                        </button>
-                    </div>
+                        <!-- Berat Kandili -->
+                        <div class="kandil-card">
+                            <div class="kandil-icon">✨</div>
+                            <div class="kandil-content">
+                                <h3>Berat Kandili</h3>
+                                <p class="kandil-date">15 Şaban</p>
+                                <p class="kandil-description">Bağışlanma, beraat ve kurtuluş gecesidir. İbadet ve dua ile değerlendirilir.</p>
+                            </div>
+                        </div>
 
-                    <!-- Preset Targets -->
-                    <div class="tesbihat-presets">
-                        <button class="preset-btn active" data-target="33">33</button>
-                        <button class="preset-btn" data-target="99">99</button>
-                        <button class="preset-btn" data-target="100">100</button>
-                        <button class="preset-btn" data-target="1000">1000</button>
+                        <!-- Kadir Gecesi -->
+                        <div class="kandil-card special">
+                            <div class="kandil-icon">🌙</div>
+                            <div class="kandil-content">
+                                <h3>Kadir Gecesi</h3>
+                                <p class="kandil-date">27 Ramazan (Ramazan'ın son 10 gününde)</p>
+                                <p class="kandil-description">Kur'an-ı Kerim'in indirilmeye başlandığı gece. Bin aydan hayırlıdır.</p>
+                            </div>
+                        </div>
+
+                        <!-- Ramazan Bayramı -->
+                        <div class="kandil-card holiday">
+                            <div class="kandil-icon">🎉</div>
+                            <div class="kandil-content">
+                                <h3>Ramazan Bayramı (Şeker Bayramı)</h3>
+                                <p class="kandil-date">1 Şevval (3 gün)</p>
+                                <p class="kandil-description">Ramazan orucunun sona ermesiyle kutlanan bayram. Sadaka-i fıtır verilir.</p>
+                            </div>
+                        </div>
+
+                        <!-- Arefe Günü -->
+                        <div class="kandil-card">
+                            <div class="kandil-icon">⛰️</div>
+                            <div class="kandil-content">
+                                <h3>Arefe Günü</h3>
+                                <p class="kandil-date">9 Zilhicce</p>
+                                <p class="kandil-description">Hacıların Arafat'ta vakfe yaptığı gün. Oruç tutmak sünnettir.</p>
+                            </div>
+                        </div>
+
+                        <!-- Kurban Bayramı -->
+                        <div class="kandil-card holiday">
+                            <div class="kandil-icon">🎊</div>
+                            <div class="kandil-content">
+                                <h3>Kurban Bayramı (Büyük Bayram)</h3>
+                                <p class="kandil-date">10 Zilhicce (4 gün)</p>
+                                <p class="kandil-description">Hz. İbrahim'in kurban kesme emrine uymasının hatırası. Kurban kesilir.</p>
+                            </div>
+                        </div>
+
+                        <!-- Muharrem Ayı -->
+                        <div class="kandil-card">
+                            <div class="kandil-icon">🌾</div>
+                            <div class="kandil-content">
+                                <h3>Muharrem Ayı</h3>
+                                <p class="kandil-date">Hicri yılın ilk ayı</p>
+                                <p class="kandil-description">Haram ayların ilki. Özellikle Aşure günü (10 Muharrem) önemlidir.</p>
+                            </div>
+                        </div>
+
+                        <!-- Aşure Günü -->
+                        <div class="kandil-card">
+                            <div class="kandil-icon">🍲</div>
+                            <div class="kandil-content">
+                                <h3>Aşure Günü</h3>
+                                <p class="kandil-date">10 Muharrem</p>
+                                <p class="kandil-description">Hz. Nuh'un gemiden inişi, Hz. Musa'nın Firavun'dan kurtuluşu gibi birçok önemli olayın yaşandığı gün.</p>
+                            </div>
+                        </div>
+
+                        <!-- Mevlid Kandili -->
+                        <div class="kandil-card">
+                            <div class="kandil-icon">🕯️</div>
+                            <div class="kandil-content">
+                                <h3>Mevlid Kandili</h3>
+                                <p class="kandil-date">12 Rebiülevvel</p>
+                                <p class="kandil-description">Hz. Muhammed'in (s.a.v) doğum günü. Mevlid okutulur ve salavat getirilir.</p>
+                            </div>
+                        </div>
+
+                        <!-- Üç Aylar -->
+                        <div class="kandil-card">
+                            <div class="kandil-icon">📅</div>
+                            <div class="kandil-content">
+                                <h3>Üç Aylar (Recep, Şaban, Ramazan)</h3>
+                                <p class="kandil-date">Recep ayından başlar</p>
+                                <p class="kandil-description">Mübarek üç aylar dönemi. İbadet ve kulluk için bereketli zamandır.</p>
+                            </div>
+                        </div>
+
+                        <!-- Cuma Günü -->
+                        <div class="kandil-card">
+                            <div class="kandil-icon">🕌</div>
+                            <div class="kandil-content">
+                                <h3>Cuma Günü</h3>
+                                <p class="kandil-date">Her hafta Cuma</p>
+                                <p class="kandil-description">Haftanın en mübarek günü. Cuma namazı farzdır. Salavat getirilir.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

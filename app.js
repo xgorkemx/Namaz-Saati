@@ -1526,7 +1526,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize features
     setTimeout(() => {
         QuranReader.init();
-        Tesbihat.init();
         EsmaulHusna.init();
         DailyHadith.init();
     }, 500);
@@ -1678,9 +1677,20 @@ function setupMoreFeatures() {
 
     // Kandil Module
     const kandilCard = document.getElementById('kandilCard');
+    const kandilModule = document.getElementById('kandilModule');
+    const kandilBackBtn = document.getElementById('kandilBackBtn');
+
     if (kandilCard) {
         kandilCard.addEventListener('click', () => {
-            alert('Kandil & Özel Günler: Önemli kandil ve dini günler bilgilendirmesi yakında eklenecek!');
+            moreMenu.style.display = 'none';
+            kandilModule.style.display = 'block';
+        });
+    }
+
+    if (kandilBackBtn) {
+        kandilBackBtn.addEventListener('click', () => {
+            kandilModule.style.display = 'none';
+            moreMenu.style.display = 'block';
         });
     }
 

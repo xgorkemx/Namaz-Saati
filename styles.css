@@ -2310,6 +2310,93 @@ select:focus-visible {
     border-color: var(--primary-color);
 }
 
+/* ==========================================
+   Kandil & Özel Günler Module
+   ========================================== */
+.kandil-module {
+    animation: fadeIn var(--transition-base);
+}
+
+.kandil-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.kandil-header h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.kandil-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+}
+
+.kandil-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.kandil-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid transparent;
+    transition: all var(--transition-base);
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.kandil-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.kandil-card.special {
+    background: linear-gradient(to right, rgba(212, 175, 55, 0.1), var(--surface));
+    border-color: var(--secondary-color);
+}
+
+.kandil-card.holiday {
+    background: linear-gradient(to right, rgba(26, 71, 42, 0.08), var(--surface));
+    border-color: #10b981;
+}
+
+.kandil-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.kandil-content {
+    flex: 1;
+}
+
+.kandil-content h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.kandil-date {
+    font-size: var(--font-size-sm);
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.kandil-description {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
 /* Responsive adjustments for 5 tabs */
 @media (max-width: 480px) {
     .tab-btn {
