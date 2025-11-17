@@ -1539,13 +1539,140 @@ setInterval(checkEnhancedPrayerNotification, 60000);
 // More Tab Features
 // ==========================================
 
+// Ramazan Module
+const RamazanModule = {
+    fastingData: {},
+    ramazanDays: [],
+
+    init() {
+        this.loadData();
+        this.generateRemainingDays();
+        this.setupFastingButtons();
+        this.updateStats();
+    },
+
+    loadData() {
+        const saved = localStorage.getItem('ramazanFasting');
+        this.fastingData = saved ? JSON.parse(saved) : {};
+    },
+
+    saveData() {
+        localStorage.setItem('ramazanFasting', JSON.stringify(this.fastingData));
+    },
+
+    generateRemainingDays() {
+        const remainingDays = document.getElementById('remainingDays');
+        if (!remainingDays) return;
+
+        remainingDays.innerHTML = '';
+
+        // Ramazan 2025 başlangıç tarihi (örnek: 1 Mart 2025)
+        const startDate = new Date('2025-03-01');
+
+        // Generate days 4-30
+        for (let day = 4; day <= 30; day++) {
+            const currentDate = new Date(startDate);
+            currentDate.setDate(startDate.getDate() + (day - 1));
+
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'calendar-day';
+            dayDiv.setAttribute('data-day', day);
+
+            // Calculate prayer times (simplified - decreasing sahur, increasing iftar)
+            const sahurHour = 5;
+            const sahurMinute = Math.max(10, 30 - (day - 1));
+            const iftarHour = 18;
+            const iftarMinute = Math.min(45, 15 + (day - 1));
+
+            dayDiv.innerHTML = `
+                <div class="day-header">
+                    <span class="day-number">${day}. Gün</span>
+                    <span class="day-date">${currentDate.getDate()} ${this.getMonthName(currentDate.getMonth())} 2025</span>
+                </div>
+                <div class="day-times">
+                    <div class="time-item">
+                        <span class="time-label">Sahur:</span>
+                        <span class="time-value">${String(sahurHour).padStart(2, '0')}:${String(sahurMinute).padStart(2, '0')}</span>
+                    </div>
+                    <div class="time-item">
+                        <span class="time-label">İftar:</span>
+                        <span class="time-value">${String(iftarHour).padStart(2, '0')}:${String(iftarMinute).padStart(2, '0')}</span>
+                    </div>
+                </div>
+                <button class="fast-check-btn" data-day="${day}">✓ Oruç Tuttum</button>
+            `;
+
+            remainingDays.appendChild(dayDiv);
+        }
+    },
+
+    getMonthName(month) {
+        const months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+                       'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+        return months[month];
+    },
+
+    setupFastingButtons() {
+        const buttons = document.querySelectorAll('.fast-check-btn');
+        buttons.forEach(btn => {
+            const day = btn.getAttribute('data-day');
+
+            // Restore saved state
+            if (this.fastingData[day]) {
+                btn.classList.add('checked');
+                btn.closest('.calendar-day').classList.add('completed');
+            }
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const dayNum = btn.getAttribute('data-day');
+                const dayCard = btn.closest('.calendar-day');
+
+                if (this.fastingData[dayNum]) {
+                    delete this.fastingData[dayNum];
+                    btn.classList.remove('checked');
+                    dayCard.classList.remove('completed');
+                } else {
+                    this.fastingData[dayNum] = true;
+                    btn.classList.add('checked');
+                    dayCard.classList.add('completed');
+                }
+
+                this.saveData();
+                this.updateStats();
+            });
+        });
+    },
+
+    updateStats() {
+        const fastingDaysCount = Object.keys(this.fastingData).length;
+        const fastingDaysEl = document.getElementById('fastingDays');
+        if (fastingDaysEl) {
+            fastingDaysEl.textContent = fastingDaysCount;
+        }
+    }
+};
+
 // Feature Cards Click Handlers
 function setupMoreFeatures() {
     // Ramazan Module
     const ramazanCard = document.getElementById('ramazanCard');
+    const ramazanModule = document.getElementById('ramazanModule');
+    const moreMenu = document.querySelector('.more-menu');
+    const ramazanBackBtn = document.getElementById('ramazanBackBtn');
+
     if (ramazanCard) {
         ramazanCard.addEventListener('click', () => {
-            alert('Ramazan Özel Modülü: İftar ve Sahur vakitleri, Ramazan takvimi yakında eklenecek!');
+            moreMenu.style.display = 'none';
+            ramazanModule.style.display = 'block';
+            RamazanModule.init();
+        });
+    }
+
+    if (ramazanBackBtn) {
+        ramazanBackBtn.addEventListener('click', () => {
+            ramazanModule.style.display = 'none';
+            moreMenu.style.display = 'block';
         });
     }
 
