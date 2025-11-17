@@ -2402,8 +2402,48 @@ const AbdestModule = {
     }
 };
 
+// Namaz Module
+const NamazModule = {
+    init() {
+        const namazCard = document.getElementById('namazCard');
+        const namazModule = document.getElementById('namazModule');
+        const namazBackBtn = document.getElementById('namazBackBtn');
+        const moreMenu = document.querySelector('.more-menu');
+
+        // Navigate to Namaz module
+        if (namazCard) {
+            namazCard.addEventListener('click', () => {
+                if (moreMenu) moreMenu.style.display = 'none';
+                if (namazModule) namazModule.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Navigate back to More menu
+        if (namazBackBtn) {
+            namazBackBtn.addEventListener('click', () => {
+                if (namazModule) namazModule.style.display = 'none';
+                if (moreMenu) moreMenu.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Rakaat selector functionality
+        const rakaatBtns = document.querySelectorAll('.rakaat-btn');
+        rakaatBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                rakaatBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+            });
+        });
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
     AbdestModule.init();
+    NamazModule.init();
 });

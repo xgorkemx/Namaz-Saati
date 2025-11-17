@@ -4101,3 +4101,476 @@ select:focus-visible {
         font-size: 1.1rem;
     }
 }
+
+/* ==========================================
+   NAMAZ MODULE
+   ========================================== */
+
+.namaz-module {
+    padding: var(--spacing-xl) 0;
+}
+
+.namaz-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.namaz-header h2 {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.namaz-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Namaz Info Card */
+.namaz-info-card {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    color: white;
+}
+
+.namaz-info-card h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.25rem;
+}
+
+.namaz-info-card p {
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+}
+
+.namaz-info-card p:last-child {
+    margin-bottom: 0;
+}
+
+.namaz-ayah {
+    background: rgba(255, 255, 255, 0.15);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-left: 4px solid rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+}
+
+.namaz-hadith {
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+}
+
+/* Vakit Namazları */
+.vakit-namazlari {
+    margin-bottom: var(--spacing-xl);
+}
+
+.vakit-namazlari h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.3rem;
+}
+
+.vakit-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.vakit-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base);
+    border-top: 4px solid;
+}
+
+.vakit-card:hover {
+    transform: translateY(-4px);
+}
+
+.vakit-card.sabah {
+    border-top-color: #f59e0b;
+}
+
+.vakit-card.ogle {
+    border-top-color: #f97316;
+}
+
+.vakit-card.ikindi {
+    border-top-color: #eab308;
+}
+
+.vakit-card.aksam {
+    border-top-color: #8b5cf6;
+}
+
+.vakit-card.yatsi {
+    border-top-color: #3b82f6;
+}
+
+.vakit-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.vakit-card h4 {
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.2rem;
+}
+
+.rekat-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.rekat-badge {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.rekat-badge.farz {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+}
+
+.rekat-badge.sunnet {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.rekat-badge.vitir {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+}
+
+.vakit-time {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Şart Section */
+.shart-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.shart-section h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.shart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.shart-category {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.category-title {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.1rem;
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.shart-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.shart-item {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--background);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+}
+
+.shart-item:hover {
+    background: var(--surface-hover);
+    transform: translateX(4px);
+}
+
+.shart-number {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.shart-content strong {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.95rem;
+}
+
+.shart-content p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Namaz Steps */
+.namaz-steps-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.namaz-steps-section h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.3rem;
+}
+
+.rakaat-selector {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-sm);
+}
+
+.rakaat-btn {
+    flex: 1;
+    padding: var(--spacing-md);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.rakaat-btn.active {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.rakaat-btn:hover:not(.active) {
+    background: var(--surface-hover);
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.step-card.namaz-step {
+    background: var(--surface);
+    border-left: 4px solid #10b981;
+}
+
+.step-arabic-small {
+    font-size: 1rem;
+    direction: rtl;
+    text-align: right;
+    color: var(--primary-color);
+    line-height: 1.8;
+    margin: var(--spacing-sm) 0;
+}
+
+.step-note.rakaat-2,
+.step-note.rakaat-34 {
+    background: var(--surface-hover);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    margin-top: var(--spacing-sm);
+    border-left: 3px solid #10b981;
+}
+
+/* Namaz Breaks */
+.namaz-breaks {
+    margin-bottom: var(--spacing-xl);
+}
+
+.namaz-breaks h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.3rem;
+}
+
+/* Sehiv Section */
+.sehiv-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.sehiv-section h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.3rem;
+}
+
+.sehiv-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid #f59e0b;
+}
+
+.sehiv-desc {
+    color: #92400e;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+    font-size: 1rem;
+}
+
+.sehiv-durumlari,
+.sehiv-nasil {
+    background: rgba(255, 255, 255, 0.6);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.sehiv-durumlari:last-child,
+.sehiv-nasil:last-child {
+    margin-bottom: 0;
+}
+
+.sehiv-durumlari h4,
+.sehiv-nasil h4 {
+    color: #92400e;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.05rem;
+}
+
+.sehiv-durumlari ul {
+    margin: 0;
+    padding-left: var(--spacing-lg);
+    color: #78350f;
+}
+
+.sehiv-durumlari li {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.5;
+}
+
+.sehiv-nasil p {
+    color: #78350f;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Reminder Cards Namaz */
+.reminder-cards-namaz {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.reminder-card-namaz {
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base);
+}
+
+.reminder-card-namaz:hover {
+    transform: translateY(-2px);
+}
+
+.reminder-card-namaz.success {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border-left: 4px solid #10b981;
+}
+
+.reminder-card-namaz.info {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-left: 4px solid #3b82f6;
+}
+
+.reminder-card-namaz.warning {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 4px solid #f59e0b;
+}
+
+.reminder-card-namaz.primary {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    border-left: 4px solid #6366f1;
+}
+
+.reminder-icon-namaz {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.reminder-card-namaz h4 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.reminder-card-namaz p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0;
+}
+
+/* Responsive for Namaz Module */
+@media (max-width: 768px) {
+    .vakit-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .shart-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rakaat-selector {
+        flex-direction: row;
+    }
+
+    .reminder-cards-namaz {
+        grid-template-columns: 1fr;
+    }
+
+    .step-arabic-small {
+        font-size: 0.9rem;
+    }
+}

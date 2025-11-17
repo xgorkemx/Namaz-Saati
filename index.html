@@ -416,6 +416,24 @@
                         </svg>
                     </div>
 
+                    <!-- Namaz Module -->
+                    <div class="feature-card" id="namazCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Namaz Kılma Rehberi</h3>
+                            <p>Namaz nasıl kılınır, farzları ve rükünleri</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
                 </div>
 
                 <!-- Ramazan Module (Hidden by default) -->
@@ -1733,6 +1751,402 @@
                     <div class="reminder-icon-abdest">📿</div>
                     <h4>Abdest Duası</h4>
                     <p>Abdest sonrası Kelime-i Şehadet getirmek, cennet kapılarını açar. Unutmayın!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Namaz Module -->
+    <div class="namaz-module" id="namazModule" style="display: none;">
+        <button class="back-btn" id="namazBackBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Geri
+        </button>
+
+        <div class="namaz-header">
+            <h2>🕌 Namaz Kılma Rehberi</h2>
+            <p class="namaz-subtitle">Namaz nasıl kılınır, farzları ve rükünleri</p>
+        </div>
+
+        <!-- Namaz Nedir -->
+        <div class="namaz-info-card">
+            <h3>Namaz Nedir?</h3>
+            <p>Namaz, İslam'ın beş şartından biri ve dinin direğidir. Belirli şartlar ve rükünlerle Allah'a kulluk yapılan, günde beş vakit kılınması farz olan en önemli ibadettir.</p>
+            <p class="namaz-ayah">"Şüphesiz namaz, müminler üzerine belirli vakitlerde farz kılınmıştır." <strong>(Nisa Suresi, 103)</strong></p>
+            <p class="namaz-hadith">"Namaz dinin direğidir. Kim namazı ikame ederse dini ikame etmiş, kim namazı terk ederse dini yıkmış olur." <strong>(Hadis-i Şerif)</strong></p>
+        </div>
+
+        <!-- Vakit Namazları -->
+        <div class="vakit-namazlari">
+            <h3>🕐 Beş Vakit Namaz ve Rekatları</h3>
+            <div class="vakit-cards">
+                <div class="vakit-card sabah">
+                    <div class="vakit-icon">🌅</div>
+                    <h4>Sabah Namazı</h4>
+                    <div class="rekat-info">
+                        <span class="rekat-badge sunnet">2 Sünnet</span>
+                        <span class="rekat-badge farz">2 Farz</span>
+                    </div>
+                    <p class="vakit-time">Tan yeri ağarınca - Güneş doğana kadar</p>
+                </div>
+                <div class="vakit-card ogle">
+                    <div class="vakit-icon">☀️</div>
+                    <h4>Öğle Namazı</h4>
+                    <div class="rekat-info">
+                        <span class="rekat-badge sunnet">4 Sünnet</span>
+                        <span class="rekat-badge farz">4 Farz</span>
+                        <span class="rekat-badge sunnet">2 Sünnet</span>
+                    </div>
+                    <p class="vakit-time">Güneş tepe noktasından - İkindiye kadar</p>
+                </div>
+                <div class="vakit-card ikindi">
+                    <div class="vakit-icon">🌤️</div>
+                    <h4>İkindi Namazı</h4>
+                    <div class="rekat-info">
+                        <span class="rekat-badge sunnet">4 Sünnet</span>
+                        <span class="rekat-badge farz">4 Farz</span>
+                    </div>
+                    <p class="vakit-time">Öğleden sonra - Güneş batana kadar</p>
+                </div>
+                <div class="vakit-card aksam">
+                    <div class="vakit-icon">🌆</div>
+                    <h4>Akşam Namazı</h4>
+                    <div class="rekat-info">
+                        <span class="rekat-badge farz">3 Farz</span>
+                        <span class="rekat-badge sunnet">2 Sünnet</span>
+                    </div>
+                    <p class="vakit-time">Güneş battıktan - Şafak kaybolana kadar</p>
+                </div>
+                <div class="vakit-card yatsi">
+                    <div class="vakit-icon">🌙</div>
+                    <h4>Yatsı Namazı</h4>
+                    <div class="rekat-info">
+                        <span class="rekat-badge sunnet">4 Sünnet</span>
+                        <span class="rekat-badge farz">4 Farz</span>
+                        <span class="rekat-badge sunnet">2 Sünnet</span>
+                        <span class="rekat-badge vitir">3 Vitir</span>
+                    </div>
+                    <p class="vakit-time">Akşam şafağından - Tan yeri ağarana kadar</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Namazın Şartları -->
+        <div class="shart-section">
+            <h3>⭐ Namazın 12 Şartı</h3>
+            <div class="shart-grid">
+                <div class="shart-category">
+                    <h4 class="category-title">Namaz Öncesi Şartlar (6)</h4>
+                    <div class="shart-list">
+                        <div class="shart-item">
+                            <span class="shart-number">1</span>
+                            <div class="shart-content">
+                                <strong>Hadesten Taharet</strong>
+                                <p>Abdestli olmak</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">2</span>
+                            <div class="shart-content">
+                                <strong>Necasetten Taharet</strong>
+                                <p>Beden, elbise ve yer temiz olmalı</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">3</span>
+                            <div class="shart-content">
+                                <strong>Setr-i Avret</strong>
+                                <p>Avret yerlerini örtmek</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">4</span>
+                            <div class="shart-content">
+                                <strong>İstikbal-i Kıble</strong>
+                                <p>Kıbleye dönmek</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">5</span>
+                            <div class="shart-content">
+                                <strong>Vakit</strong>
+                                <p>Namaz vaktinin girmiş olması</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">6</span>
+                            <div class="shart-content">
+                                <strong>Niyet</strong>
+                                <p>Kalben hangi namazı kılacağına niyet etmek</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shart-category">
+                    <h4 class="category-title">Namazın Rükünleri (6)</h4>
+                    <div class="shart-list">
+                        <div class="shart-item">
+                            <span class="shart-number">1</span>
+                            <div class="shart-content">
+                                <strong>İftitah Tekbiri</strong>
+                                <p>"Allahu Ekber" diyerek başlamak</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">2</span>
+                            <div class="shart-content">
+                                <strong>Kıyam</strong>
+                                <p>Ayakta durmak</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">3</span>
+                            <div class="shart-content">
+                                <strong>Kıraat</strong>
+                                <p>Kur'an okumak (Fatiha)</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">4</span>
+                            <div class="shart-content">
+                                <strong>Rükû</strong>
+                                <p>Eğilmek</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">5</span>
+                            <div class="shart-content">
+                                <strong>Secde</strong>
+                                <p>İki kez secde etmek</p>
+                            </div>
+                        </div>
+                        <div class="shart-item">
+                            <span class="shart-number">6</span>
+                            <div class="shart-content">
+                                <strong>Ka'de-i Ahire</strong>
+                                <p>Son oturuş</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Namaz Kılma Adımları -->
+        <div class="namaz-steps-section">
+            <h3>📿 Namaz Nasıl Kılınır?</h3>
+
+            <div class="rakaat-selector">
+                <button class="rakaat-btn active" data-rakaat="2">2 Rekat</button>
+                <button class="rakaat-btn" data-rakaat="3">3 Rekat</button>
+                <button class="rakaat-btn" data-rakaat="4">4 Rekat</button>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card namaz-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Niyet ve İftitah Tekbiri</h4>
+                        <p>Kıbleye dönülür ve kalben niyet edilir. Eller kulak hizasına kaldırılıp "Allahu Ekber" denir.</p>
+                        <p class="step-arabic">اللهُ أَكْبَر</p>
+                        <p class="step-note">Eller göbek altında sağ üste sol bağlanır (erkekler için).</p>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Subhaneke Duası</h4>
+                        <p class="step-arabic">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلَا إِلَهَ غَيْرُكَ</p>
+                        <p class="step-translation">"Seni noksan sıfatlardan tenzih ederim Allahım. Seni hamd ile tesbih ederim. Senin adın mübarektir. Senin şanın çok yücedir. Senden başka ilah yoktur."</p>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Euzü-Besmele</h4>
+                        <p class="step-arabic">أَعُوذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</p>
+                        <p class="step-translation">"Kovulmuş şeytandan Allah'a sığınırım."</p>
+                        <p class="step-arabic">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                        <p class="step-translation">"Rahman ve Rahim olan Allah'ın adıyla."</p>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step farz-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Fatiha Suresi</h4>
+                        <p>Her rekatta Fatiha suresi okunur.</p>
+                        <p class="step-arabic">اَلْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۞ اَلرَّحْمَنِ الرَّحِيمِ ۞ مَالِكِ يَوْمِ الدِّينِ ۞ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ۞ اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۞ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</p>
+                        <span class="farz-badge">RÜKÜN</span>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Zamm-ı Sure</h4>
+                        <p>İlk iki rekatta Fatiha'dan sonra bir sure veya en az 3 ayet okunur.</p>
+                        <p class="step-note">İhlas, Felak, Nas, Kevser gibi kısa sureler okunabilir.</p>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step farz-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h4>Rükû</h4>
+                        <p>"Allahu Ekber" diyerek rükûa eğilir. Eller dizlere konur.</p>
+                        <p class="step-arabic">سُبْحَانَ رَبِّيَ الْعَظِيمِ (3 defa)</p>
+                        <p class="step-translation">"Yüce Rabbimi her türlü eksiklikten tenzih ederim."</p>
+                        <span class="farz-badge">RÜKÜN</span>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <h4>Kıyam (Rükûdan Kalkma)</h4>
+                        <p class="step-arabic">سَمِعَ اللهُ لِمَنْ حَمِدَهُ</p>
+                        <p class="step-translation">"Allah, kendisine hamd edeni işitir."</p>
+                        <p class="step-arabic">رَبَّنَا لَكَ الْحَمْدُ</p>
+                        <p class="step-translation">"Rabbimiz! Hamd sana mahsustur."</p>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step farz-step">
+                    <div class="step-number">8</div>
+                    <div class="step-content">
+                        <h4>Secde (2 defa)</h4>
+                        <p>"Allahu Ekber" diyerek secdeye gidilir. Alın, burun, eller, dizler ve ayak parmakları yere değer.</p>
+                        <p class="step-arabic">سُبْحَانَ رَبِّيَ الْأَعْلَى (3 defa)</p>
+                        <p class="step-translation">"En yüce Rabbimi her türlü eksiklikten tenzih ederim."</p>
+                        <p class="step-note">İki secde arasında kısa bir oturuş yapılır.</p>
+                        <span class="farz-badge">RÜKÜN</span>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step">
+                    <div class="step-number">9</div>
+                    <div class="step-content">
+                        <h4>Ka'de (Oturuş) - İlk Oturuş</h4>
+                        <p>İkinci rekatın sonunda oturulur ve Ettehıyyatü okunur.</p>
+                        <p class="step-arabic">اَلتَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ ، اَلسَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ ، اَلسَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللهِ الصَّالِحِينَ ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</p>
+                        <p class="step-note rakaat-2">2 rekatlık namazlarda buradan 10. adıma geçilir.</p>
+                        <p class="step-note rakaat-34">3-4 rekatlık namazlarda ayağa kalkılır.</p>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step farz-step">
+                    <div class="step-number">10</div>
+                    <div class="step-content">
+                        <h4>Son Oturuş</h4>
+                        <p>Son rekatta Ettehıyyatü'den sonra Salli ve Barik duaları okunur.</p>
+                        <p class="step-arabic-small">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ</p>
+                        <p class="step-arabic-small">اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ</p>
+                        <p class="step-note">Rabbena duası da okunabilir.</p>
+                        <span class="farz-badge">RÜKÜN</span>
+                    </div>
+                </div>
+
+                <div class="step-card namaz-step">
+                    <div class="step-number">11</div>
+                    <div class="step-content">
+                        <h4>Selam Vermek</h4>
+                        <p>Önce sağa, sonra sola başı çevirerek selam verilir.</p>
+                        <p class="step-arabic">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ</p>
+                        <p class="step-translation">"Allah'ın selamı ve rahmeti üzerinize olsun."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Namazı Bozan Durumlar -->
+        <div class="namaz-breaks">
+            <h3>⚠️ Namazı Bozan Durumlar</h3>
+            <div class="breaks-grid">
+                <div class="break-item">
+                    <span class="break-icon">❌</span>
+                    <p>Abdest bozulması</p>
+                </div>
+                <div class="break-item">
+                    <span class="break-icon">🗣️</span>
+                    <p>Namazda konuşmak</p>
+                </div>
+                <div class="break-item">
+                    <span class="break-icon">🍽️</span>
+                    <p>Yemek veya içmek</p>
+                </div>
+                <div class="break-item">
+                    <span class="break-icon">↩️</span>
+                    <p>Kıbleden dönmek</p>
+                </div>
+                <div class="break-item">
+                    <span class="break-icon">🚶</span>
+                    <p>Çok hareket etmek</p>
+                </div>
+                <div class="break-item">
+                    <span class="break-icon">😂</span>
+                    <p>Gülmek (sesli)</p>
+                </div>
+                <div class="break-item">
+                    <span class="break-icon">🩸</span>
+                    <p>Necaset bulaşması</p>
+                </div>
+                <div class="break-item">
+                    <span class="break-icon">👕</span>
+                    <p>Avret açılması</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sehiv Secdesi -->
+        <div class="sehiv-section">
+            <h3>🙏 Sehiv (Unutkanlık) Secdesi</h3>
+            <div class="sehiv-card">
+                <p class="sehiv-desc">Namazda bir vacip unutulur veya tereddüt edilirse, namazın sonunda selam vermeden önce iki secde yapılır. Buna sehiv secdesi denir.</p>
+                <div class="sehiv-durumlari">
+                    <h4>Sehiv Secdesi Gereken Durumlar:</h4>
+                    <ul>
+                        <li>Namazda bir vacibi terk etmek</li>
+                        <li>Farz bir ameli geciktirmek</li>
+                        <li>Kıraatte şüpheye düşmek</li>
+                        <li>Oturuş yerinde tereddüt etmek</li>
+                    </ul>
+                </div>
+                <div class="sehiv-nasil">
+                    <h4>Nasıl Yapılır?</h4>
+                    <p>Son oturuşta Ettehıyyatü okuduktan sonra, selam vermeden iki secde yapılır, tekrar oturup Ettehıyyatü, Salli-Barik okunur ve selam verilir.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Önemli Hatırlatmalar -->
+        <div class="reminder-section">
+            <h3>💡 Önemli Hatırlatmalar</h3>
+            <div class="reminder-cards-namaz">
+                <div class="reminder-card-namaz success">
+                    <div class="reminder-icon-namaz">⏰</div>
+                    <h4>Vakitinde Kılın</h4>
+                    <p>Namazı vaktinde kılmak büyük sevaptır. Geciktirmeden kılmaya özen gösterin.</p>
+                </div>
+                <div class="reminder-card-namaz info">
+                    <div class="reminder-icon-namaz">🕌</div>
+                    <h4>Cemaatle Kılın</h4>
+                    <p>Cemaate kılınan namaz 27 derece daha faziletlidir. Özellikle erkekler için camide kılmak sünnettir.</p>
+                </div>
+                <div class="reminder-card-namaz warning">
+                    <div class="reminder-icon-namaz">🧘</div>
+                    <h4>Huşu ile Kılın</h4>
+                    <p>Namazda kalp ve beden huzuru içinde olmalı. Allah'ın huzurunda olduğunuzu hissedin.</p>
+                </div>
+                <div class="reminder-card-namaz primary">
+                    <div class="reminder-icon-namaz">📖</div>
+                    <h4>Kur'an Öğrenin</h4>
+                    <p>Namazda okumak için kısa sureleri ezberleyin. Her gün biraz daha öğrenmeye çalışın.</p>
                 </div>
             </div>
         </div>
