@@ -1521,7 +1521,6 @@ function checkEnhancedPrayerNotification() {
 // Initialize all new features
 document.addEventListener('DOMContentLoaded', () => {
     setupTabNavigation();
-    setupAudioPlayer();
     setupEnhancedNotifications();
 
     // Initialize features
