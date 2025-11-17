@@ -54,14 +54,21 @@
                         <line x1="10" y1="8" x2="16" y2="8"></line>
                         <line x1="10" y1="12" x2="16" y2="12"></line>
                     </svg>
-                    <span>Kur'an & Hatim</span>
+                    <span>Kur'an</span>
+                </button>
+                <button class="tab-btn" data-tab="esma">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                        <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+                    </svg>
+                    <span>Esma</span>
                 </button>
                 <button class="tab-btn" data-tab="qibla">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
                     </svg>
-                    <span>Kıble & Dualar</span>
+                    <span>Kıble</span>
                 </button>
             </div>
         </div>
@@ -317,6 +324,20 @@
             </div>
         </div>
 
+        <!-- Esma-ül Hüsna Tab -->
+        <div class="tab-content" id="esmaTab">
+            <div class="container">
+                <!-- Esma-ül Hüsna -->
+                <div class="esma-card">
+                    <h2>Esma-ül Hüsna</h2>
+                    <p class="esma-subtitle">Allah'ın 99 İsmi</p>
+                    <div class="esma-grid" id="esmaGrid">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Qibla & Prayers Tab -->
         <div class="tab-content" id="qiblaTab">
             <div class="container">
@@ -460,15 +481,6 @@
                         <button class="preset-btn" data-target="99">99</button>
                         <button class="preset-btn" data-target="100">100</button>
                         <button class="preset-btn" data-target="1000">1000</button>
-                    </div>
-                </div>
-
-                <!-- Esma-ül Hüsna -->
-                <div class="esma-card">
-                    <h2>Esma-ül Hüsna</h2>
-                    <p class="esma-subtitle">Allah'ın 99 İsmi</p>
-                    <div class="esma-grid" id="esmaGrid">
-                        <!-- Will be populated by JavaScript -->
                     </div>
                 </div>
             </div>
