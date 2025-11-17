@@ -276,25 +276,185 @@
         <!-- Qibla & Prayers Tab -->
         <div class="tab-content" id="qiblaTab">
             <div class="container">
-                <!-- Qibla Direction -->
-                <div class="qibla-card">
-                    <h3 class="qibla-title">Kıble Yönü</h3>
-                    <div class="qibla-compass">
-                        <div class="compass-circle">
-                            <div class="compass-arrow" id="qiblaArrow">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
+                <!-- Advanced Qibla Compass -->
+                <div class="advanced-qibla-card">
+                    <div class="qibla-header">
+                        <h2 class="qibla-main-title">Gelişmiş Kıble Pusulanı</h2>
+                        <p class="qibla-subtitle">Hassas kıble yönü ve Kabe bilgileri</p>
+                    </div>
+
+                    <!-- Location Info Card -->
+                    <div class="qibla-location-card">
+                        <div class="location-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="location-details">
+                            <div class="location-name" id="qiblaLocationName">Konum Alınıyor...</div>
+                            <div class="location-coords" id="qiblaCoords">--</div>
+                        </div>
+                    </div>
+
+                    <!-- Main Compass -->
+                    <div class="advanced-qibla-compass">
+                        <div class="compass-outer-ring">
+                            <div class="compass-degree-markers">
+                                <span class="degree-mark" style="--angle: 0deg;">0°</span>
+                                <span class="degree-mark" style="--angle: 45deg;">45°</span>
+                                <span class="degree-mark" style="--angle: 90deg;">90°</span>
+                                <span class="degree-mark" style="--angle: 135deg;">135°</span>
+                                <span class="degree-mark" style="--angle: 180deg;">180°</span>
+                                <span class="degree-mark" style="--angle: 225deg;">225°</span>
+                                <span class="degree-mark" style="--angle: 270deg;">270°</span>
+                                <span class="degree-mark" style="--angle: 315deg;">315°</span>
+                            </div>
+                        </div>
+
+                        <div class="compass-main-circle" id="compassCircle">
+                            <div class="compass-inner-ring"></div>
+
+                            <!-- Cardinal Directions -->
+                            <div class="compass-cardinals">
+                                <span class="cardinal north">K</span>
+                                <span class="cardinal east">D</span>
+                                <span class="cardinal south">G</span>
+                                <span class="cardinal west">B</span>
+                            </div>
+
+                            <!-- Qibla Arrow -->
+                            <div class="qibla-arrow-container" id="qiblaArrowContainer">
+                                <div class="qibla-arrow">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <defs>
+                                            <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M12 2 L16 12 L12 10 L8 12 Z" fill="url(#arrowGradient)" stroke="#047857" stroke-width="0.5"/>
+                                        <path d="M12 10 L14 22 L12 20 L10 22 Z" fill="#dc2626" stroke="#991b1b" stroke-width="0.5"/>
+                                        <circle cx="12" cy="12" r="2" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
+                                    </svg>
+                                </div>
+                                <div class="kaaba-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="6" y="8" width="12" height="12" rx="1" fill="#1f2937" stroke="#fbbf24"></rect>
+                                        <path d="M6 14 L18 14" stroke="#fbbf24"></path>
+                                        <path d="M12 8 L12 20" stroke="#fbbf24"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Device Orientation Arrow -->
+                            <div class="device-arrow" id="deviceArrow" style="display: none;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="3">
+                                    <path d="M12 2 L12 10"></path>
+                                    <path d="M12 2 L8 6"></path>
+                                    <path d="M12 2 L16 6"></path>
                                 </svg>
                             </div>
-                            <div class="compass-directions">
-                                <span class="compass-n">K</span>
-                                <span class="compass-e">D</span>
-                                <span class="compass-s">G</span>
-                                <span class="compass-w">B</span>
+
+                            <!-- Center Dot -->
+                            <div class="compass-center"></div>
+                        </div>
+
+                        <!-- Compass Info Display -->
+                        <div class="compass-info-display">
+                            <div class="qibla-angle-display">
+                                <div class="angle-value" id="qiblaAngleValue">--°</div>
+                                <div class="angle-label">Kıble Açısı</div>
+                            </div>
+                            <div class="device-angle-display" id="deviceAngleDisplay" style="display: none;">
+                                <div class="angle-value" id="deviceAngleValue">--°</div>
+                                <div class="angle-label">Cihaz Yönü</div>
                             </div>
                         </div>
                     </div>
-                    <p class="qibla-degree" id="qiblaDegree">Hesaplanıyor...</p>
+
+                    <!-- Kaaba Info Cards -->
+                    <div class="kaaba-info-grid">
+                        <div class="kaaba-info-card">
+                            <div class="info-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-value" id="qiblaDistance">-- km</div>
+                                <div class="info-label">Kabe'ye Mesafe</div>
+                            </div>
+                        </div>
+
+                        <div class="kaaba-info-card">
+                            <div class="info-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-value" id="qiblaDirection">--</div>
+                                <div class="info-label">Yön</div>
+                            </div>
+                        </div>
+
+                        <div class="kaaba-info-card">
+                            <div class="info-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-value">21.4225°, 39.8262°</div>
+                                <div class="info-label">Kabe Koordinatları</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calibration & Features -->
+                    <div class="qibla-features">
+                        <button class="qibla-feature-btn" id="enableCompassBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v6l4 2"></path>
+                            </svg>
+                            <span>Gerçek Zamanlı Pusula</span>
+                        </button>
+
+                        <button class="qibla-feature-btn" id="calibrateBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+                            </svg>
+                            <span>Kalibrasyon Rehberi</span>
+                        </button>
+                    </div>
+
+                    <!-- Accuracy Indicator -->
+                    <div class="accuracy-indicator" id="accuracyIndicator" style="display: none;">
+                        <div class="accuracy-bars">
+                            <div class="accuracy-bar"></div>
+                            <div class="accuracy-bar"></div>
+                            <div class="accuracy-bar"></div>
+                            <div class="accuracy-bar"></div>
+                            <div class="accuracy-bar"></div>
+                        </div>
+                        <div class="accuracy-text">Hassasiyet: <span id="accuracyText">Orta</span></div>
+                    </div>
+
+                    <!-- Important Notes -->
+                    <div class="qibla-notes">
+                        <h4>📌 Önemli Notlar</h4>
+                        <ul>
+                            <li>Pusulanın doğru çalışması için cihazınızı düz bir yüzeyde tutun</li>
+                            <li>Metalik nesnelerden ve manyetik alanlardan uzak durun</li>
+                            <li>En hassas sonuç için "Gerçek Zamanlı Pusula" özelliğini kullanın</li>
+                            <li>Kıble yönü, bulunduğunuz konuma göre otomatik hesaplanır</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

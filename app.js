@@ -134,6 +134,9 @@ function initializeApp() {
         // Try to get user's location automatically
         tryGeolocation();
     }
+
+    // Initialize Advanced Qibla Compass
+    AdvancedQiblaCompass.init();
 }
 
 // ==========================================
@@ -456,36 +459,314 @@ function updateCountdown() {
 }
 
 // ==========================================
-// Qibla Direction
+// Advanced Qibla Compass
 // ==========================================
-function calculateQiblaDirection() {
-    if (!AppState.currentLocation) return;
+const AdvancedQiblaCompass = {
+    kaabaLat: 21.4225,
+    kaabaLon: 39.8262,
+    qiblaDegree: 0,
+    deviceOrientationEnabled: false,
+    orientationHandler: null,
 
-    const { lat, lon } = AppState.currentLocation;
+    init() {
+        this.setupEventListeners();
+        this.calculateQiblaDirection();
+    },
 
-    // Kaaba coordinates
-    const kaabaLat = 21.4225;
-    const kaabaLon = 39.8262;
+    setupEventListeners() {
+        const enableCompassBtn = document.getElementById('enableCompassBtn');
+        const calibrateBtn = document.getElementById('calibrateBtn');
 
-    // Calculate qibla direction
-    const phiK = kaabaLat * Math.PI / 180.0;
-    const lambdaK = kaabaLon * Math.PI / 180.0;
-    const phi = lat * Math.PI / 180.0;
-    const lambda = lon * Math.PI / 180.0;
+        if (enableCompassBtn) {
+            enableCompassBtn.addEventListener('click', () => this.toggleDeviceOrientation());
+        }
 
-    const qibla = 180.0 / Math.PI * Math.atan2(
-        Math.sin(lambdaK - lambda),
-        Math.cos(phi) * Math.tan(phiK) - Math.sin(phi) * Math.cos(lambdaK - lambda)
-    );
+        if (calibrateBtn) {
+            calibrateBtn.addEventListener('click', () => this.showCalibrationGuide());
+        }
+    },
 
-    const qiblaDegree = ((qibla + 360) % 360).toFixed(1);
+    calculateQiblaDirection() {
+        if (!AppState.currentLocation) return;
 
-    document.getElementById('qiblaDegree').textContent = `${qiblaDegree}° Kuzeydoğu`;
+        const { lat, lon } = AppState.currentLocation;
 
-    const qiblaArrow = document.getElementById('qiblaArrow');
-    if (qiblaArrow) {
-        qiblaArrow.style.transform = `rotate(${qiblaDegree}deg)`;
+        // Calculate qibla direction
+        const phiK = this.kaabaLat * Math.PI / 180.0;
+        const lambdaK = this.kaabaLon * Math.PI / 180.0;
+        const phi = lat * Math.PI / 180.0;
+        const lambda = lon * Math.PI / 180.0;
+
+        const qibla = 180.0 / Math.PI * Math.atan2(
+            Math.sin(lambdaK - lambda),
+            Math.cos(phi) * Math.tan(phiK) - Math.sin(phi) * Math.cos(lambdaK - lambda)
+        );
+
+        this.qiblaDegree = ((qibla + 360) % 360);
+
+        // Update UI
+        this.updateQiblaUI();
+        this.calculateDistance(lat, lon);
+        this.updateLocationInfo(lat, lon);
+    },
+
+    updateQiblaUI() {
+        const qiblaAngleValue = document.getElementById('qiblaAngleValue');
+        const qiblaArrowContainer = document.getElementById('qiblaArrowContainer');
+        const qiblaDirection = document.getElementById('qiblaDirection');
+
+        if (qiblaAngleValue) {
+            qiblaAngleValue.textContent = `${this.qiblaDegree.toFixed(1)}°`;
+        }
+
+        if (qiblaArrowContainer) {
+            qiblaArrowContainer.style.transform = `rotate(${this.qiblaDegree}deg)`;
+        }
+
+        if (qiblaDirection) {
+            qiblaDirection.textContent = this.getDirectionName(this.qiblaDegree);
+        }
+    },
+
+    calculateDistance(lat, lon) {
+        const R = 6371; // Earth's radius in km
+        const dLat = (this.kaabaLat - lat) * Math.PI / 180;
+        const dLon = (this.kaabaLon - lon) * Math.PI / 180;
+
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat * Math.PI / 180) * Math.cos(this.kaabaLat * Math.PI / 180) *
+                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c;
+
+        const qiblaDistance = document.getElementById('qiblaDistance');
+        if (qiblaDistance) {
+            qiblaDistance.textContent = `${distance.toFixed(0)} km`;
+        }
+    },
+
+    updateLocationInfo(lat, lon) {
+        const qiblaLocationName = document.getElementById('qiblaLocationName');
+        const qiblaCoords = document.getElementById('qiblaCoords');
+
+        if (qiblaCoords) {
+            qiblaCoords.textContent = `${lat.toFixed(4)}°, ${lon.toFixed(4)}°`;
+        }
+
+        // Try to get city name from AppState if available
+        if (qiblaLocationName) {
+            if (AppState.currentLocation && AppState.currentLocation.city) {
+                qiblaLocationName.textContent = AppState.currentLocation.city;
+            } else {
+                qiblaLocationName.textContent = 'Konumunuz';
+            }
+        }
+    },
+
+    getDirectionName(degree) {
+        const directions = [
+            { name: 'Kuzey', min: 337.5, max: 360 },
+            { name: 'Kuzey', min: 0, max: 22.5 },
+            { name: 'Kuzeydoğu', min: 22.5, max: 67.5 },
+            { name: 'Doğu', min: 67.5, max: 112.5 },
+            { name: 'Güneydoğu', min: 112.5, max: 157.5 },
+            { name: 'Güney', min: 157.5, max: 202.5 },
+            { name: 'Güneybatı', min: 202.5, max: 247.5 },
+            { name: 'Batı', min: 247.5, max: 292.5 },
+            { name: 'Kuzeybatı', min: 292.5, max: 337.5 }
+        ];
+
+        for (const dir of directions) {
+            if (degree >= dir.min && degree < dir.max) {
+                return dir.name;
+            }
+        }
+
+        return 'Kuzey';
+    },
+
+    async toggleDeviceOrientation() {
+        if (this.deviceOrientationEnabled) {
+            this.disableDeviceOrientation();
+        } else {
+            await this.enableDeviceOrientation();
+        }
+    },
+
+    async enableDeviceOrientation() {
+        const enableCompassBtn = document.getElementById('enableCompassBtn');
+        const deviceArrow = document.getElementById('deviceArrow');
+        const deviceAngleDisplay = document.getElementById('deviceAngleDisplay');
+        const accuracyIndicator = document.getElementById('accuracyIndicator');
+
+        // Check if DeviceOrientationEvent is supported
+        if (!window.DeviceOrientationEvent) {
+            alert('⚠️ Cihazınız pusula sensörünü desteklemiyor.');
+            return;
+        }
+
+        // Request permission for iOS 13+
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            try {
+                const permission = await DeviceOrientationEvent.requestPermission();
+                if (permission !== 'granted') {
+                    alert('❌ Pusula sensörüne erişim izni verilmedi.');
+                    return;
+                }
+            } catch (error) {
+                alert('❌ Pusula sensörüne erişim izni alınamadı.');
+                return;
+            }
+        }
+
+        // Enable orientation tracking
+        this.orientationHandler = (event) => this.handleOrientation(event);
+        window.addEventListener('deviceorientationabsolute', this.orientationHandler);
+        window.addEventListener('deviceorientation', this.orientationHandler);
+
+        this.deviceOrientationEnabled = true;
+
+        // Update UI
+        if (enableCompassBtn) {
+            enableCompassBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 6v6l4 2"></path>
+                </svg>
+                <span>Pusulanı Kapat</span>
+            `;
+            enableCompassBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+        }
+
+        if (deviceArrow) {
+            deviceArrow.style.display = 'block';
+        }
+
+        if (deviceAngleDisplay) {
+            deviceAngleDisplay.style.display = 'block';
+        }
+
+        if (accuracyIndicator) {
+            accuracyIndicator.style.display = 'flex';
+        }
+    },
+
+    disableDeviceOrientation() {
+        const enableCompassBtn = document.getElementById('enableCompassBtn');
+        const deviceArrow = document.getElementById('deviceArrow');
+        const deviceAngleDisplay = document.getElementById('deviceAngleDisplay');
+        const accuracyIndicator = document.getElementById('accuracyIndicator');
+
+        // Remove event listeners
+        if (this.orientationHandler) {
+            window.removeEventListener('deviceorientationabsolute', this.orientationHandler);
+            window.removeEventListener('deviceorientation', this.orientationHandler);
+        }
+
+        this.deviceOrientationEnabled = false;
+
+        // Update UI
+        if (enableCompassBtn) {
+            enableCompassBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 6v6l4 2"></path>
+                </svg>
+                <span>Gerçek Zamanlı Pusula</span>
+            `;
+            enableCompassBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        }
+
+        if (deviceArrow) {
+            deviceArrow.style.display = 'none';
+        }
+
+        if (deviceAngleDisplay) {
+            deviceAngleDisplay.style.display = 'none';
+        }
+
+        if (accuracyIndicator) {
+            accuracyIndicator.style.display = 'none';
+        }
+    },
+
+    handleOrientation(event) {
+        let heading = event.alpha; // 0-360 degrees
+
+        if (event.webkitCompassHeading) {
+            // iOS
+            heading = event.webkitCompassHeading;
+        } else if (event.alpha !== null) {
+            // Android
+            heading = 360 - event.alpha;
+        } else {
+            return;
+        }
+
+        // Update device arrow
+        const deviceArrow = document.getElementById('deviceArrow');
+        const compassCircle = document.getElementById('compassCircle');
+        const deviceAngleValue = document.getElementById('deviceAngleValue');
+
+        if (compassCircle) {
+            // Rotate the entire compass to match device orientation
+            compassCircle.style.transform = `rotate(${-heading}deg)`;
+        }
+
+        if (deviceAngleValue) {
+            deviceAngleValue.textContent = `${heading.toFixed(1)}°`;
+        }
+
+        // Update accuracy indicator
+        this.updateAccuracyIndicator(event.accuracy);
+    },
+
+    updateAccuracyIndicator(accuracy) {
+        const accuracyIndicator = document.getElementById('accuracyIndicator');
+        const accuracyText = document.getElementById('accuracyText');
+
+        if (!accuracyIndicator || !accuracyText) return;
+
+        // Remove existing accuracy classes
+        accuracyIndicator.classList.remove('high', 'medium', 'low');
+
+        // Determine accuracy level
+        if (accuracy === null || accuracy === undefined) {
+            accuracyIndicator.classList.add('medium');
+            accuracyText.textContent = 'Orta';
+        } else if (accuracy < 15) {
+            accuracyIndicator.classList.add('high');
+            accuracyText.textContent = 'Yüksek';
+        } else if (accuracy < 30) {
+            accuracyIndicator.classList.add('medium');
+            accuracyText.textContent = 'Orta';
+        } else {
+            accuracyIndicator.classList.add('low');
+            accuracyText.textContent = 'Düşük';
+        }
+    },
+
+    showCalibrationGuide() {
+        const message = `📱 Pusula Kalibrasyon Rehberi
+
+Daha hassas sonuçlar için:
+
+1️⃣ Cihazınızı düz bir yüzeyde tutun
+2️⃣ Metalik nesnelerden uzak durun
+3️⃣ Cihazınızı havada "8" şeklinde hareket ettirin
+4️⃣ Bu hareketi 3-4 kez tekrarlayın
+5️⃣ Manyetik alanlardan (hoparlör, mıknatıs vb.) uzak durun
+
+✨ İpucu: Pusula sensörü, açık havada ve kapalı alanlara göre daha iyi çalışır.`;
+
+        alert(message);
     }
+};
+
+// Legacy function for backward compatibility
+function calculateQiblaDirection() {
+    AdvancedQiblaCompass.calculateQiblaDirection();
 }
 
 // ==========================================

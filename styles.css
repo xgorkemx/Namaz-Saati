@@ -488,95 +488,529 @@ body {
 }
 
 /* ==========================================
-   Qibla Card
+   Advanced Qibla Compass
    ========================================== */
-.qibla-card {
+.advanced-qibla-card {
     background: var(--surface);
     border-radius: var(--radius-lg);
     padding: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
-    box-shadow: var(--shadow-sm);
-    text-align: center;
-}
-
-.qibla-title {
-    font-size: var(--font-size-xl);
-    font-weight: 600;
-    margin-bottom: var(--spacing-xl);
-    color: var(--text-primary);
-}
-
-.qibla-compass {
-    display: flex;
-    justify-content: center;
-    margin-bottom: var(--spacing-lg);
-}
-
-.compass-circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-    position: relative;
     box-shadow: var(--shadow-lg);
+}
+
+.qibla-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.qibla-main-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-xs);
+}
+
+.qibla-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* Location Card */
+.qibla-location-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    border-left: 4px solid #10b981;
+}
+
+.location-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
-.compass-arrow {
-    color: var(--secondary-color);
-    transition: transform var(--transition-slow);
-    width: 60px;
-    height: 60px;
+.location-icon svg {
+    width: 28px;
+    height: 28px;
 }
 
-.compass-arrow svg {
+.location-details {
+    flex: 1;
+}
+
+.location-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.location-coords {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: 'Courier New', monospace;
+}
+
+/* Advanced Compass */
+.advanced-qibla-compass {
+    position: relative;
+    margin: var(--spacing-xl) auto;
+    max-width: 400px;
+}
+
+.compass-outer-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.compass-degree-markers {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;
+}
+
+.degree-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-160px);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--surface);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.compass-main-circle {
+    width: 300px;
+    height: 300px;
+    margin: 25px auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    position: relative;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15),
+        inset 0 2px 10px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.1);
+    border: 8px solid #e5e7eb;
+}
+
+.compass-inner-ring {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 50%;
+    border: 2px solid #d1d5db;
+    background: radial-gradient(circle, #ffffff 0%, #f9fafb 100%);
+}
+
+.compass-inner-ring::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 50%;
+    border: 1px dashed #d1d5db;
+}
+
+/* Cardinal Directions */
+.compass-cardinals {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.cardinal {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #374151;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.cardinal.north {
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ef4444;
+    font-size: 1.8rem;
+}
+
+.cardinal.east {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cardinal.south {
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cardinal.west {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Qibla Arrow */
+.qibla-arrow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.qibla-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.qibla-arrow svg {
+    width: 100%;
+    height: 100%;
+}
+
+.kaaba-icon {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.kaaba-icon svg {
     width: 100%;
     height: 100%;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
-.compass-directions {
+@keyframes float {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0px);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-8px);
+    }
+}
+
+/* Device Arrow */
+.device-arrow {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease-out;
+}
+
+.device-arrow svg {
     width: 100%;
     height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.5));
 }
 
-.compass-directions span {
+/* Compass Center */
+.compass-center {
     position: absolute;
-    color: var(--text-on-primary);
-    font-weight: 600;
-    font-size: var(--font-size-sm);
-}
-
-.compass-n {
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.compass-e {
-    right: 10px;
     top: 50%;
-    transform: translateY(-50%);
-}
-
-.compass-s {
-    bottom: 10px;
     left: 50%;
-    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, #fbbf24 0%, #f59e0b 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 0 0 4px rgba(251, 191, 36, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
 }
 
-.compass-w {
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+/* Compass Info Display */
+.compass-info-display {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
 }
 
-.qibla-degree {
-    font-size: var(--font-size-lg);
+.qibla-angle-display,
+.device-angle-display {
+    text-align: center;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    min-width: 140px;
+    border: 2px solid #10b981;
+}
+
+.device-angle-display {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-color: #3b82f6;
+}
+
+.angle-value {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+.device-angle-display .angle-value {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.angle-label {
+    font-size: 0.85rem;
     color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* Kaaba Info Grid */
+.kaaba-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+.kaaba-info-card {
+    background: var(--background);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+
+.info-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.info-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Qibla Features */
+.qibla-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+.qibla-feature-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.qibla-feature-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.qibla-feature-btn:active {
+    transform: translateY(0);
+}
+
+.qibla-feature-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.qibla-feature-btn:last-child {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+/* Accuracy Indicator */
+.accuracy-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-radius: var(--radius-md);
+    border: 1px solid #3b82f6;
+}
+
+.accuracy-bars {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+}
+
+.accuracy-bar {
+    width: 8px;
+    height: 20px;
+    background: #d1d5db;
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+.accuracy-bar:nth-child(1) {
+    height: 12px;
+}
+
+.accuracy-bar:nth-child(2) {
+    height: 16px;
+}
+
+.accuracy-bar:nth-child(3) {
+    height: 20px;
+}
+
+.accuracy-bar:nth-child(4) {
+    height: 24px;
+}
+
+.accuracy-bar:nth-child(5) {
+    height: 28px;
+}
+
+.accuracy-indicator.high .accuracy-bar {
+    background: #10b981;
+}
+
+.accuracy-indicator.medium .accuracy-bar:nth-child(-n+3) {
+    background: #f59e0b;
+}
+
+.accuracy-indicator.low .accuracy-bar:nth-child(1) {
+    background: #ef4444;
+}
+
+.accuracy-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Qibla Notes */
+.qibla-notes {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: var(--radius-md);
+    border-left: 4px solid #f59e0b;
+}
+
+.qibla-notes h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: var(--spacing-md);
+}
+
+.qibla-notes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.qibla-notes li {
+    font-size: 0.9rem;
+    color: #78350f;
+    margin-bottom: var(--spacing-sm);
+    padding-left: 24px;
+    position: relative;
+}
+
+.qibla-notes li::before {
+    content: '•';
+    position: absolute;
+    left: 8px;
+    font-size: 1.2rem;
+    color: #f59e0b;
+}
+
+.qibla-notes li:last-child {
+    margin-bottom: 0;
 }
 
 /* ==========================================
@@ -925,14 +1359,48 @@ body {
         padding: var(--spacing-md);
     }
 
-    .compass-circle {
-        width: 160px;
-        height: 160px;
+    /* Advanced Qibla Compass Responsive */
+    .compass-degree-markers {
+        width: 280px;
+        height: 280px;
     }
 
-    .compass-arrow {
-        width: 50px;
-        height: 50px;
+    .degree-mark {
+        font-size: 0.65rem;
+        padding: 2px 4px;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-130px);
+    }
+
+    .compass-main-circle {
+        width: 250px;
+        height: 250px;
+        border-width: 6px;
+    }
+
+    .qibla-arrow {
+        width: 80px;
+        height: 80px;
+    }
+
+    .kaaba-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    .compass-info-display {
+        gap: var(--spacing-md);
+    }
+
+    .angle-value {
+        font-size: 1.6rem;
+    }
+
+    .kaaba-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qibla-features {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -947,6 +1415,40 @@ body {
 
     .countdown-separator {
         margin: 0;
+    }
+
+    /* Advanced Qibla Compass Extra Small */
+    .compass-degree-markers {
+        width: 240px;
+        height: 240px;
+    }
+
+    .degree-mark {
+        font-size: 0.6rem;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-110px);
+    }
+
+    .compass-main-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .qibla-arrow {
+        width: 70px;
+        height: 70px;
+    }
+
+    .kaaba-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .angle-value {
+        font-size: 1.4rem;
+    }
+
+    .qibla-main-title {
+        font-size: 1.5rem;
     }
 }
 
