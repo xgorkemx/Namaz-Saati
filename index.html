@@ -1617,6 +1617,226 @@
                         </div>
                     </div>
 
+                    <div class="zekat-calculator">
+                        <h3>Gümüş Zekatı</h3>
+                        <div class="calculator-input-group">
+                            <label for="silverGrams">Gümüş Miktarı (gram)</label>
+                            <input type="number" id="silverGrams" placeholder="Örn: 700" class="calculator-input">
+                        </div>
+                        <div class="calculator-input-group">
+                            <label for="silverPrice">Gram Gümüş Fiyatı (TL)</label>
+                            <input type="number" id="silverPrice" placeholder="Örn: 35" class="calculator-input">
+                        </div>
+
+                        <div class="nisab-info">
+                            <p>📊 <strong>Nisab:</strong> 595 gram gümüş</p>
+                        </div>
+
+                        <button class="calculate-btn" id="calculateSilverZekat">Zekat Hesapla</button>
+
+                        <div class="zekat-result" id="silverZekatResult" style="display: none;">
+                            <h4>Gümüş Zekatınız:</h4>
+                            <p class="result-amount" id="silverZekatAmount">0 TL</p>
+                            <p class="result-amount-gram" id="silverZekatGrams">0 gram</p>
+                        </div>
+                    </div>
+
+                    <div class="zekat-calculator">
+                        <h3>Ticaret Malları Zekatı</h3>
+                        <div class="calculator-input-group">
+                            <label for="tradeGoods">Ticaret Mallarının Toplam Değeri (TL)</label>
+                            <input type="number" id="tradeGoods" placeholder="Örn: 500000" class="calculator-input">
+                        </div>
+                        <div class="calculator-input-group">
+                            <label for="tradeDebts">Ticari Borçlar (varsa) (TL)</label>
+                            <input type="number" id="tradeDebts" placeholder="Örn: 50000" class="calculator-input" value="0">
+                        </div>
+
+                        <div class="nisab-info">
+                            <p>📊 <strong>Not:</strong> Stok, mal, alacaklar toplamından borçlar düşülür</p>
+                        </div>
+
+                        <button class="calculate-btn" id="calculateTradeZekat">Zekat Hesapla</button>
+
+                        <div class="zekat-result" id="tradeZekatResult" style="display: none;">
+                            <h4>Ticaret Malları Zekatınız:</h4>
+                            <p class="result-amount" id="tradeZekatAmount">0 TL</p>
+                            <p class="result-note" id="tradeNetAmount"></p>
+                        </div>
+                    </div>
+
+                    <div class="zekat-calculator">
+                        <h3>Tarım Ürünleri Zekatı (Öşür)</h3>
+                        <div class="calculator-input-group">
+                            <label for="cropType">Sulama Tipi</label>
+                            <select id="cropType" class="calculator-input">
+                                <option value="10">Yağmur/Doğal Kaynak Suyla (%10)</option>
+                                <option value="5">Kova/Sulama ile (%5)</option>
+                            </select>
+                        </div>
+                        <div class="calculator-input-group">
+                            <label for="cropAmount">Ürün Miktarı (kg)</label>
+                            <input type="number" id="cropAmount" placeholder="Örn: 1000" class="calculator-input">
+                        </div>
+                        <div class="calculator-input-group">
+                            <label for="cropPrice">Ürün Birim Fiyatı (TL/kg)</label>
+                            <input type="number" id="cropPrice" placeholder="Örn: 15" class="calculator-input">
+                        </div>
+
+                        <div class="nisab-info">
+                            <p>📊 <strong>Nisab:</strong> Yaklaşık 653 kg (5 vesk)</p>
+                        </div>
+
+                        <button class="calculate-btn" id="calculateCropZekat">Öşür Hesapla</button>
+
+                        <div class="zekat-result" id="cropZekatResult" style="display: none;">
+                            <h4>Tarım Ürünleri Zekatınız:</h4>
+                            <p class="result-amount" id="cropZekatAmount">0 TL</p>
+                            <p class="result-amount-gram" id="cropZekatKg">0 kg</p>
+                            <p class="result-note" id="cropZekatRate"></p>
+                        </div>
+                    </div>
+
+                    <div class="zekat-calculator">
+                        <h3>Hayvan Zekatı</h3>
+                        <div class="calculator-input-group">
+                            <label for="animalType">Hayvan Türü</label>
+                            <select id="animalType" class="calculator-input">
+                                <option value="sheep">Koyun/Keçi</option>
+                                <option value="cattle">Sığır</option>
+                                <option value="camel">Deve</option>
+                            </select>
+                        </div>
+                        <div class="calculator-input-group">
+                            <label for="animalCount">Hayvan Sayısı</label>
+                            <input type="number" id="animalCount" placeholder="Örn: 50" class="calculator-input">
+                        </div>
+
+                        <div class="nisab-info" id="animalNisabInfo">
+                            <p>📊 <strong>Koyun/Keçi Nisabı:</strong> 40 baş</p>
+                        </div>
+
+                        <button class="calculate-btn" id="calculateAnimalZekat">Zekat Hesapla</button>
+
+                        <div class="zekat-result" id="animalZekatResult" style="display: none;">
+                            <h4>Hayvan Zekatınız:</h4>
+                            <p class="result-amount" id="animalZekatAmount">-</p>
+                        </div>
+                    </div>
+
+                    <div class="zekat-info-sections">
+                        <h3>📋 Zekat Hakkında Bilgiler</h3>
+
+                        <div class="info-section-card">
+                            <h4>🎯 Zekat Verilecek 8 Grup</h4>
+                            <ol class="zekat-list">
+                                <li><strong>Fakirler:</strong> Geçimini sağlayamayan, temel ihtiyaçları karşılanamayan kişiler</li>
+                                <li><strong>Miskinler:</strong> Hiçbir geliri olmayan, dilenmek zorunda kalanlar</li>
+                                <li><strong>Zekat Görevlileri:</strong> Zekat toplayan ve dağıtan memurlar</li>
+                                <li><strong>Müellefe-i Kulub:</strong> Kalpleri İslam'a ısındırılacak olanlar</li>
+                                <li><strong>Köleler:</strong> Azat edilmek istenen köleler</li>
+                                <li><strong>Borçlular:</strong> Borç altında ezilen kişiler</li>
+                                <li><strong>Allah Yolunda Olanlar:</strong> Cihad edenler, ilim öğrenenler</li>
+                                <li><strong>Yolda Kalanlar:</strong> Seyahatte sıkıntıya düşenler</li>
+                            </ol>
+                        </div>
+
+                        <div class="info-section-card">
+                            <h4>💡 Zekat Verilecek Kurumlar</h4>
+                            <ul class="zekat-list">
+                                <li>🏥 Sağlık yardım kuruluşları</li>
+                                <li>🎓 Eğitim kurumları ve öğrenci yurtları</li>
+                                <li>🏠 Yetimhaneler ve kimsesizler yurdu</li>
+                                <li>🕌 Camiler ve İslami kurumlar</li>
+                                <li>🌍 Afet bölgelerindeki yardım kuruluşları</li>
+                                <li>👨‍👩‍👧‍👦 Fakir ailelere yardım dernekleri</li>
+                                <li>🩺 Hasta bakım merkezleri</li>
+                                <li>🍞 Aşevleri ve gıda yardım kuruluşları</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-section-card">
+                            <h4>⏰ Zekat Zamanı</h4>
+                            <div class="time-info">
+                                <p><strong>🌙 Kameri Yıl:</strong> Malınızın üzerinden bir kameri yıl (354-355 gün) geçmesi gerekir.</p>
+                                <p><strong>📅 En Faziletli Zamanlar:</strong></p>
+                                <ul class="zekat-list">
+                                    <li>Ramazan ayı (en faziletli)</li>
+                                    <li>Kandil geceleri</li>
+                                    <li>Cuma günleri</li>
+                                    <li>Hicri yılbaşı</li>
+                                </ul>
+                                <p><strong>⚡ Acele Vermek:</strong> İhtiyaç sahipleri için zekatı vaktinden önce vermek caizdir.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-section-card">
+                            <h4>📊 Nisap Miktarları (2024-2025)</h4>
+                            <div class="nisab-table">
+                                <div class="nisab-row">
+                                    <span class="nisab-label">💰 Para (Gümüş değerine göre):</span>
+                                    <span class="nisab-value">~71,000 TL</span>
+                                </div>
+                                <div class="nisab-row">
+                                    <span class="nisab-label">💍 Altın (Has altın):</span>
+                                    <span class="nisab-value">85 gram</span>
+                                </div>
+                                <div class="nisab-row">
+                                    <span class="nisab-label">⚪ Gümüş:</span>
+                                    <span class="nisab-value">595 gram</span>
+                                </div>
+                                <div class="nisab-row">
+                                    <span class="nisab-label">🐑 Koyun/Keçi:</span>
+                                    <span class="nisab-value">40 baş</span>
+                                </div>
+                                <div class="nisab-row">
+                                    <span class="nisab-label">🐄 Sığır:</span>
+                                    <span class="nisab-value">30 baş</span>
+                                </div>
+                                <div class="nisab-row">
+                                    <span class="nisab-label">🐫 Deve:</span>
+                                    <span class="nisab-value">5 baş</span>
+                                </div>
+                                <div class="nisab-row">
+                                    <span class="nisab-label">🌾 Tarım ürünleri:</span>
+                                    <span class="nisab-value">~653 kg (5 vesk)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section-card warning-card">
+                            <h4>⚠️ Önemli Uyarılar</h4>
+                            <ul class="zekat-list">
+                                <li>🚫 Zekatı anne, baba, dede, nine, çocuk ve torunlara vermek caiz değildir</li>
+                                <li>🚫 Eşler birbirine zekat veremez</li>
+                                <li>🚫 Zenginlere zekat verilmez</li>
+                                <li>✅ Kardeşler, amcalar, dayılar, teyzeler, halalar fakirse verilebilir</li>
+                                <li>✅ Zekat niyetiyle verilmelidir</li>
+                                <li>✅ Gizlice vermek daha faziletlidir</li>
+                                <li>✅ Zekat vermekle mal eksilmez, artar</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-section-card success-card">
+                            <h4>🌟 Zekatın Faziletleri</h4>
+                            <div class="hadis-box">
+                                <p class="hadis-icon">📖</p>
+                                <p class="hadis-text">"Onların mallarından, kendilerini temizleyeceğin ve arıtacağın bir sadaka al."</p>
+                                <p class="hadis-source">- Tevbe Suresi, 103</p>
+                            </div>
+                            <div class="hadis-box">
+                                <p class="hadis-icon">🕌</p>
+                                <p class="hadis-text">"Zekat veren kimse, malının şerrini gidermiş olur."</p>
+                                <p class="hadis-source">- Hadis-i Şerif</p>
+                            </div>
+                            <div class="hadis-box">
+                                <p class="hadis-icon">💝</p>
+                                <p class="hadis-text">"Sadaka, günahları su ateşi söndürdüğü gibi söndürür."</p>
+                                <p class="hadis-source">- Tirmizi</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="zekat-faq">
                         <h3>❓ Sık Sorulan Sorular</h3>
                         <div class="faq-item">

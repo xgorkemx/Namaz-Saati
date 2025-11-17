@@ -2441,6 +2441,160 @@ const ZekatCalculator = {
                 resultDiv.style.display = 'block';
             });
         }
+
+        // Silver Zekat Calculator
+        const calculateSilverBtn = document.getElementById('calculateSilverZekat');
+        if (calculateSilverBtn) {
+            calculateSilverBtn.addEventListener('click', () => {
+                const silverGrams = parseFloat(document.getElementById('silverGrams').value);
+                const silverPrice = parseFloat(document.getElementById('silverPrice').value);
+                const resultDiv = document.getElementById('silverZekatResult');
+                const amountSpan = document.getElementById('silverZekatAmount');
+                const gramsSpan = document.getElementById('silverZekatGrams');
+
+                if (isNaN(silverGrams) || silverGrams <= 0 || isNaN(silverPrice) || silverPrice <= 0) {
+                    alert('Lütfen geçerli değerler giriniz.');
+                    return;
+                }
+
+                const zekatGrams = (silverGrams * 2.5) / 100;
+                const zekatAmount = zekatGrams * silverPrice;
+
+                amountSpan.textContent = `${zekatAmount.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} TL`;
+                gramsSpan.textContent = `${zekatGrams.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} gram`;
+                resultDiv.style.display = 'block';
+            });
+        }
+
+        // Trade Goods Zekat Calculator
+        const calculateTradeBtn = document.getElementById('calculateTradeZekat');
+        if (calculateTradeBtn) {
+            calculateTradeBtn.addEventListener('click', () => {
+                const tradeGoods = parseFloat(document.getElementById('tradeGoods').value);
+                const tradeDebts = parseFloat(document.getElementById('tradeDebts').value) || 0;
+                const resultDiv = document.getElementById('tradeZekatResult');
+                const amountSpan = document.getElementById('tradeZekatAmount');
+                const netAmountSpan = document.getElementById('tradeNetAmount');
+
+                if (isNaN(tradeGoods) || tradeGoods <= 0) {
+                    alert('Lütfen geçerli bir miktar giriniz.');
+                    return;
+                }
+
+                const netValue = tradeGoods - tradeDebts;
+                const zekat = (netValue * 2.5) / 100;
+
+                amountSpan.textContent = `${zekat.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} TL`;
+                netAmountSpan.textContent = `Net Değer: ${netValue.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} TL`;
+                resultDiv.style.display = 'block';
+            });
+        }
+
+        // Crop Zekat Calculator (Ushr)
+        const calculateCropBtn = document.getElementById('calculateCropZekat');
+        if (calculateCropBtn) {
+            calculateCropBtn.addEventListener('click', () => {
+                const cropType = parseFloat(document.getElementById('cropType').value);
+                const cropAmount = parseFloat(document.getElementById('cropAmount').value);
+                const cropPrice = parseFloat(document.getElementById('cropPrice').value);
+                const resultDiv = document.getElementById('cropZekatResult');
+                const amountSpan = document.getElementById('cropZekatAmount');
+                const kgSpan = document.getElementById('cropZekatKg');
+                const rateSpan = document.getElementById('cropZekatRate');
+
+                if (isNaN(cropAmount) || cropAmount <= 0 || isNaN(cropPrice) || cropPrice <= 0) {
+                    alert('Lütfen geçerli değerler giriniz.');
+                    return;
+                }
+
+                const zekatKg = (cropAmount * cropType) / 100;
+                const zekatAmount = zekatKg * cropPrice;
+
+                amountSpan.textContent = `${zekatAmount.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} TL`;
+                kgSpan.textContent = `${zekatKg.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} kg`;
+                rateSpan.textContent = cropType === 10 ? 'Oran: %10 (Yağmur/Doğal Kaynak)' : 'Oran: %5 (Kova/Sulama)';
+                resultDiv.style.display = 'block';
+            });
+        }
+
+        // Animal Zekat Calculator
+        const calculateAnimalBtn = document.getElementById('calculateAnimalZekat');
+        const animalTypeSelect = document.getElementById('animalType');
+        const animalNisabInfo = document.getElementById('animalNisabInfo');
+
+        if (animalTypeSelect) {
+            animalTypeSelect.addEventListener('change', (e) => {
+                const nisabTexts = {
+                    'sheep': '📊 <strong>Koyun/Keçi Nisabı:</strong> 40 baş',
+                    'cattle': '📊 <strong>Sığır Nisabı:</strong> 30 baş',
+                    'camel': '📊 <strong>Deve Nisabı:</strong> 5 baş'
+                };
+                animalNisabInfo.innerHTML = `<p>${nisabTexts[e.target.value]}</p>`;
+            });
+        }
+
+        if (calculateAnimalBtn) {
+            calculateAnimalBtn.addEventListener('click', () => {
+                const animalType = document.getElementById('animalType').value;
+                const animalCount = parseInt(document.getElementById('animalCount').value);
+                const resultDiv = document.getElementById('animalZekatResult');
+                const amountSpan = document.getElementById('animalZekatAmount');
+
+                if (isNaN(animalCount) || animalCount <= 0) {
+                    alert('Lütfen geçerli bir hayvan sayısı giriniz.');
+                    return;
+                }
+
+                let zekatInfo = '';
+
+                if (animalType === 'sheep') {
+                    if (animalCount < 40) {
+                        zekatInfo = 'Nisap miktarına ulaşılmamış (40 baş gerekli)';
+                    } else if (animalCount >= 40 && animalCount <= 120) {
+                        zekatInfo = '1 koyun/keçi (1 yaşında)';
+                    } else if (animalCount >= 121 && animalCount <= 200) {
+                        zekatInfo = '2 koyun/keçi (birer yaşında)';
+                    } else if (animalCount >= 201 && animalCount <= 399) {
+                        zekatInfo = '3 koyun/keçi (birer yaşında)';
+                    } else {
+                        const zekatCount = Math.floor(animalCount / 100);
+                        zekatInfo = `${zekatCount} koyun/keçi (her 100 başta 1)`;
+                    }
+                } else if (animalType === 'cattle') {
+                    if (animalCount < 30) {
+                        zekatInfo = 'Nisap miktarına ulaşılmamış (30 baş gerekli)';
+                    } else if (animalCount >= 30 && animalCount <= 39) {
+                        zekatInfo = '1 tane 1 yaşında dana';
+                    } else if (animalCount >= 40 && animalCount <= 59) {
+                        zekatInfo = '1 tane 2 yaşında düve';
+                    } else if (animalCount >= 60 && animalCount <= 69) {
+                        zekatInfo = '2 tane 1 yaşında dana';
+                    } else {
+                        const count = Math.floor(animalCount / 30);
+                        zekatInfo = `Her 30 başta 1 dana, her 40 başta 1 düve (Toplam: ~${count} hayvan)`;
+                    }
+                } else if (animalType === 'camel') {
+                    if (animalCount < 5) {
+                        zekatInfo = 'Nisap miktarına ulaşılmamış (5 baş gerekli)';
+                    } else if (animalCount >= 5 && animalCount <= 9) {
+                        zekatInfo = '1 koyun/keçi';
+                    } else if (animalCount >= 10 && animalCount <= 14) {
+                        zekatInfo = '2 koyun/keçi';
+                    } else if (animalCount >= 15 && animalCount <= 19) {
+                        zekatInfo = '3 koyun/keçi';
+                    } else if (animalCount >= 20 && animalCount <= 24) {
+                        zekatInfo = '4 koyun/keçi';
+                    } else if (animalCount >= 25 && animalCount <= 35) {
+                        zekatInfo = '1 deve (1 yaşında)';
+                    } else {
+                        zekatInfo = 'Her 40 devede 1 deve (2 yaşında) veya her 50 devede 1 deve (3 yaşında)';
+                    }
+                }
+
+                amountSpan.textContent = zekatInfo;
+                resultDiv.style.display = 'block';
+            });
+        }
     }
 };
 
