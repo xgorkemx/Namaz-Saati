@@ -1979,7 +1979,10 @@ const ZikirModule = {
         'custom': { name: 'Serbest Zikir', target: null },
         'subhanallah': { name: 'Subhanallah', target: 33 },
         'alhamdulillah': { name: 'Alhamdulillah', target: 33 },
-        'allahuakbar': { name: 'Allahu Akbar', target: 34 }
+        'allahuakbar': { name: 'Allahu Akbar', target: 34 },
+        'lailahaillallah': { name: 'La ilahe illallah', target: 100 },
+        'salawat': { name: 'Salavatı Şerife', target: 100 },
+        'astagfirullah': { name: 'Estağfirullah', target: 100 }
     },
 
     init() {
