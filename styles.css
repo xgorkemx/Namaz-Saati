@@ -2033,3 +2033,139 @@ select:focus-visible {
         padding-bottom: calc(70px + var(--spacing-xl));
     }
 }
+
+/* ==========================================
+   More Tab - Feature Cards
+   ========================================== */
+.more-menu {
+    padding: var(--spacing-md) 0;
+}
+
+.more-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+.feature-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid transparent;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.feature-card:active {
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.feature-icon svg {
+    width: 28px;
+    height: 28px;
+    color: white;
+}
+
+.feature-info {
+    flex: 1;
+}
+
+.feature-info h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.feature-info p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.feature-arrow {
+    width: 20px;
+    height: 20px;
+    color: var(--text-light);
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+}
+
+.feature-card:hover .feature-arrow {
+    transform: translateX(4px);
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments for 5 tabs */
+@media (max-width: 480px) {
+    .tab-btn {
+        min-height: 60px;
+        font-size: 0.65rem;
+    }
+
+    .tab-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .feature-card {
+        padding: var(--spacing-md);
+    }
+
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .feature-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .feature-info h3 {
+        font-size: var(--font-size-base);
+    }
+
+    .feature-info p {
+        font-size: var(--font-size-xs);
+    }
+}
+
+@media (max-width: 360px) {
+    .tab-btn {
+        min-height: 56px;
+        padding: var(--spacing-xs) 2px;
+    }
+
+    .tab-btn span {
+        font-size: 0.6rem;
+    }
+
+    .tab-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+}

@@ -1534,3 +1534,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Override the old notification check with enhanced version
 setInterval(checkEnhancedPrayerNotification, 60000);
+
+// ==========================================
+// More Tab Features
+// ==========================================
+
+// Feature Cards Click Handlers
+function setupMoreFeatures() {
+    // Ramazan Module
+    const ramazanCard = document.getElementById('ramazanCard');
+    if (ramazanCard) {
+        ramazanCard.addEventListener('click', () => {
+            alert('Ramazan Özel Modülü: İftar ve Sahur vakitleri, Ramazan takvimi yakında eklenecek!');
+        });
+    }
+
+    // Kandil Module
+    const kandilCard = document.getElementById('kandilCard');
+    if (kandilCard) {
+        kandilCard.addEventListener('click', () => {
+            alert('Kandil & Özel Günler: Önemli kandil ve dini günler bilgilendirmesi yakında eklenecek!');
+        });
+    }
+
+    // Cuma Reminder
+    const cumaCard = document.getElementById('cumaCard');
+    if (cumaCard) {
+        cumaCard.addEventListener('click', () => {
+            alert('Cuma Hatırlatıcı: Cuma namazı bilgileri ve duaları yakında eklenecek!');
+        });
+    }
+
+    // Prayer Tracker
+    const prayerTrackerCard = document.getElementById('prayerTrackerCard');
+    if (prayerTrackerCard) {
+        prayerTrackerCard.addEventListener('click', () => {
+            alert('Namaz Takip Defteri: Kıldığınız namazları takip etme özelliği yakında eklenecek!');
+        });
+    }
+
+    // Zikir Stats
+    const zikirStatsCard = document.getElementById('zikirStatsCard');
+    if (zikirStatsCard) {
+        zikirStatsCard.addEventListener('click', () => {
+            alert('Zikir & Dua İstatistikleri: Tesbihat geçmişinizi görüntüleme özelliği yakında eklenecek!');
+        });
+    }
+}
+
+// Initialize More Features
+document.addEventListener('DOMContentLoaded', () => {
+    setupMoreFeatures();
+});
