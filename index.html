@@ -3847,6 +3847,97 @@
                         </div>
                     </div>
 
+                    <!-- Notification Statistics -->
+                    <div class="notification-stats-section">
+                        <h4 class="section-subtitle">📊 Bildirim İstatistikleri</h4>
+                        <div class="stats-cards-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">📤</div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="totalNotificationsSent">0</div>
+                                    <div class="stat-label">Gönderilen</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">✅</div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="notificationsClicked">0</div>
+                                    <div class="stat-label">Tıklanan</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🎯</div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="notificationSuccessRate">0%</div>
+                                    <div class="stat-label">Başarı Oranı</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🔥</div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="notificationStreak">0</div>
+                                    <div class="stat-label">Gün Serisi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smart Suggestions -->
+                    <div class="notification-suggestions-section">
+                        <h4 class="section-subtitle">🤖 Akıllı Öneriler</h4>
+                        <div class="suggestions-container" id="smartSuggestions">
+                            <div class="suggestion-card">
+                                <div class="suggestion-icon">💡</div>
+                                <div class="suggestion-content">
+                                    <h5>Sabah Bildirimi Önerisi</h5>
+                                    <p>İmsak vaktinden 10 dakika önce bildirim almanız önerilir. Uyanmak için ideal bir süre!</p>
+                                </div>
+                                <button class="suggestion-apply-btn" data-suggestion="fajr-10">Uygula</button>
+                            </div>
+                            <div class="suggestion-card">
+                                <div class="suggestion-icon">📈</div>
+                                <div class="suggestion-content">
+                                    <h5>Günlük Özet</h5>
+                                    <p>Her sabah saat 08:00'de günlük namaz vakitlerini içeren özet bildirim almak ister misiniz?</p>
+                                </div>
+                                <button class="suggestion-apply-btn" data-suggestion="daily-summary">Uygula</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Preview -->
+                    <div class="notification-preview-section">
+                        <h4 class="section-subtitle">👁️ Bildirim Önizlemesi</h4>
+                        <div class="notification-preview-card">
+                            <div class="preview-header">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2306b6d4' stroke-width='2'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3C/svg%3E" alt="icon" class="preview-app-icon">
+                                <span class="preview-app-name">Ezan Vakti Pro</span>
+                                <span class="preview-time" id="previewTime">Şimdi</span>
+                            </div>
+                            <div class="preview-content">
+                                <div class="preview-title" id="previewTitle">🕌 Öğle Vakti Girdi</div>
+                                <div class="preview-message" id="previewMessage">
+                                    Ankara - Öğle namazı vakti girmiştir.
+                                    <br>Vakit: 12:30
+                                </div>
+                            </div>
+                            <div class="preview-actions" id="previewActions">
+                                <button class="preview-action-btn">Ertedeğle</button>
+                                <button class="preview-action-btn primary">Dua Oku</button>
+                            </div>
+                        </div>
+                        <div class="preview-settings-row">
+                            <select id="previewPrayer" class="preview-select">
+                                <option value="fajr">İmsak</option>
+                                <option value="dhuhr" selected>Öğle</option>
+                                <option value="asr">İkindi</option>
+                                <option value="maghrib">Akşam</option>
+                                <option value="isha">Yatsı</option>
+                            </select>
+                            <button class="preview-update-btn" id="updatePreview">Önizlemeyi Güncelle</button>
+                        </div>
+                    </div>
+
                     <!-- Prayer-Specific Notifications -->
                     <div class="notification-prayers-section" id="notificationPrayersSection">
                         <h4 class="section-subtitle">📿 Vakit Bildirimleri</h4>
@@ -3996,6 +4087,104 @@
                                 </svg>
                                 <p>Henüz bildirim yok</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Days Notifications -->
+                    <div class="notification-special-days-section">
+                        <h4 class="section-subtitle">⭐ Özel Günler Bildirimleri</h4>
+                        <div class="special-days-grid">
+                            <label class="special-day-item">
+                                <input type="checkbox" id="notifyFriday" checked>
+                                <span class="special-day-label">
+                                    <span class="special-day-icon">🕌</span>
+                                    <span class="special-day-text">
+                                        <strong>Cuma Günü</strong>
+                                        <small>Cuma namazı ve duası</small>
+                                    </span>
+                                </span>
+                            </label>
+                            <label class="special-day-item">
+                                <input type="checkbox" id="notifyRamadan" checked>
+                                <span class="special-day-label">
+                                    <span class="special-day-icon">🌙</span>
+                                    <span class="special-day-text">
+                                        <strong>Ramazan</strong>
+                                        <small>İftar ve sahur vakitleri</small>
+                                    </span>
+                                </span>
+                            </label>
+                            <label class="special-day-item">
+                                <input type="checkbox" id="notifyKandil" checked>
+                                <span class="special-day-label">
+                                    <span class="special-day-icon">✨</span>
+                                    <span class="special-day-text">
+                                        <strong>Kandil Geceleri</strong>
+                                        <small>Özel ibadet hatırlatması</small>
+                                    </span>
+                                </span>
+                            </label>
+                            <label class="special-day-item">
+                                <input type="checkbox" id="notifyBayram">
+                                <span class="special-day-label">
+                                    <span class="special-day-icon">🎉</span>
+                                    <span class="special-day-text">
+                                        <strong>Bayramlar</strong>
+                                        <small>Bayram namazı ve tebrik</small>
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Notification Templates -->
+                    <div class="notification-templates-section">
+                        <h4 class="section-subtitle">💬 Bildirim Mesaj Tarzı</h4>
+                        <div class="templates-grid">
+                            <label class="template-card">
+                                <input type="radio" name="notificationTemplate" value="formal" checked>
+                                <div class="template-content">
+                                    <div class="template-icon">📋</div>
+                                    <div class="template-text">
+                                        <strong>Resmi</strong>
+                                        <small>Öğle namazı vakti girmiştir</small>
+                                    </div>
+                                </div>
+                                <div class="template-checkmark">✓</div>
+                            </label>
+                            <label class="template-card">
+                                <input type="radio" name="notificationTemplate" value="friendly">
+                                <div class="template-content">
+                                    <div class="template-icon">😊</div>
+                                    <div class="template-text">
+                                        <strong>Samimi</strong>
+                                        <small>Öğle namazı vakti! Haydi namaza</small>
+                                    </div>
+                                </div>
+                                <div class="template-checkmark">✓</div>
+                            </label>
+                            <label class="template-card">
+                                <input type="radio" name="notificationTemplate" value="minimal">
+                                <div class="template-content">
+                                    <div class="template-icon">⚡</div>
+                                    <div class="template-text">
+                                        <strong>Minimal</strong>
+                                        <small>Öğle - 12:30</small>
+                                    </div>
+                                </div>
+                                <div class="template-checkmark">✓</div>
+                            </label>
+                            <label class="template-card">
+                                <input type="radio" name="notificationTemplate" value="detailed">
+                                <div class="template-content">
+                                    <div class="template-icon">📝</div>
+                                    <div class="template-text">
+                                        <strong>Detaylı</strong>
+                                        <small>Öğle vakti - Dua ve fazileti ile</small>
+                                    </div>
+                                </div>
+                                <div class="template-checkmark">✓</div>
+                            </label>
                         </div>
                     </div>
 

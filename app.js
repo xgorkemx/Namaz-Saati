@@ -4092,9 +4092,191 @@ const HadisModule = {
     }
 };
 
+// Smart Notifications Module
+const SmartNotifications = {
+    stats: {
+        sent: 0,
+        clicked: 0,
+        streak: 0
+    },
+
+    init() {
+        this.loadStats();
+        this.updateStatsDisplay();
+        this.setupSuggestions();
+        this.setupPreview();
+        this.setupTemplates();
+        this.setupSpecialDays();
+    },
+
+    loadStats() {
+        const saved = localStorage.getItem('notificationStats');
+        if (saved) {
+            this.stats = { ...this.stats, ...JSON.parse(saved) };
+        }
+    },
+
+    saveStats() {
+        localStorage.setItem('notificationStats', JSON.stringify(this.stats));
+    },
+
+    updateStatsDisplay() {
+        document.getElementById('totalNotificationsSent').textContent = this.stats.sent;
+        document.getElementById('notificationsClicked').textContent = this.stats.clicked;
+
+        const successRate = this.stats.sent > 0 ?
+            Math.round((this.stats.clicked / this.stats.sent) * 100) : 0;
+        document.getElementById('notificationSuccessRate').textContent = `${successRate}%`;
+
+        document.getElementById('notificationStreak').textContent = this.stats.streak;
+    },
+
+    incrementSent() {
+        this.stats.sent++;
+        this.saveStats();
+        this.updateStatsDisplay();
+    },
+
+    incrementClicked() {
+        this.stats.clicked++;
+        this.saveStats();
+        this.updateStatsDisplay();
+    },
+
+    setupSuggestions() {
+        const applyButtons = document.querySelectorAll('.suggestion-apply-btn');
+        applyButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const suggestion = e.target.getAttribute('data-suggestion');
+                this.applySuggestion(suggestion);
+
+                // Visual feedback
+                e.target.textContent = '✓ Uygulandı';
+                e.target.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+
+                setTimeout(() => {
+                    e.target.closest('.suggestion-card').style.opacity = '0.6';
+                    e.target.disabled = true;
+                }, 500);
+            });
+        });
+    },
+
+    applySuggestion(suggestion) {
+        switch(suggestion) {
+            case 'fajr-10':
+                const notificationBefore = document.getElementById('notificationBefore');
+                if (notificationBefore) {
+                    notificationBefore.value = '10';
+                }
+                break;
+            case 'daily-summary':
+                const dailyReminder = document.getElementById('dailyReminder');
+                if (dailyReminder) {
+                    dailyReminder.checked = true;
+                }
+                break;
+        }
+    },
+
+    setupPreview() {
+        const updateBtn = document.getElementById('updatePreview');
+        const prayerSelect = document.getElementById('previewPrayer');
+
+        if (updateBtn && prayerSelect) {
+            updateBtn.addEventListener('click', () => {
+                this.updatePreview(prayerSelect.value);
+            });
+
+            prayerSelect.addEventListener('change', () => {
+                this.updatePreview(prayerSelect.value);
+            });
+        }
+    },
+
+    updatePreview(prayer) {
+        const prayerData = {
+            fajr: { name: 'İmsak', icon: '🌅', time: '05:30' },
+            dhuhr: { name: 'Öğle', icon: '🕌', time: '12:30' },
+            asr: { name: 'İkindi', icon: '🌤️', time: '15:45' },
+            maghrib: { name: 'Akşam', icon: '🌆', time: '18:15' },
+            isha: { name: 'Yatsı', icon: '🌙', time: '20:00' }
+        };
+
+        const data = prayerData[prayer];
+        if (data) {
+            document.getElementById('previewTitle').textContent = `${data.icon} ${data.name} Vakti Girdi`;
+            document.getElementById('previewMessage').innerHTML = `
+                Ankara - ${data.name} namazı vakti girmiştir.
+                <br>Vakit: ${data.time}
+            `;
+        }
+    },
+
+    setupTemplates() {
+        const templateRadios = document.querySelectorAll('input[name="notificationTemplate"]');
+        templateRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const template = e.target.value;
+                localStorage.setItem('notificationTemplate', template);
+
+                // Visual feedback
+                const card = e.target.closest('.template-card');
+                card.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    card.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Load saved template
+        const savedTemplate = localStorage.getItem('notificationTemplate');
+        if (savedTemplate) {
+            const radio = document.querySelector(`input[name="notificationTemplate"][value="${savedTemplate}"]`);
+            if (radio) radio.checked = true;
+        }
+    },
+
+    setupSpecialDays() {
+        const checkboxes = [
+            'notifyFriday',
+            'notifyRamadan',
+            'notifyKandil',
+            'notifyBayram'
+        ];
+
+        checkboxes.forEach(id => {
+            const checkbox = document.getElementById(id);
+            if (checkbox) {
+                // Load saved state
+                const saved = localStorage.getItem(id);
+                if (saved !== null) {
+                    checkbox.checked = saved === 'true';
+                }
+
+                // Save on change
+                checkbox.addEventListener('change', (e) => {
+                    localStorage.setItem(id, e.target.checked);
+
+                    // Visual feedback
+                    const item = e.target.closest('.special-day-item');
+                    if (e.target.checked) {
+                        item.style.background = 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)';
+                        item.style.borderColor = '#06b6d4';
+                    } else {
+                        item.style.background = 'var(--surface)';
+                        item.style.borderColor = 'var(--border)';
+                    }
+                });
+            }
+        });
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
+    SmartNotifications.init();
     AbdestModule.init();
     NamazModule.init();
     ZekatModule.init();
