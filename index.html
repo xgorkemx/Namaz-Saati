@@ -647,6 +647,23 @@
                         </svg>
                     </div>
 
+                    <!-- Hac ve Umre Rehberi Module -->
+                    <div class="feature-card" id="hacUmreCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L4 7v9c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V7l-8-5z"></path>
+                                <path d="M12 8v8M8 12h8"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Hac ve Umre Rehberi</h3>
+                            <p>Hac ve umre ibadetleri için kapsamlı rehber</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
                     <!-- 40 Hadis Module -->
                     <div class="feature-card" id="hadisCard">
                         <div class="feature-icon" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
@@ -4036,6 +4053,385 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Hac ve Umre Rehberi Module -->
+    <div class="hac-umre-module" id="hacUmreModule" style="display: none;">
+        <button class="back-btn" id="hacUmreBackBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Geri
+        </button>
+
+        <div class="hac-umre-header">
+            <h2>🕋 Hac ve Umre Rehberi</h2>
+            <p class="hac-umre-subtitle">İslam'ın beş şartından biri olan Hac ve Umre ibadeti için kapsamlı rehber</p>
+        </div>
+
+        <!-- Hac ve Umre Nedir -->
+        <div class="hac-umre-info-card">
+            <h3>Hac ve Umre Nedir?</h3>
+            <p><strong>Hac:</strong> İslam'ın beş şartından biridir. Müslümanların gücü yeten her kişi ömründe bir kere Kâbe'yi ziyaret etmek ve belirli zamanlarda belirli ibadetleri yerine getirmekle yükümlüdür.</p>
+            <p><strong>Umre:</strong> Küçük hac olarak da bilinir. Hac gibi ihrama girmek, Kâbe'yi tavaf etmek ve Safa ile Merve arasında sa'y yapmaktan ibarettir. Yılın her döneminde yapılabilir.</p>
+            <p class="hac-ayah">"İnsanlar için ilk kurulan ev (mabet), şüphesiz Mekke'deki Kâbe'dir. O, bereketli ve âlemlere hidayet rehberi olarak konmuştur." <strong>(Âl-i İmran Suresi, 96)</strong></p>
+        </div>
+
+        <!-- Hac Çeşitleri -->
+        <div class="hac-types-section">
+            <h3>🎯 Hac Çeşitleri</h3>
+            <div class="hac-type-cards">
+                <div class="hac-type-card">
+                    <div class="type-icon">1</div>
+                    <h4>İfrad Haccı</h4>
+                    <p>Sadece hac için ihrama girilir. Umre yapılmaz. Kurban kesmek gerekmez.</p>
+                    <p class="type-detail">Mîkat'tan sadece hac için ihrama girilir ve haccın farzları yerine getirilir.</p>
+                </div>
+                <div class="hac-type-card featured">
+                    <div class="type-icon">2</div>
+                    <h4>Kıran Haccı</h4>
+                    <p>Hem hac hem umre için birlikte ihrama girilir. Kurban kesmek gerekir.</p>
+                    <p class="type-detail">Hac ve umre niyeti birlikte yapılır. Umre ve hac aynı ihramla yerine getirilir.</p>
+                </div>
+                <div class="hac-type-card">
+                    <div class="type-icon">3</div>
+                    <h4>Temettu Haccı</h4>
+                    <p>Önce umre, sonra hac yapılır. İki ayrı ihrama girilir. Kurban kesmek gerekir.</p>
+                    <p class="type-detail">En çok tercih edilen hac çeşididir. Hac aylarında umre yapılır, sonra ihramdan çıkılıp hac için tekrar ihrama girilir.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Umre Adımları -->
+        <div class="umre-steps-section">
+            <h3>📿 Umre Nasıl Yapılır? (5 Adım)</h3>
+
+            <div class="ritual-step">
+                <div class="step-number-large">1</div>
+                <div class="step-content-large">
+                    <h4>İhrama Girmek (Mîkat'ta)</h4>
+                    <p>Mîkat denilen belli yerlerden geçilmeden önce ihram giyilir ve niyet edilir.</p>
+                    <div class="step-details">
+                        <p><strong>Erkekler için:</strong> İki parça dikişsiz beyaz örtü (izâr ve ridâ)</p>
+                        <p><strong>Kadınlar için:</strong> Normal kapalı elbise (renk ve model serbesttir)</p>
+                    </div>
+                    <div class="dua-box">
+                        <p class="dua-label">Umre Niyeti:</p>
+                        <p class="dua-arabic">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</p>
+                        <p class="dua-translation">"Lebbeyk Allahümme umraten" (Allah'ım, umre yapmak için hazır oldum)</p>
+                    </div>
+                    <div class="dua-box">
+                        <p class="dua-label">Telbiye Duası:</p>
+                        <p class="dua-arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ</p>
+                        <p class="dua-translation">"Lebbeyk Allahümme lebbeyk. Lebbeyk lâ şerîke leke lebbeyk. İnnel hamde ven ni'mete leke vel mülk. Lâ şerîke lek."</p>
+                        <p class="dua-meaning">Anlamı: "Buyur Allah'ım buyur, emrine amadeyim. Buyur, senin ortağın yoktur, buyur. Şüphesiz hamd, nimet ve mülk senindir. Senin ortağın yoktur."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ritual-step">
+                <div class="step-number-large">2</div>
+                <div class="step-content-large">
+                    <h4>Kâbe'yi Tavaf Etmek (7 Tur)</h4>
+                    <p>Hacer-i Esved hizasından başlayarak Kâbe etrafında saat yönünün tersine 7 tur dönülür.</p>
+                    <div class="step-details">
+                        <p><strong>1. Tur:</strong> Hacer-i Esved'i işaret edip "Bismillah, Allahu Ekber" denir</p>
+                        <p><strong>Her turda:</strong> Rükn-i Yemânî ile Hacer-i Esved arası geçilirken dua edilir</p>
+                        <p><strong>7. Tur:</strong> Tamamlandıktan sonra Makam-ı İbrahim'in arkasında 2 rekât namaz kılınır</p>
+                    </div>
+                    <div class="dua-box">
+                        <p class="dua-label">Tavaf Duası (Rükn-i Yemânî ile Hacer-i Esved arası):</p>
+                        <p class="dua-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</p>
+                        <p class="dua-translation">"Rabbenâ âtinâ fid-dünyâ haseneten ve fil-âhıreti haseneten ve kınâ azâben-nâr"</p>
+                        <p class="dua-meaning">Anlamı: "Ey Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ritual-step">
+                <div class="step-number-large">3</div>
+                <div class="step-content-large">
+                    <h4>Zemzem Suyu İçmek (Sünnet)</h4>
+                    <p>Tavaftan sonra Zemzem kuyusuna gidilir ve Zemzem suyu içilir.</p>
+                    <div class="dua-box">
+                        <p class="dua-label">Zemzem İçerken Okunacak Dua:</p>
+                        <p class="dua-arabic">اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا وَاسِعًا، وَشِفَاءً مِنْ كُلِّ دَاءٍ</p>
+                        <p class="dua-translation">"Allahümme innî es'elüke ilmen nâfi'an ve rizkan vâsi'an ve şifâen min külli dâ'"</p>
+                        <p class="dua-meaning">Anlamı: "Allah'ım! Senden faydalı ilim, bol rızık ve her derde şifa istiyorum."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ritual-step">
+                <div class="step-number-large">4</div>
+                <div class="step-content-large">
+                    <h4>Safa ile Merve Arasında Sa'y (7 Gidiş-Geliş)</h4>
+                    <p>Safa tepesinden başlanır, Merve tepesine gidilir ve Safa'ya dönülür. Bu 7 kez tekrarlanır.</p>
+                    <div class="step-details">
+                        <p><strong>1. Gidiş:</strong> Safa'dan Merve'ye (Safa tepesinde Kâbe'ye yönelip dua edilir)</p>
+                        <p><strong>Yeşil ışıklar arası:</strong> Erkekler hızlı yürür (hervele)</p>
+                        <p><strong>7. Geliş:</strong> Merve'de bitirilir</p>
+                    </div>
+                    <div class="dua-box">
+                        <p class="dua-label">Safa ve Merve'de Okunacak Dua:</p>
+                        <p class="dua-arabic">إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ</p>
+                        <p class="dua-translation">"İnnes-safâ vel-mervete min şeâirillâh"</p>
+                        <p class="dua-meaning">Anlamı: "Şüphesiz Safa ile Merve, Allah'ın şeâirlerindendir."</p>
+                        <br>
+                        <p class="dua-arabic">لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</p>
+                        <p class="dua-translation">"Lâ ilâhe illallâhu vahdehû lâ şerîke leh, lehül-mülkü ve lehül-hamdü ve hüve alâ külli şey'in kadîr"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ritual-step">
+                <div class="step-number-large">5</div>
+                <div class="step-content-large">
+                    <h4>Saç Tıraşı veya Kısaltma (Hallak)</h4>
+                    <p>Erkekler saçlarını kazıtır veya kısaltır. Kadınlar saçlarının ucundan parmak ucu kadar keser.</p>
+                    <div class="step-details">
+                        <p><strong>Erkekler:</strong> Traş olmak daha faziletlidir</p>
+                        <p><strong>Kadınlar:</strong> Saçın ucundan 2-3 cm kesilir</p>
+                        <p><strong>Sonuç:</strong> İhramdan çıkılır ve umre tamamlanır</p>
+                    </div>
+                    <div class="success-box">
+                        🎉 Tebrikler! Umreniz kabul olsun. "Umre ile umre arasındaki günler o kişinin günahlarına kefarettir." (Hadis-i Şerif)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hac Adımları -->
+        <div class="hac-steps-section">
+            <h3>🕌 Hac Nasıl Yapılır?</h3>
+            <p class="section-intro">Hac ibadeti Zilhicce ayının 8. günü başlar ve 12-13. günler arasında tamamlanır.</p>
+
+            <div class="hac-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">8 Zilhicce</div>
+                    <div class="timeline-content">
+                        <h4>📍 Mina'ya Gidiş (Terviye Günü)</h4>
+                        <p>Hac için ihrama girilir, telbiye getirilir ve Mina'ya gidilir. Burada öğle, ikindi, akşam, yatsı ve sabah namazları kılınır.</p>
+                        <div class="dua-box">
+                            <p class="dua-label">Hac Niyeti:</p>
+                            <p class="dua-arabic">لَبَّيْكَ اللَّهُمَّ حَجًّا</p>
+                            <p class="dua-translation">"Lebbeyk Allahümme haccan" (Allah'ım, hac yapmak için hazır oldum)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item highlight">
+                    <div class="timeline-date">9 Zilhicce</div>
+                    <div class="timeline-content">
+                        <h4>⛰️ Arafat Vakfesi (HAC'IN EN ÖNEMLİ RÜKNÜ)</h4>
+                        <p>Güneş doğduktan sonra Arafat'a gidilir. Öğle ile ikindi namazı birleştirilir. Güneş batana kadar dua edilir.</p>
+                        <div class="important-note">
+                            ⚠️ Arefe günü güneş batmadan önce Arafat sınırları içinde bulunmak HAC'IN FARZIDIR!
+                        </div>
+                        <div class="dua-box">
+                            <p class="dua-label">Arafat'ta Okunacak Dualar:</p>
+                            <p class="dua-arabic">لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، يُحْيِي وَيُمِيتُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</p>
+                            <p class="dua-meaning">Bu gün çokça istiğfar edilir, Kur'an okunur ve dua edilir. Peygamberimiz (sav) "Haccın en faziletli günü Arefe günüdür" buyurmuştur.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">9 Zilhicce (Gece)</div>
+                    <div class="timeline-content">
+                        <h4>🌙 Müzdelife'de Geceleme</h4>
+                        <p>Güneş battıktan sonra Müzdelife'ye gidilir. Akşam ve yatsı namazları birleştirilerek kılınır. Sabaha kadar burada kalınır ve şeytan taşlamak için 49-70 arası çakıl taşı toplanır.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">10 Zilhicce</div>
+                    <div class="timeline-content">
+                        <h4>🎯 Kurban Bayramı (Arefe Sonrası)</h4>
+                        <p>Bu günde sırasıyla şu işler yapılır:</p>
+                        <ol class="ritual-list">
+                            <li><strong>Şeytan Taşlama:</strong> Mina'da Cemretu'l-Akabe'ye (büyük şeytan) 7 taş atılır</li>
+                            <li><strong>Kurban Kesme:</strong> Kurban kesilir (Temettu ve Kıran haccında vaciptir)</li>
+                            <li><strong>Saç Tıraşı:</strong> Saç traş edilir veya kısaltılır</li>
+                            <li><strong>Ziyaret Tavafı:</strong> Mekke'ye gidilip Kâbe 7 kez tavaf edilir (HAC'IN FARZI)</li>
+                            <li><strong>Sa'y:</strong> Safa ile Merve arası 7 kez gidilir</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">11-12-13 Zilhicce</div>
+                    <div class="timeline-content">
+                        <h4>🪨 Teşrik Günleri (Mina'da Taşlama)</h4>
+                        <p>Mina'da kalınır ve her gün 3 şeytana (küçük, orta, büyük) 7'şer taş atılır (toplam 21 taş/gün).</p>
+                        <div class="step-details">
+                            <p><strong>11. Gün:</strong> Öğleden sonra 3 şeytana taşlama</p>
+                            <p><strong>12. Gün:</strong> Öğleden sonra 3 şeytana taşlama (İsteyen bu gün ayrılabilir)</p>
+                            <p><strong>13. Gün:</strong> Kalanlar son taşlamayı yapar</p>
+                        </div>
+                        <div class="dua-box">
+                            <p class="dua-label">Taş atarken:</p>
+                            <p class="dua-arabic">بِسْمِ اللهِ، اللهُ أَكْبَرُ</p>
+                            <p class="dua-translation">"Bismillah, Allahu Ekber" (Her taşta söylenir)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Son Gün</div>
+                    <div class="timeline-content">
+                        <h4>👋 Veda Tavafı</h4>
+                        <p>Mekke'den ayrılmadan önce son bir kez Kâbe tavaf edilir. Hac ibadeti tamamlanır.</p>
+                        <div class="success-box">
+                            🎉 Maşallah! Haccınız kabul olsun. Peygamberimiz (sav) buyurdu: "Haccı mabrur (makbul hac) un karşılığı ancak cennettir." (Buhari, Muslim)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- İhram Yasakları -->
+        <div class="ihram-rules-section">
+            <h3>🚫 İhramdayken Yapılması Yasak Olan Şeyler (Mahzurlar)</h3>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-icon">👔</div>
+                    <h4>Dikişli Elbise</h4>
+                    <p>Erkekler dikişli elbise giyemez, başını örtemez</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">💅</div>
+                    <h4>Tırnak ve Saç</h4>
+                    <p>Tırnak kesmek, saç kesmek veya yolmak yasaktır</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">🌸</div>
+                    <h4>Koku Kullanımı</h4>
+                    <p>Parfüm, deodorant gibi kokulu şeyler kullanılamaz</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">🦌</div>
+                    <h4>Av Hayvanı</h4>
+                    <p>Kara avı avlanması, öldürülmesi yasaktır</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">💑</div>
+                    <h4>Cinsel İlişki</h4>
+                    <p>Eşler arası cinsel ilişki ve öpüşme yasaktır</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">💍</div>
+                    <h4>Nikah Akdi</h4>
+                    <p>İhramlıyken nikah kıyılamaz ve şahitlik yapılamaz</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">🧤</div>
+                    <h4>Eldiven ve Çorap</h4>
+                    <p>Erkekler eldiven giyemez, kadınlar yüzünü örtemez (başörtüsü olur)</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">⚔️</div>
+                    <h4>Kavga ve Kötü Söz</h4>
+                    <p>Tartışma, kavga, kötü söz söylemekten sakınılmalıdır</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Faydalı Bilgiler -->
+        <div class="tips-section">
+            <h3>💡 Faydalı Bilgiler ve Tavsiyeler</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h4>Hazırlık</h4>
+                    <ul>
+                        <li>Hac/Umre öncesi mutlaka eğitim alın</li>
+                        <li>Sağlık kontrolü yaptırın, aşılarınızı yaptırın</li>
+                        <li>Gerekli evrakları hazırlayın (pasaport, vize)</li>
+                        <li>Kumanya listesi hazırlayın</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">💊</div>
+                    <h4>Sağlık</h4>
+                    <ul>
+                        <li>İlaçlarınızı yanınıza alın</li>
+                        <li>Rahat ayakkabı giyin (çok yürüyeceksiniz)</li>
+                        <li>Bol su için, susuz kalmayın</li>
+                        <li>Güneş kremi ve şemsiye kullanın</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🤲</div>
+                    <h4>Manevi</h4>
+                    <ul>
+                        <li>Samimi niyet ve ihlas ile gidin</li>
+                        <li>Helallik alın, borçları ödeyin</li>
+                        <li>Bol bol dua edin, Kur'an okuyun</li>
+                        <li>Sabırlı ve hoşgörülü olun</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">👥</div>
+                    <h4>Sosyal</h4>
+                    <ul>
+                        <li>Rehberinizi dinleyin, gruptan ayrılmayın</li>
+                        <li>Yardımsever ve mütevazı olun</li>
+                        <li>Kalabalıkta sabırlı olun</li>
+                        <li>Diğer hacılara karşı saygılı olun</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Önemli Dualar -->
+        <div class="important-duas-section">
+            <h3>📖 Hac ve Umre'de Önemli Dualar</h3>
+
+            <div class="dua-card-large">
+                <h4>🕋 Kâbe'yi İlk Görünce</h4>
+                <p class="dua-arabic-large">اللَّهُمَّ زِدْ هَذَا الْبَيْتَ تَشْرِيفًا وَتَعْظِيمًا وَتَكْرِيمًا وَمَهَابَةً، وَزِدْ مَنْ شَرَّفَهُ وَكَرَّمَهُ مِمَّنْ حَجَّهُ أَوِ اعْتَمَرَهُ تَشْرِيفًا وَتَكْرِيمًا وَتَعْظِيمًا وَبِرًّا</p>
+                <p class="dua-translation-large">"Allahümme zid hâzel-beyte teşrîfen ve ta'zîmen ve tekrîmen ve mehâbeten, ve zid men şerrefehû ve kerremehû mimmen haccehû evi'temereh teşrîfen ve tekrîmen ve ta'zîmen ve birrâ"</p>
+                <p class="dua-meaning-large">Anlamı: "Allah'ım! Bu Beyt'in (Kâbe'nin) şerefini, azametini, hürmetini ve heybetini artır. Onu hac veya umre ile ziyaret ederek şereflendiren ve ona hürmet edenlerin şerefini, hürmetini, azametini ve iyiliğini artır."</p>
+            </div>
+
+            <div class="dua-card-large">
+                <h4>🏃 Tavaf Sırasında (Her Tur)</h4>
+                <p class="dua-arabic-large">سُبْحَانَ اللهِ وَالْحَمْدُ لِلَّهِ وَلاَ إِلَهَ إِلاَّ اللهُ وَاللهُ أَكْبَرُ وَلاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللهِ</p>
+                <p class="dua-translation-large">"Subhânallâhi vel-hamdü lillâhi ve lâ ilâhe illallâhu vallâhu ekber ve lâ havle ve lâ kuvvete illâ billâh"</p>
+            </div>
+
+            <div class="dua-card-large">
+                <h4>⛰️ Arafat'ta Okunacak</h4>
+                <p class="dua-arabic-large">لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، بِيَدِهِ الْخَيْرُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</p>
+                <p class="dua-meaning-large">Arefe günü çok istiğfar edilir, af dilenir. Bu gün yapılan duaların kabul olunması için çok mübarek bir gündür.</p>
+            </div>
+        </div>
+
+        <!-- Hac'ın Farzları ve Vacipleri -->
+        <div class="farz-vacip-section">
+            <div class="farz-box">
+                <h3>⭐ Hac'ın 3 Farzı</h3>
+                <ol class="farz-list">
+                    <li><strong>İhram:</strong> Mîkat'tan geçmeden önce ihrama girmek ve niyet etmek</li>
+                    <li><strong>Vakfe:</strong> 9 Zilhicce günü Arafat'ta bulunmak (güneş batmadan önce)</li>
+                    <li><strong>Ziyaret Tavafı:</strong> Bayram günü veya sonrasında Kâbe'yi 7 kez tavaf etmek</li>
+                </ol>
+            </div>
+
+            <div class="vacip-box">
+                <h3>✅ Hac'ın 6 Vacibi</h3>
+                <ol class="vacip-list">
+                    <li><strong>Sa'y:</strong> Safa ile Merve arasında 7 kez gidip gelmek</li>
+                    <li><strong>Müzdelife'de Vakfe:</strong> Arefe gecesi Müzdelife'de bulunmak</li>
+                    <li><strong>Cemrelere Taş Atma:</strong> Belirli günlerde şeytanlara taş atmak</li>
+                    <li><strong>Saç Tıraşı:</strong> Saçı tıraş etmek veya kısaltmak</li>
+                    <li><strong>Veda Tavafı:</strong> Mekke'den ayrılmadan önce Kâbe'yi tavaf etmek</li>
+                    <li><strong>Mîkat Dışında İhram:</strong> Mîkat sınırlarından geçmeden ihrama girmek</li>
+                </ol>
+            </div>
+        </div>
+
     </div>
 
     <!-- Footer -->

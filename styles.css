@@ -7646,3 +7646,698 @@ select:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================
+   HAC VE UMRE REHBERİ MODULE
+   ========================================== */
+
+/* Hac Umre Module Container */
+.hac-umre-module {
+    display: none;
+    background: var(--background);
+    padding: var(--spacing-xl);
+    min-height: 100vh;
+}
+
+.hac-umre-module.active {
+    display: block;
+}
+
+/* Header */
+.hac-umre-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.hac-umre-header h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 800;
+}
+
+.hac-umre-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Info Card */
+.hac-umre-info-card {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-left: 5px solid #a855f7;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.hac-umre-info-card h3 {
+    color: #a855f7;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.hac-umre-info-card p {
+    color: var(--text-primary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.hac-umre-info-card p:last-child {
+    margin-bottom: 0;
+}
+
+.hac-ayah {
+    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+    border-left: 4px solid #a855f7;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-style: italic;
+    color: #6b21a8;
+    margin-top: var(--spacing-lg);
+}
+
+/* Hac Types Section */
+.hac-types-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.hac-types-section h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    font-weight: 700;
+}
+
+.hac-type-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hac-type-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.hac-type-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: #a855f7;
+}
+
+.hac-type-card.featured {
+    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+    border-color: #a855f7;
+}
+
+.type-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.hac-type-card h4 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.hac-type-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.type-detail {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* Umre Steps Section */
+.umre-steps-section,
+.hac-steps-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.umre-steps-section h3,
+.hac-steps-section h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+.section-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xl);
+    font-size: 1.1rem;
+}
+
+/* Ritual Steps */
+.ritual-step {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    gap: var(--spacing-lg);
+    border-left: 5px solid #a855f7;
+}
+
+.step-number-large {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
+}
+
+.step-content-large {
+    flex: 1;
+}
+
+.step-content-large h4 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+.step-content-large > p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+}
+
+.step-details {
+    background: #f8f9fa;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+.step-details p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.step-details p:last-child {
+    margin-bottom: 0;
+}
+
+/* Dua Box */
+.dua-box {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-left: 4px solid #10b981;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.dua-label {
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95rem;
+}
+
+.dua-arabic {
+    font-family: 'Traditional Arabic', 'Arabic Typesetting', 'Amiri', serif;
+    font-size: 1.4rem;
+    line-height: 2;
+    color: #047857;
+    text-align: right;
+    direction: rtl;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.dua-translation {
+    font-style: italic;
+    color: #059669;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.95rem;
+}
+
+.dua-meaning {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Success Box */
+.success-box {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid #f59e0b;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+    text-align: center;
+    font-size: 1.05rem;
+    color: #92400e;
+    font-weight: 600;
+}
+
+/* Hac Timeline */
+.hac-timeline {
+    position: relative;
+    padding-left: var(--spacing-lg);
+}
+
+.hac-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #a855f7 0%, #9333ea 100%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: var(--spacing-xl);
+    padding-left: var(--spacing-xl);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 3px solid #a855f7;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+}
+
+.timeline-item.highlight::before {
+    width: 24px;
+    height: 24px;
+    left: -12px;
+    background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 6px rgba(168, 85, 247, 0.2);
+}
+
+.timeline-date {
+    display: inline-block;
+    background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.timeline-content {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.timeline-content h4 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+}
+
+.important-note {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-left: 4px solid #ef4444;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    color: #991b1b;
+    font-weight: 600;
+    margin: var(--spacing-md) 0;
+}
+
+.ritual-list {
+    margin: var(--spacing-md) 0;
+    padding-left: var(--spacing-lg);
+}
+
+.ritual-list li {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.7;
+}
+
+/* İhram Rules Section */
+.ihram-rules-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.ihram-rules-section h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.rule-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.rule-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: #ef4444;
+}
+
+.rule-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.rule-card h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.rule-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Tips Section */
+.tips-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.tips-section h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    font-weight: 700;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.tip-card {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.tip-icon {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.tip-card h4 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+    text-align: center;
+}
+
+.tip-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tip-card ul li {
+    color: var(--text-secondary);
+    padding-left: var(--spacing-lg);
+    position: relative;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.tip-card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: 700;
+}
+
+/* Important Duas Section */
+.important-duas-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.important-duas-section h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    font-weight: 700;
+}
+
+.dua-card-large {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-left: 5px solid #10b981;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.dua-card-large h4 {
+    font-size: 1.3rem;
+    color: #065f46;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
+.dua-arabic-large {
+    font-family: 'Traditional Arabic', 'Arabic Typesetting', 'Amiri', serif;
+    font-size: 1.6rem;
+    line-height: 2.2;
+    color: #047857;
+    text-align: right;
+    direction: rtl;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+    padding: var(--spacing-md);
+    background: white;
+    border-radius: var(--radius-md);
+}
+
+.dua-translation-large {
+    font-style: italic;
+    color: #059669;
+    margin-bottom: var(--spacing-md);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.dua-meaning-large {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Farz Vacip Section */
+.farz-vacip-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.farz-box {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 3px solid #f59e0b;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.farz-box h3 {
+    font-size: 1.3rem;
+    color: #92400e;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+    text-align: center;
+}
+
+.farz-list {
+    padding-left: var(--spacing-lg);
+    counter-reset: farz-counter;
+    list-style: none;
+}
+
+.farz-list li {
+    counter-increment: farz-counter;
+    position: relative;
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    color: #78350f;
+    line-height: 1.7;
+}
+
+.farz-list li::before {
+    content: counter(farz-counter);
+    position: absolute;
+    left: -25px;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    background: #f59e0b;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.vacip-box {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 3px solid #06b6d4;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.vacip-box h3 {
+    font-size: 1.3rem;
+    color: #164e63;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+    text-align: center;
+}
+
+.vacip-list {
+    padding-left: var(--spacing-lg);
+    counter-reset: vacip-counter;
+    list-style: none;
+}
+
+.vacip-list li {
+    counter-increment: vacip-counter;
+    position: relative;
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    color: #155e75;
+    line-height: 1.7;
+}
+
+.vacip-list li::before {
+    content: counter(vacip-counter);
+    position: absolute;
+    left: -25px;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    background: #06b6d4;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hac-umre-module {
+        padding: var(--spacing-md);
+    }
+
+    .hac-umre-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .ritual-step {
+        flex-direction: column;
+        padding: var(--spacing-md);
+    }
+
+    .step-number-large {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .hac-type-cards,
+    .rules-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hac-timeline {
+        padding-left: var(--spacing-md);
+    }
+
+    .timeline-item {
+        padding-left: var(--spacing-md);
+    }
+
+    .dua-arabic,
+    .dua-arabic-large {
+        font-size: 1.2rem;
+    }
+
+    .farz-vacip-section {
+        grid-template-columns: 1fr;
+    }
+}

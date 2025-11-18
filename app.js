@@ -3904,6 +3904,34 @@ const MedyaModule = {
     }
 };
 
+// Hac ve Umre Rehberi Module
+const HacUmreModule = {
+    init() {
+        const hacUmreCard = document.getElementById('hacUmreCard');
+        const hacUmreBackBtn = document.getElementById('hacUmreBackBtn');
+
+        // Navigation - Open Hac & Umre Module
+        if (hacUmreCard) {
+            hacUmreCard.addEventListener('click', () => {
+                document.querySelector('.more-features').style.display = 'none';
+                document.getElementById('hacUmreModule').style.display = 'block';
+                document.getElementById('hacUmreModule').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Navigation - Back Button
+        if (hacUmreBackBtn) {
+            hacUmreBackBtn.addEventListener('click', () => {
+                document.getElementById('hacUmreModule').style.display = 'none';
+                document.getElementById('hacUmreModule').classList.remove('active');
+                document.querySelector('.more-features').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }
+};
+
 // 40 Hadis Module
 const HadisModule = {
     allHadithCards: [],
@@ -4072,5 +4100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ZekatModule.init();
     CamilerModule.init();
     MedyaModule.init();
+    HacUmreModule.init();
     HadisModule.init();
 });
