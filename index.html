@@ -542,18 +542,20 @@
                         </svg>
                     </div>
 
-                    <!-- Zikir Stats -->
+                    <!-- Digital Tasbih -->
                     <div class="feature-card" id="zikirStatsCard">
                         <div class="feature-icon" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="18" y1="20" x2="18" y2="10"></line>
-                                <line x1="12" y1="20" x2="12" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <line x1="12" y1="2" x2="12" y2="6"></line>
+                                <line x1="12" y1="18" x2="12" y2="22"></line>
                             </svg>
                         </div>
                         <div class="feature-info">
-                            <h3>Zikir & Dua İstatistikleri</h3>
-                            <p>Tesbihat geçmişinizi görüntüleyin</p>
+                            <h3>Dijital Tesbih</h3>
+                            <p>Zikir sayacı, hedefler ve istatistikler</p>
                         </div>
                         <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="9 18 15 12 9 6"></polyline>
@@ -1254,8 +1256,8 @@
                     </button>
 
                     <div class="zikir-header">
-                        <h2>Zikir & Dua</h2>
-                        <p class="zikir-subtitle">Dijital Tesbihat ve İstatistikler</p>
+                        <h2>📿 Dijital Tesbih</h2>
+                        <p class="zikir-subtitle">Zikir Sayacı, Hedefler ve İstatistikler</p>
                     </div>
 
                     <!-- Zikir İstatistikleri -->
@@ -1292,8 +1294,46 @@
 
                     <!-- Dijital Tesbihat Sayacı -->
                     <div class="digital-tasbih-section">
-                        <h3>Dijital Tesbihat</h3>
-                        <p class="section-subtitle">Zikir türünü seçin ve sayımı başlatın</p>
+                        <div class="section-header-with-settings">
+                            <div>
+                                <h3>Dijital Tesbihat</h3>
+                                <p class="section-subtitle">Zikir türünü seçin ve sayımı başlatın</p>
+                            </div>
+                            <button class="tasbih-settings-btn" id="tasbihSettingsBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m0 6l4.2 4.2M23 12h-6m-6 0H1m13.2-5.2l-4.2 4.2m0 6l-4.2 4.2"></path>
+                                </svg>
+                                Ayarlar
+                            </button>
+                        </div>
+
+                        <!-- Tasbih Settings Panel -->
+                        <div class="tasbih-settings-panel" id="tasbihSettingsPanel" style="display: none;">
+                            <h4>⚙️ Tesbih Ayarları</h4>
+                            <div class="settings-options">
+                                <label class="setting-toggle">
+                                    <input type="checkbox" id="tasbihVibration" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">📳 Titreşim</span>
+                                </label>
+                                <label class="setting-toggle">
+                                    <input type="checkbox" id="tasbihSound" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">🔊 Ses Efekti</span>
+                                </label>
+                                <label class="setting-toggle">
+                                    <input type="checkbox" id="tasbihTargetAlert" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">🎯 Hedefe Ulaşınca Bildir</span>
+                                </label>
+                                <label class="setting-toggle">
+                                    <input type="checkbox" id="tasbihAutoSave" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">💾 Otomatik Kaydet</span>
+                                </label>
+                            </div>
+                        </div>
 
                         <div class="tasbih-selector">
                             <button class="tasbih-type-btn active" data-type="custom" data-target="100">

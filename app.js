@@ -2736,11 +2736,109 @@ const ZikirModule = {
 
     init() {
         this.loadData();
+        this.loadSettings();
         this.setupTasbihSelector();
         this.setupTasbihButton();
+        this.setupSettingsPanel();
         this.setupAccordion();
         this.updateAllStats();
         this.updateZikirCardCounts();
+    },
+
+    settings: {
+        vibration: true,
+        sound: true,
+        targetAlert: true,
+        autoSave: true
+    },
+
+    loadSettings() {
+        const saved = localStorage.getItem('tasbihSettings');
+        if (saved) {
+            this.settings = { ...this.settings, ...JSON.parse(saved) };
+        }
+        this.applySettingsToUI();
+    },
+
+    saveSettings() {
+        localStorage.setItem('tasbihSettings', JSON.stringify(this.settings));
+    },
+
+    applySettingsToUI() {
+        const vibrationCheckbox = document.getElementById('tasbihVibration');
+        const soundCheckbox = document.getElementById('tasbihSound');
+        const targetAlertCheckbox = document.getElementById('tasbihTargetAlert');
+        const autoSaveCheckbox = document.getElementById('tasbihAutoSave');
+
+        if (vibrationCheckbox) vibrationCheckbox.checked = this.settings.vibration;
+        if (soundCheckbox) soundCheckbox.checked = this.settings.sound;
+        if (targetAlertCheckbox) targetAlertCheckbox.checked = this.settings.targetAlert;
+        if (autoSaveCheckbox) autoSaveCheckbox.checked = this.settings.autoSave;
+    },
+
+    setupSettingsPanel() {
+        const settingsBtn = document.getElementById('tasbihSettingsBtn');
+        const settingsPanel = document.getElementById('tasbihSettingsPanel');
+
+        if (settingsBtn && settingsPanel) {
+            settingsBtn.addEventListener('click', () => {
+                if (settingsPanel.style.display === 'none') {
+                    settingsPanel.style.display = 'block';
+                    settingsBtn.textContent = '';
+                    settingsBtn.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m0 6l4.2 4.2M23 12h-6m-6 0H1m13.2-5.2l-4.2 4.2m0 6l-4.2 4.2"></path>
+                        </svg>
+                        Gizle
+                    `;
+                } else {
+                    settingsPanel.style.display = 'none';
+                    settingsBtn.textContent = '';
+                    settingsBtn.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m0 6l4.2 4.2M23 12h-6m-6 0H1m13.2-5.2l-4.2 4.2m0 6l-4.2 4.2"></path>
+                        </svg>
+                        Ayarlar
+                    `;
+                }
+            });
+        }
+
+        // Settings checkboxes
+        const vibrationCheckbox = document.getElementById('tasbihVibration');
+        const soundCheckbox = document.getElementById('tasbihSound');
+        const targetAlertCheckbox = document.getElementById('tasbihTargetAlert');
+        const autoSaveCheckbox = document.getElementById('tasbihAutoSave');
+
+        if (vibrationCheckbox) {
+            vibrationCheckbox.addEventListener('change', (e) => {
+                this.settings.vibration = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        if (soundCheckbox) {
+            soundCheckbox.addEventListener('change', (e) => {
+                this.settings.sound = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        if (targetAlertCheckbox) {
+            targetAlertCheckbox.addEventListener('change', (e) => {
+                this.settings.targetAlert = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        if (autoSaveCheckbox) {
+            autoSaveCheckbox.addEventListener('change', (e) => {
+                this.settings.autoSave = e.target.checked;
+                this.saveSettings();
+            });
+        }
     },
 
     loadData() {
@@ -2802,9 +2900,14 @@ const ZikirModule = {
                 this.incrementCounter();
                 this.animateButton(button);
 
-                // Vibrate if supported
-                if ('vibrate' in navigator) {
+                // Vibrate if enabled and supported
+                if (this.settings.vibration && 'vibrate' in navigator) {
                     navigator.vibrate(50);
+                }
+
+                // Play sound if enabled
+                if (this.settings.sound) {
+                    this.playClickSound();
                 }
             });
         }
@@ -2813,6 +2916,29 @@ const ZikirModule = {
             resetBtn.addEventListener('click', () => {
                 this.resetCounter();
             });
+        }
+    },
+
+    playClickSound() {
+        // Create a simple beep sound
+        try {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        } catch (error) {
+            console.log('Audio not supported');
         }
     },
 
@@ -2867,23 +2993,72 @@ const ZikirModule = {
     },
 
     onTargetReached() {
-        // Show a subtle notification
-        const textEl = document.getElementById('currentZikirText');
-        if (textEl) {
-            const originalText = textEl.textContent;
-            textEl.textContent = '🎉 Tamamlandı!';
-            textEl.style.color = '#10b981';
+        // Show notification if enabled
+        if (this.settings.targetAlert) {
+            const textEl = document.getElementById('currentZikirText');
+            if (textEl) {
+                const originalText = textEl.textContent;
+                textEl.textContent = '🎉 Hedefe Ulaşıldı!';
+                textEl.style.color = '#10b981';
 
-            setTimeout(() => {
-                textEl.textContent = originalText;
-                textEl.style.color = '#06b6d4';
-            }, 2000);
+                setTimeout(() => {
+                    textEl.textContent = originalText;
+                    textEl.style.color = '#06b6d4';
+                }, 2000);
+            }
+
+            // Vibrate pattern for success
+            if (this.settings.vibration && 'vibrate' in navigator) {
+                navigator.vibrate([100, 50, 100, 50, 200]);
+            }
+
+            // Play success sound
+            if (this.settings.sound) {
+                this.playSuccessSound();
+            }
+
+            // Show browser notification
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('Tesbih Tamamlandı! 🎉', {
+                    body: `${this.zikirTypes[this.currentType].name} - ${this.currentTarget} zikir tamamlandı!`,
+                    icon: '/icon.png',
+                    tag: 'tasbih-complete',
+                    silent: !this.settings.sound
+                });
+            }
         }
 
         // Auto reset after target
         setTimeout(() => {
             this.resetCounter();
         }, 2000);
+    },
+
+    playSuccessSound() {
+        try {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+            // Play a nice ascending tone
+            [600, 750, 900].forEach((freq, i) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                oscillator.frequency.value = freq;
+                oscillator.type = 'sine';
+
+                const startTime = audioContext.currentTime + (i * 0.1);
+                gainNode.gain.setValueAtTime(0.15, startTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.2);
+
+                oscillator.start(startTime);
+                oscillator.stop(startTime + 0.2);
+            });
+        } catch (error) {
+            console.log('Audio not supported');
+        }
     },
 
     recordZikir(type) {
