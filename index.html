@@ -4227,6 +4227,175 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- Offline Mode Settings -->
+                <div class="settings-group offline-mode-settings">
+                    <div class="settings-header">
+                        <h3>📴 Çevrimdışı Mod</h3>
+                        <div class="connection-status" id="connectionStatus">
+                            <span class="status-indicator online"></span>
+                            <span class="status-text">Çevrimiçi</span>
+                        </div>
+                    </div>
+
+                    <!-- Offline Status Card -->
+                    <div class="offline-status-card">
+                        <div class="offline-icon-container">
+                            <svg class="offline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="offline-status-content">
+                            <h4 id="offlineStatusTitle">Çevrimiçi Çalışıyor</h4>
+                            <p id="offlineStatusDescription">İnternet bağlantınız aktif. Tüm özellikler kullanılabilir.</p>
+                        </div>
+                    </div>
+
+                    <!-- Offline Capabilities -->
+                    <div class="offline-capabilities-section">
+                        <h4 class="section-subtitle">✨ Çevrimdışı Özellikler</h4>
+                        <div class="capabilities-grid">
+                            <div class="capability-card">
+                                <div class="capability-icon">🕌</div>
+                                <div class="capability-content">
+                                    <h5>Namaz Vakitleri</h5>
+                                    <p>Son indirilen vakitler 30 gün saklanır</p>
+                                    <div class="capability-status" id="prayerTimesStatus">
+                                        <span class="status-dot available"></span>
+                                        <span>Mevcut</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="capability-card">
+                                <div class="capability-icon">🧭</div>
+                                <div class="capability-content">
+                                    <h5>Kıble Yönü</h5>
+                                    <p>GPS konumu ile çevrimdışı hesaplama</p>
+                                    <div class="capability-status" id="qiblaStatus">
+                                        <span class="status-dot available"></span>
+                                        <span>Mevcut</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="capability-card">
+                                <div class="capability-icon">📿</div>
+                                <div class="capability-content">
+                                    <h5>Tesbih & Zikir</h5>
+                                    <p>Sayaç ve istatistikler lokal kayıtlı</p>
+                                    <div class="capability-status" id="tasbihStatus">
+                                        <span class="status-dot available"></span>
+                                        <span>Mevcut</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="capability-card">
+                                <div class="capability-icon">📖</div>
+                                <div class="capability-content">
+                                    <h5>40 Hadis</h5>
+                                    <p>Tüm hadisler ön yüklemeli</p>
+                                    <div class="capability-status" id="hadithStatus">
+                                        <span class="status-dot available"></span>
+                                        <span>Mevcut</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Management -->
+                    <div class="offline-data-section">
+                        <h4 class="section-subtitle">💾 Veri Yönetimi</h4>
+                        <div class="data-stats">
+                            <div class="data-stat-item">
+                                <span class="data-label">Kullanılan Depolama:</span>
+                                <span class="data-value" id="storageUsed">Hesaplanıyor...</span>
+                            </div>
+                            <div class="data-stat-item">
+                                <span class="data-label">Son Senkronizasyon:</span>
+                                <span class="data-value" id="lastSync">Henüz yok</span>
+                            </div>
+                            <div class="data-stat-item">
+                                <span class="data-label">Kaydedilen Vakitler:</span>
+                                <span class="data-value" id="cachedDays">0 gün</span>
+                            </div>
+                        </div>
+                        <div class="data-actions">
+                            <button class="data-action-btn sync" id="syncDataBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="23 4 23 10 17 10"></polyline>
+                                    <polyline points="1 20 1 14 7 14"></polyline>
+                                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                                </svg>
+                                Şimdi Senkronize Et
+                            </button>
+                            <button class="data-action-btn clear" id="clearCacheBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                </svg>
+                                Önbelleği Temizle
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Offline Settings -->
+                    <div class="offline-settings-section">
+                        <h4 class="section-subtitle">⚙️ Çevrimdışı Ayarlar</h4>
+                        <label class="settings-toggle">
+                            <input type="checkbox" id="autoSync" checked>
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Otomatik senkronizasyon (İnternet bağlandığında)</span>
+                        </label>
+                        <label class="settings-toggle">
+                            <input type="checkbox" id="offlineNotifications" checked>
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Çevrimdışıyken bildirimleri göster</span>
+                        </label>
+                        <label class="settings-toggle">
+                            <input type="checkbox" id="preloadContent">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">İçeriği önceden yükle (30 günlük veri)</span>
+                        </label>
+                        <label class="settings-toggle">
+                            <input type="checkbox" id="lowDataMode">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Düşük veri modu (Sadece gerekli veriler)</span>
+                        </label>
+                    </div>
+
+                    <!-- Info Card -->
+                    <div class="offline-info-card">
+                        <h5>💡 Çevrimdışı Mod Hakkında</h5>
+                        <ul>
+                            <li>Uygulama internetsiz çalışabilir</li>
+                            <li>Namaz vakitleri 30 güne kadar önbelleklenir</li>
+                            <li>Tüm dua ve hadisler lokal olarak saklanır</li>
+                            <li>İnternet bağlandığında otomatik güncellenir</li>
+                            <li>Düşük veri modunda sadece kritik veriler indirilir</li>
+                        </ul>
+                    </div>
+
+                    <!-- PWA Install Prompt -->
+                    <div class="pwa-install-section" id="pwaInstallSection" style="display: none;">
+                        <div class="pwa-install-card">
+                            <div class="pwa-icon">📱</div>
+                            <div class="pwa-content">
+                                <h5>Uygulamayı Yükle</h5>
+                                <p>Ezan Vakti Pro'yu cihazınıza yükleyerek daha hızlı erişim ve tam çevrimdışı destek alın.</p>
+                            </div>
+                            <button class="pwa-install-btn" id="pwaInstallBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Yükle
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="settings-group">
                     <h3>Tema</h3>
                     <select id="themeSelect" class="settings-select">

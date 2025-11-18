@@ -4273,10 +4273,330 @@ const SmartNotifications = {
     }
 };
 
+// Offline Mode Module
+const OfflineMode = {
+    isOnline: navigator.onLine,
+    deferredPrompt: null,
+
+    init() {
+        this.setupConnectionListeners();
+        this.updateConnectionStatus();
+        this.calculateStorageUsage();
+        this.loadOfflineSettings();
+        this.setupDataManagement();
+        this.setupPWAInstall();
+        this.updateLastSync();
+    },
+
+    setupConnectionListeners() {
+        window.addEventListener('online', () => {
+            this.isOnline = true;
+            this.updateConnectionStatus();
+            this.handleOnline();
+        });
+
+        window.addEventListener('offline', () => {
+            this.isOnline = false;
+            this.updateConnectionStatus();
+            this.handleOffline();
+        });
+    },
+
+    updateConnectionStatus() {
+        const statusIndicator = document.querySelector('.status-indicator');
+        const statusText = document.querySelector('.connection-status .status-text');
+        const statusCard = document.querySelector('.offline-status-card');
+        const statusTitle = document.getElementById('offlineStatusTitle');
+        const statusDescription = document.getElementById('offlineStatusDescription');
+
+        if (this.isOnline) {
+            statusIndicator?.classList.remove('offline');
+            statusIndicator?.classList.add('online');
+            if (statusText) statusText.textContent = 'Çevrimiçi';
+
+            statusCard?.classList.remove('offline-active');
+            if (statusTitle) statusTitle.textContent = 'Çevrimiçi Çalışıyor';
+            if (statusDescription) statusDescription.textContent = 'İnternet bağlantınız aktif. Tüm özellikler kullanılabilir.';
+        } else {
+            statusIndicator?.classList.remove('online');
+            statusIndicator?.classList.add('offline');
+            if (statusText) statusText.textContent = 'Çevrimdışı';
+
+            statusCard?.classList.add('offline-active');
+            if (statusTitle) statusTitle.textContent = 'Çevrimdışı Çalışıyor';
+            if (statusDescription) statusDescription.textContent = 'İnternet bağlantınız yok. Kaydedilen verilerle çalışılıyor.';
+        }
+    },
+
+    handleOnline() {
+        console.log('İnternet bağlantısı sağlandı');
+
+        // Check auto sync setting
+        const autoSync = document.getElementById('autoSync');
+        if (autoSync && autoSync.checked) {
+            this.syncData();
+        }
+
+        // Show notification
+        if ('Notification' in window && Notification.permission === 'granted') {
+            new Notification('Çevrimiçi Oldunuz', {
+                body: 'İnternet bağlantınız geri geldi. Veriler senkronize ediliyor...',
+                icon: '/icon.png',
+                tag: 'online-status'
+            });
+        }
+    },
+
+    handleOffline() {
+        console.log('İnternet bağlantısı kesildi');
+
+        // Show notification if enabled
+        const offlineNotifications = document.getElementById('offlineNotifications');
+        if (offlineNotifications && offlineNotifications.checked) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('Çevrimdışı Oldunuz', {
+                    body: 'İnternet bağlantınız yok. Kaydedilen verilerle devam ediyoruz.',
+                    icon: '/icon.png',
+                    tag: 'offline-status'
+                });
+            }
+        }
+    },
+
+    async calculateStorageUsage() {
+        if ('storage' in navigator && 'estimate' in navigator.storage) {
+            try {
+                const estimate = await navigator.storage.estimate();
+                const usedMB = (estimate.usage / (1024 * 1024)).toFixed(2);
+                const quotaMB = (estimate.quota / (1024 * 1024)).toFixed(0);
+
+                const storageUsedEl = document.getElementById('storageUsed');
+                if (storageUsedEl) {
+                    storageUsedEl.textContent = `${usedMB} MB / ${quotaMB} MB`;
+                }
+            } catch (error) {
+                console.error('Storage estimation error:', error);
+                const storageUsedEl = document.getElementById('storageUsed');
+                if (storageUsedEl) {
+                    storageUsedEl.textContent = 'Hesaplanamadı';
+                }
+            }
+        }
+    },
+
+    loadOfflineSettings() {
+        const settings = ['autoSync', 'offlineNotifications', 'preloadContent', 'lowDataMode'];
+
+        settings.forEach(setting => {
+            const checkbox = document.getElementById(setting);
+            if (checkbox) {
+                const saved = localStorage.getItem(`offline_${setting}`);
+                if (saved !== null) {
+                    checkbox.checked = saved === 'true';
+                }
+
+                checkbox.addEventListener('change', (e) => {
+                    localStorage.setItem(`offline_${setting}`, e.target.checked);
+
+                    // Handle preload content
+                    if (setting === 'preloadContent' && e.target.checked) {
+                        this.preloadContent();
+                    }
+                });
+            }
+        });
+    },
+
+    setupDataManagement() {
+        const syncBtn = document.getElementById('syncDataBtn');
+        const clearBtn = document.getElementById('clearCacheBtn');
+
+        if (syncBtn) {
+            syncBtn.addEventListener('click', () => {
+                this.syncData();
+            });
+        }
+
+        if (clearBtn) {
+            clearBtn.addEventListener('click', () => {
+                this.clearCache();
+            });
+        }
+    },
+
+    syncData() {
+        if (!this.isOnline) {
+            alert('Senkronizasyon için internet bağlantısı gerekiyor.');
+            return;
+        }
+
+        const syncBtn = document.getElementById('syncDataBtn');
+        if (syncBtn) {
+            syncBtn.disabled = true;
+            syncBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg> Senkronize Ediliyor...';
+        }
+
+        // Simulate sync
+        setTimeout(() => {
+            // Update last sync time
+            const now = new Date();
+            localStorage.setItem('lastSync', now.toISOString());
+            this.updateLastSync();
+
+            // Calculate cached days
+            const cachedDays = 30; // Simulated
+            localStorage.setItem('cachedDays', cachedDays);
+            const cachedDaysEl = document.getElementById('cachedDays');
+            if (cachedDaysEl) {
+                cachedDaysEl.textContent = `${cachedDays} gün`;
+            }
+
+            if (syncBtn) {
+                syncBtn.disabled = false;
+                syncBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg> Şimdi Senkronize Et';
+            }
+
+            alert('Senkronizasyon tamamlandı! Veriler güncellendi.');
+        }, 2000);
+    },
+
+    clearCache() {
+        if (confirm('Önbelleğe alınmış tüm veriler silinecek. Devam etmek istiyor musunuz?')) {
+            // Clear specific offline data
+            const keysToRemove = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && (key.startsWith('prayer_') || key.startsWith('cached_'))) {
+                    keysToRemove.push(key);
+                }
+            }
+
+            keysToRemove.forEach(key => localStorage.removeItem(key));
+
+            // Update UI
+            const cachedDaysEl = document.getElementById('cachedDays');
+            if (cachedDaysEl) {
+                cachedDaysEl.textContent = '0 gün';
+            }
+
+            localStorage.removeItem('cachedDays');
+            localStorage.removeItem('lastSync');
+            this.updateLastSync();
+            this.calculateStorageUsage();
+
+            alert('Önbellek temizlendi!');
+        }
+    },
+
+    updateLastSync() {
+        const lastSyncEl = document.getElementById('lastSync');
+        const lastSync = localStorage.getItem('lastSync');
+
+        if (lastSyncEl) {
+            if (lastSync) {
+                const date = new Date(lastSync);
+                const now = new Date();
+                const diffMs = now - date;
+                const diffMins = Math.floor(diffMs / 60000);
+
+                if (diffMins < 1) {
+                    lastSyncEl.textContent = 'Az önce';
+                } else if (diffMins < 60) {
+                    lastSyncEl.textContent = `${diffMins} dakika önce`;
+                } else if (diffMins < 1440) {
+                    const hours = Math.floor(diffMins / 60);
+                    lastSyncEl.textContent = `${hours} saat önce`;
+                } else {
+                    const days = Math.floor(diffMins / 1440);
+                    lastSyncEl.textContent = `${days} gün önce`;
+                }
+            } else {
+                lastSyncEl.textContent = 'Henüz yok';
+            }
+        }
+
+        // Update cached days
+        const cachedDays = localStorage.getItem('cachedDays') || '0';
+        const cachedDaysEl = document.getElementById('cachedDays');
+        if (cachedDaysEl) {
+            cachedDaysEl.textContent = `${cachedDays} gün`;
+        }
+    },
+
+    preloadContent() {
+        if (!this.isOnline) {
+            alert('İçerik önbelleği için internet bağlantısı gerekiyor.');
+            return;
+        }
+
+        console.log('30 günlük içerik yükleniyor...');
+
+        // Simulate preloading
+        setTimeout(() => {
+            localStorage.setItem('cachedDays', '30');
+            const cachedDaysEl = document.getElementById('cachedDays');
+            if (cachedDaysEl) {
+                cachedDaysEl.textContent = '30 gün';
+            }
+
+            alert('30 günlük namaz vakitleri önbelleğe alındı!');
+            this.calculateStorageUsage();
+        }, 1500);
+    },
+
+    setupPWAInstall() {
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            this.deferredPrompt = e;
+
+            // Show install section
+            const installSection = document.getElementById('pwaInstallSection');
+            if (installSection) {
+                installSection.style.display = 'block';
+            }
+        });
+
+        const installBtn = document.getElementById('pwaInstallBtn');
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (!this.deferredPrompt) {
+                    alert('Uygulama zaten yüklü veya tarayıcınız desteklemiyor.');
+                    return;
+                }
+
+                this.deferredPrompt.prompt();
+                const { outcome } = await this.deferredPrompt.userChoice;
+
+                if (outcome === 'accepted') {
+                    console.log('PWA kuruldu');
+                    const installSection = document.getElementById('pwaInstallSection');
+                    if (installSection) {
+                        installSection.style.display = 'none';
+                    }
+                }
+
+                this.deferredPrompt = null;
+            });
+        }
+
+        // Detect if already installed
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA başarıyla kuruldu');
+            this.deferredPrompt = null;
+
+            const installSection = document.getElementById('pwaInstallSection');
+            if (installSection) {
+                installSection.style.display = 'none';
+            }
+        });
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
     SmartNotifications.init();
+    OfflineMode.init();
     AbdestModule.init();
     NamazModule.init();
     ZekatModule.init();

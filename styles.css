@@ -8805,3 +8805,460 @@ select:focus-visible {
         width: 100%;
     }
 }
+
+/* ==========================================
+   OFFLINE MODE - ÇEVRİMDIŞI MOD
+   ========================================== */
+
+/* Offline Mode Container */
+.offline-mode-settings {
+    margin: var(--spacing-xl) 0;
+}
+
+.offline-mode-settings .settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Connection Status */
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--surface);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--border);
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.status-indicator.online {
+    background: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    animation: pulse-online 2s infinite;
+}
+
+.status-indicator.offline {
+    background: #ef4444;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    animation: pulse-offline 2s infinite;
+}
+
+@keyframes pulse-online {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.8);
+    }
+}
+
+@keyframes pulse-offline {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+    }
+}
+
+.connection-status .status-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Offline Status Card */
+.offline-status-card {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-left: 5px solid #06b6d4;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.offline-status-card.offline-active {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-left-color: #ef4444;
+}
+
+.offline-icon-container {
+    flex-shrink: 0;
+}
+
+.offline-icon {
+    width: 48px;
+    height: 48px;
+    color: #06b6d4;
+}
+
+.offline-status-card.offline-active .offline-icon {
+    color: #ef4444;
+}
+
+.offline-status-content h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.offline-status-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Offline Capabilities Section */
+.offline-capabilities-section {
+    margin: var(--spacing-lg) 0;
+}
+
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.capability-card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all 0.3s ease;
+}
+
+.capability-card:hover {
+    border-color: #06b6d4;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.capability-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.capability-content h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.capability-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.5;
+}
+
+.capability-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-dot.available {
+    background: #10b981;
+}
+
+.status-dot.unavailable {
+    background: #ef4444;
+}
+
+.capability-status span:last-child {
+    color: var(--text-tertiary);
+}
+
+/* Data Management Section */
+.offline-data-section {
+    margin: var(--spacing-lg) 0;
+}
+
+.data-stats {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-md) 0;
+    border: 2px solid var(--border);
+}
+
+.data-stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.data-stat-item:last-child {
+    border-bottom: none;
+}
+
+.data-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.data-value {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.data-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.data-action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.data-action-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.data-action-btn.sync {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    color: white;
+    border-color: #0891b2;
+}
+
+.data-action-btn.sync:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(6, 182, 212, 0.3);
+}
+
+.data-action-btn.sync:active svg {
+    animation: spin 0.6s linear;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.data-action-btn.clear {
+    background: white;
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+.data-action-btn.clear:hover {
+    background: #fef2f2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.2);
+}
+
+/* Offline Settings Section */
+.offline-settings-section {
+    margin: var(--spacing-lg) 0;
+}
+
+.offline-settings-section .settings-toggle {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Offline Info Card */
+.offline-info-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 4px solid #f59e0b;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.offline-info-card h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: var(--spacing-md);
+}
+
+.offline-info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.offline-info-card ul li {
+    padding-left: var(--spacing-lg);
+    position: relative;
+    margin-bottom: var(--spacing-sm);
+    color: #78350f;
+    line-height: 1.6;
+}
+
+.offline-info-card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #f59e0b;
+    font-weight: 700;
+}
+
+/* PWA Install Section */
+.pwa-install-section {
+    margin: var(--spacing-lg) 0;
+}
+
+.pwa-install-card {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 2px solid #10b981;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.pwa-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.pwa-content {
+    flex: 1;
+}
+
+.pwa-content h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: var(--spacing-xs);
+}
+
+.pwa-content p {
+    font-size: 0.9rem;
+    color: #047857;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.pwa-install-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.pwa-install-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.pwa-install-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+.pwa-install-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Responsive Design for Offline Mode */
+@media (max-width: 768px) {
+    .offline-mode-settings .settings-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .connection-status {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .offline-status-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .data-actions {
+        flex-direction: column;
+    }
+
+    .data-action-btn {
+        width: 100%;
+    }
+
+    .pwa-install-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pwa-install-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .offline-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .offline-status-content h4 {
+        font-size: 1rem;
+    }
+
+    .capability-icon {
+        font-size: 2rem;
+    }
+
+    .pwa-icon {
+        font-size: 2.5rem;
+    }
+}
