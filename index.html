@@ -681,6 +681,25 @@
                         </svg>
                     </div>
 
+                    <!-- Community Features Module -->
+                    <div class="feature-card" id="communityCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Topluluk Özellikleri</h3>
+                            <p>Birlikte dua, paylaşım ve sosyal özellikler</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
                 </div>
 
                 <!-- Ramazan Module (Hidden by default) -->
@@ -4409,6 +4428,333 @@
                         <option value="auto">Otomatik</option>
                     </select>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community Features Module -->
+    <div class="community-module" id="communityModule" style="display: none;">
+        <button class="back-btn" id="communityBackBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Geri
+        </button>
+
+        <div class="community-header">
+            <h2>👥 Topluluk Özellikleri</h2>
+            <p class="community-subtitle">Müslüman kardeşlerinizle bir arada ibadet edin ve paylaşın</p>
+        </div>
+
+        <!-- Community Stats -->
+        <div class="community-stats-section">
+            <div class="community-stats-grid">
+                <div class="community-stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-value" id="totalUsers">2,547</div>
+                    <div class="stat-label">Aktif Kullanıcı</div>
+                </div>
+                <div class="community-stat-card">
+                    <div class="stat-icon">🤲</div>
+                    <div class="stat-value" id="totalPrayers">12,845</div>
+                    <div class="stat-label">Dua İsteği</div>
+                </div>
+                <div class="community-stat-card">
+                    <div class="stat-icon">💬</div>
+                    <div class="stat-value" id="totalMessages">45,321</div>
+                    <div class="stat-label">Paylaşım</div>
+                </div>
+                <div class="community-stat-card">
+                    <div class="stat-icon">🌟</div>
+                    <div class="stat-value" id="onlineNow">127</div>
+                    <div class="stat-label">Şu Anda Online</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prayer Requests -->
+        <div class="prayer-requests-section">
+            <div class="section-header-with-action">
+                <h3>🤲 Dua İstekleri</h3>
+                <button class="add-prayer-btn" id="addPrayerBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Dua İste
+                </button>
+            </div>
+
+            <div class="prayer-requests-list">
+                <div class="prayer-request-card">
+                    <div class="prayer-avatar">A</div>
+                    <div class="prayer-content">
+                        <div class="prayer-header">
+                            <span class="prayer-author">Ahmet K.</span>
+                            <span class="prayer-time">5 dakika önce</span>
+                        </div>
+                        <p class="prayer-text">Babam ameliyat olacak, sizlerden dua rica ediyorum. Allah şifalar versin inşallah.</p>
+                        <div class="prayer-actions">
+                            <button class="prayer-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                <span>247 Amin</span>
+                            </button>
+                            <button class="prayer-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span>12 Yorum</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-request-card">
+                    <div class="prayer-avatar">F</div>
+                    <div class="prayer-content">
+                        <div class="prayer-header">
+                            <span class="prayer-author">Fatma Y.</span>
+                            <span class="prayer-time">1 saat önce</span>
+                        </div>
+                        <p class="prayer-text">İmtihan için dua eder misiniz? Allah kolaylık versin.</p>
+                        <div class="prayer-actions">
+                            <button class="prayer-action-btn active">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                <span>189 Amin</span>
+                            </button>
+                            <button class="prayer-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span>8 Yorum</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-request-card">
+                    <div class="prayer-avatar">M</div>
+                    <div class="prayer-content">
+                        <div class="prayer-header">
+                            <span class="prayer-author">Mehmet S.</span>
+                            <span class="prayer-time">3 saat önce</span>
+                        </div>
+                        <p class="prayer-text">Tüm Müslümanlar için dua ediyorum. Allah hepimizi korusun.</p>
+                        <div class="prayer-actions">
+                            <button class="prayer-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                <span>421 Amin</span>
+                            </button>
+                            <button class="prayer-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span>25 Yorum</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="load-more-btn">Daha Fazla Göster</button>
+        </div>
+
+        <!-- Group Prayer Times -->
+        <div class="group-prayer-section">
+            <h3>🕌 Toplu Namaz Saatleri</h3>
+            <p class="section-description">Birlikte namaz kılmak için belirlenen saatler</p>
+
+            <div class="group-prayer-grid">
+                <div class="group-prayer-card">
+                    <div class="prayer-time-badge">Bugün 13:00</div>
+                    <h4>Öğle Namazı Buluşması</h4>
+                    <p>Ankara - Kocatepe Camii</p>
+                    <div class="participants">
+                        <div class="participants-avatars">
+                            <span class="participant-avatar">A</span>
+                            <span class="participant-avatar">M</span>
+                            <span class="participant-avatar">F</span>
+                            <span class="participant-more">+15</span>
+                        </div>
+                        <button class="join-btn">Katıl</button>
+                    </div>
+                </div>
+
+                <div class="group-prayer-card">
+                    <div class="prayer-time-badge">Bugün 18:45</div>
+                    <h4>Akşam Namazı ve Dua</h4>
+                    <p>İstanbul - Sultanahmet Camii</p>
+                    <div class="participants">
+                        <div class="participants-avatars">
+                            <span class="participant-avatar">S</span>
+                            <span class="participant-avatar">E</span>
+                            <span class="participant-avatar">K</span>
+                            <span class="participant-more">+27</span>
+                        </div>
+                        <button class="join-btn joined">Katıldın</button>
+                    </div>
+                </div>
+
+                <div class="group-prayer-card">
+                    <div class="prayer-time-badge">Cuma 12:30</div>
+                    <h4>Cuma Namazı</h4>
+                    <p>İzmir - Hisar Camii</p>
+                    <div class="participants">
+                        <div class="participants-avatars">
+                            <span class="participant-avatar">H</span>
+                            <span class="participant-avatar">Y</span>
+                            <span class="participant-more">+42</span>
+                        </div>
+                        <button class="join-btn">Katıl</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="leaderboard-section">
+            <h3>🏆 Bu Hafta En Aktifler</h3>
+
+            <div class="leaderboard-list">
+                <div class="leaderboard-item rank-1">
+                    <div class="rank-badge">🥇</div>
+                    <div class="user-avatar gold">AK</div>
+                    <div class="user-info">
+                        <span class="user-name">Ayşe K.</span>
+                        <span class="user-activity">142 dua, 89 paylaşım</span>
+                    </div>
+                    <div class="user-points">2,450 puan</div>
+                </div>
+
+                <div class="leaderboard-item rank-2">
+                    <div class="rank-badge">🥈</div>
+                    <div class="user-avatar silver">MY</div>
+                    <div class="user-info">
+                        <span class="user-name">Mehmet Y.</span>
+                        <span class="user-activity">128 dua, 76 paylaşım</span>
+                    </div>
+                    <div class="user-points">2,180 puan</div>
+                </div>
+
+                <div class="leaderboard-item rank-3">
+                    <div class="rank-badge">🥉</div>
+                    <div class="user-avatar bronze">FD</div>
+                    <div class="user-info">
+                        <span class="user-name">Fatma D.</span>
+                        <span class="user-activity">115 dua, 68 paylaşım</span>
+                    </div>
+                    <div class="user-points">1,950 puan</div>
+                </div>
+
+                <div class="leaderboard-item">
+                    <div class="rank-number">4</div>
+                    <div class="user-avatar">HS</div>
+                    <div class="user-info">
+                        <span class="user-name">Hasan S.</span>
+                        <span class="user-activity">98 dua, 54 paylaşım</span>
+                    </div>
+                    <div class="user-points">1,720 puan</div>
+                </div>
+
+                <div class="leaderboard-item">
+                    <div class="rank-number">5</div>
+                    <div class="user-avatar">ZT</div>
+                    <div class="user-info">
+                        <span class="user-name">Zeynep T.</span>
+                        <span class="user-activity">87 dua, 49 paylaşım</span>
+                    </div>
+                    <div class="user-points">1,560 puan</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="achievements-section">
+            <h3>🎖️ Rozetler ve Başarılar</h3>
+
+            <div class="achievements-grid">
+                <div class="achievement-card unlocked">
+                    <div class="achievement-icon">🌟</div>
+                    <h4>İlk Adım</h4>
+                    <p>İlk dua isteği</p>
+                    <div class="achievement-progress">Kazanıldı!</div>
+                </div>
+
+                <div class="achievement-card unlocked">
+                    <div class="achievement-icon">❤️</div>
+                    <h4>Dua Dostu</h4>
+                    <p>50 amin</p>
+                    <div class="achievement-progress">Kazanıldı!</div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon locked">🏆</div>
+                    <h4>Namaz Kahramanı</h4>
+                    <p>100 toplu namaz</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 35%"></div>
+                        </div>
+                        <span>35/100</span>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon locked">💎</div>
+                    <h4>Elmas Üye</h4>
+                    <p>365 gün aktif</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 15%"></div>
+                        </div>
+                        <span>54/365</span>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon locked">📚</div>
+                    <h4>Hadis Bilgini</h4>
+                    <p>40 hadis oku</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                        <span>24/40</span>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon locked">🕌</div>
+                    <h4>Cami Rehberi</h4>
+                    <p>20 cami ziyareti</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                        <span>8/20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Guidelines -->
+        <div class="community-guidelines">
+            <h3>📜 Topluluk Kuralları</h3>
+            <div class="guidelines-card">
+                <ul>
+                    <li>Saygılı ve nazik bir dil kullanın</li>
+                    <li>Din ve mezhep ayrımı yapmayın</li>
+                    <li>Kişisel bilgilerinizi paylaşmayın</li>
+                    <li>Spam ve reklam yapmayın</li>
+                    <li>Yanlış bilgi yaymayın</li>
+                    <li>Olumsuz davranışları raporlayın</li>
+                </ul>
             </div>
         </div>
     </div>

@@ -4592,6 +4592,302 @@ const OfflineMode = {
     }
 };
 
+// Community Module
+const CommunityModule = {
+    stats: {
+        activeUsers: 2547,
+        prayerRequests: 12845,
+        shares: 45321,
+        onlineNow: 127
+    },
+
+    userAchievements: {
+        firstStep: true,
+        prayerFriend: true,
+        prayerHero: 35,
+        diamondMember: 2,
+        hadithScholar: 15,
+        mosqueGuide: 0
+    },
+
+    userStats: {
+        prayers: 0,
+        shares: 0,
+        points: 0
+    },
+
+    init() {
+        this.setupNavigation();
+        this.loadUserStats();
+        this.setupPrayerRequests();
+        this.setupGroupPrayers();
+        this.setupAchievements();
+        this.updateStats();
+    },
+
+    setupNavigation() {
+        const communityCard = document.getElementById('communityCard');
+        const communityBackBtn = document.getElementById('communityBackBtn');
+
+        // Navigation - Open Community Module
+        if (communityCard) {
+            communityCard.addEventListener('click', () => {
+                document.querySelector('.more-features').style.display = 'none';
+                document.getElementById('communityModule').style.display = 'block';
+                document.getElementById('communityModule').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Navigation - Back Button
+        if (communityBackBtn) {
+            communityBackBtn.addEventListener('click', () => {
+                document.getElementById('communityModule').style.display = 'none';
+                document.getElementById('communityModule').classList.remove('active');
+                document.querySelector('.more-features').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    },
+
+    loadUserStats() {
+        const saved = localStorage.getItem('communityUserStats');
+        if (saved) {
+            this.userStats = JSON.parse(saved);
+        }
+
+        const savedAchievements = localStorage.getItem('communityAchievements');
+        if (savedAchievements) {
+            this.userAchievements = JSON.parse(savedAchievements);
+        }
+    },
+
+    saveUserStats() {
+        localStorage.setItem('communityUserStats', JSON.stringify(this.userStats));
+        localStorage.setItem('communityAchievements', JSON.stringify(this.userAchievements));
+    },
+
+    updateStats() {
+        // Update community stats with some variation
+        const activeUsersEl = document.querySelector('.community-stat-card:nth-child(1) .community-stat-value');
+        const prayerRequestsEl = document.querySelector('.community-stat-card:nth-child(2) .community-stat-value');
+        const sharesEl = document.querySelector('.community-stat-card:nth-child(3) .community-stat-value');
+        const onlineNowEl = document.querySelector('.community-stat-card:nth-child(4) .community-stat-value');
+
+        if (activeUsersEl) activeUsersEl.textContent = this.stats.activeUsers.toLocaleString('tr-TR');
+        if (prayerRequestsEl) prayerRequestsEl.textContent = this.stats.prayerRequests.toLocaleString('tr-TR');
+        if (sharesEl) sharesEl.textContent = this.stats.shares.toLocaleString('tr-TR');
+        if (onlineNowEl) onlineNowEl.textContent = this.stats.onlineNow.toLocaleString('tr-TR');
+    },
+
+    setupPrayerRequests() {
+        // Handle Amin (like) buttons
+        const aminButtons = document.querySelectorAll('.prayer-action-btn');
+        aminButtons.forEach(btn => {
+            if (btn.textContent.includes('Âmin')) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.handleAmin(btn);
+                });
+            } else if (btn.textContent.includes('Yorum')) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.handleComment(btn);
+                });
+            }
+        });
+
+        // Handle add prayer button
+        const addPrayerBtn = document.querySelector('.add-prayer-btn');
+        if (addPrayerBtn) {
+            addPrayerBtn.addEventListener('click', () => {
+                this.showAddPrayerDialog();
+            });
+        }
+
+        // Handle load more button
+        const loadMoreBtn = document.querySelector('.load-more-btn');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                this.loadMorePrayers();
+            });
+        }
+    },
+
+    handleAmin(button) {
+        const currentCount = parseInt(button.textContent.match(/\d+/)[0]);
+
+        if (button.classList.contains('active')) {
+            button.classList.remove('active');
+            button.innerHTML = `🤲 Âmin (${currentCount - 1})`;
+        } else {
+            button.classList.add('active');
+            button.innerHTML = `🤲 Âmin (${currentCount + 1})`;
+
+            // Increment user stats
+            this.userStats.prayers++;
+            this.checkAchievements();
+            this.saveUserStats();
+        }
+    },
+
+    handleComment(button) {
+        const currentCount = parseInt(button.textContent.match(/\d+/)[0]);
+        const comment = prompt('Yorumunuzu yazın:');
+
+        if (comment && comment.trim()) {
+            button.innerHTML = `💬 Yorum (${currentCount + 1})`;
+            alert('Yorumunuz eklendi!');
+
+            // Increment user stats
+            this.userStats.shares++;
+            this.checkAchievements();
+            this.saveUserStats();
+        }
+    },
+
+    showAddPrayerDialog() {
+        const prayer = prompt('Dua isteğinizi yazın:\n\n(Lütfen kişisel bilgilerinizi ve başkalarının gizliliğini koruyun)');
+
+        if (prayer && prayer.trim()) {
+            alert('Dua isteğiniz paylaşıldı! 🤲\n\nTopluluk yakında duanıza Âmin diyecek.');
+
+            // Increment stats
+            this.stats.prayerRequests++;
+            this.userStats.prayers++;
+            this.userStats.points += 10;
+            this.checkAchievements();
+            this.saveUserStats();
+            this.updateStats();
+        }
+    },
+
+    loadMorePrayers() {
+        const btn = document.querySelector('.load-more-btn');
+        if (btn) {
+            btn.textContent = 'Yükleniyor...';
+
+            setTimeout(() => {
+                btn.textContent = 'Daha fazla dua yükle';
+                alert('Tüm dualar yüklendi.');
+            }, 1000);
+        }
+    },
+
+    setupGroupPrayers() {
+        const joinButtons = document.querySelectorAll('.group-join-btn');
+
+        joinButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.toggleGroupJoin(btn);
+            });
+        });
+    },
+
+    toggleGroupJoin(button) {
+        if (button.classList.contains('joined')) {
+            button.classList.remove('joined');
+            button.textContent = '🕌 Katıl';
+        } else {
+            button.classList.add('joined');
+            button.textContent = '✓ Katıldın';
+
+            // Increment user stats
+            this.userStats.shares++;
+            this.userStats.points += 5;
+            this.checkAchievements();
+            this.saveUserStats();
+        }
+    },
+
+    setupAchievements() {
+        // Update achievement progress bars
+        this.updateAchievementProgress('prayerHero', this.userAchievements.prayerHero, 100);
+        this.updateAchievementProgress('diamondMember', this.userAchievements.diamondMember, 30);
+        this.updateAchievementProgress('hadithScholar', this.userAchievements.hadithScholar, 40);
+        this.updateAchievementProgress('mosqueGuide', this.userAchievements.mosqueGuide, 20);
+    },
+
+    updateAchievementProgress(achievementId, current, total) {
+        const percentage = Math.min((current / total) * 100, 100);
+        const achievementCards = document.querySelectorAll('.achievement-card');
+
+        achievementCards.forEach(card => {
+            const title = card.querySelector('.achievement-title');
+            if (title) {
+                const titleText = title.textContent;
+                let shouldUpdate = false;
+
+                if (achievementId === 'prayerHero' && titleText.includes('Namaz Kahramanı')) shouldUpdate = true;
+                if (achievementId === 'diamondMember' && titleText.includes('Elmas Üye')) shouldUpdate = true;
+                if (achievementId === 'hadithScholar' && titleText.includes('Hadis Bilgini')) shouldUpdate = true;
+                if (achievementId === 'mosqueGuide' && titleText.includes('Cami Rehberi')) shouldUpdate = true;
+
+                if (shouldUpdate) {
+                    const progressBar = card.querySelector('.achievement-progress-bar');
+                    const progressText = card.querySelector('.achievement-progress-text');
+
+                    if (progressBar) {
+                        progressBar.style.width = `${percentage}%`;
+                    }
+
+                    if (progressText) {
+                        progressText.textContent = `${current}/${total}`;
+                    }
+
+                    // Check if achievement is completed
+                    if (current >= total && !card.classList.contains('unlocked')) {
+                        this.unlockAchievement(card, achievementId);
+                    }
+                }
+            }
+        });
+    },
+
+    unlockAchievement(card, achievementId) {
+        card.classList.add('unlocked');
+
+        // Add unlocked badge if not exists
+        if (!card.querySelector('.achievement-unlocked-badge')) {
+            const badge = document.createElement('div');
+            badge.className = 'achievement-unlocked-badge';
+            badge.textContent = 'Kazanıldı';
+            card.appendChild(badge);
+        }
+
+        // Remove progress elements
+        const progress = card.querySelector('.achievement-progress');
+        const progressText = card.querySelector('.achievement-progress-text');
+        if (progress) progress.style.display = 'none';
+        if (progressText) progressText.style.display = 'none';
+
+        // Show notification
+        const title = card.querySelector('.achievement-title').textContent;
+        alert(`🎉 Başarı Kazanıldı!\n\n${title}\n\n+50 puan kazandınız!`);
+
+        this.userStats.points += 50;
+        this.saveUserStats();
+    },
+
+    checkAchievements() {
+        // Check prayer-related achievements
+        if (this.userStats.prayers >= 1 && !this.userAchievements.firstStep) {
+            this.userAchievements.firstStep = true;
+        }
+
+        if (this.userStats.prayers >= 10 && !this.userAchievements.prayerFriend) {
+            this.userAchievements.prayerFriend = true;
+        }
+
+        // Update progress
+        this.userAchievements.prayerHero = Math.min(this.userStats.prayers, 100);
+        this.userAchievements.diamondMember = Math.min(Math.floor(this.userStats.shares / 10), 30);
+
+        this.setupAchievements();
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
@@ -4604,4 +4900,5 @@ document.addEventListener('DOMContentLoaded', () => {
     MedyaModule.init();
     HacUmreModule.init();
     HadisModule.init();
+    CommunityModule.init();
 });
