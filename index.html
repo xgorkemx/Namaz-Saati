@@ -700,6 +700,25 @@
                         </svg>
                     </div>
 
+                    <!-- Widget Desteği -->
+                    <div class="feature-card" id="widgetCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Widget Desteği</h3>
+                            <p>Ana ekran widget'ları ve kişiselleştirme</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
                 </div>
 
                 <!-- Ramazan Module (Hidden by default) -->
@@ -4755,6 +4774,391 @@
                     <li>Yanlış bilgi yaymayın</li>
                     <li>Olumsuz davranışları raporlayın</li>
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Widget Desteği Module -->
+    <div class="widget-module" id="widgetModule" style="display: none;">
+        <button class="back-btn" id="widgetBackBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Geri
+        </button>
+
+        <div class="widget-header">
+            <h2>📱 Widget Desteği</h2>
+            <p class="widget-subtitle">Ana ekranınıza widget ekleyerek namaz vakitlerini ve diğer bilgileri hızlıca görüntüleyin</p>
+        </div>
+
+        <!-- Widget Availability Section -->
+        <div class="widget-availability-section">
+            <div class="availability-card">
+                <div class="availability-icon">📱</div>
+                <h3>Widget'lar Yakında!</h3>
+                <p>Ana ekran widget'ları şu anda geliştirme aşamasındadır. Yakında aşağıdaki widget'ları kullanabileceksiniz:</p>
+            </div>
+        </div>
+
+        <!-- Available Widgets Section -->
+        <div class="widget-gallery-section">
+            <h3 class="widget-section-title">🎨 Yakında Gelecek Widget'lar</h3>
+
+            <div class="widget-gallery-grid">
+                <!-- Namaz Vakti Widget -->
+                <div class="widget-preview-card">
+                    <div class="widget-preview-mockup namaz-widget">
+                        <div class="widget-mock-header">
+                            <span class="widget-mock-title">🕌 Namaz Vakti</span>
+                            <span class="widget-mock-time">14:30</span>
+                        </div>
+                        <div class="widget-mock-content">
+                            <div class="widget-mock-next-prayer">
+                                <span class="next-prayer-label">Sonraki Vakit</span>
+                                <span class="next-prayer-name">İkindi</span>
+                                <span class="next-prayer-time">15:45</span>
+                                <div class="next-prayer-countdown">1s 15dk kaldı</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-preview-info">
+                        <h4>Namaz Vakti Widget</h4>
+                        <p>Sonraki namaz vaktini ve geri sayımı gösterir</p>
+                        <div class="widget-sizes">
+                            <span class="widget-size-badge">Küçük</span>
+                            <span class="widget-size-badge">Orta</span>
+                            <span class="widget-size-badge">Büyük</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Günlük Vakitler Widget -->
+                <div class="widget-preview-card">
+                    <div class="widget-preview-mockup daily-widget">
+                        <div class="widget-mock-header">
+                            <span class="widget-mock-title">📅 Günlük Vakitler</span>
+                        </div>
+                        <div class="widget-mock-daily-list">
+                            <div class="widget-mock-prayer-row">
+                                <span>İmsak</span><span>05:30</span>
+                            </div>
+                            <div class="widget-mock-prayer-row">
+                                <span>Güneş</span><span>07:02</span>
+                            </div>
+                            <div class="widget-mock-prayer-row active">
+                                <span>Öğle</span><span>12:45</span>
+                            </div>
+                            <div class="widget-mock-prayer-row">
+                                <span>İkindi</span><span>15:45</span>
+                            </div>
+                            <div class="widget-mock-prayer-row">
+                                <span>Akşam</span><span>18:30</span>
+                            </div>
+                            <div class="widget-mock-prayer-row">
+                                <span>Yatsı</span><span>20:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-preview-info">
+                        <h4>Günlük Vakitler Widget</h4>
+                        <p>Tüm günlük namaz vakitlerini listeler</p>
+                        <div class="widget-sizes">
+                            <span class="widget-size-badge">Orta</span>
+                            <span class="widget-size-badge">Büyük</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kıble Widget -->
+                <div class="widget-preview-card">
+                    <div class="widget-preview-mockup qibla-widget">
+                        <div class="widget-mock-header">
+                            <span class="widget-mock-title">🧭 Kıble</span>
+                        </div>
+                        <div class="widget-mock-compass">
+                            <div class="compass-arrow">↑</div>
+                            <div class="compass-direction">Kuzey-Doğu</div>
+                            <div class="compass-degrees">45°</div>
+                        </div>
+                    </div>
+                    <div class="widget-preview-info">
+                        <h4>Kıble Pusulası Widget</h4>
+                        <p>Kıble yönünü hızlıca gösterir</p>
+                        <div class="widget-sizes">
+                            <span class="widget-size-badge">Küçük</span>
+                            <span class="widget-size-badge">Orta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Günün Duası Widget -->
+                <div class="widget-preview-card">
+                    <div class="widget-preview-mockup dua-widget">
+                        <div class="widget-mock-header">
+                            <span class="widget-mock-title">🤲 Günün Duası</span>
+                        </div>
+                        <div class="widget-mock-dua">
+                            <p class="dua-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً</p>
+                            <p class="dua-translation">Rabbimiz! Bize dünyada da iyilik ver...</p>
+                        </div>
+                    </div>
+                    <div class="widget-preview-info">
+                        <h4>Günün Duası Widget</h4>
+                        <p>Her gün farklı bir dua gösterir</p>
+                        <div class="widget-sizes">
+                            <span class="widget-size-badge">Orta</span>
+                            <span class="widget-size-badge">Büyük</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tesbih Widget -->
+                <div class="widget-preview-card">
+                    <div class="widget-preview-mockup tasbih-widget">
+                        <div class="widget-mock-header">
+                            <span class="widget-mock-title">📿 Tesbih</span>
+                        </div>
+                        <div class="widget-mock-tasbih">
+                            <div class="tasbih-count">33</div>
+                            <div class="tasbih-text">Sübhanallah</div>
+                            <div class="tasbih-button">+</div>
+                        </div>
+                    </div>
+                    <div class="widget-preview-info">
+                        <h4>Dijital Tesbih Widget</h4>
+                        <p>Hızlı tesbih çekme widget'ı</p>
+                        <div class="widget-sizes">
+                            <span class="widget-size-badge">Küçük</span>
+                            <span class="widget-size-badge">Orta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ramazan Widget -->
+                <div class="widget-preview-card">
+                    <div class="widget-preview-mockup ramadan-widget">
+                        <div class="widget-mock-header">
+                            <span class="widget-mock-title">🌙 Ramazan</span>
+                        </div>
+                        <div class="widget-mock-ramadan">
+                            <div class="ramadan-day">15. Gün</div>
+                            <div class="ramadan-times">
+                                <div class="ramadan-time-item">
+                                    <span>İmsak</span><span>05:30</span>
+                                </div>
+                                <div class="ramadan-time-item">
+                                    <span>İftar</span><span>18:45</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-preview-info">
+                        <h4>Ramazan Widget</h4>
+                        <p>Sahur ve iftar vakitlerini gösterir</p>
+                        <div class="widget-sizes">
+                            <span class="widget-size-badge">Orta</span>
+                            <span class="widget-size-badge">Büyük</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Widget Settings Section -->
+        <div class="widget-settings-section">
+            <h3 class="widget-section-title">⚙️ Widget Ayarları</h3>
+
+            <div class="widget-settings-grid">
+                <div class="widget-setting-card">
+                    <div class="setting-header">
+                        <h4>🎨 Tema</h4>
+                        <p>Widget görünümünü özelleştirin</p>
+                    </div>
+                    <div class="setting-options">
+                        <label class="theme-option">
+                            <input type="radio" name="widgetTheme" value="light" checked>
+                            <span class="theme-preview light-theme">
+                                <span class="theme-name">Açık</span>
+                            </span>
+                        </label>
+                        <label class="theme-option">
+                            <input type="radio" name="widgetTheme" value="dark">
+                            <span class="theme-preview dark-theme">
+                                <span class="theme-name">Koyu</span>
+                            </span>
+                        </label>
+                        <label class="theme-option">
+                            <input type="radio" name="widgetTheme" value="auto">
+                            <span class="theme-preview auto-theme">
+                                <span class="theme-name">Otomatik</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="widget-setting-card">
+                    <div class="setting-header">
+                        <h4>🔔 Bildirimler</h4>
+                        <p>Widget bildirim tercihleriniz</p>
+                    </div>
+                    <div class="setting-toggles">
+                        <label class="toggle-option">
+                            <input type="checkbox" id="widgetNotifications" checked>
+                            <span class="toggle-label">Widget'tan bildirim gönder</span>
+                        </label>
+                        <label class="toggle-option">
+                            <input type="checkbox" id="widgetSound" checked>
+                            <span class="toggle-label">Bildirim sesi</span>
+                        </label>
+                        <label class="toggle-option">
+                            <input type="checkbox" id="widgetVibration">
+                            <span class="toggle-label">Titreşim</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="widget-setting-card">
+                    <div class="setting-header">
+                        <h4>🔄 Güncelleme</h4>
+                        <p>Widget güncelleme sıklığı</p>
+                    </div>
+                    <div class="setting-options">
+                        <select id="widgetUpdateInterval" class="widget-select">
+                            <option value="1">Her dakika</option>
+                            <option value="5" selected>Her 5 dakika</option>
+                            <option value="15">Her 15 dakika</option>
+                            <option value="30">Her 30 dakika</option>
+                            <option value="60">Her saat</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="widget-setting-card">
+                    <div class="setting-header">
+                        <h4>📍 Konum</h4>
+                        <p>Widget konum ayarları</p>
+                    </div>
+                    <div class="setting-toggles">
+                        <label class="toggle-option">
+                            <input type="checkbox" id="widgetAutoLocation" checked>
+                            <span class="toggle-label">Otomatik konum kullan</span>
+                        </label>
+                        <label class="toggle-option">
+                            <input type="checkbox" id="widgetShowLocation">
+                            <span class="toggle-label">Şehir adını göster</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Add Widget Section -->
+        <div class="widget-howto-section">
+            <h3 class="widget-section-title">📋 Widget Nasıl Eklenir?</h3>
+
+            <div class="platform-instructions">
+                <!-- iOS Instructions -->
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <span class="platform-icon">🍎</span>
+                        <h4>iOS (iPhone/iPad)</h4>
+                    </div>
+                    <ol class="instruction-list">
+                        <li>Ana ekranda boş bir alana uzun basın</li>
+                        <li>Sol üst köşedeki <strong>+</strong> simgesine dokunun</li>
+                        <li>Widget listesinde <strong>"Ezan Vakti Pro"</strong> uygulamasını bulun</li>
+                        <li>İstediğiniz widget boyutunu seçin</li>
+                        <li><strong>"Widget Ekle"</strong> butonuna dokunun</li>
+                        <li>Widget'ı istediğiniz konuma sürükleyin</li>
+                        <li><strong>"Bitti"</strong> butonuna dokunarak kaydedin</li>
+                    </ol>
+                </div>
+
+                <!-- Android Instructions -->
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <span class="platform-icon">🤖</span>
+                        <h4>Android</h4>
+                    </div>
+                    <ol class="instruction-list">
+                        <li>Ana ekranda boş bir alana uzun basın</li>
+                        <li><strong>"Widget'lar"</strong> veya <strong>"Araçlar"</strong> seçeneğine dokunun</li>
+                        <li>Widget listesinde <strong>"Ezan Vakti Pro"</strong> uygulamasını bulun</li>
+                        <li>İstediğiniz widget'ı uzun basarak ana ekrana sürükleyin</li>
+                        <li>Widget boyutunu ayarlayın</li>
+                        <li>Ekrana dokunarak kaydedin</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Widget Features Section -->
+        <div class="widget-features-section">
+            <h3 class="widget-section-title">✨ Widget Özellikleri</h3>
+
+            <div class="feature-list-grid">
+                <div class="feature-list-item">
+                    <span class="feature-icon">⚡</span>
+                    <div class="feature-text">
+                        <h5>Hızlı Erişim</h5>
+                        <p>Uygulama açmadan namaz vakitlerini görün</p>
+                    </div>
+                </div>
+
+                <div class="feature-list-item">
+                    <span class="feature-icon">🔄</span>
+                    <div class="feature-text">
+                        <h5>Otomatik Güncelleme</h5>
+                        <p>Vakitler otomatik olarak güncellenir</p>
+                    </div>
+                </div>
+
+                <div class="feature-list-item">
+                    <span class="feature-icon">🎨</span>
+                    <div class="feature-text">
+                        <h5>Özelleştirilebilir</h5>
+                        <p>Tema ve boyut seçenekleri</p>
+                    </div>
+                </div>
+
+                <div class="feature-list-item">
+                    <span class="feature-icon">📱</span>
+                    <div class="feature-text">
+                        <h5>Responsive Tasarım</h5>
+                        <p>Tüm ekran boyutlarına uyumlu</p>
+                    </div>
+                </div>
+
+                <div class="feature-list-item">
+                    <span class="feature-icon">🔋</span>
+                    <div class="feature-text">
+                        <h5>Düşük Batarya Kullanımı</h5>
+                        <p>Optimize edilmiş enerji tüketimi</p>
+                    </div>
+                </div>
+
+                <div class="feature-list-item">
+                    <span class="feature-icon">🌐</span>
+                    <div class="feature-text">
+                        <h5>Çevrimdışı Çalışır</h5>
+                        <p>İnternet olmadan da çalışır</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Section -->
+        <div class="widget-notification-section">
+            <div class="notification-card">
+                <span class="notification-icon">📢</span>
+                <div class="notification-content">
+                    <h4>Widget'lar Yakında Yayında!</h4>
+                    <p>Uygulama güncellemesini beklemeye devam edin. Widget özellikleri en kısa sürede eklenecektir.</p>
+                    <button class="notify-me-btn" id="notifyWidgetBtn">
+                        <span>🔔</span> Hazır olunca bildirim gönder
+                    </button>
+                </div>
             </div>
         </div>
     </div>

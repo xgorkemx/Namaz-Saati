@@ -9874,3 +9874,676 @@ select:focus-visible {
         font-size: 2.5rem;
     }
 }
+
+/* ===================================
+   WIDGET MODULE STYLES
+   =================================== */
+
+/* Widget Module Container */
+.widget-module {
+    padding: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Widget Header */
+.widget-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.widget-header h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.widget-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Widget Section Title */
+.widget-section-title {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Widget Availability Section */
+.widget-availability-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.availability-card {
+    background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.availability-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.availability-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.availability-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Widget Gallery Section */
+.widget-gallery-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.widget-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.widget-preview-card {
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.widget-preview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Widget Preview Mockup */
+.widget-preview-mockup {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.widget-mock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.widget-mock-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.widget-mock-time {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Namaz Widget Mockup */
+.namaz-widget {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.widget-mock-next-prayer {
+    text-align: center;
+}
+
+.next-prayer-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.next-prayer-name {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.next-prayer-time {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3b82f6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.next-prayer-countdown {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    background: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+}
+
+/* Daily Widget Mockup */
+.daily-widget {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.widget-mock-daily-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.widget-mock-prayer-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+}
+
+.widget-mock-prayer-row.active {
+    background: white;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Qibla Widget Mockup */
+.qibla-widget {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+.widget-mock-compass {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.compass-arrow {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-sm);
+    animation: pulse 2s infinite;
+}
+
+.compass-direction {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.compass-degrees {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #10b981;
+}
+
+/* Dua Widget Mockup */
+.dua-widget {
+    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+}
+
+.widget-mock-dua {
+    text-align: center;
+    padding: var(--spacing-md);
+}
+
+.dua-arabic {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    direction: rtl;
+}
+
+.dua-translation {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Tasbih Widget Mockup */
+.tasbih-widget {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+}
+
+.widget-mock-tasbih {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.tasbih-count {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #8b5cf6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.tasbih-text {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.tasbih-button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    background: white;
+    color: #8b5cf6;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Ramadan Widget Mockup */
+.ramadan-widget {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+}
+
+.widget-mock-ramadan {
+    padding: var(--spacing-md);
+}
+
+.ramadan-day {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.ramadan-times {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.ramadan-time-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm);
+    background: white;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+/* Widget Preview Info */
+.widget-preview-info h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.widget-preview-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.widget-sizes {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.widget-size-badge {
+    padding: 4px 12px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Widget Settings Section */
+.widget-settings-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.widget-settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.widget-setting-card {
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.setting-header h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.setting-header p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Theme Options */
+.setting-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.theme-option {
+    cursor: pointer;
+}
+
+.theme-option input[type="radio"] {
+    display: none;
+}
+
+.theme-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.theme-option input[type="radio"]:checked + .theme-preview {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.theme-preview.light-theme {
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.theme-preview.dark-theme {
+    background: #1e293b;
+    color: #f8fafc;
+}
+
+.theme-preview.auto-theme {
+    background: linear-gradient(90deg, #f8fafc 50%, #1e293b 50%);
+    color: #1e293b;
+}
+
+.theme-name {
+    font-weight: 600;
+}
+
+/* Toggle Options */
+.setting-toggles {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.toggle-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle-option input[type="checkbox"] {
+    margin-right: var(--spacing-sm);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.toggle-label {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+/* Widget Select */
+.widget-select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--surface-alt);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.widget-select:hover {
+    border-color: var(--primary-color);
+}
+
+.widget-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* How to Add Widget Section */
+.widget-howto-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.platform-instructions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.platform-card {
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.platform-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.platform-icon {
+    font-size: 2.5rem;
+}
+
+.platform-header h4 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.instruction-list {
+    margin: 0;
+    padding-left: var(--spacing-lg);
+}
+
+.instruction-list li {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+}
+
+.instruction-list strong {
+    color: var(--primary-color);
+}
+
+/* Widget Features Section */
+.widget-features-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.feature-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.feature-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    background: var(--surface-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.feature-list-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.feature-text h5 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.feature-text p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Widget Notification Section */
+.widget-notification-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.notification-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.notification-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.notification-content h4 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.notification-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.notify-me-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.notify-me-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+}
+
+.notify-me-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design for Widget Module */
+@media (max-width: 768px) {
+    .widget-module {
+        padding: var(--spacing-lg);
+    }
+
+    .widget-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .widget-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .widget-settings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .platform-instructions {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-list-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .notification-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .availability-icon {
+        font-size: 3rem;
+    }
+
+    .widget-preview-mockup {
+        min-height: 150px;
+    }
+
+    .next-prayer-time {
+        font-size: 1.5rem;
+    }
+
+    .tasbih-count {
+        font-size: 2rem;
+    }
+
+    .platform-icon {
+        font-size: 2rem;
+    }
+
+    .notification-icon {
+        font-size: 2.5rem;
+    }
+}

@@ -4888,6 +4888,206 @@ const CommunityModule = {
     }
 };
 
+// Widget Module
+const WidgetModule = {
+    settings: {
+        theme: 'light',
+        notifications: true,
+        sound: true,
+        vibration: false,
+        updateInterval: 5,
+        autoLocation: true,
+        showLocation: false
+    },
+
+    init() {
+        this.setupNavigation();
+        this.loadSettings();
+        this.setupThemeSelection();
+        this.setupSettingToggles();
+        this.setupUpdateInterval();
+        this.setupNotifyButton();
+    },
+
+    setupNavigation() {
+        const widgetCard = document.getElementById('widgetCard');
+        const widgetBackBtn = document.getElementById('widgetBackBtn');
+
+        // Navigation - Open Widget Module
+        if (widgetCard) {
+            widgetCard.addEventListener('click', () => {
+                document.querySelector('.more-features').style.display = 'none';
+                document.getElementById('widgetModule').style.display = 'block';
+                document.getElementById('widgetModule').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Navigation - Back Button
+        if (widgetBackBtn) {
+            widgetBackBtn.addEventListener('click', () => {
+                document.getElementById('widgetModule').style.display = 'none';
+                document.getElementById('widgetModule').classList.remove('active');
+                document.querySelector('.more-features').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    },
+
+    loadSettings() {
+        const saved = localStorage.getItem('widgetSettings');
+        if (saved) {
+            this.settings = JSON.parse(saved);
+            this.applySettings();
+        }
+    },
+
+    saveSettings() {
+        localStorage.setItem('widgetSettings', JSON.stringify(this.settings));
+    },
+
+    applySettings() {
+        // Apply theme
+        const themeRadios = document.querySelectorAll('input[name="widgetTheme"]');
+        themeRadios.forEach(radio => {
+            if (radio.value === this.settings.theme) {
+                radio.checked = true;
+            }
+        });
+
+        // Apply notification settings
+        const notificationsCheckbox = document.getElementById('widgetNotifications');
+        const soundCheckbox = document.getElementById('widgetSound');
+        const vibrationCheckbox = document.getElementById('widgetVibration');
+
+        if (notificationsCheckbox) notificationsCheckbox.checked = this.settings.notifications;
+        if (soundCheckbox) soundCheckbox.checked = this.settings.sound;
+        if (vibrationCheckbox) vibrationCheckbox.checked = this.settings.vibration;
+
+        // Apply update interval
+        const intervalSelect = document.getElementById('widgetUpdateInterval');
+        if (intervalSelect) {
+            intervalSelect.value = this.settings.updateInterval.toString();
+        }
+
+        // Apply location settings
+        const autoLocationCheckbox = document.getElementById('widgetAutoLocation');
+        const showLocationCheckbox = document.getElementById('widgetShowLocation');
+
+        if (autoLocationCheckbox) autoLocationCheckbox.checked = this.settings.autoLocation;
+        if (showLocationCheckbox) showLocationCheckbox.checked = this.settings.showLocation;
+    },
+
+    setupThemeSelection() {
+        const themeRadios = document.querySelectorAll('input[name="widgetTheme"]');
+
+        themeRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                this.settings.theme = e.target.value;
+                this.saveSettings();
+
+                // Show feedback
+                const themeName = e.target.value === 'light' ? 'Açık' :
+                                 e.target.value === 'dark' ? 'Koyu' : 'Otomatik';
+                console.log(`Widget teması ${themeName} olarak ayarlandı`);
+            });
+        });
+    },
+
+    setupSettingToggles() {
+        // Notifications toggle
+        const notificationsCheckbox = document.getElementById('widgetNotifications');
+        if (notificationsCheckbox) {
+            notificationsCheckbox.addEventListener('change', (e) => {
+                this.settings.notifications = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        // Sound toggle
+        const soundCheckbox = document.getElementById('widgetSound');
+        if (soundCheckbox) {
+            soundCheckbox.addEventListener('change', (e) => {
+                this.settings.sound = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        // Vibration toggle
+        const vibrationCheckbox = document.getElementById('widgetVibration');
+        if (vibrationCheckbox) {
+            vibrationCheckbox.addEventListener('change', (e) => {
+                this.settings.vibration = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        // Auto location toggle
+        const autoLocationCheckbox = document.getElementById('widgetAutoLocation');
+        if (autoLocationCheckbox) {
+            autoLocationCheckbox.addEventListener('change', (e) => {
+                this.settings.autoLocation = e.target.checked;
+                this.saveSettings();
+            });
+        }
+
+        // Show location toggle
+        const showLocationCheckbox = document.getElementById('widgetShowLocation');
+        if (showLocationCheckbox) {
+            showLocationCheckbox.addEventListener('change', (e) => {
+                this.settings.showLocation = e.target.checked;
+                this.saveSettings();
+            });
+        }
+    },
+
+    setupUpdateInterval() {
+        const intervalSelect = document.getElementById('widgetUpdateInterval');
+        if (intervalSelect) {
+            intervalSelect.addEventListener('change', (e) => {
+                this.settings.updateInterval = parseInt(e.target.value);
+                this.saveSettings();
+
+                const intervalText = e.target.options[e.target.selectedIndex].text;
+                console.log(`Widget güncelleme sıklığı: ${intervalText}`);
+            });
+        }
+    },
+
+    setupNotifyButton() {
+        const notifyBtn = document.getElementById('notifyWidgetBtn');
+        if (notifyBtn) {
+            notifyBtn.addEventListener('click', () => {
+                this.handleNotifyRequest();
+            });
+        }
+    },
+
+    handleNotifyRequest() {
+        const notifyBtn = document.getElementById('notifyWidgetBtn');
+        const isSubscribed = localStorage.getItem('widgetNotifySubscribed') === 'true';
+
+        if (isSubscribed) {
+            // Unsubscribe
+            localStorage.removeItem('widgetNotifySubscribed');
+            notifyBtn.innerHTML = '<span>🔔</span> Hazır olunca bildirim gönder';
+            alert('Bildirim aboneliğiniz iptal edildi.');
+        } else {
+            // Subscribe
+            localStorage.setItem('widgetNotifySubscribed', 'true');
+            notifyBtn.innerHTML = '<span>✓</span> Bildirimlere abone oldunuz';
+            notifyBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+
+            alert('✅ Bildirimlere Abone Oldunuz!\n\nWidget özellikleri hazır olduğunda size bildirim göndereceğiz.');
+
+            // Reset after 2 seconds
+            setTimeout(() => {
+                notifyBtn.style.background = '';
+            }, 2000);
+        }
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
@@ -4901,4 +5101,5 @@ document.addEventListener('DOMContentLoaded', () => {
     HacUmreModule.init();
     HadisModule.init();
     CommunityModule.init();
+    WidgetModule.init();
 });
