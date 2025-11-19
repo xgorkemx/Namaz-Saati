@@ -5529,16 +5529,48 @@ const WidgetModule = {
     }
 };
 
-// Encyclopedia Module
+// Encyclopedia Module (Enhanced with Interactive Features)
 const EncyclopediaModule = {
     currentCategory: 'all',
     searchTerm: '',
+    favorites: [],
+    readTopics: [],
+    stats: {
+        totalTopics: 0,
+        readCount: 0,
+        favoritesCount: 0
+    },
 
     init() {
+        this.loadUserData();
+        this.countTopics();
         this.setupNavigation();
         this.setupSearch();
         this.setupCategoryFilter();
+        this.addInteractiveButtons();
+        this.updateStatistics();
         this.renderContent();
+    },
+
+    loadUserData() {
+        const savedFavorites = localStorage.getItem('encyclopediaFavorites');
+        const savedReadTopics = localStorage.getItem('encyclopediaReadTopics');
+
+        if (savedFavorites) {
+            this.favorites = JSON.parse(savedFavorites);
+        }
+        if (savedReadTopics) {
+            this.readTopics = JSON.parse(savedReadTopics);
+        }
+    },
+
+    saveUserData() {
+        localStorage.setItem('encyclopediaFavorites', JSON.stringify(this.favorites));
+        localStorage.setItem('encyclopediaReadTopics', JSON.stringify(this.readTopics));
+    },
+
+    countTopics() {
+        this.stats.totalTopics = document.querySelectorAll('.topic-card').length;
     },
 
     setupNavigation() {
@@ -5549,6 +5581,7 @@ const EncyclopediaModule = {
             encyclopediaCard.addEventListener('click', () => {
                 document.querySelector('.more-features').style.display = 'none';
                 document.getElementById('encyclopediaModule').style.display = 'block';
+                this.updateStatistics(); // Update stats when opening
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
@@ -5573,20 +5606,132 @@ const EncyclopediaModule = {
     },
 
     setupCategoryFilter() {
-        const categoryBtns = document.querySelectorAll('.category-btn');
+        const categoryBtns = document.querySelectorAll('.encyclopedia-categories .category-btn');
         categoryBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
                 categoryBtns.forEach(b => b.classList.remove('active'));
-
-                // Add active class to clicked button
                 btn.classList.add('active');
-
-                // Get category and filter
                 this.currentCategory = btn.getAttribute('data-category');
                 this.renderContent();
             });
         });
+    },
+
+    addInteractiveButtons() {
+        const topicCards = document.querySelectorAll('.topic-card');
+
+        topicCards.forEach((card, index) => {
+            const topicId = `topic-${index}`;
+            card.setAttribute('data-topic-id', topicId);
+
+            const header = card.querySelector('.topic-header');
+            if (!header) return;
+
+            // Check if buttons already exist
+            if (header.querySelector('.topic-actions')) return;
+
+            // Create actions container
+            const actionsDiv = document.createElement('div');
+            actionsDiv.className = 'topic-actions';
+
+            // Create favorite button
+            const favoriteBtn = document.createElement('button');
+            favoriteBtn.className = 'topic-action-btn favorite-btn';
+            favoriteBtn.innerHTML = this.favorites.includes(topicId) ? '⭐' : '☆';
+            favoriteBtn.title = 'Favorilere ekle';
+            if (this.favorites.includes(topicId)) {
+                favoriteBtn.classList.add('favorited');
+                card.classList.add('favorite');
+            }
+
+            favoriteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleFavorite(topicId, favoriteBtn, card);
+            });
+
+            // Create read button
+            const readBtn = document.createElement('button');
+            readBtn.className = 'topic-action-btn read-btn';
+            readBtn.innerHTML = this.readTopics.includes(topicId) ? '✅' : '📖';
+            readBtn.title = 'Okudum olarak işaretle';
+            if (this.readTopics.includes(topicId)) {
+                readBtn.classList.add('read');
+                card.classList.add('read');
+            }
+
+            readBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleRead(topicId, readBtn, card);
+            });
+
+            actionsDiv.appendChild(favoriteBtn);
+            actionsDiv.appendChild(readBtn);
+            header.appendChild(actionsDiv);
+        });
+    },
+
+    toggleFavorite(topicId, button, card) {
+        const index = this.favorites.indexOf(topicId);
+
+        if (index > -1) {
+            // Remove from favorites
+            this.favorites.splice(index, 1);
+            button.innerHTML = '☆';
+            button.classList.remove('favorited');
+            card.classList.remove('favorite');
+        } else {
+            // Add to favorites
+            this.favorites.push(topicId);
+            button.innerHTML = '⭐';
+            button.classList.add('favorited');
+            card.classList.add('favorite');
+        }
+
+        this.saveUserData();
+        this.updateStatistics();
+    },
+
+    toggleRead(topicId, button, card) {
+        const index = this.readTopics.indexOf(topicId);
+
+        if (index > -1) {
+            // Mark as unread
+            this.readTopics.splice(index, 1);
+            button.innerHTML = '📖';
+            button.classList.remove('read');
+            card.classList.remove('read');
+        } else {
+            // Mark as read
+            this.readTopics.push(topicId);
+            button.innerHTML = '✅';
+            button.classList.add('read');
+            card.classList.add('read');
+        }
+
+        this.saveUserData();
+        this.updateStatistics();
+    },
+
+    updateStatistics() {
+        this.stats.readCount = this.readTopics.length;
+        this.stats.favoritesCount = this.favorites.length;
+
+        const progressPercent = this.stats.totalTopics > 0
+            ? Math.round((this.stats.readCount / this.stats.totalTopics) * 100)
+            : 0;
+
+        // Update DOM elements
+        const totalTopicsEl = document.getElementById('totalTopicsCount');
+        const readTopicsEl = document.getElementById('readTopicsCount');
+        const favoritesEl = document.getElementById('favoritesCount');
+        const progressEl = document.getElementById('progressPercent');
+        const progressBar = document.getElementById('encyclopediaProgressBar');
+
+        if (totalTopicsEl) totalTopicsEl.textContent = this.stats.totalTopics;
+        if (readTopicsEl) readTopicsEl.textContent = this.stats.readCount;
+        if (favoritesEl) favoritesEl.textContent = this.stats.favoritesCount;
+        if (progressEl) progressEl.textContent = `${progressPercent}%`;
+        if (progressBar) progressBar.style.width = `${progressPercent}%`;
     },
 
     renderContent() {
@@ -5596,20 +5741,17 @@ const EncyclopediaModule = {
             const sectionCategory = section.getAttribute('data-category');
             let shouldShow = false;
 
-            // Check category filter
             if (this.currentCategory === 'all') {
                 shouldShow = true;
             } else if (sectionCategory === this.currentCategory) {
                 shouldShow = true;
             }
 
-            // Apply search filter if there's a search term
             if (this.searchTerm && shouldShow) {
                 const sectionText = section.textContent.toLowerCase();
                 shouldShow = sectionText.includes(this.searchTerm);
             }
 
-            // Show or hide section
             if (shouldShow) {
                 section.classList.remove('hidden');
                 section.style.display = 'block';
@@ -5619,12 +5761,11 @@ const EncyclopediaModule = {
             }
         });
 
-        // Update category counts
         this.updateCategoryCounts();
     },
 
     updateCategoryCounts() {
-        const categoryBtns = document.querySelectorAll('.category-btn');
+        const categoryBtns = document.querySelectorAll('.encyclopedia-categories .category-btn');
 
         categoryBtns.forEach(btn => {
             const category = btn.getAttribute('data-category');
@@ -5632,7 +5773,7 @@ const EncyclopediaModule = {
 
             if (categoryName && category !== 'all') {
                 const count = this.getSectionCount(category);
-                const text = categoryName.textContent.split(' (')[0]; // Remove old count if exists
+                const text = categoryName.textContent.split(' (')[0];
                 categoryName.textContent = text;
             }
         });

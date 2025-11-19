@@ -11190,6 +11190,88 @@ select:focus-visible {
     color: white;
 }
 
+/* Statistics Dashboard */
+.encyclopedia-stats-dashboard {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.stat-box {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: var(--radius-md);
+    border: 2px solid #bbf7d0;
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #059669;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #065f46;
+    font-weight: 500;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+    border-radius: 6px;
+    width: 0%;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
 .encyclopedia-header h2 {
     font-size: 2rem;
     margin-bottom: var(--spacing-sm);
@@ -11357,6 +11439,8 @@ select:focus-visible {
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-md);
     border-bottom: 2px solid #f3f4f6;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
 }
 
 .topic-header h4 {
@@ -11364,6 +11448,41 @@ select:focus-visible {
     color: #111827;
     font-weight: 600;
     flex: 1;
+    min-width: 200px;
+}
+
+.topic-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+}
+
+.topic-action-btn {
+    padding: 6px 12px;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.topic-action-btn:hover {
+    transform: scale(1.1);
+    border-color: #10b981;
+}
+
+.favorite-btn.favorited {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-color: #f59e0b;
+}
+
+.read-btn.read {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    border-color: #10b981;
 }
 
 .topic-badge {
@@ -11374,6 +11493,17 @@ select:focus-visible {
     font-size: 0.85rem;
     font-weight: 500;
     white-space: nowrap;
+}
+
+/* Topic Card States */
+.topic-card.read {
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 50%);
+    border-color: #d1d5db;
+}
+
+.topic-card.favorite {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.1);
 }
 
 /* Topic Content */

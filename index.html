@@ -5363,6 +5363,35 @@
             <p class="encyclopedia-subtitle">İslam dini hakkında kapsamlı bilgi kaynağı</p>
         </div>
 
+        <!-- Statistics Dashboard -->
+        <div class="encyclopedia-stats-dashboard">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-icon">📖</div>
+                    <div class="stat-number" id="totalTopicsCount">50+</div>
+                    <div class="stat-label">Toplam Konu</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-number" id="readTopicsCount">0</div>
+                    <div class="stat-label">Okunan Konu</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number" id="favoritesCount">0</div>
+                    <div class="stat-label">Favoriler</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-number" id="progressPercent">0%</div>
+                    <div class="stat-label">İlerleme</div>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="encyclopediaProgressBar"></div>
+            </div>
+        </div>
+
         <!-- Search Box -->
         <div class="encyclopedia-search">
             <div class="search-input-wrapper">
@@ -6604,6 +6633,473 @@
                             <li><strong>Zekât:</strong> Malın belirli oranını verme</li>
                             <li><strong>Zikir:</strong> Allah'ı anma</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sahabe-i Kiram -->
+            <div class="encyclopedia-section" data-category="history">
+                <div class="section-header">
+                    <h3>⭐ Sahabe-i Kiram (Ashab-ı Kiram)</h3>
+                    <p>Peygamberimizin değerli arkadaşları</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Sahabe Kimdir?</h4>
+                        <span class="topic-badge">Tanım</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Peygamber Efendimizi (s.a.v.) hayatta iken gören, O'na iman eden ve müslüman olarak ölen kişilere sahabe denir.</p>
+
+                        <p><strong>Sahabenin Fazileti:</strong> Allah, Kur'an'da sahabeyi övmüş, onlardan razı olduğunu bildirmiştir. Onlar İslam'ın ilk nesli ve Kur'an'ın ilk muhataplarıdır.</p>
+
+                        <p><strong>Aşere-i Mübeşşere (Cennete Müjdelenen 10 Sahabe):</strong></p>
+                        <ol>
+                            <li>Hz. Ebu Bekir (r.a.)</li>
+                            <li>Hz. Ömer (r.a.)</li>
+                            <li>Hz. Osman (r.a.)</li>
+                            <li>Hz. Ali (r.a.)</li>
+                            <li>Hz. Talha (r.a.)</li>
+                            <li>Hz. Zübeyr (r.a.)</li>
+                            <li>Hz. Abdurrahman bin Avf (r.a.)</li>
+                            <li>Hz. Sa'd bin Ebi Vakkas (r.a.)</li>
+                            <li>Hz. Said bin Zeyd (r.a.)</li>
+                            <li>Hz. Ebu Ubeyde bin Cerrah (r.a.)</li>
+                        </ol>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Muhacirlerden ve ensardan öne geçenler ile onlara güzellikle uyanlar var ya, Allah onlardan razı olmuş, onlar da Allah'tan razı olmuşlardır."</p>
+                            <p class="ayah-reference">Tevbe Suresi, 100</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Önemli Kadın Sahabeler</h4>
+                        <span class="topic-badge">Önder Kadınlar</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Hz. Hatice (r.a.):</strong> Peygamberimizin ilk eşi ve ilk müslüman kadın. Vahyin ilk yıllarında büyük destek verdi. Mekke döneminde vefat etti.</p>
+
+                        <p><strong>Hz. Aişe (r.a.):</strong> Ebu Bekir'in kızı, Peygamberimizin sevgili eşi. Hadis rivayet eden, fıkıh alimi. 2000'den fazla hadis rivayet etmiştir.</p>
+
+                        <p><strong>Hz. Fatıma (r.a.):</strong> Peygamberimizin kızı, Hz. Ali'nin eşi. Hz. Hasan ve Hz. Hüseyin'in annesi. Cennetin hanımlarının efendisi.</p>
+
+                        <p><strong>Hz. Hafsa (r.a.):</strong> Hz. Ömer'in kızı, Peygamberimizin eşi. Kur'an'ın ilk mushafı ona emanet edildi.</p>
+
+                        <p><strong>Hz. Sumeyye (r.a.):</strong> İslam'ın ilk şehidi. Müşriklerin işkencesine dayanamayıp şehit oldu.</p>
+
+                        <p><strong>Ümmü Seleme (r.a.):</strong> Hudeybiye'de önemli tavsiyesi ile Peygamberimize yardımcı oldu.</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Ünlü Erkek Sahabeler</h4>
+                        <span class="topic-badge">Kahraman Sahabeler</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Hz. Bilal-i Habeşi (r.a.):</strong> İlk müezzin. Köle iken müslüman oldu, işkencelere maruz kaldı. Hz. Ebu Bekir tarafından azat edildi.</p>
+
+                        <p><strong>Hz. Hamza (r.a.):</strong> Peygamberimizin amcası, "Esedullah" (Allah'ın aslanı). Uhud Savaşı'nda şehit oldu.</p>
+
+                        <p><strong>Hz. Enes bin Malik (r.a.):</strong> Peygamberimizin hizmetçisi, 10 yıl hizmet etti. 2286 hadis rivayet etti. 103 yıl yaşadı.</p>
+
+                        <p><strong>Hz. Ebu Hureyre (r.a.):</strong> En çok hadis rivayet eden sahabe, 5374 hadis. Hafızası çok kuvvetli idi.</p>
+
+                        <p><strong>Hz. Halid bin Velid (r.a.):</strong> "Seyfullah" (Allah'ın kılıcı). Müslüman olduktan sonra hiçbir savaşı kaybetmedi.</p>
+
+                        <p><strong>Hz. Salman-ı Farisi (r.a.):</strong> İranlı sahabe. Hendek Savaşı'nda hendek kazma fikrini verdi. Ehl-i Beyt'ten sayıldı.</p>
+
+                        <p><strong>Abdullah bin Mesud (r.a.):</strong> İlk göçmen, Kur'an hafızı ve alimi.</p>
+
+                        <p><strong>Muaz bin Cebel (r.a.):</strong> Helal-haram konusunda en bilgili sahabe.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İslam Ahlakı -->
+            <div class="encyclopedia-section" data-category="worship">
+                <div class="section-header">
+                    <h3>💎 İslam Ahlakı ve Adabı</h3>
+                    <p>Güzel ahlak ve davranış kuralları</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Güzel Ahlak (Makarim-ı Ahlak)</h4>
+                        <span class="topic-badge">Ahlaki Değerler</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>İslam'ın Temel Ahlaki İlkeleri:</strong></p>
+
+                        <ul>
+                            <li><strong>Doğruluk (Sıdk):</strong> Her zaman doğru söylemek, yalanda ısrar etmemek</li>
+                            <li><strong>Dürüstlük (Emanet):</strong> Güvenilir olmak, emanete hıyanet etmemek</li>
+                            <li><strong>Adalet (Adl):</strong> Herkese hakkını vermek, insaflı olmak</li>
+                            <li><strong>Merhamet (Rahmet):</strong> Acıma, şefkat gösterme</li>
+                            <li><strong>Alçak Gönüllülük (Tevazu):</strong> Kibirsiz olmak, mütevazı davranmak</li>
+                            <li><strong>Cömertlik (Cud):</strong> Eli açık olmak, infak etmek</li>
+                            <li><strong>Sabır:</strong> Zorluklara katlanmak, tahammül göstermek</li>
+                            <li><strong>Şükür:</strong> Nimetlere karşı minnettar olmak</li>
+                            <li><strong>Affetmek (Afu):</strong> Hata yapanları bağışlamak</li>
+                            <li><strong>Hayâ:</strong> Utanma, edep, iffet</li>
+                        </ul>
+
+                        <p class="hadith-text">"Ben güzel ahlakı tamamlamak için gönderildim." (Muvatta)</p>
+
+                        <p class="hadith-text">"Müminlerin iman bakımından en olgun olanı, ahlakı en güzel olanıdır." (Tirmizi)</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Kötü Ahlaktan Sakınma</h4>
+                        <span class="topic-badge">Sakınılacak Davranışlar</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Kaçınılması Gereken Kötü Huylar:</strong></p>
+
+                        <ul>
+                            <li><strong>Yalan (Kizb):</strong> Yalan söylemek, iftira atmak</li>
+                            <li><strong>Gıybet:</strong> Birinin arkasından kötü konuşmak</li>
+                            <li><strong>Koğuculuk (Nemime):</strong> Söz taşımak, fitne çıkarmak</li>
+                            <li><strong>Kibir (Tekebbür):</strong> Kendini beğenmişlik, büyüklük taslamak</li>
+                            <li><strong>Haset:</strong> Başkasının nimetini çekememek</li>
+                            <li><strong>Cimrilik (Buhl):</strong> Eli sıkı olmak, vermemek</li>
+                            <li><strong>Öfke (Gadab):</strong> Kontrolsüz kızmak</li>
+                            <li><strong>Riya:</strong> Gösteriş yapmak, insanlara görünmek için ibadet etmek</li>
+                            <li><strong>Şüphe (Sû-i Zan):</strong> İnsanlar hakkında kötü düşünmek</li>
+                            <li><strong>İsraf:</strong> Gereksiz harcama, savurganlık</li>
+                        </ul>
+
+                        <p class="hadith-text">"Gıybet, kardeşinizi yokken, hoşlanmayacağı şeyle anmaktır." (Müslim)</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Sosyal İlişkilerde Adab</h4>
+                        <span class="topic-badge">Toplumsal Davranış</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Anne-Babaya İyi Davranma:</strong> İyilik etmek, itaat etmek, üf bile dememek</p>
+
+                        <p><strong>Komşu Hakları:</strong> Komşuya iyilik etmek, eziyet vermemek, ihtiyacında yardım etmek</p>
+
+                        <p><strong>Misafir Hakkı:</strong> Misafiri ağırlamak, ikram etmek (3 gün)</p>
+
+                        <p><strong>Büyüklere Saygı, Küçüklere Sevgi:</strong> Büyükleri saymak, küçüklere şefkat göstermek</p>
+
+                        <p><strong>Selamlaşma:</strong> "Esselamu aleyküm" demek, karşılık vermek</p>
+
+                        <p><strong>Yemek Adabı:</strong> Besmele çekmek, sağ el ile yemek, önünden almak</p>
+
+                        <p><strong>Yolda Yürüme Adabı:</strong> Eziyet vermemek, yolu açık tutmak</p>
+
+                        <p><strong>Konuşma Adabı:</strong> Güzel konuşmak, laf taşımamak, kötü söz söylememek</p>
+
+                        <p class="hadith-text">"Cennet annelerin ayakları altındadır." (Nesâî)</p>
+
+                        <p class="hadith-text">"Allah'a ve ahiret gününe iman eden komşusuna eza etmesin, misafirine ikram etsin, hayır söylesin veya sussun." (Buhari, Müslim)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Helal ve Haram -->
+            <div class="encyclopedia-section" data-category="worship">
+                <div class="section-header">
+                    <h3>⚖️ Helal ve Haram</h3>
+                    <p>İslam'da izin verilen ve yasaklanan şeyler</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Helal Kavramı</h4>
+                        <span class="topic-badge">İzin Verilen</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Helal Nedir?</strong> Allah tarafından izin verilen, yapılması veya yenmesi serbest olan şeylerdir.</p>
+
+                        <p><strong>Helal Yiyecekler:</strong></p>
+                        <ul>
+                            <li>Hayvanlardan: Koyun, keçi, sığır, deve, tavuk, hindi (usulüne uygun kesilmiş)</li>
+                            <li>Deniz mahsulleri: Balık, karides (mezheplere göre farklılık gösterebilir)</li>
+                            <li>Sebze ve meyveler: Tüm sebze ve meyveler</li>
+                            <li>Tahıllar: Buğday, arpa, pirinç vb.</li>
+                            <li>Süt ve süt ürünleri: Helal hayvanların sütü</li>
+                        </ul>
+
+                        <p><strong>Helal Kazanç:</strong></p>
+                        <ul>
+                            <li>Dürüst ticaret</li>
+                            <li>Emek karşılığı kazanç</li>
+                            <li>Hizmet karşılığı ücret</li>
+                            <li>Tarım ve hayvancılık</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Ey insanlar! Yeryüzündeki helal ve temiz şeylerden yiyin."</p>
+                            <p class="ayah-reference">Bakara Suresi, 168</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Haram Kavramı</h4>
+                        <span class="topic-badge">Yasak</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Haram Nedir?</strong> Allah tarafından kesin olarak yasaklanan şeylerdir. Haram işlemek günahtır.</p>
+
+                        <p><strong>Haram Yiyecekler:</strong></p>
+                        <ul>
+                            <li>Domuz eti ve ürünleri</li>
+                            <li>Ölü hayvan (murdar)</li>
+                            <li>Akan kan</li>
+                            <li>Allah'tan başkası adına kesilmiş hayvan</li>
+                            <li>Yırtıcı hayvanlar (aslan, kurt, ayı vb.)</li>
+                            <li>Pençeli kuşlar (kartal, şahin vb.)</li>
+                            <li>Eşek, katır</li>
+                            <li>Zehirli hayvanlar ve bitkiler</li>
+                        </ul>
+
+                        <p><strong>Haram İçecekler:</strong></p>
+                        <ul>
+                            <li>Alkollü içecekler (şarap, bira, rakı vb.)</li>
+                            <li>Uyuşturucu maddeleri içeren içecekler</li>
+                            <li>Sarhoş eden her türlü içki</li>
+                        </ul>
+
+                        <p><strong>Haram Kazanç:</strong></p>
+                        <ul>
+                            <li>Faiz (riba)</li>
+                            <li>Kumar ve şans oyunları</li>
+                            <li>Hırsızlık ve gasp</li>
+                            <li>Rüşvet</li>
+                            <li>Hile ve aldatma</li>
+                            <li>Haram madde ticareti</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Size ancak ölü hayvanları, kanı, domuz etini ve Allah'tan başkası adına kesileni haram kıldı."</p>
+                            <p class="ayah-reference">Bakara Suresi, 173</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Şüpheli Şeyler (Şubuhât)</h4>
+                        <span class="topic-badge">Sakınılacak</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Şüpheli Şeyler:</strong> Helal mi haram mı olduğu kesin olmayan, şüpheli durumdaki şeylerdir.</p>
+
+                        <p><strong>Takva Sahibi Müslümanın Tavrı:</strong> Şüpheli şeylerden de sakınmak, helali açık olan şeyleri tercih etmektir.</p>
+
+                        <p class="hadith-text">"Helal bellidir, haram da bellidir. Bu ikisi arasında ise şüpheli şeyler vardır ki, birçok kimse bunları bilmez. Şüpheli şeylerden sakınan kimse, dinini ve ırzını korumuş olur." (Buhari, Müslim)</p>
+
+                        <p><strong>Zaruret Hali:</strong> Ölüm tehlikesi varsa ve başka çare yoksa, haram yiyecekten sadece hayatta kalmaya yetecek kadar yemek caiz olur.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Önemli Günler ve Geceler -->
+            <div class="encyclopedia-section" data-category="worship">
+                <div class="section-header">
+                    <h3>🌙 Önemli İslami Günler ve Geceler</h3>
+                    <p>Mübarek gün ve geceler</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Kandil Geceleri</h4>
+                        <span class="topic-badge">Mübarek Geceler</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>1. Mevlid Kandili (12 Rebiülevvel):</strong> Hz. Muhammed'in (s.a.v.) doğum günü. İbadet ve şükür gecesi.</p>
+
+                        <p><strong>2. Regaib Kandili (Recep ayının ilk cuma gecesi):</strong> Üç ayların başlangıcı. Nafile ibadetler yapılır.</p>
+
+                        <p><strong>3. Miraç Kandili (27 Recep):</strong> Peygamberimizin göğe yükselişi. Namaz farz kılındı.</p>
+
+                        <p><strong>4. Berat Kandili (15 Şaban):</strong> Bağışlanma ve af gecesi. Gelecek yılın kaderi yazılır.</p>
+
+                        <p><strong>5. Kadir Gecesi (Ramazan'ın son 10 günü, çoğunlukla 27. gece):</strong> Kur'an'ın indirildiği gece. Bin aydan hayırlı.</p>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Kadir gecesi bin aydan hayırlıdır."</p>
+                            <p class="ayah-reference">Kadr Suresi, 3</p>
+                        </div>
+
+                        <p><strong>Bu Gecelerde Yapılanlar:</strong></p>
+                        <ul>
+                            <li>Namaz kılmak (kaza, sünnet, nafile)</li>
+                            <li>Kur'an okumak</li>
+                            <li>Dua etmek</li>
+                            <li>İstiğfar etmek</li>
+                            <li>Salavat getirmek</li>
+                            <li>Sadaka vermek</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Dini Bayramlar</h4>
+                        <span class="topic-badge">Bayramlar</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Ramazan Bayramı (Şeker Bayramı):</strong></p>
+                        <ul>
+                            <li>Şevval ayının ilk 3 günü</li>
+                            <li>Ramazan orucunun ardından kutlanır</li>
+                            <li>Bayram namazı kılınır</li>
+                            <li>Fıtır sadakası verilir</li>
+                            <li>Akraba ziyaretleri yapılır</li>
+                            <li>Helal getirmek, barışmak</li>
+                        </ul>
+
+                        <p><strong>Kurban Bayramı (Eid al-Adha):</strong></p>
+                        <ul>
+                            <li>Zilhicce ayının 10, 11, 12, 13. günleri (4 gün)</li>
+                            <li>Hac ibadeti ile aynı zamana denk gelir</li>
+                            <li>Bayram namazı kılınır</li>
+                            <li>Kurban kesilir (gücü yetene farz/vacip)</li>
+                            <li>Hz. İbrahim'in imtihanı hatırlanır</li>
+                            <li>Arafat günü (9 Zilhicce) oruç tutulur (hacda olmayanlara)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Özel Günler</h4>
+                        <span class="topic-badge">Faziletli Günler</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Cuma Günü:</strong> Haftanın en hayırlı günü. Cuma namazı farz. İki bayram günü gibidir.</p>
+
+                        <p><strong>Aşure Günü (10 Muharrem):</strong> Hz. Musa'nın Firavun'dan kurtulduğu gün. Oruç tutulması sünnet.</p>
+
+                        <p><strong>Zilhicce'nin İlk 10 Günü:</strong> Yılın en faziletli günleri. İbadet, oruç ve hayır işleri yapılır.</p>
+
+                        <p><strong>Arafe Günü (9 Zilhicce):</strong> Hacıların Arafat'ta vakfe yaptığı gün. Oruç bir yılın günahlarını örter.</p>
+
+                        <p><strong>Üç Aylar (Recep, Şaban, Ramazan):</strong> Manevi arınma ve ibadet ayları.</p>
+
+                        <p class="hadith-text">"Bugün dininizi kemale erdirdim, üzerinizdeki nimetimi tamamladım ve size din olarak İslam'ı seçtim." (Maide 3 - Veda Haccı'nda Arafe günü inen ayet)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kutsal Mekanlar -->
+            <div class="encyclopedia-section" data-category="history">
+                <div class="section-header">
+                    <h3>🕋 Kutsal Mekanlar</h3>
+                    <p>İslam'ın üç kutsal mescidi</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Kâbe-i Muazzama</h4>
+                        <span class="topic-badge">Mekke</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Kâbe Nedir?</strong> Mekke'de bulunan, Müslümanların kıble olarak yöneldikleri kübik şekildeki yapı. "Beytullah" (Allah'ın evi) olarak anılır.</p>
+
+                        <p><strong>Tarihi:</strong></p>
+                        <ul>
+                            <li>Hz. İbrahim ve oğlu Hz. İsmail tarafından inşa edildi</li>
+                            <li>Yeryüzünde Allah için yapılan ilk ev</li>
+                            <li>Cahiliye döneminde putlarla dolduruldu</li>
+                            <li>Mekke'nin fethi (630) ile putlardan temizlendi</li>
+                            <li>Tarih boyunca birkaç kez yeniden inşa edildi</li>
+                        </ul>
+
+                        <p><strong>Özellikleri:</strong></p>
+                        <ul>
+                            <li>Yaklaşık 15 metre yüksekliğinde</li>
+                            <li>Siyah örtü (Kisve) ile kaplı</li>
+                            <li>Haceru'l-Esved (Kara Taş) doğu köşesinde</li>
+                            <li>Altın yaldızlı kapı (Bab-ı Kâbe)</li>
+                            <li>İçinde 3 direk, mermer döşeme</li>
+                        </ul>
+
+                        <p><strong>Mescid-i Haram:</strong> Kâbe'nin etrafındaki mescit. Dünyanın en geniş mescidi. Milyonlarca müslümanı ağırlar.</p>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Şüphesiz, insanlar için kurulan ilk ev (mabet), Mekke'deki Kâbe'dir. O, âlemlere bereket ve hidayet kaynağı olarak kurulmuştur."</p>
+                            <p class="ayah-reference">Âl-i İmran Suresi, 96</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Mescid-i Nebevi</h4>
+                        <span class="topic-badge">Medine</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Mescid-i Nebevi Nedir?</strong> Medine'de bulunan, Peygamber Efendimizin (s.a.v.) inşa ettirdiği ve kabri ile Ravza-i Mutahhara'nın bulunduğu mescit.</p>
+
+                        <p><strong>Tarihi:</strong></p>
+                        <ul>
+                            <li>Hicret'ten sonra (622) Peygamberimiz tarafından inşa edildi</li>
+                            <li>İlk mescit sadece 35x30 metre idi</li>
+                            <li>Hz. Ömer, Hz. Osman ve Emeviler döneminde genişletildi</li>
+                            <li>Osmanlı ve Suudi dönemlerinde büyük tadilatlar yapıldı</li>
+                        </ul>
+
+                        <p><strong>Önemi:</strong></p>
+                        <ul>
+                            <li>Hz. Muhammed'in (s.a.v.) kabri burada</li>
+                            <li>Hz. Ebu Bekir ve Hz. Ömer de burada</li>
+                            <li>Ravza-i Mutahhara: Cennet bahçelerinden bir bahçe</li>
+                            <li>Bu mescitte namaz, başka yerdeki 1000 namaza eşit sevaptır</li>
+                        </ul>
+
+                        <p><strong>Ravza-i Mutahhara:</strong> Peygamberimizin minberi ile kabri arasındaki alan. Yeşil halı ile kapl ı, dua edilmesi müstehab yerdir.</p>
+
+                        <p class="hadith-text">"Benim minberimle evim (kabrim) arasındaki yer, cennet bahçelerinden bir bahçedir." (Buhari, Müslim)</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Mescid-i Aksa</h4>
+                        <span class="topic-badge">Kudüs</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Mescid-i Aksa Nedir?</strong> Kudüs'te (Filistin) bulunan, İslam'ın üçüncü kutsal mescidi. "Aksa" uzak anlamına gelir.</p>
+
+                        <p><strong>Tarihi:</strong></p>
+                        <ul>
+                            <li>Hz. Süleyman (a.s.) tarafından inşa edildiğine inanılır</li>
+                            <li>Yahudi ve Hristiyanlar için de kutsal</li>
+                            <li>Hz. Ömer döneminde (638) fethedildi</li>
+                            <li>Emeviler döneminde Kubbet-üs Sahra inşa edildi</li>
+                            <li>Haçlı Seferleri sırasında işgal edildi, Selahaddin Eyyubi geri aldı (1187)</li>
+                        </ul>
+
+                        <p><strong>İslam'daki Önemi:</strong></p>
+                        <ul>
+                            <li>İlk kıble: Müslümanlar başlangıçta buraya dönerek namaz kıldı</li>
+                            <li>İsra ve Miraç: Peygamberimiz buradan göğe yükseldi</li>
+                            <li>Tüm peygamberlerin namaz kıldığı mübarek yer</li>
+                            <li>Bu mescitte namaz, başka yerdeki 250 (veya 500) namaza eşittir</li>
+                        </ul>
+
+                        <p><strong>Kubbet-üs Sahra (Kubbetü's-Sahra):</strong> Altın kubbeli yapı. Hz. Muhammed'in Mi raç'a çıktığına inanılan kaya burada. Mescid-i Aksa'nın içindedir.</p>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Kendisine ayetlerimizden bir kısmını gösterelim diye, kulunu (Muhammed'i) bir gece Mescid-i Haram'dan, çevresini bereketli kıldığımız Mescid-i Aksa'ya götüren Allah'ın şanı yücedir."</p>
+                            <p class="ayah-reference">İsra Suresi, 1</p>
+                        </div>
                     </div>
                 </div>
             </div>
