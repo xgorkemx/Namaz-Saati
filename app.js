@@ -1459,18 +1459,170 @@ const Tesbihat = {
 // ==========================================
 const EsmaulHusna = {
     names: [
-        { number: 1, arabic: 'الرَّحْمَنُ', transliteration: 'Ar-Rahman', meaning: 'Sınırsız merhamet sahibi' },
-        { number: 2, arabic: 'الرَّحِيمُ', transliteration: 'Ar-Rahim', meaning: 'Çok merhametli' },
-        { number: 3, arabic: 'الْمَلِكُ', transliteration: 'Al-Malik', meaning: 'Hükümdar, malik' },
-        { number: 4, arabic: 'الْقُدُّوسُ', transliteration: 'Al-Quddus', meaning: 'Mukaddes, kusursuz' },
-        { number: 5, arabic: 'السَّلاَمُ', transliteration: 'As-Salam', meaning: 'Esenlik veren' },
-        { number: 6, arabic: 'الْمُؤْمِنُ', transliteration: 'Al-Mumin', meaning: 'Güven veren' },
-        { number: 7, arabic: 'الْمُهَيْمِنُ', transliteration: 'Al-Muhaymin', meaning: 'Gözetleyici' },
-        { number: 8, arabic: 'الْعَزِيزُ', transliteration: 'Al-Aziz', meaning: 'Mutlak güç sahibi' },
-        { number: 9, arabic: 'الْجَبَّارُ', transliteration: 'Al-Jabbar', meaning: 'Kahhar, celal sahibi' },
-        { number: 10, arabic: 'الْمُتَكَبِّرُ', transliteration: 'Al-Mutakabbir', meaning: 'Kibirli (yalnızca Allah için)' },
-        { number: 11, arabic: 'الْخَالِقُ', transliteration: 'Al-Khaliq', meaning: 'Yaratan' },
-        { number: 12, arabic: 'الْبَارِئُ', transliteration: 'Al-Bari', meaning: 'Kusursuz yaratan' },
+        {
+            number: 1,
+            arabic: 'الرَّحْمَنُ',
+            transliteration: 'Ar-Rahman',
+            meaning: 'Sınırsız merhamet sahibi',
+            category: ['mercy', 'beauty'],
+            description: 'Ar-Rahman, Allah\'ın rahmetinin sınırsızlığını ve evrenselliğini ifade eder. Bu isim, Allah\'ın tüm yaratılmışlara olan rahmetini anlatır. Mümin-kafir ayırt etmeksizin herkese dünyada nimetler verendir.',
+            verse: {
+                arabic: 'الرَّحْمَٰنُ عَلَى الْعَرْشِ اسْتَوَىٰ',
+                translation: 'Rahman (olan Allah) Arş\'a hükümran olmuştur.',
+                reference: 'Taha Suresi, 5'
+            },
+            benefits: [
+                'Kalp yumuşaklığı ve merhamet kazandırır',
+                'İnsanlara karşı şefkat duygusunu artırır',
+                'Allah\'ın rahmetini üzerine çeker',
+                'Zorluklarda kolaylık ve yardım görülür'
+            ],
+            application: 'Her gün sabah namazından sonra 100 kere "Ya Rahman" diyerek zikredin. İnsanlara karşı merhametli davranmaya özen gösterin.'
+        },
+        {
+            number: 2,
+            arabic: 'الرَّحِيمُ',
+            transliteration: 'Ar-Rahim',
+            meaning: 'Çok merhametli',
+            category: ['mercy', 'beauty'],
+            description: 'Ar-Rahim, Allah\'ın özellikle müminlere olan özel rahmetini ifade eder. Bu isim, ahirette sadece müminlere bahşedilecek sonsuz rahmeti anlatır. Tevbe edenleri affeden ve kullarına şefkatle muamele edendir.',
+            verse: {
+                arabic: 'وَكَانَ بِالْمُؤْمِنِينَ رَحِيمًا',
+                translation: 'O, müminlere çok merhametlidir.',
+                reference: 'Ahzab Suresi, 43'
+            },
+            benefits: [
+                'Günahların affına vesile olur',
+                'Kalp huzuru ve rahatlığı sağlar',
+                'Ahirette rahmete nail olma',
+                'Darda kalındığında yardım görülür'
+            ],
+            application: 'Her duanızda "Bismillahir Rahmanir Rahim" diyerek başlayın. Hatalarınızdan pişmanlık duyup tevbe edin.'
+        },
+        {
+            number: 3,
+            arabic: 'الْمَلِكُ',
+            transliteration: 'Al-Malik',
+            meaning: 'Hükümdar, malik',
+            category: ['power', 'majesty'],
+            description: 'Al-Malik, Allah\'ın mutlak hükümranlığını ve egemenliğini ifade eder. Tüm mülkün gerçek sahibi, her şeyin hakimi ve kontrolcüsüdür. Hiçbir şey O\'nun iznisiz hareket edemez.',
+            verse: {
+                arabic: 'قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ',
+                translation: 'De ki: Ey mülkün sahibi Allah\'ım!',
+                reference: 'Al-i İmran Suresi, 26'
+            },
+            benefits: [
+                'İzzet ve şeref kazandırır',
+                'Haksızlıklara karşı koruma sağlar',
+                'Dünya işlerinde başarı getirir',
+                'Kalbe güven ve sekinet verir'
+            ],
+            application: 'Zor durumlarda "Ya Malik" diyerek Allah\'ın hükümranlığını hatırlayın. Her işinizde O\'nun iznini arayın.'
+        },
+        {
+            number: 4,
+            arabic: 'الْقُدُّوسُ',
+            transliteration: 'Al-Quddus',
+            meaning: 'Mukaddes, kusursuz',
+            category: ['beauty', 'majesty'],
+            description: 'Al-Quddus, Allah\'ın her türlü eksiklikten, kusurdan ve noksanlıktan münezzeh olduğunu ifade eder. O, mutlak mükemmellik sahibidir ve hiçbir yaratılmışa benzemez.',
+            verse: {
+                arabic: 'هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ',
+                translation: 'O, kendisinden başka ilah olmayan, Melik, Kuddus olan Allah\'tır.',
+                reference: 'Haşr Suresi, 23'
+            },
+            benefits: [
+                'Nefsi tezkiye eder ve temizler',
+                'Günahlardan arınmaya vesile olur',
+                'Kalbi kötü düşüncelerden temizler',
+                'Manevi yükselişe yardımcı olur'
+            ],
+            application: 'Temizlik ve taharetle birlikte "Ya Kuddus" zikrini yapın. Niyetinizi ve kalbinizi temiz tutmaya özen gösterin.'
+        },
+        {
+            number: 5,
+            arabic: 'السَّلاَمُ',
+            transliteration: 'As-Salam',
+            meaning: 'Esenlik veren',
+            category: ['beauty', 'mercy'],
+            description: 'As-Salam, Allah\'ın her türlü eksiklikten uzak, kusursuz ve esenlik kaynağı olduğunu ifade eder. O, kullarına selam veren, güven ve huzur bahşedendir.',
+            verse: {
+                arabic: 'وَاللَّهُ يَدْعُو إِلَىٰ دَارِ السَّلَامِ',
+                translation: 'Allah sizi esenlik yurduna (cennete) çağırır.',
+                reference: 'Yunus Suresi, 25'
+            },
+            benefits: [
+                'Kalp huzuru ve sükunet sağlar',
+                'Korku ve endişeden kurtarır',
+                'İlişkilerde barış getirir',
+                'Ruhsal tatmin ve mutluluk'
+            ],
+            application: 'Sabah-akşam "Ya Selam" zikrini yapın. İnsanlara "Esselamü aleyküm" diyerek selam verin.'
+        },
+        {
+            number: 6,
+            arabic: 'الْمُؤْمِنُ',
+            transliteration: 'Al-Mumin',
+            meaning: 'Güven veren',
+            category: ['beauty', 'mercy'],
+            description: 'Al-Mumin, Allah\'ın kullarına güven ve emniyet veren olduğunu ifade eder. Vaatlerinde sadık, kullarını koruyan ve onlara güven bahşedendir.',
+            verse: {
+                arabic: 'وَإِنَّ اللَّهَ لَمَعَ الْمُؤْمِنِينَ',
+                translation: 'Şüphesiz Allah müminlerle beraberdir.',
+                reference: 'Enfal Suresi, 19'
+            },
+            benefits: [
+                'İmanı kuvvetlendirir',
+                'Korku ve şüphelerden kurtarır',
+                'Allah\'a güven artırır',
+                'Kötülüklerden koruma sağlar'
+            ],
+            application: 'Her tehlike anında "Ya Mu\'min" diyerek Allah\'a sığının. İmanınızı güçlendirmek için ilim öğrenin.'
+        },
+        {
+            number: 7,
+            arabic: 'الْمُهَيْمِنُ',
+            transliteration: 'Al-Muhaymin',
+            meaning: 'Gözetleyici',
+            category: ['power', 'knowledge'],
+            description: 'Al-Muhaymin, Allah\'ın her şeyi gözeten, koruyan ve kontrol eden olduğunu ifade eder. Hiçbir şey O\'nun bilgisi ve kontrolü dışında değildir.',
+            verse: {
+                arabic: 'وَمُهَيْمِنًا عَلَيْهِ',
+                translation: 'Ve onları gözetip koruyucu...',
+                reference: 'Maide Suresi, 48'
+            },
+            benefits: [
+                'Daima gözetim altında olma hissi',
+                'Kötülüklerden korunma',
+                'Doğru yolda kalma',
+                'Manevi koruma ve rehberlik'
+            ],
+            application: 'Her işinizde Allah\'ın sizi izlediğini hatırlayın. "Ya Muhaymin" zikriyle murakabe halinde olun.'
+        },
+        {
+            number: 8,
+            arabic: 'الْعَزِيزُ',
+            transliteration: 'Al-Aziz',
+            meaning: 'Mutlak güç sahibi',
+            category: ['power', 'majesty'],
+            description: 'Al-Aziz, Allah\'ın üstün, güçlü ve yenilmez olduğunu ifade eder. O, her şeye galip gelen, asla mağlup olmayan ve hiçbir şeye muhtaç olmayandir.',
+            verse: {
+                arabic: 'وَهُوَ الْعَزِيزُ الْحَكِيمُ',
+                translation: 'O, Aziz\'dir, Hakim\'dir.',
+                reference: 'Al-i İmran Suresi, 62'
+            },
+            benefits: [
+                'Zillet ve aşağılıktan korur',
+                'İzzet ve şeref kazandırır',
+                'Düşmanlara karşı güçlendirİr',
+                'Zafer ve başarı getirir'
+            ],
+            application: 'Zayıf hissettiğinizde "Ya Aziz" zikrini yapın. Allah\'ın gücüne güvenin, kulların gücünden korkmayın.'
+        },
+        { number: 9, arabic: 'الْجَبَّارُ', transliteration: 'Al-Jabbar', meaning: 'Kahhar, celal sahibi', category: ['power', 'majesty'] },
+        { number: 10, arabic: 'الْمُتَكَبِّرُ', transliteration: 'Al-Mutakabbir', meaning: 'Kibirli (yalnızca Allah için)', category: ['majesty'] },
+        { number: 11, arabic: 'الْخَالِقُ', transliteration: 'Al-Khaliq', meaning: 'Yaratan', category: ['power', 'beauty'] },
+        { number: 12, arabic: 'الْبَارِئُ', transliteration: 'Al-Bari', meaning: 'Kusursuz yaratan', category: ['power', 'beauty'] },
         { number: 13, arabic: 'الْمُصَوِّرُ', transliteration: 'Al-Musawwir', meaning: 'Şekil veren' },
         { number: 14, arabic: 'الْغَفَّارُ', transliteration: 'Al-Ghaffar', meaning: 'Çok bağışlayan' },
         { number: 15, arabic: 'الْقَهَّارُ', transliteration: 'Al-Qahhar', meaning: 'Kahredici' },
@@ -1560,8 +1712,92 @@ const EsmaulHusna = {
         { number: 99, arabic: 'الصَّبُورُ', transliteration: 'As-Sabur', meaning: 'Sabırlı' }
     ],
 
+    favorites: [],
+    learned: [],
+    zikirCounts: {},
+    currentFilter: 'all',
+    searchTerm: '',
+    currentName: null,
+
     init() {
+        this.loadUserData();
         this.render();
+        this.setupSearch();
+        this.setupFilters();
+        this.setupModal();
+        this.updateStats();
+    },
+
+    loadUserData() {
+        const favs = localStorage.getItem('esmaFavorites');
+        const learned = localStorage.getItem('esmaLearned');
+        const zikir = localStorage.getItem('esmaZikirCounts');
+
+        if (favs) this.favorites = JSON.parse(favs);
+        if (learned) this.learned = JSON.parse(learned);
+        if (zikir) this.zikirCounts = JSON.parse(zikir);
+    },
+
+    saveUserData() {
+        localStorage.setItem('esmaFavorites', JSON.stringify(this.favorites));
+        localStorage.setItem('esmaLearned', JSON.stringify(this.learned));
+        localStorage.setItem('esmaZikirCounts', JSON.stringify(this.zikirCounts));
+    },
+
+    updateStats() {
+        document.getElementById('totalEsmaCount').textContent = '99';
+        document.getElementById('favoriteEsmaCount').textContent = this.favorites.length;
+        document.getElementById('learnedEsmaCount').textContent = this.learned.length;
+
+        const totalZikir = Object.values(this.zikirCounts).reduce((a, b) => a + b, 0);
+        document.getElementById('zikirCount').textContent = totalZikir.toLocaleString('tr-TR');
+    },
+
+    setupSearch() {
+        const searchInput = document.getElementById('esmaSearch');
+        if (!searchInput) return;
+
+        searchInput.addEventListener('input', (e) => {
+            this.searchTerm = e.target.value.toLowerCase();
+            this.render();
+        });
+    },
+
+    setupFilters() {
+        const filterBtns = document.querySelectorAll('.esma-filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                this.currentFilter = btn.getAttribute('data-category');
+                this.render();
+            });
+        });
+    },
+
+    getFilteredNames() {
+        let filtered = this.names;
+
+        // Search filter
+        if (this.searchTerm) {
+            filtered = filtered.filter(name =>
+                name.arabic.includes(this.searchTerm) ||
+                name.transliteration.toLowerCase().includes(this.searchTerm) ||
+                name.meaning.toLowerCase().includes(this.searchTerm)
+            );
+        }
+
+        // Category filter
+        if (this.currentFilter === 'favorites') {
+            filtered = filtered.filter(name => this.favorites.includes(name.number));
+        } else if (this.currentFilter !== 'all') {
+            filtered = filtered.filter(name =>
+                name.category && name.category.includes(this.currentFilter)
+            );
+        }
+
+        return filtered;
     },
 
     render() {
@@ -1569,18 +1805,223 @@ const EsmaulHusna = {
         if (!grid) return;
 
         grid.innerHTML = '';
+        const filtered = this.getFilteredNames();
 
-        this.names.forEach(name => {
+        if (filtered.length === 0) {
+            grid.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--text-secondary);">Sonuç bulunamadı.</p>';
+            return;
+        }
+
+        filtered.forEach(name => {
             const item = document.createElement('div');
             item.className = 'esma-item';
+
+            if (this.favorites.includes(name.number)) {
+                item.classList.add('favorite');
+            }
+            if (this.learned.includes(name.number)) {
+                item.classList.add('learned');
+            }
+
             item.innerHTML = `
                 <div class="esma-number">${name.number}</div>
                 <div class="esma-arabic">${name.arabic}</div>
                 <div class="esma-transliteration">${name.transliteration}</div>
                 <div class="esma-meaning">${name.meaning}</div>
             `;
+
+            item.addEventListener('click', () => {
+                this.showModal(name);
+            });
+
             grid.appendChild(item);
         });
+    },
+
+    setupModal() {
+        const modal = document.getElementById('esmaModal');
+        const closeBtn = document.getElementById('esmaModalClose');
+        const overlay = modal?.querySelector('.esma-modal-overlay');
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.closeModal());
+        }
+
+        if (overlay) {
+            overlay.addEventListener('click', () => this.closeModal());
+        }
+
+        // Favorite button
+        const favoriteBtn = document.getElementById('modalFavoriteBtn');
+        if (favoriteBtn) {
+            favoriteBtn.addEventListener('click', () => this.toggleFavorite());
+        }
+
+        // Zikir buttons
+        const incrementBtn = document.getElementById('zikirIncrementBtn');
+        const resetBtn = document.getElementById('zikirResetBtn');
+
+        if (incrementBtn) {
+            incrementBtn.addEventListener('click', () => this.incrementZikir());
+        }
+
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => this.resetZikir());
+        }
+
+        // Mark learned button
+        const learnedBtn = document.getElementById('markLearnedBtn');
+        if (learnedBtn) {
+            learnedBtn.addEventListener('click', () => this.toggleLearned());
+        }
+    },
+
+    showModal(name) {
+        this.currentName = name;
+        const modal = document.getElementById('esmaModal');
+        if (!modal) return;
+
+        // Set basic info
+        document.getElementById('modalNumber').textContent = name.number;
+        document.getElementById('modalArabic').textContent = name.arabic;
+        document.getElementById('modalTransliteration').textContent = name.transliteration;
+        document.getElementById('modalMeaning').textContent = name.meaning;
+
+        // Set detailed info
+        const description = name.description || 'Bu isim için henüz detaylı açıklama eklenmemiştir.';
+        document.getElementById('modalDescription').textContent = description;
+
+        // Set verse
+        if (name.verse) {
+            document.getElementById('modalVerseArabic').textContent = name.verse.arabic;
+            document.getElementById('modalVerseTranslation').textContent = name.verse.translation;
+            document.getElementById('modalVerseReference').textContent = name.verse.reference;
+        } else {
+            document.getElementById('modalVerseArabic').textContent = '';
+            document.getElementById('modalVerseTranslation').textContent = 'Bu isim için henüz ayet bilgisi eklenmemiştir.';
+            document.getElementById('modalVerseReference').textContent = '';
+        }
+
+        // Set benefits
+        const benefitsList = document.getElementById('modalBenefits');
+        benefitsList.innerHTML = '';
+        if (name.benefits && name.benefits.length > 0) {
+            name.benefits.forEach(benefit => {
+                const li = document.createElement('li');
+                li.textContent = benefit;
+                benefitsList.appendChild(li);
+            });
+        } else {
+            benefitsList.innerHTML = '<li>Bu isim için henüz fayda bilgisi eklenmemiştir.</li>';
+        }
+
+        // Set application
+        const application = name.application || 'Bu isim için henüz uygulama önerisi eklenmemiştir.';
+        document.getElementById('modalApplication').textContent = application;
+
+        // Set zikir count
+        const count = this.zikirCounts[name.number] || 0;
+        document.getElementById('modalZikirCount').textContent = count;
+        this.updateZikirProgress(count);
+
+        // Set favorite state
+        const favoriteBtn = document.getElementById('modalFavoriteBtn');
+        const favoriteIcon = favoriteBtn?.querySelector('.favorite-icon');
+        if (this.favorites.includes(name.number)) {
+            favoriteBtn?.classList.add('active');
+            if (favoriteIcon) favoriteIcon.textContent = '★';
+        } else {
+            favoriteBtn?.classList.remove('active');
+            if (favoriteIcon) favoriteIcon.textContent = '☆';
+        }
+
+        // Set learned state
+        const learnedBtn = document.getElementById('markLearnedBtn');
+        const learnedText = learnedBtn?.querySelector('.learned-text');
+        if (this.learned.includes(name.number)) {
+            learnedBtn?.classList.add('learned');
+            if (learnedText) learnedText.textContent = 'Öğrendim ✓';
+        } else {
+            learnedBtn?.classList.remove('learned');
+            if (learnedText) learnedText.textContent = 'Öğrendim olarak işaretle';
+        }
+
+        modal.style.display = 'flex';
+    },
+
+    closeModal() {
+        const modal = document.getElementById('esmaModal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+        this.currentName = null;
+    },
+
+    toggleFavorite() {
+        if (!this.currentName) return;
+
+        const index = this.favorites.indexOf(this.currentName.number);
+        if (index > -1) {
+            this.favorites.splice(index, 1);
+        } else {
+            this.favorites.push(this.currentName.number);
+        }
+
+        this.saveUserData();
+        this.updateStats();
+        this.showModal(this.currentName); // Refresh modal
+        this.render(); // Refresh grid
+    },
+
+    toggleLearned() {
+        if (!this.currentName) return;
+
+        const index = this.learned.indexOf(this.currentName.number);
+        if (index > -1) {
+            this.learned.splice(index, 1);
+        } else {
+            this.learned.push(this.currentName.number);
+        }
+
+        this.saveUserData();
+        this.updateStats();
+        this.showModal(this.currentName); // Refresh modal
+        this.render(); // Refresh grid
+    },
+
+    incrementZikir() {
+        if (!this.currentName) return;
+
+        const current = this.zikirCounts[this.currentName.number] || 0;
+        this.zikirCounts[this.currentName.number] = current + 1;
+
+        const newCount = this.zikirCounts[this.currentName.number];
+        document.getElementById('modalZikirCount').textContent = newCount;
+        this.updateZikirProgress(newCount);
+
+        this.saveUserData();
+        this.updateStats();
+    },
+
+    resetZikir() {
+        if (!this.currentName) return;
+
+        if (confirm('Zikir sayacını sıfırlamak istediğinizden emin misiniz?')) {
+            this.zikirCounts[this.currentName.number] = 0;
+            document.getElementById('modalZikirCount').textContent = '0';
+            this.updateZikirProgress(0);
+
+            this.saveUserData();
+            this.updateStats();
+        }
+    },
+
+    updateZikirProgress(count) {
+        const progressBar = document.getElementById('zikirProgressBar');
+        if (progressBar) {
+            const percentage = Math.min((count / 99) * 100, 100);
+            progressBar.style.width = `${percentage}%`;
+        }
     }
 };
 
