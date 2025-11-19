@@ -264,10 +264,176 @@
             <div class="container">
                 <!-- Esma-ül Hüsna -->
                 <div class="esma-card">
-                    <h2>Esma-ül Hüsna</h2>
-                    <p class="esma-subtitle">Allah'ın 99 İsmi</p>
-                    <div class="esma-grid" id="esmaGrid">
-                        <!-- Will be populated by JavaScript -->
+                    <div class="esma-header">
+                        <h2>✨ Esma-ül Hüsna</h2>
+                        <p class="esma-subtitle">Allah'ın 99 Güzel İsmi - Her biri sonsuz bir hikmet ve rahmet</p>
+                    </div>
+
+                    <!-- Esma Stats -->
+                    <div class="esma-stats-section">
+                        <div class="esma-stat-card">
+                            <div class="esma-stat-icon">📿</div>
+                            <div class="esma-stat-value" id="totalEsmaCount">99</div>
+                            <div class="esma-stat-label">İsm-i Şerif</div>
+                        </div>
+                        <div class="esma-stat-card">
+                            <div class="esma-stat-icon">⭐</div>
+                            <div class="esma-stat-value" id="favoriteEsmaCount">0</div>
+                            <div class="esma-stat-label">Favorilerim</div>
+                        </div>
+                        <div class="esma-stat-card">
+                            <div class="esma-stat-icon">📖</div>
+                            <div class="esma-stat-value" id="learnedEsmaCount">0</div>
+                            <div class="esma-stat-label">Öğrendim</div>
+                        </div>
+                        <div class="esma-stat-card">
+                            <div class="esma-stat-icon">🔢</div>
+                            <div class="esma-stat-value" id="zikirCount">0</div>
+                            <div class="esma-stat-label">Toplam Zikir</div>
+                        </div>
+                    </div>
+
+                    <!-- Search and Filter -->
+                    <div class="esma-controls">
+                        <div class="esma-search-box">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <input type="text" id="esmaSearch" placeholder="İsim, anlamı veya transliterasyonu ara...">
+                        </div>
+
+                        <div class="esma-filter-tabs">
+                            <button class="esma-filter-btn active" data-category="all">
+                                Tümü (99)
+                            </button>
+                            <button class="esma-filter-btn" data-category="favorites">
+                                ⭐ Favorilerim
+                            </button>
+                            <button class="esma-filter-btn" data-category="mercy">
+                                💝 Merhamet
+                            </button>
+                            <button class="esma-filter-btn" data-category="power">
+                                ⚡ Kudret
+                            </button>
+                            <button class="esma-filter-btn" data-category="knowledge">
+                                📚 İlim
+                            </button>
+                            <button class="esma-filter-btn" data-category="beauty">
+                                🌟 Cemal
+                            </button>
+                            <button class="esma-filter-btn" data-category="majesty">
+                                👑 Celal
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Info Card -->
+                    <div class="esma-info-card">
+                        <div class="info-icon">ℹ️</div>
+                        <div class="info-content">
+                            <h4>Esma-ül Hüsna Nedir?</h4>
+                            <p>Esma-ül Hüsna, "En Güzel İsimler" anlamına gelir ve Allah'ın 99 güzel ismini ifade eder. Her isim, Allah'ın bir sıfatını ve niteliğini anlatır. Bu isimleri bilmek, anlamak ve zikretmek ibadettir.</p>
+                            <p class="hadith">"Allah'ın doksan dokuz ismi vardır. Kim bunları ezberlerse cennete girer." <strong>(Buhari, Tevhid 12)</strong></p>
+                        </div>
+                    </div>
+
+                    <!-- Esma Grid -->
+                    <div class="esma-grid-container">
+                        <div class="esma-grid" id="esmaGrid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Esma Detail Modal -->
+        <div class="esma-modal" id="esmaModal" style="display: none;">
+            <div class="esma-modal-overlay"></div>
+            <div class="esma-modal-content">
+                <button class="esma-modal-close" id="esmaModalClose">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <div class="esma-modal-header">
+                    <div class="esma-modal-number" id="modalNumber">1</div>
+                    <div class="esma-modal-arabic" id="modalArabic">الرَّحْمَنُ</div>
+                    <div class="esma-modal-transliteration" id="modalTransliteration">Ar-Rahman</div>
+                    <div class="esma-modal-meaning" id="modalMeaning">Sınırsız merhamet sahibi</div>
+                    <button class="esma-favorite-btn" id="modalFavoriteBtn">
+                        <span class="favorite-icon">☆</span>
+                    </button>
+                </div>
+
+                <div class="esma-modal-body">
+                    <!-- Description -->
+                    <div class="esma-detail-section">
+                        <h3>📖 Detaylı Açıklama</h3>
+                        <p id="modalDescription" class="modal-description-text"></p>
+                    </div>
+
+                    <!-- Quranic Verse -->
+                    <div class="esma-detail-section">
+                        <h3>📿 Kur'an'dan Ayet</h3>
+                        <div class="quran-verse">
+                            <p class="verse-arabic" id="modalVerseArabic"></p>
+                            <p class="verse-translation" id="modalVerseTranslation"></p>
+                            <p class="verse-reference" id="modalVerseReference"></p>
+                        </div>
+                    </div>
+
+                    <!-- Benefits -->
+                    <div class="esma-detail-section">
+                        <h3>✨ Faydaları</h3>
+                        <ul class="benefits-list" id="modalBenefits"></ul>
+                    </div>
+
+                    <!-- Daily Application -->
+                    <div class="esma-detail-section">
+                        <h3>🌟 Günlük Hayatta Uygulama</h3>
+                        <p id="modalApplication" class="application-text"></p>
+                    </div>
+
+                    <!-- Zikir Counter -->
+                    <div class="esma-detail-section">
+                        <h3>📿 Zikir Sayacı</h3>
+                        <div class="zikir-counter">
+                            <div class="zikir-display">
+                                <span class="zikir-count" id="modalZikirCount">0</span>
+                                <span class="zikir-target">/ 99</span>
+                            </div>
+                            <div class="zikir-buttons">
+                                <button class="zikir-btn increment-btn" id="zikirIncrementBtn">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    Bir Ekle
+                                </button>
+                                <button class="zikir-btn reset-btn" id="zikirResetBtn">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="1 4 1 10 7 10"></polyline>
+                                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                                    </svg>
+                                    Sıfırla
+                                </button>
+                            </div>
+                            <div class="zikir-progress">
+                                <div class="zikir-progress-bar" id="zikirProgressBar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mark as Learned -->
+                    <div class="esma-detail-section">
+                        <button class="mark-learned-btn" id="markLearnedBtn">
+                            <span class="learned-icon">✓</span>
+                            <span class="learned-text">Öğrendim olarak işaretle</span>
+                        </button>
                     </div>
                 </div>
             </div>

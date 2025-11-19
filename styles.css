@@ -2470,6 +2470,629 @@ select:focus-visible {
     line-height: 1.6;
 }
 
+/* Enhanced Esma Styles */
+.esma-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.esma-header h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.esma-header .esma-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Esma Stats Section */
+.esma-stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.esma-stat-card {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.esma-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.esma-stat-icon {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.esma-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.esma-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Esma Controls */
+.esma-controls {
+    margin-bottom: var(--spacing-xl);
+}
+
+.esma-search-box {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+}
+
+.esma-search-box .search-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--text-secondary);
+}
+
+.esma-search-box input {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) * 3);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.esma-search-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Esma Filter Tabs */
+.esma-filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.esma-filter-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--surface-alt);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.esma-filter-btn:hover {
+    background: var(--surface-hover);
+    border-color: var(--primary-color);
+}
+
+.esma-filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Esma Info Card */
+.esma-info-card {
+    display: flex;
+    gap: var(--spacing-lg);
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.esma-info-card .info-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.esma-info-card .info-content h4 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.esma-info-card .info-content p {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.esma-info-card .hadith {
+    font-style: italic;
+    color: var(--text-secondary);
+    margin: var(--spacing-md) 0 0 0;
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid #f59e0b;
+}
+
+/* Esma Grid Container */
+.esma-grid-container {
+    margin-top: var(--spacing-xl);
+}
+
+/* Enhanced Esma Item */
+.esma-item {
+    cursor: pointer;
+    position: relative;
+}
+
+.esma-item::after {
+    content: '→';
+    position: absolute;
+    right: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.esma-item:hover::after {
+    opacity: 1;
+    right: var(--spacing-sm);
+}
+
+.esma-item.favorite .esma-number {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+.esma-item.learned {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border-color: #10b981;
+}
+
+.esma-item.learned::before {
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+/* Esma Modal */
+.esma-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+}
+
+.esma-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+.esma-modal-content {
+    position: relative;
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.esma-modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--surface-alt);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 1;
+}
+
+.esma-modal-close:hover {
+    background: #ef4444;
+    color: white;
+    transform: rotate(90deg);
+}
+
+.esma-modal-close svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Modal Header */
+.esma-modal-header {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    position: relative;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.esma-modal-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.esma-modal-arabic {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    direction: rtl;
+}
+
+.esma-modal-transliteration {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.esma-modal-meaning {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.esma-favorite-btn {
+    position: absolute;
+    top: var(--spacing-lg);
+    right: calc(var(--spacing-lg) + 50px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.esma-favorite-btn:hover {
+    transform: scale(1.1);
+    border-color: #fbbf24;
+}
+
+.esma-favorite-btn.active {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-color: #f59e0b;
+}
+
+.esma-favorite-btn .favorite-icon {
+    font-size: 1.5rem;
+}
+
+.esma-favorite-btn.active .favorite-icon {
+    color: white;
+}
+
+/* Modal Body */
+.esma-modal-body {
+    padding: var(--spacing-2xl);
+}
+
+.esma-detail-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.esma-detail-section h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.modal-description-text {
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Quran Verse */
+.quran-verse {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    border-left: 4px solid var(--primary-color);
+}
+
+.verse-arabic {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    direction: rtl;
+    text-align: center;
+    line-height: 2;
+}
+
+.verse-translation {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.verse-reference {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Benefits List */
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefits-list li {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--surface-alt);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.benefits-list li::before {
+    content: '✨ ';
+    margin-right: var(--spacing-xs);
+}
+
+/* Application Text */
+.application-text {
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.8;
+    padding: var(--spacing-lg);
+    background: var(--surface-alt);
+    border-radius: var(--radius-md);
+    border-left: 4px solid #10b981;
+}
+
+/* Zikir Counter */
+.zikir-counter {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+}
+
+.zikir-display {
+    margin-bottom: var(--spacing-lg);
+}
+
+.zikir-count {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #8b5cf6;
+}
+
+.zikir-target {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-left: var(--spacing-xs);
+}
+
+.zikir-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.zikir-btn {
+    flex: 1;
+    padding: var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.zikir-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.increment-btn {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    color: white;
+}
+
+.increment-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+}
+
+.reset-btn {
+    background: var(--surface-alt);
+    color: var(--text-primary);
+}
+
+.reset-btn:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.zikir-progress {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.zikir-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
+    border-radius: 5px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+/* Mark Learned Button */
+.mark-learned-btn {
+    width: 100%;
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.mark-learned-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+.mark-learned-btn.learned {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.mark-learned-btn .learned-icon {
+    font-size: 1.5rem;
+}
+
+/* Responsive for Esma */
+@media (max-width: 768px) {
+    .esma-stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .esma-filter-tabs {
+        flex-direction: column;
+    }
+
+    .esma-filter-btn {
+        width: 100%;
+    }
+
+    .esma-info-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .esma-modal-content {
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .esma-modal-arabic {
+        font-size: 2rem;
+    }
+
+    .zikir-count {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .esma-stats-section {
+        grid-template-columns: 1fr;
+    }
+
+    .esma-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .esma-modal-arabic {
+        font-size: 1.8rem;
+    }
+
+    .esma-modal-transliteration {
+        font-size: 1.2rem;
+    }
+
+    .zikir-buttons {
+        flex-direction: column;
+    }
+
+    .verse-arabic {
+        font-size: 1.4rem;
+    }
+}
+
 /* ==========================================
    Daily Hadith
    ========================================== */
