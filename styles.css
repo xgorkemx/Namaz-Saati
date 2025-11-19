@@ -11170,3 +11170,413 @@ select:focus-visible {
         font-size: 2.5rem;
     }
 }
+
+/* ============================================
+   İslam Ansiklopedisi Module Styles
+   ============================================ */
+
+.encyclopedia-module {
+    padding: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.encyclopedia-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: var(--radius-lg);
+    color: white;
+}
+
+.encyclopedia-header h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.encyclopedia-subtitle {
+    font-size: 1rem;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+/* Search Box */
+.encyclopedia-search {
+    margin-bottom: var(--spacing-lg);
+}
+
+.search-input-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-input-wrapper .search-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: #6b7280;
+    pointer-events: none;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 50px;
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input-wrapper input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Category Navigation */
+.encyclopedia-categories {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    overflow-x: auto;
+    padding: var(--spacing-sm) 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.encyclopedia-categories::-webkit-scrollbar {
+    height: 6px;
+}
+
+.encyclopedia-categories::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 3px;
+}
+
+.encyclopedia-categories::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 3px;
+}
+
+.category-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.category-btn:hover {
+    border-color: #10b981;
+    background: #f0fdf4;
+    transform: translateY(-2px);
+}
+
+.category-btn.active {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-color: #10b981;
+}
+
+.category-icon {
+    font-size: 1.2rem;
+}
+
+.category-name {
+    font-weight: 500;
+}
+
+/* Encyclopedia Content */
+.encyclopedia-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.encyclopedia-section {
+    animation: fadeIn 0.5s ease;
+}
+
+.encyclopedia-section.hidden {
+    display: none;
+}
+
+/* Section Header */
+.section-header {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 3px solid #10b981;
+}
+
+.section-header h3 {
+    font-size: 1.75rem;
+    color: #059669;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+}
+
+.section-header p {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Topic Cards */
+.topic-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    transition: all 0.3s ease;
+}
+
+.topic-card:hover {
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+    transform: translateY(-2px);
+}
+
+.topic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid #f3f4f6;
+}
+
+.topic-header h4 {
+    font-size: 1.3rem;
+    color: #111827;
+    font-weight: 600;
+    flex: 1;
+}
+
+.topic-badge {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Topic Content */
+.topic-content {
+    color: #374151;
+    line-height: 1.8;
+}
+
+.topic-content p {
+    margin-bottom: var(--spacing-md);
+}
+
+.topic-content strong {
+    color: #111827;
+    font-weight: 600;
+}
+
+.topic-content ul,
+.topic-content ol {
+    margin: var(--spacing-md) 0;
+    padding-left: var(--spacing-xl);
+}
+
+.topic-content li {
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.7;
+}
+
+.topic-content ul li {
+    list-style-type: disc;
+}
+
+.topic-content ol li {
+    list-style-type: decimal;
+}
+
+/* Ayah/Verse Boxes */
+.topic-ayah {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border-left: 4px solid #10b981;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.ayah-text {
+    font-size: 1.05rem;
+    color: #065f46;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+.ayah-reference {
+    font-size: 0.9rem;
+    color: #059669;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Hadith Text */
+.hadith-text {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 4px solid #f59e0b;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+    font-style: italic;
+    color: #92400e;
+    font-weight: 500;
+}
+
+/* Terms List */
+.terms-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-sm);
+    padding-left: 0;
+    list-style: none;
+}
+
+.terms-list li {
+    background: #f9fafb;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid #10b981;
+    transition: all 0.2s ease;
+}
+
+.terms-list li:hover {
+    background: #ecfdf5;
+    transform: translateX(4px);
+}
+
+.terms-list strong {
+    color: #059669;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .encyclopedia-module {
+        padding: var(--spacing-lg);
+    }
+
+    .encyclopedia-header {
+        padding: var(--spacing-lg);
+    }
+
+    .encyclopedia-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .encyclopedia-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .encyclopedia-categories {
+        gap: var(--spacing-xs);
+    }
+
+    .category-btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.85rem;
+    }
+
+    .category-icon {
+        font-size: 1rem;
+    }
+
+    .section-header h3 {
+        font-size: 1.4rem;
+    }
+
+    .topic-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .topic-header h4 {
+        font-size: 1.1rem;
+    }
+
+    .topic-badge {
+        font-size: 0.75rem;
+        padding: 4px var(--spacing-sm);
+    }
+
+    .topic-card {
+        padding: var(--spacing-md);
+    }
+
+    .terms-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .encyclopedia-module {
+        padding: var(--spacing-md);
+    }
+
+    .encyclopedia-header {
+        padding: var(--spacing-md);
+    }
+
+    .encyclopedia-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .search-input-wrapper input {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) 45px;
+    }
+
+    .search-input-wrapper .search-icon {
+        width: 18px;
+        height: 18px;
+        left: var(--spacing-sm);
+    }
+
+    .section-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .topic-content {
+        font-size: 0.95rem;
+    }
+
+    .ayah-text {
+        font-size: 1rem;
+    }
+}

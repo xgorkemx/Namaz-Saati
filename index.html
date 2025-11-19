@@ -885,6 +885,26 @@
                         </svg>
                     </div>
 
+                    <!-- İslam Ansiklopedisi -->
+                    <div class="feature-card" id="encyclopediaCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                <line x1="10" y1="8" x2="16" y2="8"></line>
+                                <line x1="10" y1="12" x2="16" y2="12"></line>
+                                <line x1="10" y1="16" x2="14" y2="16"></line>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>İslam Ansiklopedisi</h3>
+                            <p>İslam'ın temel konuları, kavramlar ve bilgiler</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
                 </div>
 
                 <!-- Ramazan Module (Hidden by default) -->
@@ -5326,6 +5346,1268 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- İslam Ansiklopedisi Module -->
+    <div class="encyclopedia-module" id="encyclopediaModule" style="display: none;">
+        <button class="back-btn" id="encyclopediaBackBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Geri
+        </button>
+
+        <div class="encyclopedia-header">
+            <h2>📚 İslam Ansiklopedisi</h2>
+            <p class="encyclopedia-subtitle">İslam dini hakkında kapsamlı bilgi kaynağı</p>
+        </div>
+
+        <!-- Search Box -->
+        <div class="encyclopedia-search">
+            <div class="search-input-wrapper">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" id="encyclopediaSearch" placeholder="Konuları, terimleri veya bilgileri arayın...">
+            </div>
+        </div>
+
+        <!-- Category Navigation -->
+        <div class="encyclopedia-categories">
+            <button class="category-btn active" data-category="all">
+                <span class="category-icon">📖</span>
+                <span class="category-name">Tümü</span>
+            </button>
+            <button class="category-btn" data-category="pillars">
+                <span class="category-icon">🕌</span>
+                <span class="category-name">Şartlar</span>
+            </button>
+            <button class="category-btn" data-category="prophets">
+                <span class="category-icon">👤</span>
+                <span class="category-name">Peygamberler</span>
+            </button>
+            <button class="category-btn" data-category="quran">
+                <span class="category-icon">📗</span>
+                <span class="category-name">Kur'an</span>
+            </button>
+            <button class="category-btn" data-category="hadith">
+                <span class="category-icon">📜</span>
+                <span class="category-name">Hadis</span>
+            </button>
+            <button class="category-btn" data-category="worship">
+                <span class="category-icon">🤲</span>
+                <span class="category-name">İbadetler</span>
+            </button>
+            <button class="category-btn" data-category="history">
+                <span class="category-icon">🏛️</span>
+                <span class="category-name">Tarih</span>
+            </button>
+            <button class="category-btn" data-category="terms">
+                <span class="category-icon">📝</span>
+                <span class="category-name">Terimler</span>
+            </button>
+        </div>
+
+        <!-- Encyclopedia Content -->
+        <div class="encyclopedia-content" id="encyclopediaContent">
+
+            <!-- İslam'ın Şartları -->
+            <div class="encyclopedia-section" data-category="pillars">
+                <div class="section-header">
+                    <h3>🕌 İslam'ın Beş Şartı</h3>
+                    <p>İslam dininin temel esasları</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>1. Kelime-i Şehadet (Şehadet Getirmek)</h4>
+                        <span class="topic-badge">Temel Şart</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> "Eşhedü en lâ ilâhe illallah ve eşhedü enne Muhammeden abdühû ve rasûlühû" (Şehadet ederim ki Allah'tan başka ilah yoktur ve yine şehadet ederim ki Muhammed O'nun kulu ve elçisidir) sözünü söyleyerek İslam'a girmektir.</p>
+
+                        <p><strong>Anlamı:</strong> Bu şehadet iki esası içerir:</p>
+                        <ul>
+                            <li><strong>Tevhid:</strong> Allah'ın birliğine ve eşsizliğine inanmak</li>
+                            <li><strong>Risalet:</strong> Hz. Muhammed'in (s.a.v.) Allah'ın elçisi olduğuna inanmak</li>
+                        </ul>
+
+                        <p><strong>Önemi:</strong> Kelime-i Şehadet, İslam'a girişin ve Müslüman olmanın ilk şartıdır. Kişi bu sözü samimi bir şekilde söyleyerek İslam dinine girer.</p>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Allah, kendisinden başka ilah olmadığına şahitlik etti; melekler ve ilim sahipleri de adaletle (buna şahitlik ettiler). O'ndan başka ilah yoktur. O, mutlak güç sahibidir, hüküm ve hikmet sahibidir."</p>
+                            <p class="ayah-reference">Âl-i İmran Suresi, 18</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>2. Namaz (Salat)</h4>
+                        <span class="topic-badge">Bedenî İbadet</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Günde beş vakit, belirli vakitlerde, belirli şekil ve şartlarla yapılan ibadet.</p>
+
+                        <p><strong>Beş Vakit Namaz:</strong></p>
+                        <ul>
+                            <li><strong>Sabah (Fecr):</strong> 2 rekat farz, 2 rekat sünnet</li>
+                            <li><strong>Öğle (Zuhr):</strong> 4 rekat ilk sünnet, 4 rekat farz, 2 rekat son sünnet</li>
+                            <li><strong>İkindi (Asr):</strong> 4 rekat ilk sünnet, 4 rekat farz</li>
+                            <li><strong>Akşam (Mağrib):</strong> 3 rekat farz, 2 rekat sünnet</li>
+                            <li><strong>Yatsı (İşa):</strong> 4 rekat ilk sünnet, 4 rekat farz, 2 rekat son sünnet, 3 rekat vitir</li>
+                        </ul>
+
+                        <p><strong>Namazın Faydaları:</strong></p>
+                        <ul>
+                            <li>Allah'a kulluk ve itaat göstergesi</li>
+                            <li>Manevi huzur ve rahatlık sağlar</li>
+                            <li>Kötülüklerden alıkoyar</li>
+                            <li>Sabır ve disiplin kazandırır</li>
+                            <li>Müslümanlar arasında birlik oluşturur</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Şüphesiz namaz, müminlere belirli vakitlerde farz kılınmıştır."</p>
+                            <p class="ayah-reference">Nisa Suresi, 103</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>3. Zekat (Zekat Vermek)</h4>
+                        <span class="topic-badge">Malî İbadet</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Belirli miktarda mala sahip olan Müslümanların, mallarının belirli bir oranını muhtaç ve fakir kimselere vermesi.</p>
+
+                        <p><strong>Zekat Nisabı:</strong> Zekat, bir yıl boyunca nisap miktarı (yaklaşık 85 gram altın değeri) veya daha fazla mala sahip olan Müslümanlara farzdır.</p>
+
+                        <p><strong>Zekat Oranları:</strong></p>
+                        <ul>
+                            <li><strong>Para ve Ticaret Malı:</strong> %2.5 (1/40)</li>
+                            <li><strong>Altın ve Gümüş:</strong> %2.5</li>
+                            <li><strong>Tarım Ürünleri:</strong> %10 (yağmurla sulanan) veya %5 (sulama ile)</li>
+                            <li><strong>Hayvanlar:</strong> Cinsine ve sayısına göre değişir</li>
+                        </ul>
+
+                        <p><strong>Zekatın Verileceği Kişiler:</strong></p>
+                        <ol>
+                            <li>Fakirler (hiçbir şeyi olmayanlar)</li>
+                            <li>Miskinler (asgari ihtiyaçlarını karşılayamayanlar)</li>
+                            <li>Zekat toplayan görevliler</li>
+                            <li>Kalpleri İslam'a ısındırılacak olanlar</li>
+                            <li>Köleler ve esirler</li>
+                            <li>Borçlular</li>
+                            <li>Allah yolunda cihat edenler</li>
+                            <li>Yolda kalmış yolcular</li>
+                        </ol>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Namazı dosdoğru kılın, zekatı verin ve Rasûl'e itaat edin ki size merhamet edilsin."</p>
+                            <p class="ayah-reference">Nur Suresi, 56</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>4. Oruç (Savm)</h4>
+                        <span class="topic-badge">Ramazan İbadeti</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Ramazan ayında, imsak vaktinden iftar vaktine kadar yeme, içme ve cinsel ilişkiden uzak durmak.</p>
+
+                        <p><strong>Oruç Tutma Şartları:</strong></p>
+                        <ul>
+                            <li>Müslüman olmak</li>
+                            <li>Akıllı olmak</li>
+                            <li>Buluğ çağına ermiş olmak</li>
+                            <li>Mukim olmak (yolcu olmamak)</li>
+                            <li>Sağlıklı olmak</li>
+                            <li>Kadınlar için hayız ve nifas halinde olmamak</li>
+                        </ul>
+
+                        <p><strong>Oruç Tutmanın Faydaları:</strong></p>
+                        <ul>
+                            <li><strong>Manevi:</strong> Takva (Allah korkusu) kazanma, nefse hakim olma</li>
+                            <li><strong>Sosyal:</strong> Fakirlerin halini anlama, toplumsal dayanışma</li>
+                            <li><strong>Bedenî:</strong> Sağlık için dinlenme, metabolizma düzenleme</li>
+                            <li><strong>Psikolojik:</strong> Sabır, irade gücü, disiplin kazanma</li>
+                        </ul>
+
+                        <p><strong>Orucun Mekruhları:</strong> Gıybet, koğuculuk, boş sözler, dedikodu gibi davranışlar orucun sevabını azaltır ancak bozmaz.</p>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Ey iman edenler! Sizden öncekilere farz kılındığı gibi, size de takva sahibi olmanız için oruç farz kılındı."</p>
+                            <p class="ayah-reference">Bakara Suresi, 183</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>5. Hac (Kâbe'yi Ziyaret)</h4>
+                        <span class="topic-badge">Ömürde Bir Kez</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Gücü yeten her Müslümanın ömründe bir kere Kâbe'yi ziyaret etmek ve Hac ibadetini yerine getirmesi.</p>
+
+                        <p><strong>Hac Şartları:</strong></p>
+                        <ul>
+                            <li>Müslüman olmak</li>
+                            <li>Akıllı olmak</li>
+                            <li>Buluğ çağına ermiş olmak</li>
+                            <li>Hür olmak</li>
+                            <li>Maddi güce sahip olmak (istidat)</li>
+                            <li>Yol güvenliği olmak</li>
+                            <li>Kadınlar için mahremi olmak</li>
+                        </ul>
+
+                        <p><strong>Haccın Vacipleri (Temel Unsurları):</strong></p>
+                        <ol>
+                            <li><strong>İhram:</strong> Mîkat yerlerinden ihrama girmek</li>
+                            <li><strong>Vakfe:</strong> Zilhicce'nin 9. günü Arafat'ta bulunmak</li>
+                            <li><strong>Tavaf:</strong> Kâbe'yi 7 kez tavaf etmek</li>
+                            <li><strong>Sa'y:</strong> Safa ile Merve arasında 7 kez gidip gelmek</li>
+                        </ol>
+
+                        <p><strong>Haccın Faziletleri:</strong></p>
+                        <ul>
+                            <li>Kabul edilen Hac'dan başka sevap yoktur</li>
+                            <li>Günahlardan arınma ve yeniden doğuş</li>
+                            <li>Müslümanlar arasında birlik ve beraberlik</li>
+                            <li>Hz. İbrahim'in sünnetini yaşatma</li>
+                            <li>Allah'ın rızasını kazanma</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"İnsanlar arasında Haccı duyur. Gerek yaya, gerek uzak yollardan gelen yorgun develer üzerinde sana gelsinler."</p>
+                            <p class="ayah-reference">Hac Suresi, 27</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İmanın Şartları -->
+            <div class="encyclopedia-section" data-category="pillars">
+                <div class="section-header">
+                    <h3>💫 İmanın Altı Şartı</h3>
+                    <p>Müslüman olmanın temel inanç esasları</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>1. Allah'a İman</h4>
+                        <span class="topic-badge">Tevhid</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Allah'ın varlığına ve birliğine, O'nun sıfatlarına ve her şeyin yaratıcısı olduğuna inanmaktır.</p>
+
+                        <p><strong>Allah'ın Zatî Sıfatları:</strong> Vücud (var olma), Kıdem (ezelîlik), Beka (ebedîlik), Vahdaniyet (birlik), Muhalefetün lil-havadis (yaratılmışlara benzememe), Kıyam bi-nefsihî (kendi kendine var olma)</p>
+
+                        <p><strong>Allah'ın Subûtî Sıfatları:</strong> Hayat (diri), İlim (bilgi), Semi' (işitme), Basar (görme), İrade (dileme), Kudret (güç), Kelam (söz), Tekvin (yaratma)</p>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"De ki: O, Allah'tır, bir tektir. Allah Samed'dir (her şey O'na muhtaçtır, O, hiçbir şeye muhtaç değildir). Doğurmamıştır ve doğrulmamıştır. O'nun hiçbir dengi yoktur."</p>
+                            <p class="ayah-reference">İhlas Suresi, 1-4</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>2. Meleklere İman</h4>
+                        <span class="topic-badge">Gayb Âlemi</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Allah'ın nurdan yarattığı, O'na tam itaat eden, günah işlemeyen varlıklara inanmaktır.</p>
+
+                        <p><strong>Başlıca Melekler ve Görevleri:</strong></p>
+                        <ul>
+                            <li><strong>Cebrail (a.s.):</strong> Vahiy meleği, peygamberlere Allah'ın mesajlarını iletir</li>
+                            <li><strong>Mikail (a.s.):</strong> Rızık meleği, doğa olaylarından sorumlu</li>
+                            <li><strong>İsrafil (a.s.):</strong> Sur'a (boruya) üfleyecek melek, kıyameti başlatacak</li>
+                            <li><strong>Azrail (a.s.):</strong> Ölüm meleği, canları almakla görevli</li>
+                            <li><strong>Kiramen Katibin:</strong> İnsanların amellerini yazan melekler</li>
+                            <li><strong>Münker ve Nekir:</strong> Kabirde soru soracak melekler</li>
+                            <li><strong>Ridwan:</strong> Cennet'in bekçisi</li>
+                            <li><strong>Malik:</strong> Cehennem'in bekçisi</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Melekler Allah'a karşı gelmezler, O'nun emrettiklerini yerine getirirler."</p>
+                            <p class="ayah-reference">Tahrim Suresi, 6</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>3. Kitaplara İman</h4>
+                        <span class="topic-badge">İlahi Kitaplar</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Allah'ın peygamberlerine indirdiği kutsal kitaplara inanmaktır.</p>
+
+                        <p><strong>Başlıca Kutsal Kitaplar:</strong></p>
+                        <ul>
+                            <li><strong>Suhuf-u İbrahim:</strong> Hz. İbrahim'e (a.s.) verilen sayfalar</li>
+                            <li><strong>Tevrat:</strong> Hz. Musa'ya (a.s.) indirilen kitap</li>
+                            <li><strong>Zebur:</strong> Hz. Davud'a (a.s.) indirilen kitap</li>
+                            <li><strong>İncil:</strong> Hz. İsa'ya (a.s.) indirilen kitap</li>
+                            <li><strong>Kur'an-ı Kerim:</strong> Hz. Muhammed'e (s.a.v.) indirilen son ilahi kitap</li>
+                        </ul>
+
+                        <p><strong>Kur'an'ın Özellikleri:</strong></p>
+                        <ul>
+                            <li>Allah'ın son ve değişmez kelamı</li>
+                            <li>23 yılda parça parça indirildi</li>
+                            <li>114 sure ve yaklaşık 6236 ayetten oluşur</li>
+                            <li>Kıyamete kadar koruma altında</li>
+                            <li>Tüm insanlık için rehber</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Şüphesiz bu Kur'an'ı biz indirdik. Onu koruyacak olan da elbette biziz."</p>
+                            <p class="ayah-reference">Hicr Suresi, 9</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>4. Peygamberlere İman</h4>
+                        <span class="topic-badge">Risalet</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Allah'ın insanlar arasından seçtiği ve kendilerine vahiy indirdiği elçilerine inanmaktır.</p>
+
+                        <p><strong>Peygamberlerin Sıfatları:</strong></p>
+                        <ul>
+                            <li><strong>Sıdk (Doğruluk):</strong> Her zaman doğru söylerler</li>
+                            <li><strong>Emanet (Güvenilirlik):</strong> Son derece güvenilirdirler</li>
+                            <li><strong>Fetanet (Zeka):</strong> Akıllı ve bilgece davranırlar</li>
+                            <li><strong>İsmet (Masumluk):</strong> Büyük günahlardan korunmuşlardır</li>
+                            <li><strong>Tebliğ (Bildirme):</strong> Allah'ın mesajını eksiksiz iletirler</li>
+                        </ul>
+
+                        <p><strong>Ulül Azm Peygamberler (Büyük Peygamberler):</strong></p>
+                        <ol>
+                            <li><strong>Hz. Nuh (a.s.):</strong> İlk şeriat sahibi peygamber</li>
+                            <li><strong>Hz. İbrahim (a.s.):</strong> Hanif dinin öncüsü, Halilullah (Allah'ın dostu)</li>
+                            <li><strong>Hz. Musa (a.s.):</strong> Kelimullah (Allah ile konuşan), Tevrat'ın sahibi</li>
+                            <li><strong>Hz. İsa (a.s.):</strong> Ruhullah, İncil'in sahibi</li>
+                            <li><strong>Hz. Muhammed (s.a.v.):</strong> Habibi Kibriya, son peygamber, Kur'an'ın muhatabı</li>
+                        </ol>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Peygamber, Rabbinden kendisine indirilene iman etti, mü'minler de. Her biri, Allah'a, meleklerine, kitaplarına ve peygamberlerine iman etti."</p>
+                            <p class="ayah-reference">Bakara Suresi, 285</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>5. Ahiret Gününe İman</h4>
+                        <span class="topic-badge">Ölüm Sonrası</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Ölümden sonra dirilişe, hesap gününe, cennet ve cehenneme inanmaktır.</p>
+
+                        <p><strong>Ahiret Günü Olayları:</strong></p>
+                        <ol>
+                            <li><strong>Kabir Hayatı:</strong> Münker ve Nekir'in soruları, kabir azabı veya nimeti</li>
+                            <li><strong>Kıyamet (Mahşer):</strong> İsrafil'in Sur'a üflemesi ile başlar, tüm insanlar diriltilir</li>
+                            <li><strong>Hesap ve Mizan:</strong> Herkesin amellerinin tartılması</li>
+                            <li><strong>Sırat Köprüsü:</strong> Cehennem üzerinde kurulu köprüden geçiş</li>
+                            <li><strong>Havz-ı Kevser:</strong> Hz. Muhammed'in (s.a.v.) havuzu</li>
+                            <li><strong>Şefaat:</strong> Peygamberlerin ve salih kulların aracılığı</li>
+                            <li><strong>Cennet ve Cehennem:</strong> Ebedi hayatın başlangıcı</li>
+                        </ol>
+
+                        <p><strong>Cennet ve Cehennem:</strong></p>
+                        <ul>
+                            <li><strong>Cennet:</strong> İman edip salih amel işleyenlerin ebedi ikametgahı, sonsuz nimet ve huzur yeri</li>
+                            <li><strong>Cehennem:</strong> İnkar edenlerin ve büyük günahkarların azap yeri</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"O gün bir kişi, kardeşinden, anasından, babasından, eşinden ve oğullarından kaçar. O gün onlardan her birinin kendine yetecek bir derdi vardır."</p>
+                            <p class="ayah-reference">Abese Suresi, 34-37</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>6. Kader ve Kazaya İman</h4>
+                        <span class="topic-badge">Takdir</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Allah'ın her şeyi ezelî ilmiyle bildiğine ve takdir ettiğine inanmaktır.</p>
+
+                        <p><strong>Kaderin Dört Mertebesi:</strong></p>
+                        <ol>
+                            <li><strong>İlim:</strong> Allah her şeyi ezelî ilmiyle bilir</li>
+                            <li><strong>Kitabet (Yazma):</strong> Allah her şeyi Levh-i Mahfuz'a yazmıştır</li>
+                            <li><strong>Meşiet (Dileme):</strong> Allah'ın dilemesi olmadan hiçbir şey olmaz</li>
+                            <li><strong>Halk (Yaratma):</strong> Allah her şeyi yaratandır</li>
+                        </ol>
+
+                        <p><strong>Kader ve İrade Özgürlüğü:</strong></p>
+                        <p>İnsanın irade özgürlüğü vardır ve yaptıklarından sorumludur. Kader, Allah'ın önceden bilmesi anlamına gelir, zorla yaptırması değil. İnsan seçimlerini özgürce yapar, Allah bu seçimi önceden bilir.</p>
+
+                        <p><strong>Kadere İmanın Faydaları:</strong></p>
+                        <ul>
+                            <li>Başarıda kibir ve gurura kapılmamak</li>
+                            <li>Başarısızlıkta umutsuzluğa düşmemek</li>
+                            <li>Allah'a tevekkül etmek</li>
+                            <li>Sabırlı ve şükredici olmak</li>
+                            <li>İç huzuru ve manevi rahatlık</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Hiçbir musibet yoktur ki, Allah'ın izni olmadan (gelsin). Kim Allah'a inanırsa, Allah onun kalbine doğru yolu gösterir. Allah her şeyi hakkıyla bilendir."</p>
+                            <p class="ayah-reference">Teğabun Suresi, 11</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Peygamberler -->
+            <div class="encyclopedia-section" data-category="prophets">
+                <div class="section-header">
+                    <h3>👤 Peygamberler ve Hayatları</h3>
+                    <p>Allah'ın elçileri ve getirdikleri mesajlar</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Hz. Muhammed (s.a.v.) - Son Peygamber</h4>
+                        <span class="topic-badge">Habibi Kibriya</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Doğum ve Çocukluk:</strong> 571 yılında Mekke'de doğdu. Babası Abdullah, doğumundan önce vefat etti. Annesi Amine 6 yaşında vefat edince, dedesi Abdülmuttalib'in yanında kaldı. 8 yaşında dedesi vefat edince, amcası Ebu Talib himayesine aldı.</p>
+
+                        <p><strong>Peygamberlik Öncesi:</strong> "El-Emin" (güvenilir) lakabıyla tanındı. Hiç yalan söylemedi, emanete hıyanet etmedi. Hz. Hatice ile 25 yaşında evlendi. Ticaretle meşgul oldu.</p>
+
+                        <p><strong>Peygamberlik:</strong> 40 yaşında Hira Mağarası'nda ilk vahiy geldi. "İkra" (Oku) emriyle vahiy başladı. 13 yıl Mekke'de, 10 yıl Medine'de tebliğ yaptı.</p>
+
+                        <p><strong>Hicret (622):</strong> Müslümanların baskısı artınca, Allah'ın emriyle Medine'ye hicret etti. İslam takvimi bu tarihten başlar.</p>
+
+                        <p><strong>Mekke'nin Fethi (630):</strong> 8. yılda Mekke fethediildi. Kâbe putlardan temizlendi. Mekkelilere genel af ilan etti.</p>
+
+                        <p><strong>Veda Haccı (632):</strong> Son haccını yaptı ve Veda Hutbesi'ni okudu. İnsanların eşit olduğunu, Allah katında üstünlüğün takvada olduğunu bildirdi.</p>
+
+                        <p><strong>Vefat:</strong> 11 Hicrî'de (632) 63 yaşında Medine'de vefat etti. Medine'de defnedildi.</p>
+
+                        <p><strong>Mucizeleri:</strong></p>
+                        <ul>
+                            <li><strong>Kur'an-ı Kerim:</strong> En büyük mucizesi</li>
+                            <li><strong>Miraç:</strong> Göğe yükselişi</li>
+                            <li><strong>Ayın İkiye Bölünmesi</strong></li>
+                            <li><strong>İsra:</strong> Mescid-i Haram'dan Mescid-i Aksa'ya gece yolculuğu</li>
+                            <li>Su, yemek ve diğer maddi mucizeler</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Hz. İbrahim (a.s.) - Halilullah</h4>
+                        <span class="topic-badge">Allah'ın Dostu</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Putlara Karşı Mücadele:</strong> Kavmi putlara tapınıyordu. Hz. İbrahim onlara tevhidi anlattı. Putları kırarak onların güçsüz olduğunu gösterdi.</p>
+
+                        <p><strong>Ateşe Atılması:</strong> Kavmi onu ateşe attı, ancak Allah'ın emriyle ateş soğuk ve selametle oldu.</p>
+
+                        <p><strong>Oğlunu Kurban Etmesi:</strong> Rüyasında oğlu İsmail'i kurban etmesini gördü. Bu bir imtihan idi. Allah bir koç göndererek onu kurtardı. Kurban bayramı bu olayın hatırasıdır.</p>
+
+                        <p><strong>Kâbe'nin İnşası:</strong> Oğlu İsmail ile birlikte Kâbe'yi inşa etti. İlk Beyt (ev) olarak Allah'a ibâdet için yapıldı.</p>
+
+                        <p><strong>Önemi:</strong> Hanif dinin öncüsü, üç semavi dinde de saygı görür (İslam, Hristiyanlık, Yahudilik).</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Hz. Musa (a.s.) - Kelimullah</h4>
+                        <span class="topic-badge">Allah ile Konuşan</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Doğum:</strong> Firavun İsrailoğulları'nın erkek çocuklarını öldürtüyordu. Musa'nın annesi onu bir sandığa koyup Nil nehrine bıraktı. Firavun'un sarayında büyüdü.</p>
+
+                        <p><strong>Peygamberlik:</strong> Tur Dağı'nda Allah ile konuştu. Firavun'a gönderildi. Dokuz mucize verildi (Asa, Beyaz El, Tufan, Çekirge, Haşerat, Kurbağa, Kan, Kıtlık, Meyve Eksikliği).</p>
+
+                        <p><strong>Firavun'dan Kaçış:</strong> İsrailoğulları ile Mısır'dan ayrıldı. Deniz ikiye ayrıldı, geçtiler. Firavun ve ordusu boğuldu.</p>
+
+                        <p><strong>Tevrat:</strong> Tur Dağı'nda 40 gün Allah ile konuştu ve Tevrat'ı aldı. On Emir'i İsrailoğulları'na tebliğ etti.</p>
+
+                        <p><strong>Altın Buzağı:</strong> Hz. Musa Tur'a çıkınca, kavmi Samiri'nin etkisiyle altın buzağıya taptı. Musa döndüğünde onları azarladı ve Tevhid'e çağırdı.</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Hz. İsa (a.s.) - Ruhullah</h4>
+                        <span class="topic-badge">Allah'ın Ruhu</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Doğum:</strong> Hz. Meryem'den babasız olarak mucizevi şekilde doğdu. Beşikteyken konuştu ve annesinin iffetli olduğunu söyledi.</p>
+
+                        <p><strong>Mucizeleri:</strong></p>
+                        <ul>
+                            <li>Ölüleri diriltmek</li>
+                            <li>Hastaları iyileştirmek</li>
+                            <li>Körleri ve cüzzamlıları şifaya kavuşturmak</li>
+                            <li>Çamurdan kuş yapıp canlandırmak</li>
+                            <li>Sofra-i Sema'yı indirmesi (Gökten sofra)</li>
+                        </ul>
+
+                        <p><strong>İncil:</strong> Allah tarafından kendisine İncil indirildi. Tevhid inancını yaydı.</p>
+
+                        <p><strong>Göğe Yükseltilmesi:</strong> Yahudiler onu öldürmek istediler. Allah onu göğe yükseltti. Çarmıha gerilen başka biriydi (İslam'a göre). Kıyametten önce yeryüzüne inecek.</p>
+
+                        <p><strong>İslam'daki Yeri:</strong> İslam, Hz. İsa'yı peygamber olarak kabul eder. Ancak Allah'ın oğlu veya tanrı olduğu inancını reddeder. O bir kuldur ve peygamberdir.</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Diğer Önemli Peygamberler</h4>
+                        <span class="topic-badge">Allah'ın Elçileri</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Hz. Adem (a.s.):</strong> İlk insan ve ilk peygamber. Cennetten yeryüzüne indirildi. Tövbe edip bağışlandı.</p>
+
+                        <p><strong>Hz. Nuh (a.s.):</strong> 950 yıl kavmine tebliğ yaptı. Tufan oldu, inananlar gemiye bindi, inkarcılar helak oldu.</p>
+
+                        <p><strong>Hz. Yusuf (a.s.):</strong> Rüya tabiri ile meşhurdu. Kardeşleri tarafından kuyuya atıldı. Mısır'da vezir oldu. Zuleyha'nın fitnesine düşmedi.</p>
+
+                        <p><strong>Hz. Eyyub (a.s.):</strong> Sabır timsalidir. Ağır hastalıklara rağmen Allah'a şükür ve sabırla bağlı kaldı.</p>
+
+                        <p><strong>Hz. Yunus (a.s.):</strong> Balığın karnında kaldı. "Lâ ilâhe illâ ente sübhâneke innî küntü minez zâlimîn" duası ile kurtuldu.</p>
+
+                        <p><strong>Hz. Süleyman (a.s.):</strong> Büyük hükümdar ve peygamber. Cin, insan, kuş ve hayvanlarla konuşabiliyordu. Rüzgara, cinlere hükmediyordu.</p>
+
+                        <p><strong>Hz. Davud (a.s.):</strong> Zebur'un sahibi. Güzel sesle Allah'ı tesbih ederdi. Demir yumuşatma mucizesi vardı.</p>
+
+                        <p><strong>Hz. Yakub (a.s.):</strong> Hz. Yusuf'un babası. İsrail lakabıyla anılır. İsrailoğulları onun soyundan gelir.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kur'an Bilgisi -->
+            <div class="encyclopedia-section" data-category="quran">
+                <div class="section-header">
+                    <h3>📗 Kur'an-ı Kerim Bilgisi</h3>
+                    <p>Allah'ın son kitabı hakkında temel bilgiler</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Kur'an-ı Kerim Nedir?</h4>
+                        <span class="topic-badge">İlahi Kitap</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Kur'an-ı Kerim, Allah'ın son peygamber Hz. Muhammed'e (s.a.v.) Cebrail (a.s.) vasıtasıyla 23 yıl boyunca indirdiği ilahi kelam, tüm insanlığın hidayet rehberidir.</p>
+
+                        <p><strong>Kur'an'ın Özellikleri:</strong></p>
+                        <ul>
+                            <li>114 sure ve yaklaşık 6236 ayetten oluşur</li>
+                            <li>23 yıl boyunca (610-632) parça parça indirildi</li>
+                            <li>30 cüz, 60 hizib, 240 rub'a ayrılır</li>
+                            <li>İlk inen ayet: Alak Suresi 1-5 (İkra/Oku)</li>
+                            <li>Son inen ayet: Maide Suresi 3</li>
+                            <li>En uzun sure: Bakara Suresi (286 ayet)</li>
+                            <li>En kısa sure: Kevser Suresi (3 ayet)</li>
+                        </ul>
+
+                        <p><strong>Kur'an'ın İsimleri:</strong></p>
+                        <ul>
+                            <li><strong>El-Kur'an:</strong> Okunan, toplanan</li>
+                            <li><strong>El-Furkan:</strong> Hak ile batılı ayıran</li>
+                            <li><strong>Ez-Zikir:</strong> Öğüt, hatırlatma</li>
+                            <li><strong>El-Kitab:</strong> Yazılmış, kitap</li>
+                            <li><strong>En-Nur:</strong> Nur, aydınlık</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Şüphesiz bu Kur'an'ı biz indirdik. Onu koruyacak olan da elbette biziz."</p>
+                            <p class="ayah-reference">Hicr Suresi, 9</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Kur'an'ın Faziletleri</h4>
+                        <span class="topic-badge">Sevap ve Bereket</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Kur'an Okuma Sevabı:</strong> Her harf için 10 sevap vardır. "Elif Lam Mim" 3 harf değil, elif 10, lam 10, mim 10 sevaptır.</p>
+
+                        <p><strong>Kur'an Okumanın Faydaları:</strong></p>
+                        <ul>
+                            <li>Kalp huzuru ve manevi tatmin</li>
+                            <li>Meleklerin inişi ve rahmetin çoğalması</li>
+                            <li>Şefaat hakkı kazanma</li>
+                            <li>Kabir ve ahirette nur olması</li>
+                            <li>Hastalıklara şifa (Rukyeile)</li>
+                            <li>Kötülüklerden korunma</li>
+                        </ul>
+
+                        <p><strong>Özel Sureler ve Faziletleri:</strong></p>
+                        <ul>
+                            <li><strong>Fatiha:</strong> "Ümm-ül Kitab" (Kitabın anası), namazın rüknü</li>
+                            <li><strong>Bakara:</strong> Evin okununca şeytanlar uzaklaşır, son iki ayeti gece okuyan yeter</li>
+                            <li><strong>Kehf:</strong> Cuma günü okuyan, iki Cuma arası nurla dolar</li>
+                            <li><strong>Mülk:</strong> Kabir azabından korur</li>
+                            <li><strong>Yasin:</strong> "Kur'an'ın kalbi"</li>
+                            <li><strong>İhlas:</strong> Kur'an'ın üçte biri (Tevhid konusunda)</li>
+                            <li><strong>Felak ve Nas:</strong> Muavvizeteyn (Korunma sureleri)</li>
+                        </ul>
+
+                        <div class="topic-ayah">
+                            <p class="ayah-text">"Kur'an okuyanlar, Allah'ın kitabını okuyup namaz kılan ve kendilerine rızık olarak verdiklerimizden gizli ve açık harcama yapanlara gelince, onlar kesinlikle batmayacak bir ticaret umabilirler."</p>
+                            <p class="ayah-reference">Fatır Suresi, 29</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Kur'an'ı Doğru Okuma (Tecvid)</h4>
+                        <span class="topic-badge">Okuma Adabı</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tecvid Nedir?</strong> Kur'an harflerini mahreçlerinden (çıkış noktalarından) doğru telaffuz etme, sıfatlarını verme ve okuma kurallarına uyma ilmidir.</p>
+
+                        <p><strong>Kur'an Okuma Adabı:</strong></p>
+                        <ul>
+                            <li>Abdestli olmak (farz değil ama müstehab)</li>
+                            <li>Temiz bir yer ve temiz elbiselerle okumak</li>
+                            <li>Kıbleye dönmek</li>
+                            <li>Euzü-Besmele çekmek</li>
+                            <li>Tefekkür ederek, anlamaya çalışarak okumak</li>
+                            <li>Güzel ses ve tertil (yavaş ve düzgün) ile okumak</li>
+                            <li>Secde ayetinde secde etmek</li>
+                        </ul>
+
+                        <p><strong>Temel Tecvid Kuralları:</strong></p>
+                        <ul>
+                            <li><strong>İdğam:</strong> Birleştirme, iki harfi bitişik okuma</li>
+                            <li><strong>İzhar:</strong> Açık okuma</li>
+                            <li><strong>İhfa:</strong> Gizleme</li>
+                            <li><strong>İklab:</strong> Çevirme</li>
+                            <li><strong>Med:</strong> Uzatma (2, 4, 6 hareke)</li>
+                            <li><strong>Kalkalah:</strong> Hafif sıçrama</li>
+                            <li><strong>Ra Harfi:</strong> Kalın veya ince okuma</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Kur'an'ın Konuları</h4>
+                        <span class="topic-badge">İçerik</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Ana Konular:</strong></p>
+
+                        <p><strong>1. Akaid (İnanç):</strong> Tevhid, peygamberlik, ahiret, kader gibi inanç esasları</p>
+
+                        <p><strong>2. İbadetler:</strong> Namaz, oruç, zekat, hac ve diğer ibadetlerin hükümleri</p>
+
+                        <p><strong>3. Muamelat (Sosyal İlişkiler):</strong> Alışveriş, evlilik, miras, ceza hukuku</p>
+
+                        <p><strong>4. Ahlak:</strong> Güzel ahlak, kötü huylardan sakınma, toplumsal ilişkiler</p>
+
+                        <p><strong>5. Kıssalar:</strong> Geçmiş peygamberlerin ve kavimlerin hikay eleri</p>
+
+                        <p><strong>6. Öğütler ve İbretler:</strong> Uyarılar, müjdeler, dünya ve ahiretin gerçekleri</p>
+
+                        <p><strong>Mekkî ve Medenî Sureler:</strong></p>
+                        <ul>
+                            <li><strong>Mekkî Sureler:</strong> Hicr etten önce Mekke'de indiler. Genellikle kısa, akaid ve ahlak konuları</li>
+                            <li><strong>Medenî Sureler:</strong> Hicr etten sonra Medine'de indiler. Genellikle uzun, hükümler ve muamelat</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hadis Bilgisi -->
+            <div class="encyclopedia-section" data-category="hadith">
+                <div class="section-header">
+                    <h3>📜 Hadis-i Şerif Bilgisi</h3>
+                    <p>Hz. Muhammed'in (s.a.v.) sözleri ve sünneti</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Hadis Nedir?</h4>
+                        <span class="topic-badge">Peygamber Sözleri</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Hadis, Hz. Muhammed'in (s.a.v.) söz, fiil ve takrirlerini (onaylarını) bildiren rivayetlerdir.</p>
+
+                        <p><strong>Hadisin Kısımları:</strong></p>
+                        <ul>
+                            <li><strong>Kavlî Hadis:</strong> Peygamberimizin sözleri</li>
+                            <li><strong>Fi'lî Hadis:</strong> Peygamberimizin fiilleri, davranışları</li>
+                            <li><strong>Takrirî Hadis:</strong> Peygamberimizin onayları, sessiz kalarak izin verdiği durumlar</li>
+                        </ul>
+
+                        <p><strong>Sünnet:</strong> Peygamberimizin yolu, davranış tarzı, yaşam biçimi. İslam'ın ikinci kaynağıdır. Kur'an'ı açıklar, detaylandırır ve tamamlar.</p>
+
+                        <p><strong>Hadisin Önemi:</strong></p>
+                        <ul>
+                            <li>Kur'an'ı açıklar ve yorumlar</li>
+                            <li>Namazın kaç rekat kılınacağını, abdest nasıl alınacağını öğretirir</li>
+                            <li>Hz. Muhammed'in hayatını, ahlakını gösterir</li>
+                            <li>İslam hukukunun temel kaynaklarından biridir</li>
+                            <li>Müslümanların yaşam rehberidir</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Hadis Kitapları</h4>
+                        <span class="topic-badge">Temel Kaynaklar</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Kütüb-ü Sitte (Altı Sahih Kitap):</strong></p>
+                        <ol>
+                            <li><strong>Sahih-i Buhari:</strong> İmam Buhari tarafından derlendi. En sahih hadis kitabıdır. Yaklaşık 7.275 hadis.</li>
+                            <li><strong>Sahih-i Müslim:</strong> İmam Müslim tarafından derlendi. Sahih-i Buhari'den sonra en sahih kitaptır. Yaklaşık 7.190 hadis.</li>
+                            <li><strong>Sünen-i Ebu Davud:</strong> İmam Ebu Davud tarafından derlendi. Fıkıh konuları ağırlıklı. Yaklaşık 5.274 hadis.</li>
+                            <li><strong>Sünen-i Tirmizi:</strong> İmam Tirmizi tarafından derlendi. Hadislerin sahih, hasen veya zayıf olduğunu belirtir. Yaklaşık 3.956 hadis.</li>
+                            <li><strong>Sünen-i Nesâî:</strong> İmam Nesâî tarafından derlendi. Özellikle namaz konularında zengin. Yaklaşık 5.761 hadis.</li>
+                            <li><strong>Sünen-i İbn Mace:</strong> İmam İbn Mace tarafından derlendi. Yaklaşık 4.341 hadis.</li>
+                        </ol>
+
+                        <p><strong>Diğer Önemli Hadis Kitapları:</strong></p>
+                        <ul>
+                            <li><strong>Muvatta:</strong> İmam Malik tarafından derlendi. En eski hadis ve fıkıh kitabı.</li>
+                            <li><strong>Müsned-i Ahmed:</strong> İmam Ahmed bin Hanbel tarafından derlendi. 27.000'den fazla hadis.</li>
+                            <li><strong>Riyazü's-Salihin:</strong> İmam Nevevî tarafından derlendi. Ahlak ve faziletler.</li>
+                            <li><strong>Kırk Hadis (Erbain):</strong> İmam Nevevî tarafından derlendi. İslam'ın temellerini kapsayan 42 hadis.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Hadislerin Sıhhat Dereceleri</h4>
+                        <span class="topic-badge">Sınıflandırma</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Sahih Hadis:</strong> Senedi (rivayet zinciri) güvenilir, adil ve zabt sahibi ravilerden oluşan, şaz ve muallel olmayan hadistir. En yüksek dereceli hadistir.</p>
+
+                        <p><strong>Hasen Hadis:</strong> Sahih hadise yakın, ancak ravilerden biri zabıt konusunda biraz zayıf olan hadistir. Hüküm çıkarmada kullanılır.</p>
+
+                        <p><strong>Zayıf Hadis:</strong> Sened veya metinde eksiklik, şüphe bulunan hadistir. Hüküm çıkarmada kullanılmaz, ancak faziletler ve öğütlerde kullanılabilir.</p>
+
+                        <p><strong>Mevzu (Uydurma) Hadis:</strong> Peygamberimize iftira olarak atfedilen, aslı olmayan sözlerdir. Hiçbir şekilde kullanılamaz.</p>
+
+                        <p><strong>Hadis Terimleri:</strong></p>
+                        <ul>
+                            <li><strong>Mütevatir:</strong> Çok sayıda ravinin rivayet ettiği, yalan üzerine birleşmeleri mümkün olmayan hadis</li>
+                            <li><strong>Meşhur:</strong> Her tabakada en az üç ravi tarafından rivayet edilen hadis</li>
+                            <li><strong>Ahad:</strong> Mütevatir derecesine ulaşmayan hadis</li>
+                            <li><strong>Mürsel:</strong> Tabiin'den birinin "Rasulullah buyurdu ki" diye rivayet ettiği hadis</li>
+                            <li><strong>Munkatı:</strong> Senedinde kopukluk olan hadis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Ünlü Hadislerden Örnekler</h4>
+                        <span class="topic-badge">Hadis Örnekleri</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>1. İman ve İslam Hakkında:</strong></p>
+                        <p class="hadith-text">"Müslüman, dilinden ve elinden Müslümanların selamette olduğu kimsedir." (Buhari, Müslim)</p>
+
+                        <p><strong>2. İlim Hakkında:</strong></p>
+                        <p class="hadith-text">"İlim öğrenmek her Müslümana farzdır." (İbn Mace)</p>
+
+                        <p><strong>3. Ahlak Hakkında:</strong></p>
+                        <p class="hadith-text">"Müminlerin iman bakımından en olgun olanı, ahlakı en güzel olanıdır." (Tirmizi)</p>
+
+                        <p><strong>4. İyilik ve İhsan Hakkında:</strong></p>
+                        <p class="hadith-text">"Gülümsemek sadakadır." (Tirmizi)</p>
+
+                        <p><strong>5. Sabır Hakkında:</strong></p>
+                        <p class="hadith-text">"Bir müminin işi ne kadar da şaşılacak bir şeydir! Onun bütün işleri hayırlıdır. Bu, müminden başkası için yoktur. Kendisine bir sevinç gelirse şükreder, bu onun için hayırlıdır. Kendisine bir sıkıntı gelirse sabreder, bu da onun için hayırlıdır." (Müslim)</p>
+
+                        <p><strong>6. Dua Hakkında:</strong></p>
+                        <p class="hadith-text">"Dua ibadetin özüdür." (Tirmizi)</p>
+
+                        <p><strong>7. Komşuluk Hakkında:</strong></p>
+                        <p class="hadith-text">"Allah'a ve ahiret gününe iman eden komşusuna eza etmesin." (Buhari, Müslim)</p>
+
+                        <p><strong>8. Anne-Baba Hakkında:</strong></p>
+                        <p class="hadith-text">"Cennet annelerin ayakları altındadır." (Nesâî)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İbadetler -->
+            <div class="encyclopedia-section" data-category="worship">
+                <div class="section-header">
+                    <h3>🤲 İbadetler ve Uygulamaları</h3>
+                    <p>Günlük ibadetler ve yapılışları</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Abdest</h4>
+                        <span class="topic-badge">Temizlik</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Belirli uzuvları belirli bir şekilde yıkayarak hadesten (küçük kirlilikten) arınmaktır. Namaz için şarttır.</p>
+
+                        <p><strong>Abdest'in Farzları (4 Farz):</strong></p>
+                        <ol>
+                            <li>Yüzü yıkamak</li>
+                            <li>Elleri dirseklerle birlikte yıkamak</li>
+                            <li>Başın dörtte birini mesh etmek</li>
+                            <li>Ayakları topuklarla birlikte yıkamak</li>
+                        </ol>
+
+                        <p><strong>Abdest'in Sünnetleri:</strong></p>
+                        <ul>
+                            <li>Besmele çekmek</li>
+                            <li>Elleri bileğe kadar yıkamak</li>
+                            <li>Misvak kullanmak</li>
+                            <li>Ağzı çalkalamak</li>
+                            <li>Burna su çekmek</li>
+                            <li>Tüm başı mesh etmek</li>
+                            <li>Kulakları mesh etmek</li>
+                            <li>Sağdan başlamak</li>
+                            <li>Tertip (sıra) ile yapmak</li>
+                            <li>Muvalaata riayet etmek (ara vermeden)</li>
+                        </ul>
+
+                        <p><strong>Abdesti Bozan Durumlar:</strong></p>
+                        <ul>
+                            <li>Tuvalet ihtiyacını gidermek</li>
+                            <li>Yel çıkması</li>
+                            <li>Uyumak (oturarak hafif uyku hariç)</li>
+                            <li>Bayılmak, akıl kaybı</li>
+                            <li>Kanama (hafif kanama hariç)</li>
+                            <li>Kusma (ağız dolusu)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Gusül (Boy Abdesti)</h4>
+                        <span class="topic-badge">Temizlik</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Tanım:</strong> Tüm vücudu yıkayarak cünüplükten veya hayızdan arınmaktır.</p>
+
+                        <p><strong>Gusül'ün Farzları (3 Farz):</strong></p>
+                        <ol>
+                            <li>Ağza su almak (ağzı çalkalamak)</li>
+                            <li>Buruna su çekmek</li>
+                            <li>Tüm vücudu yıkamak</li>
+                        </ol>
+
+                        <p><strong>Gusül'ün Gerekliliği:</strong></p>
+                        <ul>
+                            <li>Cünüplük hali (cinsel ilişki)</li>
+                            <li>Meni gelmesi (rüyada veya uyanıkken)</li>
+                            <li>Hayız ve nifas halinin bitmesi</li>
+                        </ul>
+
+                        <p><strong>Gusül'ün Sünnet Şekli:</strong></p>
+                        <ol>
+                            <li>Niyet etmek ve besmele çekmek</li>
+                            <li>Elleri yıkamak</li>
+                            <li>Avret yerlerini yıkamak</li>
+                            <li>Kirli yerleri temizlemek</li>
+                            <li>Namaz abdesti almak</li>
+                            <li>Baştan başlayarak tüm vücudu üç defa yıkamak</li>
+                            <li>Sağ taraftan başlamak</li>
+                            <li>Hiçbir yerin kuru kalmamasına dikkat etmek</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Dua ve Zikir</h4>
+                        <span class="topic-badge">Maneviyat</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Dua Nedir?</strong> Kulun Allah'a yönelerek istekte bulunması, O'na yakarmasıdır. "İbadetin özü"dür.</p>
+
+                        <p><strong>Duanın Adabı:</strong></p>
+                        <ul>
+                            <li>İhlasla, samimiyetle dua etmek</li>
+                            <li>Hamd, şükür ve salat-ü selamla başlamak</li>
+                            <li>Elleri açarak dua etmek</li>
+                            <li>Kıbleye dönmek</li>
+                            <li>Alçak gönüllülükle dua etmek</li>
+                            <li>Amin diyerek bitirmek</li>
+                            <li>Elleri yüze sürmek</li>
+                        </ul>
+
+                        <p><strong>Duanın Kabul Olduğu Zamanlar:</strong></p>
+                        <ul>
+                            <li>Ezan ile kamet arası</li>
+                            <li>Secde halinde</li>
+                            <li>Teheccüd (gece) namazında</li>
+                            <li>Cuma günü ikindi ile akşam arası</li>
+                            <li>Yağmur yağarken</li>
+                            <li>Yolculukta</li>
+                            <li>Oruçluyken</li>
+                            <li>Hasta iken</li>
+                        </ul>
+
+                        <p><strong>Temel Dualar:</strong></p>
+                        <ul>
+                            <li><strong>Rabbena Duaları:</strong> Kur'an'dan alınan dualar</li>
+                            <li><strong>Salavat:</strong> Peygamberimize salat-ü selam</li>
+                            <li><strong>İstiğfar:</strong> "Estağfirullah" - Bağışlanma dileme</li>
+                            <li><strong>Hamd ve Şükür:</strong> "Elhamdülillah" - Allah'a hamd etme</li>
+                            <li><strong>Tesbih:</strong> "Sübhanallah" - Allah'ı tenzih etme</li>
+                            <li><strong>Tekbir:</strong> "Allahu Ekber" - Allah'ı yüceltme</li>
+                            <li><strong>Tehlil:</strong> "La ilahe illallah" - Tevhid</li>
+                        </ul>
+
+                        <p><strong>Sabah-Akşam Zikirleri:</strong></p>
+                        <p>Sabah ve akşam belirli duaları ve Kur'an surelerini (Ayetel Kürsi, İhlas, Felak, Nas) okumak, koruma ve bereket sağlar.</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Nafile İbadetler</h4>
+                        <span class="topic-badge">Fazileter</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Nafile Namaz:</strong> Farz ve vaciplerin dışındaki sünnet ve nafile namazlar.</p>
+
+                        <p><strong>Önemli Nafile Namazlar:</strong></p>
+                        <ul>
+                            <li><strong>Teheccüd:</strong> Gecenin son üçte birinde kılınan 2-12 rekat namaz. En faziletli nafile namaz.</li>
+                            <li><strong>Duha (Kuşluk):</strong> Güneş yükseldikten sonra öğleden önce kılınan 2-8 rekat namaz.</li>
+                            <li><strong>Evvabin:</strong> Akşam namazından sonra kılınan 6 rekat namaz.</li>
+                            <li><strong>Tesbih Namazı:</strong> Özel tesbihlerle kılınan 4 rekat namaz.</li>
+                            <li><strong>Tahiyyetül-Mescid:</strong> Camiye girerken kılınan 2 rekat namaz.</li>
+                            <li><strong>İstihar e:</strong> Bir konuda Allah'tan hayırlısını istemek için kılınan 2 rekat namaz.</li>
+                        </ul>
+
+                        <p><strong>Nafile Oruç:</strong></p>
+                        <ul>
+                            <li><strong>Pazartesi ve Perşembe Orucu:</strong> Haftalık nafile oruç</li>
+                            <li><strong>Arafefe Orucu:</strong> Araf e günü (9 Zilhicce), bir yıllık günahları örter</li>
+                            <li><strong>Muharrem Orucu:</strong> Aşure günü (10 Muharrem) ve bir gün önce veya sonra</li>
+                            <li><strong>Şaban Orucu:</strong> Şaban ayında oruç tutmak</li>
+                            <li><strong>Beyaz Günler Orucu:</strong> Ay ın 13, 14, 15. günleri oruç</li>
+                            <li><strong>Şevval Orucu:</strong> Ramazan'dan sonra Şevval ayında 6 gün oruç</li>
+                        </ul>
+
+                        <p><strong>Sadaka ve İnfak:</strong></p>
+                        <p>Zekat dışında, gönüllü olarak fakirlere, ihtiyaç sahiplerine, hayır işlerine yapılan yardımlar. Her türlü iyilik sadakadır.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İslam Tarihi -->
+            <div class="encyclopedia-section" data-category="history">
+                <div class="section-header">
+                    <h3>🏛️ İslam Tarihi</h3>
+                    <p>İslam'ın doğuşu ve yayılışı</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Cahiliye Dönemi ve İslam'ın Doğuşu</h4>
+                        <span class="topic-badge">Tarih</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Cahiliye Dönemi:</strong> İslam'dan önceki dönem. Araplar putlara tapıyor, kız çocukları diri diri toprağa gömülüyor, kabile savaşları yaşanıyordu.</p>
+
+                        <p><strong>Mekke:</strong> Kâbe'nin bulunduğu kutsal şehir. Ticaret merkezi. Kureyş kabilesi yönetiyordu.</p>
+
+                        <p><strong>İslam'ın Başlangıcı (610):</strong> Hz. Muhammed 40 yaşında Hira Mağarası'nda vahiy aldı. İlk müminler: Hz. Hatice, Hz. Ebu Bekir, Hz. Ali, Zeyd bin Harise.</p>
+
+                        <p><strong>Mekke Dönemi (610-622):</strong></p>
+                        <ul>
+                            <li>Gizli davet dönemi (ilk 3 yıl)</li>
+                            <li>Açık davet başladı, müşriklerin baskısı arttı</li>
+                            <li>Habeşistan'a hicret (1. ve 2. hicret)</li>
+                            <li>Taif'e gidiş ve redddedilme</li>
+                            <li>Miraç olayı</li>
+                            <li>Müşriklerin boykot ve işkencesi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Medine Dönemi ve İslam Devleti</h4>
+                        <span class="topic-badge">Devlet</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>Hicret (622):</strong> Müslümanların Medine'ye göçü. İslam takviminin başlangıcı. Hz. Muhammed ve Hz. Ebu Bekir birlikte göç ettiler.</p>
+
+                        <p><strong>Medine'de İlk İşler:</strong></p>
+                        <ul>
+                            <li>Mescid-i Nebevi'nin inşası</li>
+                            <li>Muhacir ve Ensar arasında kardeşlik tesisi</li>
+                            <li>Medine Sözleşmesi (ilk yazılı anayasa)</li>
+                            <li>Yahudi ve müşriklerle antlaşmalar</li>
+                        </ul>
+
+                        <p><strong>Önemli Savaşlar:</strong></p>
+                        <ul>
+                            <li><strong>Bedir Savaşı (624):</strong> İlk büyük zafer. 313 müslüman, 1000 müşriki yendi.</li>
+                            <li><strong>Uhud Savaşı (625):</strong> Müslümanlar mağlup oldular. Hz. Hamza şehit oldu.</li>
+                            <li><strong>Hendek Savaşı (627):</strong> Medine etrafına hendek kazıldı. Müşrikler geri döndü.</li>
+                            <li><strong>Hudeybiye Barışı (628):</strong> 10 yıllık barış antlaşması.</li>
+                            <li><strong>Hayber Seferi (628):</strong> Yahudi kalelerinin fethi.</li>
+                            <li><strong>Mekke'nin Fethi (630):</strong> Mekke kan dökülmeden fethedildi. Kâbe putlardan temizlendi.</li>
+                            <li><strong>Huneyn, Tebük Seferleri</strong></li>
+                        </ul>
+
+                        <p><strong>Veda Haccı (632):</strong> Son hac. Veda Hutbesi'nde insan hakları, kadın hakları, ırk eşitliği vurgulandı.</p>
+
+                        <p><strong>Hz. Muhammed'in Vefatı (632):</strong> 63 yaşında Medine'de vefat etti. Hz. Aişe'nin odasında defnedildi.</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Hulefa-i Raşidin (Dört Halife) Dönemi</h4>
+                        <span class="topic-badge">İlk Halifeler</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>1. Hz. Ebu Bekir (632-634):</strong></p>
+                        <ul>
+                            <li>Peygamberimizin en yakın dostu ve kayınpederi</li>
+                            <li>Ridde (döneklik) olaylarını bastırdı</li>
+                            <li>Kur'an'ın ilk defa tek kitapta toplanmasını sağladı</li>
+                            <li>Suriye ve Irak fetihleri başladı</li>
+                            <li>2 yıl halifelik yaptı</li>
+                        </ul>
+
+                        <p><strong>2. Hz. Ömer (634-644):</strong></p>
+                        <ul>
+                            <li>"Faruk" (hak ile batılı ayıran) lakaplı</li>
+                            <li>İslam toprakları büyük ölçüde genişledi: Suriye, Filistin, Mısır, İran, Irak fethedildi</li>
+                            <li>Kudüs feth edildi (638)</li>
+                            <li>İlk hicri takvimi oluşturdu</li>
+                            <li>Divanlar, kadılık sistemini kurdu</li>
+                            <li>Adalet ve liyakat örneği halife</li>
+                            <li>10 yıl halifelik yaptı, şehit edildi</li>
+                        </ul>
+
+                        <p><strong>3. Hz. Osman (644-656):</strong></p>
+                        <ul>
+                            <li>"Zinnureyn" (iki nur sahibi - Peygamberin iki kızıyla evlendi)</li>
+                            <li>Kur'an'ın çoğaltılması ve standart hale getirilmesi</li>
+                            <li>İslam toprakları daha da genişledi: Kıbrıs, Kafkasya</li>
+                            <li>Mescid-i Nebevi'yi genişletti</li>
+                            <li>12 yıl halifelik yaptı, şehit edildi</li>
+                        </ul>
+
+                        <p><strong>4. Hz. Ali (656-661):</strong></p>
+                        <ul>
+                            <li>Peygamberin amcasının oğlu ve damadı</li>
+                            <li>İlk müslüman çocuk</li>
+                            <li>"Kerrâr" (savaşlarda geri dönmez) ve "Haydar" (aslan) lakaplı</li>
+                            <li>İlim, hikmet ve adalet sahibi</li>
+                            <li>Döneminde iç çatışmalar yaşandı: Cemel, Sıffin savaşları</li>
+                            <li>Haricilerin ortaya çıkması</li>
+                            <li>5 yıl halifelik yaptı, şehit edildi</li>
+                        </ul>
+
+                        <p><strong>Önemi:</strong> Hulefa-i Raşidin dönemi, İslam'ın altın çağıdır. Adalet, danışma, halkla iç içe yaşama örnekleri gösterildi.</p>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>İslam Medeniyeti ve Bilim</h4>
+                        <span class="topic-badge">Bilim ve Kültür</span>
+                    </div>
+                    <div class="topic-content">
+                        <p><strong>İslam Medeniyeti (8-15. Yüzyıl):</strong> Emeviler, Abbasiler, Endülüs Emevi Devleti, Osmanlı İmparatorluğu dönemlerinde büyük gelişme.</p>
+
+                        <p><strong>Bilimsel Gelişmeler:</strong></p>
+                        <ul>
+                            <li><strong>Matematik:</strong> Cebir, algoritma, sıfır kavramı (El-Harezmi)</li>
+                            <li><strong>Astronomi:</strong> Rasathaneler, yıldız katalogları, astrolab</li>
+                            <li><strong>Tıp:</strong> İbn Sina (Kanun fil-Tıb), hastaneler, cerrahi</li>
+                            <li><strong>Kimya:</strong> Cabir bin Hayyan, distilasyon, asitler</li>
+                            <li><strong>Fizik:</strong> Optik (İbn Heysem), mekanik</li>
+                            <li><strong>Coğrafya:</strong> Haritacılık, seyahatnameler (İbn Battuta)</li>
+                            <li><strong>Felsefe:</strong> Farabi, İbn Rüşd, Gazali</li>
+                        </ul>
+
+                        <p><strong>Kültür ve Sanat:</strong></p>
+                        <ul>
+                            <li>Kütüphaneler (Beytü'l-Hikme, Bağdat)</li>
+                            <li>Üniversiteler (Karaviyyin, Ezher)</li>
+                            <li>Mimarî (Camiler, medreseler, köprüler)</li>
+                            <li>Hat sanatı, tezhip, minyatür</li>
+                            <li>Edebiyat (Mevlana, Yunus Emre)</li>
+                        </ul>
+
+                        <p><strong>Müslüman Bilginlerin Dünyaya Katkısı:</strong> Batı'nın Rönesans'ı, Müslüman bilginlerin eserlerinin Latince'ye çevrilmesiyle başladı. Modern bilimin temelleri İslam medeniyetinde atıldı.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terimler Sözlüğü -->
+            <div class="encyclopedia-section" data-category="terms">
+                <div class="section-header">
+                    <h3>📝 İslami Terimler Sözlüğü</h3>
+                    <p>Sık kullanılan İslami terim ve kavramlar</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Temel İslami Terimler (A-E)</h4>
+                        <span class="topic-badge">Sözlük</span>
+                    </div>
+                    <div class="topic-content">
+                        <ul class="terms-list">
+                            <li><strong>Abdest:</strong> Namaz için beden temizliği</li>
+                            <li><strong>Amel:</strong> İşlenen iyi veya kötü davranışlar</li>
+                            <li><strong>Ahiret:</strong> Ölümden sonraki ebedi hayat</li>
+                            <li><strong>Akaid:</strong> İnanç esasları, itikad</li>
+                            <li><strong>Allah:</strong> Yaratıcı, tek ilah</li>
+                            <li><strong>Ayet:</strong> Kur'an'daki her bir cümle</li>
+                            <li><strong>Asr-ı Saadet:</strong> Peygamber dönem i, mutluluk çağı</li>
+                            <li><strong>Bedel:</strong> Karşılık, ivaz</li>
+                            <li><strong>Besmele:</strong> "Bismillahirrahmanirrahim"</li>
+                            <li><strong>Bid'at:</strong> Dinde olmayan yeni uygulama</li>
+                            <li><strong>Cehennem:</strong> Ahirette azap yeri</li>
+                            <li><strong>Cennet:</strong> Ahirette nimet ve saadet yeri</li>
+                            <li><strong>Cihat:</strong> Allah yolunda çaba göstermek</li>
+                            <li><strong>Cuma:</strong> Müslümanların haftalık toplu ibadeti</li>
+                            <li><strong>Cünüp:</strong> Gusül gerektirecek durumda olan kişi</li>
+                            <li><strong>Dua:</strong> Allah'a yalvarma, istekte bulunma</li>
+                            <li><strong>Dünya:</strong> Geçici hayat, ahiretin tarlası</li>
+                            <li><strong>Ehl-i Kitap:</strong> Yahudi ve Hristiyanlar</li>
+                            <li><strong>Ehl-i Sünnet:</strong> Peygamberin yoluna uyanlar</li>
+                            <li><strong>Ezan:</strong> Namaz vakti geldiğini bildiren davet</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Temel İslami Terimler (F-K)</h4>
+                        <span class="topic-badge">Sözlük</span>
+                    </div>
+                    <div class="topic-content">
+                        <ul class="terms-list">
+                            <li><strong>Farz:</strong> Mutlaka yapılması gereken ibadet</li>
+                            <li><strong>Fetva:</strong> Din aliminin verdiği hüküm</li>
+                            <li><strong>Fıkıh:</strong> İslam hukuku ilmi</li>
+                            <li><strong>Fitre:</strong> Ramazan sonunda verilen sadaka</li>
+                            <li><strong>Gıybet:</strong> Arkasından kötü konuşma</li>
+                            <li><strong>Gusül:</strong> Tüm bedeni yıkama, boy abdesti</li>
+                            <li><strong>Hac:</strong> Kâbe'yi ziyaret ibadeti</li>
+                            <li><strong>Hadis:</strong> Peygamberin söz ve fiilleri</li>
+                            <li><strong>Halal:</strong> Dinen helal, izin verilen</li>
+                            <li><strong>Haram:</strong> Dinen yasak olan</li>
+                            <li><strong>Hasen:</strong> Güzel, iyi; orta dereceli hadis</li>
+                            <li><strong>Hayır:</strong> İyilik, sevap</li>
+                            <li><strong>Hicret:</strong> Allah yolunda göç etme</li>
+                            <li><strong>Hidayet:</strong> Doğru yolu bulma</li>
+                            <li><strong>İbadet:</strong> Allah'a kulluk, ibadet</li>
+                            <li><strong>İftar:</strong> Orucu açma</li>
+                            <li><strong>İhlas:</strong> Samimilik, samimiyet</li>
+                            <li><strong>İhram:</strong> Hac ve umre için özel giysi</li>
+                            <li><strong>İman:</strong> Allah'a ve esaslarına inanma</li>
+                            <li><strong>İmsak:</strong> Sahur sonucu, oruç başlangıcı</li>
+                            <li><strong>İnfak:</strong> Allah yolunda harcama</li>
+                            <li><strong>İslam:</strong> Allah'a teslim olma</li>
+                            <li><strong>İstiğfar:</strong> Bağışlanma dileme</li>
+                            <li><strong>Kâbe:</strong> Mekke'deki Allah'ın evi</li>
+                            <li><strong>Kader:</strong> Allah'ın takdiri</li>
+                            <li><strong>Kaza:</strong> Geçmiş farzları telafi etme</li>
+                            <li><strong>Kelime-i Şehadet:</strong> İslam'a giriş sözü</li>
+                            <li><strong>Kıble:</strong> Namaz kılarken yönelinen yön (Kâbe)</li>
+                            <li><strong>Kıyamet:</strong> Dünyanın sonu, hesap günü</li>
+                            <li><strong>Kurban:</strong> Allah için hayvan kesme</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h4>Temel İslami Terimler (M-Z)</h4>
+                        <span class="topic-badge">Sözlük</span>
+                    </div>
+                    <div class="topic-content">
+                        <ul class="terms-list">
+                            <li><strong>Mahşer:</strong> Kıyamet günü herkesin toplanacağı yer</li>
+                            <li><strong>Mekruh:</strong> Yapılması hoş görülmeyen</li>
+                            <li><strong>Melek:</strong> Allah'ın nurdan yarattığı varlık</li>
+                            <li><strong>Mescit:</strong> Namaz kılınan yer, cami</li>
+                            <li><strong>Mirac:</strong> Peygamberin göğe yükselişi</li>
+                            <li><strong>Mümin:</strong> İman eden, inanan</li>
+                            <li><strong>Münafık:</strong> İkiyüzlü, zahirde müslüman batında kafir</li>
+                            <li><strong>Müslüman:</strong> İslam'a teslim olmuş kişi</li>
+                            <li><strong>Müstehab:</strong> Yapılması sevaplı olan</li>
+                            <li><strong>Nafile:</strong> Farz ve vacip dışındaki ibadetler</li>
+                            <li><strong>Namaz:</strong> Beş vakit farz ibadet</li>
+                            <li><strong>Niyet:</strong> Kalben kastetme, amaç</li>
+                            <li><strong>Oruç:</strong> Tutulmak, perhiz</li>
+                            <li><strong>Peygamber:</strong> Allah'ın elçisi</li>
+                            <li><strong>Rıza:</strong> Razı olma, hoşnut olma</li>
+                            <li><strong>Rükû:</strong> Namazda eğilme</li>
+                            <li><strong>Riya:</strong> Gösteriş, insanlara yaranma</li>
+                            <li><strong>Sabır:</strong> Dayanma, katlanma</li>
+                            <li><strong>Sadaka:</strong> Allah rızası için verilen yardım</li>
+                            <li><strong>Sahabe:</strong> Peygamberi gören ve iman eden müslümanlar</li>
+                            <li><strong>Salat:</strong> Namaz; Peygambere dua</li>
+                            <li><strong>Secde:</strong> Namazda alnı yere koyma</li>
+                            <li><strong>Sevap:</strong> İyi amellerin karşılığı</li>
+                            <li><strong>Sünnet:</strong> Peygamberin yolu, öğretisi</li>
+                            <li><strong>Sure:</strong> Kur'an'ın bölümleri</li>
+                            <li><strong>Şefaat:</strong> Aracılık, yardım</li>
+                            <li><strong>Şehadet:</strong> Tanıklık; şehitlik</li>
+                            <li><strong>Şeytan:</strong> İblis, insanı kötülüğe çağıran</li>
+                            <li><strong>Şirk:</strong> Allah'a ortak koşma</li>
+                            <li><strong>Şükür:</strong> Teşekkür, minnettarlık</li>
+                            <li><strong>Takva:</strong> Allah korkusu, sakınma</li>
+                            <li><strong>Tavaf:</strong> Kâbe'yi 7 kez dönme</li>
+                            <li><strong>Teheccüd:</strong> Gece namazı</li>
+                            <li><strong>Tekbir:</strong> "Allahu Ekber" demek</li>
+                            <li><strong>Tesbih:</strong> Allah'ı tenzih etme; zikir aleti</li>
+                            <li><strong>Tevbe:</strong> Pişmanlık, günahtan dönme</li>
+                            <li><strong>Tevhid:</strong> Allah'ın birliğine inanma</li>
+                            <li><strong>Tevekkül:</strong> Allah'a güvenme</li>
+                            <li><strong>Umre:</strong> Küçük hac, kâbe ziyareti</li>
+                            <li><strong>Vahiy:</strong> Allah'tan peygambere gelen mesaj</li>
+                            <li><strong>Vacip:</strong> Yapılması zorunlu (farzdan biraz daha az)</li>
+                            <li><strong>Zekât:</strong> Malın belirli oranını verme</li>
+                            <li><strong>Zikir:</strong> Allah'ı anma</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

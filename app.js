@@ -5529,6 +5529,123 @@ const WidgetModule = {
     }
 };
 
+// Encyclopedia Module
+const EncyclopediaModule = {
+    currentCategory: 'all',
+    searchTerm: '',
+
+    init() {
+        this.setupNavigation();
+        this.setupSearch();
+        this.setupCategoryFilter();
+        this.renderContent();
+    },
+
+    setupNavigation() {
+        const encyclopediaCard = document.getElementById('encyclopediaCard');
+        const encyclopediaBackBtn = document.getElementById('encyclopediaBackBtn');
+
+        if (encyclopediaCard) {
+            encyclopediaCard.addEventListener('click', () => {
+                document.querySelector('.more-features').style.display = 'none';
+                document.getElementById('encyclopediaModule').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        if (encyclopediaBackBtn) {
+            encyclopediaBackBtn.addEventListener('click', () => {
+                document.getElementById('encyclopediaModule').style.display = 'none';
+                document.querySelector('.more-features').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    },
+
+    setupSearch() {
+        const searchInput = document.getElementById('encyclopediaSearch');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.searchTerm = e.target.value.toLowerCase();
+                this.renderContent();
+            });
+        }
+    },
+
+    setupCategoryFilter() {
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                // Get category and filter
+                this.currentCategory = btn.getAttribute('data-category');
+                this.renderContent();
+            });
+        });
+    },
+
+    renderContent() {
+        const sections = document.querySelectorAll('.encyclopedia-section');
+
+        sections.forEach(section => {
+            const sectionCategory = section.getAttribute('data-category');
+            let shouldShow = false;
+
+            // Check category filter
+            if (this.currentCategory === 'all') {
+                shouldShow = true;
+            } else if (sectionCategory === this.currentCategory) {
+                shouldShow = true;
+            }
+
+            // Apply search filter if there's a search term
+            if (this.searchTerm && shouldShow) {
+                const sectionText = section.textContent.toLowerCase();
+                shouldShow = sectionText.includes(this.searchTerm);
+            }
+
+            // Show or hide section
+            if (shouldShow) {
+                section.classList.remove('hidden');
+                section.style.display = 'block';
+            } else {
+                section.classList.add('hidden');
+                section.style.display = 'none';
+            }
+        });
+
+        // Update category counts
+        this.updateCategoryCounts();
+    },
+
+    updateCategoryCounts() {
+        const categoryBtns = document.querySelectorAll('.category-btn');
+
+        categoryBtns.forEach(btn => {
+            const category = btn.getAttribute('data-category');
+            const categoryName = btn.querySelector('.category-name');
+
+            if (categoryName && category !== 'all') {
+                const count = this.getSectionCount(category);
+                const text = categoryName.textContent.split(' (')[0]; // Remove old count if exists
+                categoryName.textContent = text;
+            }
+        });
+    },
+
+    getSectionCount(category) {
+        if (category === 'all') {
+            return document.querySelectorAll('.encyclopedia-section').length;
+        }
+        return document.querySelectorAll(`.encyclopedia-section[data-category="${category}"]`).length;
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
@@ -5543,4 +5660,5 @@ document.addEventListener('DOMContentLoaded', () => {
     HadisModule.init();
     CommunityModule.init();
     WidgetModule.init();
+    EncyclopediaModule.init();
 });
