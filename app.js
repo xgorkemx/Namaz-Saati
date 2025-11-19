@@ -5576,11 +5576,13 @@ const EncyclopediaModule = {
     setupNavigation() {
         const encyclopediaCard = document.getElementById('encyclopediaCard');
         const encyclopediaBackBtn = document.getElementById('encyclopediaBackBtn');
+        const encyclopediaModule = document.getElementById('encyclopediaModule');
+        const moreMenu = document.querySelector('.more-menu');
 
         if (encyclopediaCard) {
             encyclopediaCard.addEventListener('click', () => {
-                document.querySelector('.more-features').style.display = 'none';
-                document.getElementById('encyclopediaModule').style.display = 'block';
+                if (moreMenu) moreMenu.style.display = 'none';
+                if (encyclopediaModule) encyclopediaModule.style.display = 'block';
                 this.updateStatistics(); // Update stats when opening
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
@@ -5588,8 +5590,8 @@ const EncyclopediaModule = {
 
         if (encyclopediaBackBtn) {
             encyclopediaBackBtn.addEventListener('click', () => {
-                document.getElementById('encyclopediaModule').style.display = 'none';
-                document.querySelector('.more-features').style.display = 'block';
+                if (encyclopediaModule) encyclopediaModule.style.display = 'none';
+                if (moreMenu) moreMenu.style.display = 'block';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
