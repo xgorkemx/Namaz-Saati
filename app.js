@@ -5789,6 +5789,616 @@ const EncyclopediaModule = {
     }
 };
 
+// ==========================================
+// Daily Verse System
+// ==========================================
+const DailyVerse = {
+    verses: [
+        {
+            arabic: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+            turkish: 'Rahman ve Rahim olan Allah\'ın adıyla.',
+            reference: 'Fatiha Suresi, 1'
+        },
+        {
+            arabic: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
+            turkish: 'Hamd, alemlerin Rabbi Allah\'a mahsustur.',
+            reference: 'Fatiha Suresi, 2'
+        },
+        {
+            arabic: 'إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ',
+            turkish: 'Ancak sana ibadet eder ve ancak senden yardım dileriz.',
+            reference: 'Fatiha Suresi, 5'
+        },
+        {
+            arabic: 'وَقُل رَّبِّ زِدْنِي عِلْمًا',
+            turkish: 'Ve de ki: Rabbim! İlmimi artır.',
+            reference: 'Taha Suresi, 114'
+        },
+        {
+            arabic: 'إِنَّ مَعَ الْعُسْرِ يُسْرًا',
+            turkish: 'Muhakkak ki zorlukla beraber kolaylık vardır.',
+            reference: 'İnşirah Suresi, 6'
+        },
+        {
+            arabic: 'وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ',
+            turkish: 'Kim Allah\'a tevekkül ederse, O ona yeter.',
+            reference: 'Talak Suresi, 3'
+        },
+        {
+            arabic: 'رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً',
+            turkish: 'Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver.',
+            reference: 'Bakara Suresi, 201'
+        },
+        {
+            arabic: 'وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِاللَّهِ',
+            turkish: 'Sabret. Senin sabrın ancak Allah\'ın yardımıyladır.',
+            reference: 'Nahl Suresi, 127'
+        },
+        {
+            arabic: 'فَاذْكُرُونِي أَذْكُرْكُمْ',
+            turkish: 'Beni anın ki, ben de sizi anayım.',
+            reference: 'Bakara Suresi, 152'
+        },
+        {
+            arabic: 'وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ',
+            turkish: 'Allah\'ın rahmetinden ümit kesmeyin.',
+            reference: 'Yusuf Suresi, 87'
+        }
+    ],
+
+    init() {
+        this.showVerse();
+        this.setupRefreshButton();
+    },
+
+    showVerse() {
+        const verse = this.getRandomVerse();
+        const arabicEl = document.getElementById('verseArabicText');
+        const turkishEl = document.getElementById('verseTurkishText');
+        const referenceEl = document.getElementById('verseReference');
+
+        if (arabicEl) arabicEl.textContent = verse.arabic;
+        if (turkishEl) turkishEl.textContent = verse.turkish;
+        if (referenceEl) referenceEl.textContent = verse.reference;
+    },
+
+    getRandomVerse() {
+        const randomIndex = Math.floor(Math.random() * this.verses.length);
+        return this.verses[randomIndex];
+    },
+
+    setupRefreshButton() {
+        const refreshBtn = document.getElementById('refreshVerse');
+        refreshBtn?.addEventListener('click', () => {
+            this.showVerse();
+            refreshBtn.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                refreshBtn.style.transform = 'rotate(0deg)';
+            }, 300);
+        });
+    }
+};
+
+// ==========================================
+// Adhan Player System
+// ==========================================
+const AdhanPlayer = {
+    audio: null,
+    isPlaying: false,
+    autoPlayEnabled: false,
+
+    adhanSources: {
+        mecca: 'https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3',
+        medina: 'https://cdn.islamic.network/quran/audio/128/ar.abdurrahmaansudais/1.mp3',
+        istanbul: 'https://cdn.islamic.network/quran/audio/128/ar.husary/1.mp3',
+        egypt: 'https://cdn.islamic.network/quran/audio/128/ar.minshawi/1.mp3'
+    },
+
+    init() {
+        this.audio = document.getElementById('adhanAudio');
+        this.loadSettings();
+        this.setupEventListeners();
+    },
+
+    loadSettings() {
+        const saved = localStorage.getItem('adhanSettings');
+        if (saved) {
+            const settings = JSON.parse(saved);
+            this.autoPlayEnabled = settings.autoPlayEnabled || false;
+            const checkbox = document.getElementById('autoAdhanEnabled');
+            if (checkbox) checkbox.checked = this.autoPlayEnabled;
+        }
+    },
+
+    saveSettings() {
+        localStorage.setItem('adhanSettings', JSON.stringify({
+            autoPlayEnabled: this.autoPlayEnabled
+        }));
+    },
+
+    setupEventListeners() {
+        const playBtn = document.getElementById('playAdhanBtn');
+        const stopBtn = document.getElementById('stopAdhanBtn');
+        const adhanSelect = document.getElementById('adhanSelect');
+        const volumeSlider = document.getElementById('adhanVolume');
+        const autoCheckbox = document.getElementById('autoAdhanEnabled');
+        const progressBar = document.getElementById('adhanProgressBar');
+
+        playBtn?.addEventListener('click', () => this.togglePlay());
+        stopBtn?.addEventListener('click', () => this.stop());
+
+        adhanSelect?.addEventListener('change', (e) => {
+            if (this.isPlaying) {
+                this.stop();
+                this.play(e.target.value);
+            }
+        });
+
+        volumeSlider?.addEventListener('input', (e) => {
+            if (this.audio) {
+                this.audio.volume = e.target.value / 100;
+            }
+        });
+
+        autoCheckbox?.addEventListener('change', (e) => {
+            this.autoPlayEnabled = e.target.checked;
+            this.saveSettings();
+        });
+
+        progressBar?.addEventListener('click', (e) => {
+            if (this.audio && this.audio.duration) {
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                this.audio.currentTime = percent * this.audio.duration;
+            }
+        });
+
+        if (this.audio) {
+            this.audio.addEventListener('timeupdate', () => this.updateProgress());
+            this.audio.addEventListener('loadedmetadata', () => this.updateDuration());
+            this.audio.addEventListener('ended', () => this.onEnded());
+        }
+    },
+
+    togglePlay() {
+        if (this.isPlaying) {
+            this.pause();
+        } else {
+            const adhanSelect = document.getElementById('adhanSelect');
+            this.play(adhanSelect?.value || 'mecca');
+        }
+    },
+
+    play(type) {
+        if (!this.audio) return;
+
+        // Use a sample audio for demo (replace with actual adhan URLs)
+        this.audio.src = this.adhanSources[type] || this.adhanSources.mecca;
+        this.audio.play().then(() => {
+            this.isPlaying = true;
+            this.updatePlayButton(true);
+        }).catch(err => {
+            console.error('Audio play failed:', err);
+        });
+    },
+
+    pause() {
+        if (this.audio) {
+            this.audio.pause();
+            this.isPlaying = false;
+            this.updatePlayButton(false);
+        }
+    },
+
+    stop() {
+        if (this.audio) {
+            this.audio.pause();
+            this.audio.currentTime = 0;
+            this.isPlaying = false;
+            this.updatePlayButton(false);
+            this.updateProgress();
+        }
+    },
+
+    updatePlayButton(playing) {
+        const playIcon = document.querySelector('#playAdhanBtn .play-icon');
+        const pauseIcon = document.querySelector('#playAdhanBtn .pause-icon');
+
+        if (playIcon && pauseIcon) {
+            playIcon.style.display = playing ? 'none' : 'block';
+            pauseIcon.style.display = playing ? 'block' : 'none';
+        }
+    },
+
+    updateProgress() {
+        if (!this.audio) return;
+
+        const progress = (this.audio.currentTime / this.audio.duration) * 100 || 0;
+        const progressFill = document.getElementById('adhanProgressFill');
+        const currentTimeEl = document.getElementById('adhanCurrentTime');
+
+        if (progressFill) progressFill.style.width = `${progress}%`;
+        if (currentTimeEl) currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
+    },
+
+    updateDuration() {
+        const durationEl = document.getElementById('adhanDuration');
+        if (durationEl && this.audio) {
+            durationEl.textContent = this.formatTime(this.audio.duration);
+        }
+    },
+
+    onEnded() {
+        this.isPlaying = false;
+        this.updatePlayButton(false);
+    },
+
+    formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${String(secs).padStart(2, '0')}`;
+    },
+
+    // Called when prayer time arrives
+    playAutoAdhan() {
+        if (this.autoPlayEnabled) {
+            const adhanSelect = document.getElementById('adhanSelect');
+            this.play(adhanSelect?.value || 'mecca');
+        }
+    }
+};
+
+// ==========================================
+// Quran Audio Player System
+// ==========================================
+const QuranAudioPlayer = {
+    audio: null,
+    currentSurah: null,
+    currentVerse: 1,
+    totalVerses: 0,
+    isPlaying: false,
+    qari: 'ar.alafasy',
+
+    init() {
+        this.audio = document.getElementById('quranAudio');
+        this.setupEventListeners();
+    },
+
+    setupEventListeners() {
+        const playBtn = document.getElementById('quranPlayBtn');
+        const prevBtn = document.getElementById('prevVerseBtn');
+        const nextBtn = document.getElementById('nextVerseBtn');
+        const qariSelect = document.getElementById('qariSelect');
+        const progressBar = document.getElementById('quranAudioProgressBar');
+
+        playBtn?.addEventListener('click', () => this.togglePlay());
+        prevBtn?.addEventListener('click', () => this.prevVerse());
+        nextBtn?.addEventListener('click', () => this.nextVerse());
+
+        qariSelect?.addEventListener('change', (e) => {
+            this.qari = e.target.value;
+            if (this.currentSurah) {
+                this.loadVerse(this.currentSurah, this.currentVerse);
+            }
+        });
+
+        progressBar?.addEventListener('click', (e) => {
+            if (this.audio && this.audio.duration) {
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                this.audio.currentTime = percent * this.audio.duration;
+            }
+        });
+
+        if (this.audio) {
+            this.audio.addEventListener('timeupdate', () => this.updateProgress());
+            this.audio.addEventListener('loadedmetadata', () => this.updateDuration());
+            this.audio.addEventListener('ended', () => this.onEnded());
+        }
+    },
+
+    loadSurah(surahNumber, totalVerses) {
+        this.currentSurah = surahNumber;
+        this.totalVerses = totalVerses;
+        this.currentVerse = 1;
+
+        // Show audio player
+        const player = document.getElementById('quranAudioPlayer');
+        if (player) player.style.display = 'block';
+
+        this.updateVerseInfo();
+        this.loadVerse(surahNumber, 1);
+    },
+
+    loadVerse(surah, verse) {
+        if (!this.audio) return;
+
+        // Calculate verse key for API
+        const verseKey = (surah - 1) * 286 + verse; // Approximate calculation
+        const audioUrl = `https://cdn.islamic.network/quran/audio/128/${this.qari}/${verseKey}.mp3`;
+
+        this.audio.src = audioUrl;
+        this.updateVerseInfo();
+    },
+
+    togglePlay() {
+        if (this.isPlaying) {
+            this.pause();
+        } else {
+            this.play();
+        }
+    },
+
+    play() {
+        if (!this.audio || !this.currentSurah) return;
+
+        this.audio.play().then(() => {
+            this.isPlaying = true;
+            this.updatePlayButton(true);
+        }).catch(err => {
+            console.error('Quran audio play failed:', err);
+        });
+    },
+
+    pause() {
+        if (this.audio) {
+            this.audio.pause();
+            this.isPlaying = false;
+            this.updatePlayButton(false);
+        }
+    },
+
+    prevVerse() {
+        if (this.currentVerse > 1) {
+            this.currentVerse--;
+            this.loadVerse(this.currentSurah, this.currentVerse);
+            if (this.isPlaying) this.play();
+        }
+    },
+
+    nextVerse() {
+        if (this.currentVerse < this.totalVerses) {
+            this.currentVerse++;
+            this.loadVerse(this.currentSurah, this.currentVerse);
+            if (this.isPlaying) this.play();
+        }
+    },
+
+    updatePlayButton(playing) {
+        const playIcon = document.querySelector('#quranPlayBtn .play-icon');
+        const pauseIcon = document.querySelector('#quranPlayBtn .pause-icon');
+
+        if (playIcon && pauseIcon) {
+            playIcon.style.display = playing ? 'none' : 'block';
+            pauseIcon.style.display = playing ? 'block' : 'none';
+        }
+    },
+
+    updateVerseInfo() {
+        const infoEl = document.getElementById('currentVerseInfo');
+        if (infoEl) {
+            infoEl.textContent = `Ayet ${this.currentVerse}`;
+        }
+    },
+
+    updateProgress() {
+        if (!this.audio) return;
+
+        const progress = (this.audio.currentTime / this.audio.duration) * 100 || 0;
+        const progressFill = document.getElementById('quranAudioProgressFill');
+        const currentTimeEl = document.getElementById('quranAudioCurrentTime');
+
+        if (progressFill) progressFill.style.width = `${progress}%`;
+        if (currentTimeEl) currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
+    },
+
+    updateDuration() {
+        const durationEl = document.getElementById('quranAudioDuration');
+        if (durationEl && this.audio) {
+            durationEl.textContent = this.formatTime(this.audio.duration);
+        }
+    },
+
+    onEnded() {
+        // Auto-play next verse
+        if (this.currentVerse < this.totalVerses) {
+            this.nextVerse();
+            this.play();
+        } else {
+            this.isPlaying = false;
+            this.updatePlayButton(false);
+        }
+    },
+
+    formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${String(secs).padStart(2, '0')}`;
+    }
+};
+
+// ==========================================
+// Namaz Rehberi (Prayer Guide) System
+// ==========================================
+const NamazRehberi = {
+    currentStep: 0,
+    currentNamazType: 'sabah',
+
+    namazTypes: {
+        sabah: { name: 'Sabah Namazı', rekats: 2, steps: 8 },
+        ogle: { name: 'Öğle Namazı', rekats: 4, steps: 12 },
+        ikindi: { name: 'İkindi Namazı', rekats: 4, steps: 12 },
+        aksam: { name: 'Akşam Namazı', rekats: 3, steps: 10 },
+        yatsi: { name: 'Yatsı Namazı', rekats: 4, steps: 12 }
+    },
+
+    steps: [
+        {
+            title: 'Niyet',
+            description: 'Kıbleye dönerek ayakta durun ve namaz kılmaya niyet edin.',
+            arabic: '',
+            turkish: 'Niyet ettim Allah rızası için sabah namazının farzını kılmaya.',
+            animation: 'standing'
+        },
+        {
+            title: 'İftitah Tekbiri',
+            description: 'Ellerinizi kulaklarınız hizasına kaldırarak "Allahu Ekber" deyin.',
+            arabic: 'اللهُ أَكْبَرُ',
+            turkish: 'Allah en büyüktür.',
+            animation: 'standing'
+        },
+        {
+            title: 'Kıyam - Sübhaneke',
+            description: 'Ellerinizi göbek altında bağlayın ve Sübhaneke duasını okuyun.',
+            arabic: 'سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلَا إِلَهَ غَيْرُكَ',
+            turkish: 'Allah\'ım! Sen eksik sıfatlardan pak ve uzaksın. Seni daima böyle pak sıfatlarla anarım. Senin adın mübarektir. Azametin çok yücedir. Senden başka ilah yoktur.',
+            animation: 'standing'
+        },
+        {
+            title: 'Kıyam - Fatiha',
+            description: 'Euzü-Besmele çekerek Fatiha Suresi\'ni okuyun.',
+            arabic: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ۝ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
+            turkish: 'Rahman ve Rahim olan Allah\'ın adıyla. Hamd, alemlerin Rabbi Allah\'a mahsustur...',
+            animation: 'standing'
+        },
+        {
+            title: 'Kıyam - Zamm-ı Sure',
+            description: 'Kur\'an\'dan kısa bir sure veya birkaç ayet okuyun.',
+            arabic: 'قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ',
+            turkish: 'De ki: O Allah birdir. Allah Samed\'dir (her şey O\'na muhtaçtır).',
+            animation: 'standing'
+        },
+        {
+            title: 'Rükû',
+            description: '"Allahu Ekber" diyerek eğilin, ellerinizi dizlerinize koyun.',
+            arabic: 'سُبْحَانَ رَبِّيَ الْعَظِيمِ',
+            turkish: 'Yüce Rabbimi tesbih ederim. (3 kere)',
+            animation: 'bowing'
+        },
+        {
+            title: 'Secde',
+            description: '"Allahu Ekber" diyerek secdeye gidin.',
+            arabic: 'سُبْحَانَ رَبِّيَ الْأَعْلَى',
+            turkish: 'En yüce Rabbimi tesbih ederim. (3 kere)',
+            animation: 'prostrating'
+        },
+        {
+            title: 'Tahiyyat',
+            description: 'Oturarak Tahiyyat duasını okuyun.',
+            arabic: 'التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ',
+            turkish: 'Bütün tahiyyeler (selamlar), salavat ve tayyibat (güzel sözler) Allah içindir.',
+            animation: 'sitting'
+        }
+    ],
+
+    init() {
+        this.setupEventListeners();
+    },
+
+    setupEventListeners() {
+        const namazRehberiCard = document.getElementById('namazRehberiCard');
+        const closeBtn = document.getElementById('closeNamazRehberiModal');
+        const modal = document.getElementById('namazRehberiModal');
+        const prevBtn = document.getElementById('prevStepBtn');
+        const nextBtn = document.getElementById('nextStepBtn');
+        const namazTypeSelect = document.getElementById('namazTypeSelect');
+
+        namazRehberiCard?.addEventListener('click', () => this.openModal());
+
+        closeBtn?.addEventListener('click', () => this.closeModal());
+
+        modal?.addEventListener('click', (e) => {
+            if (e.target === modal) this.closeModal();
+        });
+
+        prevBtn?.addEventListener('click', () => this.prevStep());
+        nextBtn?.addEventListener('click', () => this.nextStep());
+
+        namazTypeSelect?.addEventListener('change', (e) => {
+            this.currentNamazType = e.target.value;
+            this.currentStep = 0;
+            this.updateDisplay();
+        });
+    },
+
+    openModal() {
+        const modal = document.getElementById('namazRehberiModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            this.currentStep = 0;
+            this.updateDisplay();
+        }
+    },
+
+    closeModal() {
+        const modal = document.getElementById('namazRehberiModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    },
+
+    prevStep() {
+        if (this.currentStep > 0) {
+            this.currentStep--;
+            this.updateDisplay();
+        }
+    },
+
+    nextStep() {
+        if (this.currentStep < this.steps.length - 1) {
+            this.currentStep++;
+            this.updateDisplay();
+        }
+    },
+
+    updateDisplay() {
+        const step = this.steps[this.currentStep];
+        const totalSteps = this.steps.length;
+
+        // Update step number
+        document.getElementById('currentStepNumber').textContent = this.currentStep + 1;
+        document.getElementById('totalSteps').textContent = `/ ${totalSteps}`;
+
+        // Update content
+        document.getElementById('stepTitle').textContent = step.title;
+        document.getElementById('stepDescription').textContent = step.description;
+
+        const arabicEl = document.getElementById('stepArabic');
+        const turkishEl = document.getElementById('stepTurkish');
+
+        if (step.arabic) {
+            arabicEl.textContent = step.arabic;
+            arabicEl.style.display = 'block';
+        } else {
+            arabicEl.style.display = 'none';
+        }
+
+        turkishEl.textContent = step.turkish;
+
+        // Update animation
+        const animationEl = document.getElementById('stepAnimation');
+        animationEl.className = `step-animation ${step.animation}`;
+
+        // Update navigation buttons
+        document.getElementById('prevStepBtn').disabled = this.currentStep === 0;
+
+        const nextBtn = document.getElementById('nextStepBtn');
+        if (this.currentStep === totalSteps - 1) {
+            nextBtn.innerHTML = `Tamamla <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+        } else {
+            nextBtn.innerHTML = `Sonraki <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
+        }
+
+        // Update progress bar
+        const progress = ((this.currentStep + 1) / totalSteps) * 100;
+        document.getElementById('namazProgressBar').style.width = `${progress}%`;
+    }
+};
+
 // Initialize More Features
 document.addEventListener('DOMContentLoaded', () => {
     setupMoreFeatures();
@@ -5804,4 +6414,10 @@ document.addEventListener('DOMContentLoaded', () => {
     CommunityModule.init();
     WidgetModule.init();
     EncyclopediaModule.init();
+
+    // New modules
+    DailyVerse.init();
+    AdhanPlayer.init();
+    QuranAudioPlayer.init();
+    NamazRehberi.init();
 });

@@ -102,6 +102,29 @@
                 <button class="change-location-btn" id="changeLocationBtn">Değiştir</button>
             </div>
 
+            <!-- Daily Verse Card -->
+            <div class="verse-card">
+                <div class="verse-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <h3>Günün Ayeti</h3>
+                    <button class="verse-refresh-btn" id="refreshVerse" title="Yeni Ayet">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                            <path d="M21 3v5h-5"></path>
+                            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                            <path d="M3 21v-5h5"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="verse-content" id="verseContent">
+                    <p class="verse-arabic-text" id="verseArabicText"></p>
+                    <p class="verse-turkish-text" id="verseTurkishText"></p>
+                    <p class="verse-reference" id="verseReference"></p>
+                </div>
+            </div>
+
             <!-- Daily Hadith Card -->
             <div class="hadith-card">
                 <div class="hadith-header">
@@ -125,6 +148,65 @@
                     <p class="hadith-text" id="hadithText"></p>
                     <p class="hadith-source" id="hadithSource"></p>
                 </div>
+            </div>
+
+            <!-- Adhan Player Card -->
+            <div class="adhan-player-card">
+                <div class="adhan-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18V5l12-2v13"></path>
+                        <circle cx="6" cy="18" r="3"></circle>
+                        <circle cx="18" cy="16" r="3"></circle>
+                    </svg>
+                    <h3>Ezan Dinle</h3>
+                </div>
+                <div class="adhan-controls">
+                    <select id="adhanSelect" class="adhan-select">
+                        <option value="mecca">Mekke Ezanı</option>
+                        <option value="medina">Medine Ezanı</option>
+                        <option value="istanbul">İstanbul Ezanı</option>
+                        <option value="egypt">Mısır Ezanı</option>
+                    </select>
+                    <div class="adhan-buttons">
+                        <button class="adhan-play-btn" id="playAdhanBtn">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                                <rect x="6" y="4" width="4" height="16"></rect>
+                                <rect x="14" y="4" width="4" height="16"></rect>
+                            </svg>
+                        </button>
+                        <button class="adhan-stop-btn" id="stopAdhanBtn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="6" y="6" width="12" height="12"></rect>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="adhan-progress">
+                    <div class="adhan-progress-bar" id="adhanProgressBar">
+                        <div class="adhan-progress-fill" id="adhanProgressFill"></div>
+                    </div>
+                    <div class="adhan-time">
+                        <span id="adhanCurrentTime">0:00</span>
+                        <span id="adhanDuration">0:00</span>
+                    </div>
+                </div>
+                <div class="adhan-volume">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                    <input type="range" id="adhanVolume" min="0" max="100" value="70">
+                </div>
+                <div class="auto-adhan-toggle">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="autoAdhanEnabled">
+                        <span>Vakit girince otomatik ezan çal</span>
+                    </label>
+                </div>
+                <audio id="adhanAudio" preload="metadata"></audio>
             </div>
 
             <!-- Date Section -->
@@ -245,6 +327,53 @@
                         <select id="surahSelect" class="settings-select">
                             <option value="">Sure seçin...</option>
                         </select>
+                    </div>
+                    <!-- Quran Audio Player -->
+                    <div class="quran-audio-player" id="quranAudioPlayer" style="display: none;">
+                        <div class="qari-selector">
+                            <label>Hafız Seçin:</label>
+                            <select id="qariSelect" class="settings-select">
+                                <option value="ar.alafasy">Mishary Rashid Alafasy</option>
+                                <option value="ar.abdurrahmaansudais">Abdurrahman As-Sudais</option>
+                                <option value="ar.abdulbasitmurattal">Abdul Basit (Murattal)</option>
+                                <option value="ar.husary">Mahmoud Khalil Al-Husary</option>
+                                <option value="ar.minshawi">Mohamed Siddiq El-Minshawi</option>
+                            </select>
+                        </div>
+                        <div class="quran-audio-controls">
+                            <button class="quran-audio-btn" id="quranPlayBtn">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                                    <rect x="6" y="4" width="4" height="16"></rect>
+                                    <rect x="14" y="4" width="4" height="16"></rect>
+                                </svg>
+                            </button>
+                            <div class="quran-audio-progress">
+                                <div class="quran-audio-progress-bar" id="quranAudioProgressBar">
+                                    <div class="quran-audio-progress-fill" id="quranAudioProgressFill"></div>
+                                </div>
+                                <div class="quran-audio-time">
+                                    <span id="quranAudioCurrentTime">0:00</span>
+                                    <span id="quranAudioDuration">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="verse-navigation">
+                            <button class="verse-nav-btn" id="prevVerseBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <span class="current-verse-info" id="currentVerseInfo">Ayet 1</span>
+                            <button class="verse-nav-btn" id="nextVerseBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <audio id="quranAudio" preload="metadata"></audio>
                     </div>
                     <div class="quran-content" id="quranContent">
                         <div class="quran-placeholder">
@@ -630,6 +759,22 @@
             <div class="container">
                 <div class="more-menu">
                     <h2 class="more-title">Daha Fazla Özellikler</h2>
+
+                    <!-- Namaz Rehberi -->
+                    <div class="feature-card" id="namazRehberiCard">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Namaz Kılma Rehberi</h3>
+                            <p>Adım adım namaz kılma kılavuzu</p>
+                        </div>
+                        <svg class="feature-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
 
                     <!-- Ramazan Module -->
                     <div class="feature-card" id="ramazanCard">
@@ -4018,6 +4163,72 @@
                 </button>
                 <div class="cities-list" id="citiesList">
                     <!-- Cities will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Namaz Rehberi Modal -->
+    <div class="modal" id="namazRehberiModal">
+        <div class="modal-content namaz-rehberi-modal">
+            <div class="modal-header">
+                <h2>Namaz Kılma Rehberi</h2>
+                <button class="modal-close" id="closeNamazRehberiModal" aria-label="Kapat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Namaz Türü Seçimi -->
+                <div class="namaz-type-selector">
+                    <label>Namaz Türü:</label>
+                    <select id="namazTypeSelect" class="settings-select">
+                        <option value="sabah">Sabah Namazı (2 Rekat)</option>
+                        <option value="ogle">Öğle Namazı (4 Rekat)</option>
+                        <option value="ikindi">İkindi Namazı (4 Rekat)</option>
+                        <option value="aksam">Akşam Namazı (3 Rekat)</option>
+                        <option value="yatsi">Yatsı Namazı (4 Rekat)</option>
+                    </select>
+                </div>
+
+                <!-- Adım Gösterici -->
+                <div class="namaz-step-indicator">
+                    <span class="step-number" id="currentStepNumber">1</span>
+                    <span class="step-total" id="totalSteps">/ 8</span>
+                </div>
+
+                <!-- Adım İçeriği -->
+                <div class="namaz-step-content">
+                    <div class="step-animation" id="stepAnimation">
+                        <div class="prayer-figure"></div>
+                    </div>
+                    <h3 class="step-title" id="stepTitle">Niyet</h3>
+                    <p class="step-description" id="stepDescription">Kıbleye dönerek ayakta durun ve namaz kılmaya niyet edin.</p>
+                    <div class="step-arabic" id="stepArabic"></div>
+                    <div class="step-turkish" id="stepTurkish"></div>
+                </div>
+
+                <!-- Navigasyon -->
+                <div class="namaz-step-navigation">
+                    <button class="step-nav-btn" id="prevStepBtn" disabled>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Önceki
+                    </button>
+                    <button class="step-nav-btn primary" id="nextStepBtn">
+                        Sonraki
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- İlerleme Çubuğu -->
+                <div class="namaz-progress">
+                    <div class="namaz-progress-bar" id="namazProgressBar"></div>
                 </div>
             </div>
         </div>
