@@ -1057,6 +1057,368 @@
             font-family: inherit;
         }
 
+        /* Ramazan Page */
+        .ramazan-container {
+            padding: 20px;
+        }
+
+        .ramazan-countdown {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .ramazan-countdown h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .ramazan-days {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .imsakiye-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .imsakiye-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .imsakiye-times {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Kandil Page */
+        .kandil-container {
+            padding: 20px;
+        }
+
+        .kandil-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .kandil-date {
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .kandil-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .kandil-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Prayer Tracker */
+        .tracker-container {
+            padding: 20px;
+        }
+
+        .tracker-date {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tracker-grid {
+            display: grid;
+            gap: 10px;
+        }
+
+        .tracker-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tracker-prayer {
+            font-weight: 500;
+        }
+
+        .tracker-status {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tracker-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid var(--text-secondary);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .tracker-btn.completed {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .tracker-btn.missed {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .tracker-stats {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .tracker-stats h4 {
+            margin-bottom: 15px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .stat-item {
+            padding: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Zekat Calculator */
+        .zekat-container {
+            padding: 20px;
+        }
+
+        .zekat-input-group {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .zekat-input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .zekat-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .zekat-result {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .zekat-result h3 {
+            margin-bottom: 10px;
+        }
+
+        .zekat-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .zekat-info {
+            font-size: 0.85rem;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
+        /* Mosque Finder */
+        .mosque-container {
+            padding: 20px;
+        }
+
+        .mosque-map {
+            height: 200px;
+            background: var(--bg-card);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        .mosque-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .mosque-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .mosque-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .mosque-distance {
+            font-size: 0.85rem;
+            color: var(--primary-light);
+            margin-bottom: 5px;
+        }
+
+        .mosque-address {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Guide Pages */
+        .guide-container {
+            padding: 20px;
+        }
+
+        .guide-step {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .guide-step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .guide-step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .guide-step-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .guide-step-content {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .guide-step-arabic {
+            text-align: right;
+            color: var(--gold);
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        /* Friday Reminder */
+        .friday-container {
+            padding: 20px;
+        }
+
+        .friday-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .friday-time {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .friday-checklist {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .friday-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .friday-item:last-child {
+            border-bottom: none;
+        }
+
+        .friday-check {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .friday-check.checked {
+            background: var(--primary);
+        }
+
         /* Responsive */
         @media (max-width: 360px) {
             .current-time {
@@ -1335,6 +1697,78 @@
                         <div class="more-item-info">
                             <h3>İslam Ansiklopedisi</h3>
                             <p>İslami kavramlar ve bilgiler</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('ramazan')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Ramazan Özel</h3>
+                            <p>İmsakiye ve Ramazan bilgileri</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('kandil')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Kandil & Özel Günler</h3>
+                            <p>Dini günler ve kandiller</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('friday')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Cuma Hatırlatıcı</h3>
+                            <p>Cuma namazı hazırlık listesi</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('tracker')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Namaz Takip Defteri</h3>
+                            <p>Günlük namaz takibi</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('abdest')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-hand-holding-water"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Abdest Alma Rehberi</h3>
+                            <p>Adım adım abdest nasıl alınır</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('namazguide')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Namaz Kılma Rehberi</h3>
+                            <p>Adım adım namaz nasıl kılınır</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('zekat')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Zekat Hesaplayıcı</h3>
+                            <p>Zekat miktarınızı hesaplayın</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('mosques')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Yakındaki Camiler</h3>
+                            <p>Çevrenizdeki camileri bulun</p>
                         </div>
                     </div>
                     <div class="more-item" onclick="showPage('settings')">
@@ -1700,6 +2134,660 @@
             </div>
         </div>
 
+        <!-- Ramazan Page -->
+        <div class="page" id="page-ramazan">
+            <header class="header">
+                <h1 class="app-title">Ramazan Özel</h1>
+            </header>
+            <div class="ramazan-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="ramazan-countdown">
+                    <h3>Ramazan'a Kalan Gün</h3>
+                    <div class="ramazan-days" id="ramazan-days">--</div>
+                </div>
+
+                <h3 class="section-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    Ramazan İmsakiyesi
+                </h3>
+
+                <div id="imsakiye-list">
+                    <div class="imsakiye-card">
+                        <div class="imsakiye-header">
+                            <span>1. Gün</span>
+                            <span>11 Mart 2025</span>
+                        </div>
+                        <div class="imsakiye-times">
+                            <div>İmsak: 05:30</div>
+                            <div>İftar: 18:15</div>
+                        </div>
+                    </div>
+                    <div class="imsakiye-card">
+                        <div class="imsakiye-header">
+                            <span>2. Gün</span>
+                            <span>12 Mart 2025</span>
+                        </div>
+                        <div class="imsakiye-times">
+                            <div>İmsak: 05:28</div>
+                            <div>İftar: 18:16</div>
+                        </div>
+                    </div>
+                    <div class="imsakiye-card">
+                        <div class="imsakiye-header">
+                            <span>3. Gün</span>
+                            <span>13 Mart 2025</span>
+                        </div>
+                        <div class="imsakiye-times">
+                            <div>İmsak: 05:26</div>
+                            <div>İftar: 18:18</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hajj-section" style="margin-top: 20px;">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-info-circle"></i>
+                        Ramazan Bilgileri
+                    </div>
+                    <div class="hajj-section-content">
+                        <p><strong>Ramazan Nedir?</strong></p>
+                        <p>Ramazan, Kur'an-ı Kerim'in indirilmeye başlandığı mübarek aydır. Müslümanların bir ay boyunca oruç tuttuğu, ibadetlerini artırdığı özel bir zamandır.</p>
+                        <br>
+                        <p><strong>Oruç Nasıl Tutulur?</strong></p>
+                        <p>İmsak vaktinden iftar vaktine kadar yemek, içmek ve diğer orucu bozan şeylerden sakınılır. Niyet edilir ve sahur yapılır.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kandil Page -->
+        <div class="page" id="page-kandil">
+            <header class="header">
+                <h1 class="app-title">Kandil & Özel Günler</h1>
+            </header>
+            <div class="kandil-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="kandil-card">
+                    <div class="kandil-date">27 Şubat 2025</div>
+                    <div class="kandil-name">Regaib Kandili</div>
+                    <div class="kandil-desc">Recep ayının ilk Cuma gecesi. Hz. Muhammed'in ana rahmine düştüğü gece olarak bilinir. Bolluk ve bereket gecesidir.</div>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-date">14 Mart 2025</div>
+                    <div class="kandil-name">Miraç Kandili</div>
+                    <div class="kandil-desc">Hz. Muhammed'in göğe yükseldiği ve Allah ile görüştüğü gece. Beş vakit namaz bu gece farz kılındı.</div>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-date">28 Mart 2025</div>
+                    <div class="kandil-name">Berat Kandili</div>
+                    <div class="kandil-desc">Şaban ayının 15. gecesi. Bağışlanma ve af gecesi. Bir yıllık kaderin belirlendiği gece olarak bilinir.</div>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-date">26 Nisan 2025</div>
+                    <div class="kandil-name">Kadir Gecesi</div>
+                    <div class="kandil-desc">Kur'an'ın indirilmeye başlandığı mübarek gece. Bin aydan daha hayırlı olan bu gece Ramazan'ın son 10 gününde aranır.</div>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-date">31 Mart 2025</div>
+                    <div class="kandil-name">Ramazan Başlangıcı</div>
+                    <div class="kandil-desc">Kutsal Ramazan ayının ilk günü. Mübarek üç ayların son ayı ve oruç ayı başlar.</div>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-date">30 Nisan 2025</div>
+                    <div class="kandil-name">Ramazan Bayramı</div>
+                    <div class="kandil-desc">Üç gün süren mübarek bayram. Oruç ibadetinin tamamlanması şükrüyle kutlanır.</div>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-date">6 Temmuz 2025</div>
+                    <div class="kandil-name">Kurban Bayramı</div>
+                    <div class="kandil-desc">Dört gün süren mübarek bayram. Hz. İbrahim'in kurban kesme olayını anma ve hac ibadeti ile ilişkilidir.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Friday Reminder Page -->
+        <div class="page" id="page-friday">
+            <header class="header">
+                <h1 class="app-title">Cuma Hatırlatıcı</h1>
+            </header>
+            <div class="friday-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="friday-card">
+                    <h3>Cuma Namazına</h3>
+                    <div class="friday-time" id="friday-time">--:--</div>
+                    <p id="friday-countdown">Kalan süre hesaplanıyor...</p>
+                </div>
+
+                <div class="friday-checklist">
+                    <h4 style="margin-bottom: 15px;">Cuma Hazırlık Listesi</h4>
+                    <div class="friday-item">
+                        <div class="friday-check" onclick="toggleFridayCheck(this)">
+                            <i class="fas fa-check" style="display: none;"></i>
+                        </div>
+                        <span>Gusül abdesti al</span>
+                    </div>
+                    <div class="friday-item">
+                        <div class="friday-check" onclick="toggleFridayCheck(this)">
+                            <i class="fas fa-check" style="display: none;"></i>
+                        </div>
+                        <span>Temiz elbise giy</span>
+                    </div>
+                    <div class="friday-item">
+                        <div class="friday-check" onclick="toggleFridayCheck(this)">
+                            <i class="fas fa-check" style="display: none;"></i>
+                        </div>
+                        <span>Güzel koku sür</span>
+                    </div>
+                    <div class="friday-item">
+                        <div class="friday-check" onclick="toggleFridayCheck(this)">
+                            <i class="fas fa-check" style="display: none;"></i>
+                        </div>
+                        <span>Kehf Suresi oku</span>
+                    </div>
+                    <div class="friday-item">
+                        <div class="friday-check" onclick="toggleFridayCheck(this)">
+                            <i class="fas fa-check" style="display: none;"></i>
+                        </div>
+                        <span>Salavat getir</span>
+                    </div>
+                    <div class="friday-item">
+                        <div class="friday-check" onclick="toggleFridayCheck(this)">
+                            <i class="fas fa-check" style="display: none;"></i>
+                        </div>
+                        <span>Erken camiye git</span>
+                    </div>
+                    <div class="friday-item">
+                        <div class="friday-check" onclick="toggleFridayCheck(this)">
+                            <i class="fas fa-check" style="display: none;"></i>
+                        </div>
+                        <span>Tahiyyat namazı kıl</span>
+                    </div>
+                </div>
+
+                <div class="hajj-section" style="margin-top: 20px;">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-book"></i>
+                        Cuma Fazileti
+                    </div>
+                    <div class="hajj-section-content">
+                        <p>Cuma günü haftanın en hayırlı günüdür. Bu günde bir saat vardır ki, o saatte yapılan dua kabul olur.</p>
+                        <br>
+                        <p><strong>Cuma Namazı:</strong> Cuma günü öğle namazı yerine cemaatle kılınan farz namazdır. Erkekler için cemaate katılmak vaciptir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prayer Tracker Page -->
+        <div class="page" id="page-tracker">
+            <header class="header">
+                <h1 class="app-title">Namaz Takip Defteri</h1>
+            </header>
+            <div class="tracker-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="tracker-date">
+                    <h3 id="tracker-date">Bugün</h3>
+                    <p id="tracker-hijri-date"></p>
+                </div>
+
+                <div class="tracker-grid" id="tracker-grid">
+                    <div class="tracker-item">
+                        <span class="tracker-prayer">Sabah</span>
+                        <div class="tracker-status">
+                            <button class="tracker-btn" onclick="markPrayer(this, 'completed')" title="Kıldım">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="tracker-btn" onclick="markPrayer(this, 'missed')" title="Kaza">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tracker-item">
+                        <span class="tracker-prayer">Öğle</span>
+                        <div class="tracker-status">
+                            <button class="tracker-btn" onclick="markPrayer(this, 'completed')" title="Kıldım">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="tracker-btn" onclick="markPrayer(this, 'missed')" title="Kaza">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tracker-item">
+                        <span class="tracker-prayer">İkindi</span>
+                        <div class="tracker-status">
+                            <button class="tracker-btn" onclick="markPrayer(this, 'completed')" title="Kıldım">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="tracker-btn" onclick="markPrayer(this, 'missed')" title="Kaza">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tracker-item">
+                        <span class="tracker-prayer">Akşam</span>
+                        <div class="tracker-status">
+                            <button class="tracker-btn" onclick="markPrayer(this, 'completed')" title="Kıldım">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="tracker-btn" onclick="markPrayer(this, 'missed')" title="Kaza">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tracker-item">
+                        <span class="tracker-prayer">Yatsı</span>
+                        <div class="tracker-status">
+                            <button class="tracker-btn" onclick="markPrayer(this, 'completed')" title="Kıldım">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="tracker-btn" onclick="markPrayer(this, 'missed')" title="Kaza">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tracker-stats">
+                    <h4>Bu Ay İstatistikler</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="stat-completed">0</div>
+                            <div class="stat-label">Kılınan</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="stat-missed">0</div>
+                            <div class="stat-label">Kaza</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="stat-percent">0%</div>
+                            <div class="stat-label">Başarı</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abdest Guide Page -->
+        <div class="page" id="page-abdest">
+            <header class="header">
+                <h1 class="app-title">Abdest Alma Rehberi</h1>
+            </header>
+            <div class="guide-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">1</div>
+                        <div class="guide-step-title">Niyet</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Abdest almaya niyet ederek başlanır. "Abdest almaya niyet ettim" diye kalben niyet edilir. Besmele çekilir.
+                        <div class="guide-step-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">2</div>
+                        <div class="guide-step-title">Elleri Yıkamak</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Her iki el bileklere kadar üç defa yıkanır. Parmak araları iyice ovuşturulur.
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">3</div>
+                        <div class="guide-step-title">Ağzı Çalkalamak</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Sağ el ile su alınarak ağız üç defa çalkalanır. Misvak kullanılabilir.
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">4</div>
+                        <div class="guide-step-title">Burnu Temizlemek</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Sağ el ile su alınarak buruna çekilir, sol el ile temizlenir. Bu üç defa tekrarlanır.
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">5</div>
+                        <div class="guide-step-title">Yüzü Yıkamak (Farz)</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Alın çıkıntısından çene ucuna, kulaktan kulağa kadar olan bölge üç defa yıkanır. Sakal varsa parmaklar arasından geçirilir.
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">6</div>
+                        <div class="guide-step-title">Kolları Yıkamak (Farz)</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Önce sağ, sonra sol kol dirsekler dahil olmak üzere üç defa yıkanır. Dirsekler iyice ovuşturulur.
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">7</div>
+                        <div class="guide-step-title">Başı Meshetmek (Farz)</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Eller ıslatılarak başın dörtte biri mesh edilir. Kulak içi ve dışı ıslak parmaklarla mesh edilir.
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">8</div>
+                        <div class="guide-step-title">Ayakları Yıkamak (Farz)</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Önce sağ, sonra sol ayak topuklar dahil olmak üzere üç defa yıkanır. Parmak araları iyice temizlenir.
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">9</div>
+                        <div class="guide-step-title">Dua</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Abdest tamamlandıktan sonra şehadet getirilir ve dua edilir.
+                        <div class="guide-step-arabic">أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Namaz Guide Page -->
+        <div class="page" id="page-namazguide">
+            <header class="header">
+                <h1 class="app-title">Namaz Kılma Rehberi</h1>
+            </header>
+            <div class="guide-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">1</div>
+                        <div class="guide-step-title">Hazırlık</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Abdestli olunması, kıbleye dönülmesi, avret yerlerinin örtülmesi ve temiz bir yerde namaz kılınması gerekir.
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">2</div>
+                        <div class="guide-step-title">Niyet ve Tekbir</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Hangi namazı kılacağınıza niyet edin. Eller kulaklara kaldırılarak "Allahu Ekber" denir (İftitah tekbiri).
+                        <div class="guide-step-arabic">اَللّٰهُ اَكْبَرُ</div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">3</div>
+                        <div class="guide-step-title">Subhaneke</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Eller göbek altında bağlanır (sağ elin sol bilek üzerine). Subhaneke duası okunur.
+                        <div class="guide-step-arabic">سُبْحَانَكَ اللّٰهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ</div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">4</div>
+                        <div class="guide-step-title">Euzü Besmele</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Euzübillah ve Besmele çekilir.
+                        <div class="guide-step-arabic">أَعُوذُ بِاللّٰهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</div>
+                        <div class="guide-step-arabic">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">5</div>
+                        <div class="guide-step-title">Fatiha Suresi</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Fatiha suresi okunur (her rekatta farz).
+                        <div class="guide-step-arabic">اَلْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِينَ</div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">6</div>
+                        <div class="guide-step-title">Sure veya Ayetler</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Fatiha'dan sonra bir sure veya en az üç ayet okunur (ilk iki rekatta).
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">7</div>
+                        <div class="guide-step-title">Rükû</div>
+                    </div>
+                    <div class="guide-step-content">
+                        "Allahu Ekber" diyerek rükûya eğilinir. Eller dizlere konur. "Sübhane Rabbiyel Azîm" en az 3 defa söylenir.
+                        <div class="guide-step-arabic">سُبْحَانَ رَبِّيَ الْعَظِيمِ</div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">8</div>
+                        <div class="guide-step-title">Kıyam</div>
+                    </div>
+                    <div class="guide-step-content">
+                        "Semiallahu limen hamideh" diyerek doğrulunur. "Rabbena lekel hamd" denir.
+                        <div class="guide-step-arabic">رَبَّنَا لَكَ الْحَمْدُ</div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">9</div>
+                        <div class="guide-step-title">Secde</div>
+                    </div>
+                    <div class="guide-step-content">
+                        "Allahu Ekber" diyerek secdeye varılır. Alın, burun, eller, dizler ve ayak parmakları yere değer. "Sübhane Rabbiyel A'la" en az 3 defa söylenir. İki secde yapılır.
+                        <div class="guide-step-arabic">سُبْحَانَ رَبِّيَ الْاَعْلٰى</div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">10</div>
+                        <div class="guide-step-title">İkinci Rekat</div>
+                    </div>
+                    <div class="guide-step-content">
+                        "Allahu Ekber" diyerek kalkılır ve ikinci rekat için aynı işlemler tekrar edilir (Fatiha, sure, rükû, secde).
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">11</div>
+                        <div class="guide-step-title">Ka'de (Oturuş)</div>
+                    </div>
+                    <div class="guide-step-content">
+                        İkinci secdeden sonra oturulur. Ettehiyyatü okunur.
+                        <div class="guide-step-arabic">اَلتَّحِيَّاتُ لِلّٰهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ</div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-header">
+                        <div class="guide-step-num">12</div>
+                        <div class="guide-step-title">Salavat ve Selam</div>
+                    </div>
+                    <div class="guide-step-content">
+                        Son oturuşta Allahumme Barik ve Rabenna duaları okunur. Sağa ve sola selam verilerek namaz tamamlanır.
+                        <div class="guide-step-arabic">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zekat Calculator Page -->
+        <div class="page" id="page-zekat">
+            <header class="header">
+                <h1 class="app-title">Zekat Hesaplayıcı</h1>
+            </header>
+            <div class="zekat-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="zekat-input-group">
+                    <label>Nakit Para (TL)</label>
+                    <input type="number" class="zekat-input" id="zekat-cash" placeholder="0" oninput="calculateZekat()">
+                </div>
+
+                <div class="zekat-input-group">
+                    <label>Altın (gram)</label>
+                    <input type="number" class="zekat-input" id="zekat-gold" placeholder="0" oninput="calculateZekat()">
+                </div>
+
+                <div class="zekat-input-group">
+                    <label>Gümüş (gram)</label>
+                    <input type="number" class="zekat-input" id="zekat-silver" placeholder="0" oninput="calculateZekat()">
+                </div>
+
+                <div class="zekat-input-group">
+                    <label>Diğer Varlıklar (TL)</label>
+                    <input type="number" class="zekat-input" id="zekat-other" placeholder="0" oninput="calculateZekat()">
+                </div>
+
+                <div class="zekat-result">
+                    <h3>Verilecek Zekat</h3>
+                    <div class="zekat-amount" id="zekat-result">0 ₺</div>
+                    <div class="zekat-info">
+                        Toplam Varlık: <span id="zekat-total">0 ₺</span>
+                        <br>
+                        Nisap: 85 gram altın değeri (yaklaşık 50.000 ₺)
+                        <br>
+                        Zekat Oranı: %2.5
+                    </div>
+                </div>
+
+                <div class="hajj-section" style="margin-top: 20px;">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-info-circle"></i>
+                        Zekat Bilgileri
+                    </div>
+                    <div class="hajj-section-content">
+                        <p><strong>Zekat Nedir?</strong></p>
+                        <p>Zekat, belirli bir miktara (nisab) ulaşan ve bir yıl üzerinden geçen malın %2.5'inin fakirlere verilmesidir.</p>
+                        <br>
+                        <p><strong>Nisap Nedir?</strong></p>
+                        <p>Zekat vermek için sahip olunması gereken asgari mal miktarıdır. 85 gram altın veya 595 gram gümüş değeri nisaptır.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mosques Finder Page -->
+        <div class="page" id="page-mosques">
+            <header class="header">
+                <h1 class="app-title">Yakındaki Camiler</h1>
+            </header>
+            <div class="mosque-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="mosque-map">
+                    <div style="text-align: center;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                        <p>Konumunuza göre camiler gösterilecek</p>
+                        <button onclick="findNearbyMosques()" style="margin-top: 10px; padding: 10px 20px; background: var(--primary); border: none; border-radius: 8px; color: white; cursor: pointer;">
+                            <i class="fas fa-location-crosshairs"></i> Konumu Bul
+                        </button>
+                    </div>
+                </div>
+
+                <h3 class="section-title">
+                    <i class="fas fa-mosque"></i>
+                    Yakınındaki Camiler
+                </h3>
+
+                <div class="mosque-list" id="mosque-list">
+                    <div class="mosque-item">
+                        <div class="mosque-name">Sultanahmet Camii</div>
+                        <div class="mosque-distance">
+                            <i class="fas fa-location-arrow"></i> 1.2 km
+                        </div>
+                        <div class="mosque-address">Sultanahmet Mah., Fatih / İstanbul</div>
+                    </div>
+                    <div class="mosque-item">
+                        <div class="mosque-name">Süleymaniye Camii</div>
+                        <div class="mosque-distance">
+                            <i class="fas fa-location-arrow"></i> 2.5 km
+                        </div>
+                        <div class="mosque-address">Süleymaniye Mah., Fatih / İstanbul</div>
+                    </div>
+                    <div class="mosque-item">
+                        <div class="mosque-name">Fatih Camii</div>
+                        <div class="mosque-distance">
+                            <i class="fas fa-location-arrow"></i> 3.1 km
+                        </div>
+                        <div class="mosque-address">Fatih Mah., Fatih / İstanbul</div>
+                    </div>
+                    <div class="mosque-item">
+                        <div class="mosque-name">Eyüp Sultan Camii</div>
+                        <div class="mosque-distance">
+                            <i class="fas fa-location-arrow"></i> 4.8 km
+                        </div>
+                        <div class="mosque-address">Eyüp Mah., Eyüpsultan / İstanbul</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
             <div class="nav-item active" onclick="showPage('home')">
@@ -1963,7 +3051,7 @@
             const navIndex = navPages.indexOf(pageName);
             if (navIndex !== -1) {
                 document.querySelectorAll('.nav-item')[navIndex].classList.add('active');
-            } else if (['hajj', 'hadith', 'widget', 'encyclopedia', 'settings'].includes(pageName)) {
+            } else if (['hajj', 'hadith', 'widget', 'encyclopedia', 'settings', 'ramazan', 'kandil', 'friday', 'tracker', 'abdest', 'namazguide', 'zekat', 'mosques'].includes(pageName)) {
                 // These are sub-pages of "more"
                 document.querySelectorAll('.nav-item')[4].classList.add('active');
             }
@@ -1972,6 +3060,188 @@
                 initCompass();
             } else if (pageName === 'calendar') {
                 renderCalendar();
+            } else if (pageName === 'ramazan') {
+                updateRamazanCountdown();
+            } else if (pageName === 'friday') {
+                updateFridayTime();
+            } else if (pageName === 'tracker') {
+                loadTrackerData();
+            }
+        }
+
+        // Ramazan Functions
+        function updateRamazanCountdown() {
+            const ramazanDate = new Date('2025-03-31');
+            const now = new Date();
+            const diff = ramazanDate - now;
+            const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('ramazan-days').textContent = days > 0 ? days : 'Başladı';
+        }
+
+        // Friday Functions
+        function updateFridayTime() {
+            const now = new Date();
+            const dayOfWeek = now.getDay();
+
+            if (dayOfWeek === 5) { // Friday
+                const fridayTime = state.prayerTimes.dhuhr || '12:30';
+                document.getElementById('friday-time').textContent = fridayTime;
+
+                const [h, m] = fridayTime.split(':').map(Number);
+                const target = new Date(now);
+                target.setHours(h, m, 0, 0);
+
+                if (target > now) {
+                    const diff = target - now;
+                    const hours = Math.floor(diff / 3600000);
+                    const mins = Math.floor((diff % 3600000) / 60000);
+                    document.getElementById('friday-countdown').textContent =
+                        `${hours} saat ${mins} dakika kaldı`;
+                } else {
+                    document.getElementById('friday-countdown').textContent = 'Cuma namazı vakti geçti';
+                }
+            } else {
+                const daysUntilFriday = (5 - dayOfWeek + 7) % 7 || 7;
+                document.getElementById('friday-countdown').textContent =
+                    `Cumaya ${daysUntilFriday} gün kaldı`;
+            }
+        }
+
+        function toggleFridayCheck(el) {
+            el.classList.toggle('checked');
+            const icon = el.querySelector('i');
+            icon.style.display = el.classList.contains('checked') ? 'block' : 'none';
+        }
+
+        // Prayer Tracker Functions
+        function loadTrackerData() {
+            const today = new Date().toDateString();
+            const data = JSON.parse(localStorage.getItem('prayerTracker') || '{}');
+            const todayData = data[today] || {};
+
+            document.getElementById('tracker-date').textContent =
+                new Date().toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long' });
+            document.getElementById('tracker-hijri-date').textContent = toHijri(new Date());
+
+            // Update UI based on saved data
+            const prayers = ['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'];
+            prayers.forEach((prayer, index) => {
+                const item = document.querySelectorAll('.tracker-item')[index];
+                const buttons = item.querySelectorAll('.tracker-btn');
+
+                if (todayData[prayer] === 'completed') {
+                    buttons[0].classList.add('completed');
+                    buttons[1].classList.remove('missed');
+                } else if (todayData[prayer] === 'missed') {
+                    buttons[0].classList.remove('completed');
+                    buttons[1].classList.add('missed');
+                } else {
+                    buttons[0].classList.remove('completed');
+                    buttons[1].classList.remove('missed');
+                }
+            });
+
+            updateTrackerStats();
+        }
+
+        function markPrayer(btn, status) {
+            const item = btn.closest('.tracker-item');
+            const prayerName = item.querySelector('.tracker-prayer').textContent.toLowerCase()
+                .replace('ö', 'o').replace('ı', 'i').replace('ş', 's');
+            const buttons = item.querySelectorAll('.tracker-btn');
+
+            // Toggle or set status
+            if (btn.classList.contains(status)) {
+                // Unmark
+                buttons.forEach(b => b.classList.remove('completed', 'missed'));
+                savePrayerStatus(prayerName, null);
+            } else {
+                // Mark
+                buttons.forEach(b => b.classList.remove('completed', 'missed'));
+                btn.classList.add(status);
+                savePrayerStatus(prayerName, status);
+            }
+
+            updateTrackerStats();
+        }
+
+        function savePrayerStatus(prayer, status) {
+            const today = new Date().toDateString();
+            const data = JSON.parse(localStorage.getItem('prayerTracker') || '{}');
+
+            if (!data[today]) data[today] = {};
+
+            if (status) {
+                data[today][prayer] = status;
+            } else {
+                delete data[today][prayer];
+            }
+
+            localStorage.setItem('prayerTracker', JSON.stringify(data));
+        }
+
+        function updateTrackerStats() {
+            const now = new Date();
+            const month = now.getMonth();
+            const year = now.getFullYear();
+            const data = JSON.parse(localStorage.getItem('prayerTracker') || '{}');
+
+            let completed = 0;
+            let missed = 0;
+
+            Object.keys(data).forEach(dateStr => {
+                const date = new Date(dateStr);
+                if (date.getMonth() === month && date.getFullYear() === year) {
+                    const dayData = data[dateStr];
+                    Object.values(dayData).forEach(status => {
+                        if (status === 'completed') completed++;
+                        else if (status === 'missed') missed++;
+                    });
+                }
+            });
+
+            const total = completed + missed;
+            const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+            document.getElementById('stat-completed').textContent = completed;
+            document.getElementById('stat-missed').textContent = missed;
+            document.getElementById('stat-percent').textContent = percent + '%';
+        }
+
+        // Zekat Calculator
+        function calculateZekat() {
+            const cash = parseFloat(document.getElementById('zekat-cash').value) || 0;
+            const gold = parseFloat(document.getElementById('zekat-gold').value) || 0;
+            const silver = parseFloat(document.getElementById('zekat-silver').value) || 0;
+            const other = parseFloat(document.getElementById('zekat-other').value) || 0;
+
+            // Current prices (approximate)
+            const goldPrice = 2500; // TL per gram
+            const silverPrice = 35; // TL per gram
+
+            const goldValue = gold * goldPrice;
+            const silverValue = silver * silverPrice;
+            const total = cash + goldValue + silverValue + other;
+
+            const zekat = total * 0.025;
+
+            document.getElementById('zekat-total').textContent = total.toLocaleString('tr-TR') + ' ₺';
+            document.getElementById('zekat-result').textContent = zekat.toLocaleString('tr-TR') + ' ₺';
+        }
+
+        // Mosques Finder
+        function findNearbyMosques() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        alert(`Konumunuz: ${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)}\n\nBu özellik geliştirilme aşamasındadır.`);
+                    },
+                    () => {
+                        alert('Konum izni verilmedi.');
+                    }
+                );
+            } else {
+                alert('Tarayıcınız konum servislerini desteklemiyor.');
             }
         }
 
