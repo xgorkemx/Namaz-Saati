@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a5f4a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Namaz Saati Pro</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a5f4a;
+            --primary-light: #2d8f6f;
+            --primary-dark: #0d3d2e;
+            --secondary: #f4a261;
+            --accent: #e76f51;
+            --bg-dark: #0a1628;
+            --bg-card: #132238;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --gold: #ffd700;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a2f4a 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .header-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .header-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .app-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .location-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .date-display {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .gregorian-date {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .hijri-date {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Current Time & Next Prayer */
+        .current-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .current-time {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .next-prayer-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 10px 30px rgba(26, 95, 74, 0.3);
+        }
+
+        .next-prayer-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .next-prayer-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .next-prayer-time {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .countdown {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .countdown-time {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* Prayer Times Grid */
+        .prayer-times-section {
+            padding: 0 20px 20px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prayer-times-grid {
+            display: grid;
+            gap: 10px;
+        }
+
+        .prayer-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .prayer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .prayer-card.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border: none;
+        }
+
+        .prayer-card.passed {
+            opacity: 0.5;
+        }
+
+        .prayer-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .prayer-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .prayer-card.active .prayer-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .prayer-name {
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .prayer-arabic {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        .prayer-time-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            background: var(--bg-card);
+            padding: 10px 20px 20px;
+            display: flex;
+            justify-content: space-around;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .nav-item.active {
+            color: var(--primary-light);
+            background: rgba(45, 143, 111, 0.1);
+        }
+
+        .nav-item i {
+            font-size: 1.3rem;
+        }
+
+        .nav-item span {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            padding-bottom: 100px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Qibla Page */
+        .qibla-container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .compass-wrapper {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 30px auto;
+        }
+
+        .compass {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-card);
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .compass-direction {
+            position: absolute;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .compass-n { top: 10px; left: 50%; transform: translateX(-50%); color: var(--accent); }
+        .compass-s { bottom: 10px; left: 50%; transform: translateX(-50%); }
+        .compass-e { right: 10px; top: 50%; transform: translateY(-50%); }
+        .compass-w { left: 10px; top: 50%; transform: translateY(-50%); }
+
+        .qibla-arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 100px;
+            background: linear-gradient(to top, transparent, var(--gold));
+            transform-origin: bottom center;
+            transform: translate(-50%, -100%);
+            border-radius: 2px;
+        }
+
+        .qibla-arrow::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 15px solid var(--gold);
+        }
+
+        .kaaba-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .qibla-info {
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+
+        .qibla-degree {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 10px 0;
+        }
+
+        /* Settings Page */
+        .settings-container {
+            padding: 20px;
+        }
+
+        .settings-group {
+            background: var(--bg-card);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .settings-group-title {
+            padding: 15px 20px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+
+        .setting-item {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .setting-label i {
+            width: 20px;
+            color: var(--primary-light);
+        }
+
+        .setting-value {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        select {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* Toggle Switch */
+        .toggle {
+            width: 50px;
+            height: 26px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 13px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle.active {
+            background: var(--primary);
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle.active::after {
+            left: 26px;
+        }
+
+        /* Calendar Page */
+        .calendar-container {
+            padding: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .calendar-month {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day-name {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            padding: 10px 0;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            background: rgba(45, 143, 111, 0.2);
+        }
+
+        .calendar-day.today {
+            background: var(--primary);
+        }
+
+        .calendar-day.other-month {
+            opacity: 0.3;
+        }
+
+        .calendar-day .hijri {
+            font-size: 0.6rem;
+            opacity: 0.7;
+        }
+
+        /* Monthly Times Table */
+        .monthly-times {
+            margin-top: 20px;
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .monthly-times-header {
+            display: grid;
+            grid-template-columns: 1fr repeat(6, 1fr);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .monthly-times-row {
+            display: grid;
+            grid-template-columns: 1fr repeat(6, 1fr);
+            padding: 10px;
+            font-size: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .monthly-times-row:last-child {
+            border-bottom: none;
+        }
+
+        .monthly-times-row.today {
+            background: rgba(45, 143, 111, 0.2);
+        }
+
+        /* Tasbeeh Page */
+        .tasbeeh-container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .tasbeeh-counter {
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 30px 0;
+        }
+
+        .tasbeeh-button {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(26, 95, 74, 0.5);
+            transition: all 0.1s ease;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tasbeeh-button:active {
+            transform: scale(0.95);
+        }
+
+        .tasbeeh-presets {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .tasbeeh-preset {
+            background: var(--bg-card);
+            padding: 15px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tasbeeh-preset.active {
+            background: var(--primary);
+        }
+
+        .tasbeeh-preset-name {
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .tasbeeh-preset-arabic {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .tasbeeh-reset {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Loading */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--primary-light);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .city-search {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            margin-bottom: 15px;
+        }
+
+        .city-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .city-item {
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .city-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 360px) {
+            .current-time {
+                font-size: 2.8rem;
+            }
+
+            .prayer-card {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Namaz vakitleri yükleniyor...</div>
+    </div>
+
+    <div class="app-container">
+        <!-- Home Page -->
+        <div class="page active" id="page-home">
+            <header class="header">
+                <div class="header-top">
+                    <div class="header-icon" onclick="showLocationModal()">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h1 class="app-title">Namaz Saati</h1>
+                    <div class="header-icon" onclick="showPage('settings')">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+                <div class="location-display" id="location-display">
+                    <i class="fas fa-location-dot"></i>
+                    <span id="city-name">Konum alınıyor...</span>
+                </div>
+                <div class="date-display">
+                    <div class="gregorian-date" id="gregorian-date"></div>
+                    <div class="hijri-date" id="hijri-date"></div>
+                </div>
+            </header>
+
+            <section class="current-section">
+                <div class="current-time" id="current-time">00:00</div>
+
+                <div class="next-prayer-card">
+                    <div class="next-prayer-label">Sonraki Namaz</div>
+                    <div class="next-prayer-name" id="next-prayer-name">-</div>
+                    <div class="next-prayer-time" id="next-prayer-time">--:--</div>
+                    <div class="countdown">
+                        <div class="countdown-label">Kalan Süre</div>
+                        <div class="countdown-time" id="countdown">--:--:--</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="prayer-times-section">
+                <h2 class="section-title">
+                    <i class="fas fa-mosque"></i>
+                    Günlük Namaz Vakitleri
+                </h2>
+                <div class="prayer-times-grid" id="prayer-times-grid">
+                    <!-- Prayer times will be inserted here -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Qibla Page -->
+        <div class="page" id="page-qibla">
+            <header class="header">
+                <h1 class="app-title">Kıble Pusulası</h1>
+            </header>
+            <div class="qibla-container">
+                <p>Telefonunuzu düz tutun ve Kıble yönünü bulun</p>
+                <div class="compass-wrapper">
+                    <div class="compass" id="compass">
+                        <span class="compass-direction compass-n">K</span>
+                        <span class="compass-direction compass-s">G</span>
+                        <span class="compass-direction compass-e">D</span>
+                        <span class="compass-direction compass-w">B</span>
+                        <div class="qibla-arrow" id="qibla-arrow"></div>
+                        <i class="fas fa-kaaba kaaba-icon"></i>
+                    </div>
+                </div>
+                <div class="qibla-info">
+                    <p>Kıble Açısı</p>
+                    <div class="qibla-degree" id="qibla-degree">--°</div>
+                    <p id="qibla-direction">Kuzeyden saat yönünde</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Page -->
+        <div class="page" id="page-calendar">
+            <header class="header">
+                <h1 class="app-title">Takvim</h1>
+            </header>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <div class="calendar-nav" onclick="changeMonth(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="calendar-month" id="calendar-month">Kasım 2024</div>
+                    <div class="calendar-nav" onclick="changeMonth(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="calendar-grid" id="calendar-grid">
+                    <!-- Calendar will be inserted here -->
+                </div>
+                <div class="monthly-times" id="monthly-times">
+                    <!-- Monthly times will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasbeeh Page -->
+        <div class="page" id="page-tasbeeh">
+            <header class="header">
+                <h1 class="app-title">Tesbih</h1>
+            </header>
+            <div class="tasbeeh-container">
+                <div class="tasbeeh-counter" id="tasbeeh-counter">0</div>
+                <button class="tasbeeh-button" onclick="incrementTasbeeh()">
+                    <i class="fas fa-hand-pointer"></i>
+                </button>
+                <div class="tasbeeh-presets">
+                    <div class="tasbeeh-preset active" onclick="setTasbeehPreset(this, 'Sübhanallah', 33)">
+                        <div class="tasbeeh-preset-name">33</div>
+                        <div class="tasbeeh-preset-arabic">سبحان الله</div>
+                    </div>
+                    <div class="tasbeeh-preset" onclick="setTasbeehPreset(this, 'Elhamdülillah', 33)">
+                        <div class="tasbeeh-preset-name">33</div>
+                        <div class="tasbeeh-preset-arabic">الحمد لله</div>
+                    </div>
+                    <div class="tasbeeh-preset" onclick="setTasbeehPreset(this, 'Allahu Ekber', 33)">
+                        <div class="tasbeeh-preset-name">33</div>
+                        <div class="tasbeeh-preset-arabic">الله أكبر</div>
+                    </div>
+                </div>
+                <button class="tasbeeh-reset" onclick="resetTasbeeh()">
+                    <i class="fas fa-redo"></i> Sıfırla
+                </button>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div class="page" id="page-settings">
+            <header class="header">
+                <h1 class="app-title">Ayarlar</h1>
+            </header>
+            <div class="settings-container">
+                <div class="settings-group">
+                    <div class="settings-group-title">Hesaplama Ayarları</div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-calculator"></i>
+                            <span>Hesaplama Metodu</span>
+                        </div>
+                        <select id="calc-method" onchange="updateSettings()">
+                            <option value="Turkey">Diyanet</option>
+                            <option value="MWL">Muslim World League</option>
+                            <option value="ISNA">ISNA</option>
+                            <option value="Egypt">Mısır</option>
+                            <option value="Makkah">Umm al-Qura</option>
+                            <option value="Karachi">Karachi</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-moon"></i>
+                            <span>Asr Hesabı</span>
+                        </div>
+                        <select id="asr-method" onchange="updateSettings()">
+                            <option value="Standard">Şafi/Hanbeli</option>
+                            <option value="Hanafi">Hanefi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">Bildirimler</div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-bell"></i>
+                            <span>Ezan Bildirimi</span>
+                        </div>
+                        <div class="toggle active" id="notification-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-volume-up"></i>
+                            <span>Ezan Sesi</span>
+                        </div>
+                        <div class="toggle" id="sound-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">Uygulama</div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-language"></i>
+                            <span>Dil</span>
+                        </div>
+                        <select id="language">
+                            <option value="tr">Türkçe</option>
+                            <option value="en">English</option>
+                            <option value="ar">العربية</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-clock"></i>
+                            <span>24 Saat Formatı</span>
+                        </div>
+                        <div class="toggle active" id="24h-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">Hakkında</div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Versiyon</span>
+                        </div>
+                        <div class="setting-value">1.0.0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" onclick="showPage('home')">
+                <i class="fas fa-home"></i>
+                <span>Ana Sayfa</span>
+            </div>
+            <div class="nav-item" onclick="showPage('qibla')">
+                <i class="fas fa-compass"></i>
+                <span>Kıble</span>
+            </div>
+            <div class="nav-item" onclick="showPage('calendar')">
+                <i class="fas fa-calendar"></i>
+                <span>Takvim</span>
+            </div>
+            <div class="nav-item" onclick="showPage('tasbeeh')">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span>Tesbih</span>
+            </div>
+            <div class="nav-item" onclick="showPage('settings')">
+                <i class="fas fa-cog"></i>
+                <span>Ayarlar</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Location Modal -->
+    <div class="modal" id="location-modal">
+        <div class="modal-content">
+            <h3 class="modal-title">Şehir Seçin</h3>
+            <input type="text" class="city-search" placeholder="Şehir ara..." id="city-search" oninput="filterCities()">
+            <div class="city-list" id="city-list">
+                <!-- Cities will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // App State
+        const state = {
+            location: { lat: 41.0082, lng: 28.9784, city: 'İstanbul' },
+            prayerTimes: {},
+            settings: {
+                calcMethod: 'Turkey',
+                asrMethod: 'Standard',
+                notifications: true,
+                sound: false,
+                format24h: true
+            },
+            currentMonth: new Date(),
+            tasbeehCount: 0,
+            tasbeehTarget: 33
+        };
+
+        // Turkish cities with coordinates
+        const cities = [
+            { name: 'İstanbul', lat: 41.0082, lng: 28.9784 },
+            { name: 'Ankara', lat: 39.9334, lng: 32.8597 },
+            { name: 'İzmir', lat: 38.4237, lng: 27.1428 },
+            { name: 'Bursa', lat: 40.1885, lng: 29.0610 },
+            { name: 'Antalya', lat: 36.8969, lng: 30.7133 },
+            { name: 'Adana', lat: 37.0000, lng: 35.3213 },
+            { name: 'Konya', lat: 37.8746, lng: 32.4932 },
+            { name: 'Gaziantep', lat: 37.0662, lng: 37.3833 },
+            { name: 'Şanlıurfa', lat: 37.1591, lng: 38.7969 },
+            { name: 'Kocaeli', lat: 40.8533, lng: 29.8815 },
+            { name: 'Mersin', lat: 36.8121, lng: 34.6415 },
+            { name: 'Diyarbakır', lat: 37.9144, lng: 40.2306 },
+            { name: 'Hatay', lat: 36.4018, lng: 36.3498 },
+            { name: 'Manisa', lat: 38.6191, lng: 27.4289 },
+            { name: 'Kayseri', lat: 38.7312, lng: 35.4787 },
+            { name: 'Samsun', lat: 41.2867, lng: 36.33 },
+            { name: 'Balıkesir', lat: 39.6484, lng: 27.8826 },
+            { name: 'Kahramanmaraş', lat: 37.5858, lng: 36.9371 },
+            { name: 'Van', lat: 38.4891, lng: 43.4089 },
+            { name: 'Aydın', lat: 37.8560, lng: 27.8416 },
+            { name: 'Denizli', lat: 37.7765, lng: 29.0864 },
+            { name: 'Sakarya', lat: 40.7569, lng: 30.3781 },
+            { name: 'Tekirdağ', lat: 40.9833, lng: 27.5167 },
+            { name: 'Muğla', lat: 37.2153, lng: 28.3636 },
+            { name: 'Eskişehir', lat: 39.7767, lng: 30.5206 },
+            { name: 'Mardin', lat: 37.3212, lng: 40.7245 },
+            { name: 'Trabzon', lat: 41.0027, lng: 39.7168 },
+            { name: 'Erzurum', lat: 39.9055, lng: 41.2658 },
+            { name: 'Malatya', lat: 38.3552, lng: 38.3095 },
+            { name: 'Elazığ', lat: 38.6810, lng: 39.2264 }
+        ];
+
+        // Prayer time calculation (simplified Adhan algorithm)
+        function calculatePrayerTimes(date, lat, lng, method = 'Turkey') {
+            const methods = {
+                'Turkey': { fajr: 18, isha: 17 },
+                'MWL': { fajr: 18, isha: 17 },
+                'ISNA': { fajr: 15, isha: 15 },
+                'Egypt': { fajr: 19.5, isha: 17.5 },
+                'Makkah': { fajr: 18.5, isha: 90 },
+                'Karachi': { fajr: 18, isha: 18 }
+            };
+
+            const params = methods[method] || methods['Turkey'];
+            const jd = julianDate(date);
+            const decl = sunDeclination(jd);
+            const eqt = equationOfTime(jd);
+
+            // Calculate prayer times
+            const transit = 12 + (-lng / 15) - (eqt / 60);
+            const sunrise = transit - hourAngle(lat, decl, 0.833) / 15;
+            const sunset = transit + hourAngle(lat, decl, 0.833) / 15;
+            const fajr = transit - hourAngle(lat, decl, params.fajr) / 15;
+            const dhuhr = transit + 1/60; // Add 1 minute after transit
+            const asr = transit + asrTime(lat, decl, state.settings.asrMethod === 'Hanafi' ? 2 : 1);
+
+            let isha;
+            if (params.isha > 30) {
+                isha = sunset + params.isha / 60;
+            } else {
+                isha = transit + hourAngle(lat, decl, params.isha) / 15;
+            }
+
+            return {
+                fajr: formatTime(fajr),
+                sunrise: formatTime(sunrise),
+                dhuhr: formatTime(dhuhr),
+                asr: formatTime(asr),
+                maghrib: formatTime(sunset),
+                isha: formatTime(isha)
+            };
+        }
+
+        function julianDate(date) {
+            const y = date.getFullYear();
+            const m = date.getMonth() + 1;
+            const d = date.getDate();
+
+            if (m <= 2) {
+                y -= 1;
+                m += 12;
+            }
+
+            const a = Math.floor(y / 100);
+            const b = 2 - a + Math.floor(a / 4);
+
+            return Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + d + b - 1524.5;
+        }
+
+        function sunDeclination(jd) {
+            const t = (jd - 2451545.0) / 36525;
+            const l0 = 280.46646 + 36000.76983 * t;
+            const m = 357.52911 + 35999.05029 * t;
+            const e = 0.016708634 - 0.000042037 * t;
+
+            const c = (1.914602 - 0.004817 * t) * Math.sin(toRad(m)) +
+                     (0.019993 - 0.000101 * t) * Math.sin(toRad(2 * m)) +
+                     0.000289 * Math.sin(toRad(3 * m));
+
+            const sunLng = l0 + c;
+            const omega = 125.04 - 1934.136 * t;
+            const lambda = sunLng - 0.00569 - 0.00478 * Math.sin(toRad(omega));
+            const eps = 23.439291 - 0.0130042 * t;
+
+            return toDeg(Math.asin(Math.sin(toRad(eps)) * Math.sin(toRad(lambda))));
+        }
+
+        function equationOfTime(jd) {
+            const t = (jd - 2451545.0) / 36525;
+            const l0 = 280.46646 + 36000.76983 * t;
+            const m = 357.52911 + 35999.05029 * t;
+            const e = 0.016708634 - 0.000042037 * t;
+
+            let y = Math.tan(toRad(23.439291 - 0.0130042 * t) / 2);
+            y *= y;
+
+            const sin2l0 = Math.sin(2 * toRad(l0));
+            const sinm = Math.sin(toRad(m));
+            const cos2l0 = Math.cos(2 * toRad(l0));
+            const sin4l0 = Math.sin(4 * toRad(l0));
+            const sin2m = Math.sin(2 * toRad(m));
+
+            const eot = y * sin2l0 - 2 * e * sinm + 4 * e * y * sinm * cos2l0 -
+                       0.5 * y * y * sin4l0 - 1.25 * e * e * sin2m;
+
+            return toDeg(eot) * 4;
+        }
+
+        function hourAngle(lat, decl, angle) {
+            const latRad = toRad(lat);
+            const declRad = toRad(decl);
+            const angleRad = toRad(angle);
+
+            const cosHA = (Math.sin(angleRad) - Math.sin(latRad) * Math.sin(declRad)) /
+                         (Math.cos(latRad) * Math.cos(declRad));
+
+            return toDeg(Math.acos(cosHA));
+        }
+
+        function asrTime(lat, decl, factor) {
+            const latRad = toRad(lat);
+            const declRad = toRad(decl);
+            const angle = -toDeg(Math.atan(1 / (factor + Math.tan(latRad - declRad))));
+            return hourAngle(lat, decl, angle) / 15;
+        }
+
+        function toRad(deg) { return deg * Math.PI / 180; }
+        function toDeg(rad) { return rad * 180 / Math.PI; }
+
+        function formatTime(hours) {
+            const h = Math.floor(hours);
+            const m = Math.floor((hours - h) * 60);
+            return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+        }
+
+        // Qibla calculation
+        function calculateQibla(lat, lng) {
+            const kaabaLat = 21.4225;
+            const kaabaLng = 39.8262;
+
+            const latRad = toRad(lat);
+            const lngRad = toRad(lng);
+            const kaabaLatRad = toRad(kaabaLat);
+            const kaabaLngRad = toRad(kaabaLng);
+
+            const dLng = kaabaLngRad - lngRad;
+
+            const x = Math.sin(dLng);
+            const y = Math.cos(latRad) * Math.tan(kaabaLatRad) - Math.sin(latRad) * Math.cos(dLng);
+
+            let qibla = toDeg(Math.atan2(x, y));
+            if (qibla < 0) qibla += 360;
+
+            return qibla;
+        }
+
+        // Hijri date conversion (simplified)
+        function toHijri(date) {
+            const jd = julianDate(date);
+            const l = Math.floor(jd - 1948439.5) + 10632;
+            const n = Math.floor((l - 1) / 10631);
+            const l2 = l - 10631 * n + 354;
+            const j = Math.floor((10985 - l2) / 5316) * Math.floor((50 * l2) / 17719) +
+                     Math.floor(l2 / 5670) * Math.floor((43 * l2) / 15238);
+            const l3 = l2 - Math.floor((30 - j) / 15) * Math.floor((17719 * j) / 50) -
+                      Math.floor(j / 16) * Math.floor((15238 * j) / 43) + 29;
+            const month = Math.floor((24 * l3) / 709);
+            const day = l3 - Math.floor((709 * month) / 24);
+            const year = 30 * n + j - 30;
+
+            const months = ['Muharrem', 'Safer', 'Rebiülevvel', 'Rebiülahir', 'Cemaziyelevvel',
+                           'Cemaziyelahir', 'Recep', 'Şaban', 'Ramazan', 'Şevval', 'Zilkade', 'Zilhicce'];
+
+            return `${day} ${months[month - 1]} ${year}`;
+        }
+
+        // UI Functions
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+            document.getElementById(`page-${pageName}`).classList.add('active');
+            document.querySelectorAll('.nav-item')[
+                ['home', 'qibla', 'calendar', 'tasbeeh', 'settings'].indexOf(pageName)
+            ].classList.add('active');
+
+            if (pageName === 'qibla') {
+                initCompass();
+            } else if (pageName === 'calendar') {
+                renderCalendar();
+            }
+        }
+
+        function updatePrayerTimesDisplay() {
+            const times = state.prayerTimes;
+            const prayers = [
+                { key: 'fajr', name: 'İmsak', arabic: 'الفجر', icon: 'fa-cloud-moon' },
+                { key: 'sunrise', name: 'Güneş', arabic: 'الشروق', icon: 'fa-sun' },
+                { key: 'dhuhr', name: 'Öğle', arabic: 'الظهر', icon: 'fa-sun' },
+                { key: 'asr', name: 'İkindi', arabic: 'العصر', icon: 'fa-cloud-sun' },
+                { key: 'maghrib', name: 'Akşam', arabic: 'المغرب', icon: 'fa-moon' },
+                { key: 'isha', name: 'Yatsı', arabic: 'العشاء', icon: 'fa-star' }
+            ];
+
+            const now = new Date();
+            const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+            let nextPrayerIndex = -1;
+            let grid = '';
+
+            prayers.forEach((prayer, index) => {
+                const [h, m] = times[prayer.key].split(':').map(Number);
+                const prayerMinutes = h * 60 + m;
+
+                let status = '';
+                if (nextPrayerIndex === -1 && prayerMinutes > currentMinutes) {
+                    nextPrayerIndex = index;
+                    status = 'active';
+                } else if (nextPrayerIndex === -1 || prayerMinutes <= currentMinutes) {
+                    status = 'passed';
+                }
+
+                grid += `
+                    <div class="prayer-card ${status}">
+                        <div class="prayer-info">
+                            <div class="prayer-icon">
+                                <i class="fas ${prayer.icon}"></i>
+                            </div>
+                            <div>
+                                <div class="prayer-name">${prayer.name}</div>
+                                <div class="prayer-arabic">${prayer.arabic}</div>
+                            </div>
+                        </div>
+                        <div class="prayer-time-value">${times[prayer.key]}</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('prayer-times-grid').innerHTML = grid;
+
+            // Update next prayer info
+            if (nextPrayerIndex === -1) nextPrayerIndex = 0;
+            const nextPrayer = prayers[nextPrayerIndex];
+            document.getElementById('next-prayer-name').textContent = nextPrayer.name;
+            document.getElementById('next-prayer-time').textContent = times[nextPrayer.key];
+
+            // Update countdown
+            updateCountdown(times[nextPrayer.key]);
+        }
+
+        function updateCountdown(targetTime) {
+            const now = new Date();
+            const [h, m] = targetTime.split(':').map(Number);
+            let target = new Date(now);
+            target.setHours(h, m, 0, 0);
+
+            if (target <= now) {
+                target.setDate(target.getDate() + 1);
+            }
+
+            const diff = target - now;
+            const hours = Math.floor(diff / 3600000);
+            const mins = Math.floor((diff % 3600000) / 60000);
+            const secs = Math.floor((diff % 60000) / 1000);
+
+            document.getElementById('countdown').textContent =
+                `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+            document.getElementById('current-time').textContent = timeStr;
+
+            // Update dates
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('gregorian-date').textContent = now.toLocaleDateString('tr-TR', options);
+            document.getElementById('hijri-date').textContent = toHijri(now);
+        }
+
+        // Compass
+        function initCompass() {
+            const qiblaAngle = calculateQibla(state.location.lat, state.location.lng);
+            document.getElementById('qibla-degree').textContent = `${Math.round(qiblaAngle)}°`;
+            document.getElementById('qibla-arrow').style.transform =
+                `translate(-50%, -100%) rotate(${qiblaAngle}deg)`;
+
+            if (window.DeviceOrientationEvent) {
+                window.addEventListener('deviceorientation', (e) => {
+                    if (e.alpha !== null) {
+                        const compass = document.getElementById('compass');
+                        compass.style.transform = `rotate(${-e.alpha}deg)`;
+                    }
+                });
+            }
+        }
+
+        // Calendar
+        function renderCalendar() {
+            const date = state.currentMonth;
+            const year = date.getFullYear();
+            const month = date.getMonth();
+
+            const months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+                           'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+
+            document.getElementById('calendar-month').textContent = `${months[month]} ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+
+            let html = '<div class="calendar-day-name">Paz</div><div class="calendar-day-name">Pzt</div>' +
+                      '<div class="calendar-day-name">Sal</div><div class="calendar-day-name">Çar</div>' +
+                      '<div class="calendar-day-name">Per</div><div class="calendar-day-name">Cum</div>' +
+                      '<div class="calendar-day-name">Cmt</div>';
+
+            // Previous month days
+            const prevMonthDays = new Date(year, month, 0).getDate();
+            for (let i = firstDay - 1; i >= 0; i--) {
+                html += `<div class="calendar-day other-month">${prevMonthDays - i}</div>`;
+            }
+
+            // Current month days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+                const dateObj = new Date(year, month, day);
+                const hijriDay = toHijri(dateObj).split(' ')[0];
+                html += `<div class="calendar-day ${isToday ? 'today' : ''}">${day}<span class="hijri">${hijriDay}</span></div>`;
+            }
+
+            // Next month days
+            const totalCells = firstDay + daysInMonth;
+            const remaining = 42 - totalCells;
+            for (let i = 1; i <= remaining; i++) {
+                html += `<div class="calendar-day other-month">${i}</div>`;
+            }
+
+            document.getElementById('calendar-grid').innerHTML = html;
+        }
+
+        function changeMonth(delta) {
+            state.currentMonth.setMonth(state.currentMonth.getMonth() + delta);
+            renderCalendar();
+        }
+
+        // Tasbeeh
+        function incrementTasbeeh() {
+            state.tasbeehCount++;
+            document.getElementById('tasbeeh-counter').textContent = state.tasbeehCount;
+
+            if (state.tasbeehCount >= state.tasbeehTarget) {
+                if (navigator.vibrate) navigator.vibrate(200);
+            }
+        }
+
+        function resetTasbeeh() {
+            state.tasbeehCount = 0;
+            document.getElementById('tasbeeh-counter').textContent = '0';
+        }
+
+        function setTasbeehPreset(el, name, target) {
+            document.querySelectorAll('.tasbeeh-preset').forEach(p => p.classList.remove('active'));
+            el.classList.add('active');
+            state.tasbeehTarget = target;
+            resetTasbeeh();
+        }
+
+        // Location
+        function showLocationModal() {
+            document.getElementById('location-modal').classList.add('active');
+            renderCityList();
+        }
+
+        function hideLocationModal() {
+            document.getElementById('location-modal').classList.remove('active');
+        }
+
+        function renderCityList(filter = '') {
+            const filtered = cities.filter(c =>
+                c.name.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            let html = '';
+            filtered.forEach(city => {
+                html += `<div class="city-item" onclick="selectCity('${city.name}', ${city.lat}, ${city.lng})">${city.name}</div>`;
+            });
+
+            document.getElementById('city-list').innerHTML = html;
+        }
+
+        function filterCities() {
+            const search = document.getElementById('city-search').value;
+            renderCityList(search);
+        }
+
+        function selectCity(name, lat, lng) {
+            state.location = { lat, lng, city: name };
+            document.getElementById('city-name').textContent = name;
+            hideLocationModal();
+
+            state.prayerTimes = calculatePrayerTimes(new Date(), lat, lng, state.settings.calcMethod);
+            updatePrayerTimesDisplay();
+
+            localStorage.setItem('location', JSON.stringify(state.location));
+        }
+
+        // Settings
+        function toggleSetting(el) {
+            el.classList.toggle('active');
+        }
+
+        function updateSettings() {
+            state.settings.calcMethod = document.getElementById('calc-method').value;
+            state.settings.asrMethod = document.getElementById('asr-method').value;
+
+            state.prayerTimes = calculatePrayerTimes(
+                new Date(),
+                state.location.lat,
+                state.location.lng,
+                state.settings.calcMethod
+            );
+            updatePrayerTimesDisplay();
+
+            localStorage.setItem('settings', JSON.stringify(state.settings));
+        }
+
+        // Initialize
+        function init() {
+            // Load saved data
+            const savedLocation = localStorage.getItem('location');
+            if (savedLocation) {
+                state.location = JSON.parse(savedLocation);
+            }
+
+            const savedSettings = localStorage.getItem('settings');
+            if (savedSettings) {
+                state.settings = JSON.parse(savedSettings);
+                document.getElementById('calc-method').value = state.settings.calcMethod;
+                document.getElementById('asr-method').value = state.settings.asrMethod;
+            }
+
+            // Try to get current location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        state.location.lat = pos.coords.latitude;
+                        state.location.lng = pos.coords.longitude;
+                        // Find nearest city
+                        let minDist = Infinity;
+                        cities.forEach(city => {
+                            const dist = Math.sqrt(
+                                Math.pow(city.lat - state.location.lat, 2) +
+                                Math.pow(city.lng - state.location.lng, 2)
+                            );
+                            if (dist < minDist) {
+                                minDist = dist;
+                                state.location.city = city.name;
+                            }
+                        });
+                        document.getElementById('city-name').textContent = state.location.city;
+
+                        state.prayerTimes = calculatePrayerTimes(
+                            new Date(),
+                            state.location.lat,
+                            state.location.lng,
+                            state.settings.calcMethod
+                        );
+                        updatePrayerTimesDisplay();
+                    },
+                    () => {
+                        // Use default location
+                        document.getElementById('city-name').textContent = state.location.city;
+                        state.prayerTimes = calculatePrayerTimes(
+                            new Date(),
+                            state.location.lat,
+                            state.location.lng,
+                            state.settings.calcMethod
+                        );
+                        updatePrayerTimesDisplay();
+                    }
+                );
+            } else {
+                document.getElementById('city-name').textContent = state.location.city;
+                state.prayerTimes = calculatePrayerTimes(
+                    new Date(),
+                    state.location.lat,
+                    state.location.lng,
+                    state.settings.calcMethod
+                );
+                updatePrayerTimesDisplay();
+            }
+
+            // Update time every second
+            updateCurrentTime();
+            setInterval(() => {
+                updateCurrentTime();
+                updatePrayerTimesDisplay();
+            }, 1000);
+
+            // Hide loading
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+            }, 1500);
+
+            // Close modal on outside click
+            document.getElementById('location-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'location-modal') {
+                    hideLocationModal();
+                }
+            });
+        }
+
+        // Start app
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
