@@ -739,6 +739,324 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
+        /* More Page */
+        .more-container {
+            padding: 20px;
+        }
+
+        .more-menu {
+            display: grid;
+            gap: 15px;
+        }
+
+        .more-item {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .more-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .more-item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .more-item-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .more-item-info p {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Hajj Guide Page */
+        .hajj-container {
+            padding: 20px;
+        }
+
+        .hajj-section {
+            background: var(--bg-card);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .hajj-section-title {
+            padding: 15px 20px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .hajj-section-title i {
+            color: var(--gold);
+        }
+
+        .hajj-section-content {
+            padding: 15px 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .hajj-step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .hajj-step-number {
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .hajj-step-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .hajj-step-content p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Hadith Page */
+        .hadith-container {
+            padding: 20px;
+        }
+
+        .hadith-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .hadith-number {
+            background: var(--primary);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .hadith-arabic {
+            font-size: 1.1rem;
+            text-align: right;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: var(--gold);
+        }
+
+        .hadith-translation {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .hadith-source {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Widget Page */
+        .widget-container {
+            padding: 20px;
+        }
+
+        .widget-preview {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .widget-preview-title {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .widget-sample {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .widget-sample-time {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .widget-sample-prayer {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .widget-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .widget-option {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .widget-option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .widget-option-label i {
+            color: var(--primary-light);
+        }
+
+        .widget-code {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+        }
+
+        /* Encyclopedia Page */
+        .encyclopedia-container {
+            padding: 20px;
+        }
+
+        .encyclopedia-search {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--bg-card);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            margin-bottom: 20px;
+        }
+
+        .encyclopedia-categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .encyclopedia-category {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .encyclopedia-category:hover {
+            background: rgba(45, 143, 111, 0.2);
+        }
+
+        .encyclopedia-category i {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .encyclopedia-category span {
+            font-size: 0.85rem;
+        }
+
+        .encyclopedia-articles {
+            display: grid;
+            gap: 10px;
+        }
+
+        .encyclopedia-article {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .encyclopedia-article:hover {
+            background: rgba(45, 143, 111, 0.2);
+        }
+
+        .encyclopedia-article h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .encyclopedia-article p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: var(--bg-card);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-family: inherit;
+        }
+
         /* Responsive */
         @media (max-width: 360px) {
             .current-time {
@@ -747,6 +1065,10 @@
 
             .prayer-card {
                 padding: 12px 15px;
+            }
+
+            .encyclopedia-categories {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -972,6 +1294,412 @@
             </div>
         </div>
 
+        <!-- More Page -->
+        <div class="page" id="page-more">
+            <header class="header">
+                <h1 class="app-title">Daha Fazla</h1>
+            </header>
+            <div class="more-container">
+                <div class="more-menu">
+                    <div class="more-item" onclick="showPage('hajj')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-kaaba"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Hac ve Umre Rehberi</h3>
+                            <p>Adım adım hac ve umre ibadetleri</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('hadith')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-book-quran"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>40 Hadis Koleksiyonu</h3>
+                            <p>Peygamberimizden seçme hadisler</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('widget')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Widget Desteği</h3>
+                            <p>Ana ekran widget ayarları</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('encyclopedia')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>İslam Ansiklopedisi</h3>
+                            <p>İslami kavramlar ve bilgiler</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('settings')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Ayarlar</h3>
+                            <p>Uygulama ayarları</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hajj Guide Page -->
+        <div class="page" id="page-hajj">
+            <header class="header">
+                <h1 class="app-title">Hac ve Umre Rehberi</h1>
+            </header>
+            <div class="hajj-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="hajj-section">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-star"></i>
+                        Umre Nasıl Yapılır?
+                    </div>
+                    <div class="hajj-section-content">
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">1</div>
+                            <div class="hajj-step-content">
+                                <h4>İhrama Girmek</h4>
+                                <p>Mikat sınırında ihrama girilir. Niyet edilir ve telbiye getirilir.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">2</div>
+                            <div class="hajj-step-content">
+                                <h4>Tavaf</h4>
+                                <p>Kabe'nin etrafında 7 kez dönülür. Hacer-i Esved'den başlanır.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">3</div>
+                            <div class="hajj-step-content">
+                                <h4>Sa'y</h4>
+                                <p>Safa ile Merve tepeleri arasında 7 kez gidilip gelinir.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">4</div>
+                            <div class="hajj-step-content">
+                                <h4>Tıraş</h4>
+                                <p>Saçlar tıraş edilir veya kısaltılır ve ihramdan çıkılır.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hajj-section">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-mosque"></i>
+                        Hac Nasıl Yapılır?
+                    </div>
+                    <div class="hajj-section-content">
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">1</div>
+                            <div class="hajj-step-content">
+                                <h4>İhram ve Kudüm Tavafı</h4>
+                                <p>8 Zilhicce'den önce ihrama girilir ve kudüm tavafı yapılır.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">2</div>
+                            <div class="hajj-step-content">
+                                <h4>Mina'ya Çıkış</h4>
+                                <p>8 Zilhicce (Terviye günü) Mina'ya gidilir.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">3</div>
+                            <div class="hajj-step-content">
+                                <h4>Arafat Vakfesi</h4>
+                                <p>9 Zilhicce (Arefe günü) Arafat'ta vakfe yapılır. Haccın rüknüdür.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">4</div>
+                            <div class="hajj-step-content">
+                                <h4>Müzdelife Vakfesi</h4>
+                                <p>Arafat'tan sonra Müzdelife'de gecelenir.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">5</div>
+                            <div class="hajj-step-content">
+                                <h4>Şeytan Taşlama</h4>
+                                <p>Bayram günlerinde cemrelere taş atılır.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">6</div>
+                            <div class="hajj-step-content">
+                                <h4>Kurban ve Tıraş</h4>
+                                <p>Kurban kesilir, saçlar tıraş edilir.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">7</div>
+                            <div class="hajj-step-content">
+                                <h4>Ziyaret Tavafı</h4>
+                                <p>Farz olan ziyaret tavafı yapılır.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">8</div>
+                            <div class="hajj-step-content">
+                                <h4>Veda Tavafı</h4>
+                                <p>Mekke'den ayrılmadan önce veda tavafı yapılır.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hajj-section">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-pray"></i>
+                        Önemli Dualar
+                    </div>
+                    <div class="hajj-section-content">
+                        <p><strong>Telbiye:</strong></p>
+                        <p style="text-align: right; color: var(--gold); margin: 10px 0;">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ</p>
+                        <p>"Lebbeyk Allahümme lebbeyk, lebbeyke lâ şerîke leke lebbeyk. İnne'l-hamde ve'n-ni'mete leke ve'l-mülk, lâ şerîke lek."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hadith Page -->
+        <div class="page" id="page-hadith">
+            <header class="header">
+                <h1 class="app-title">40 Hadis</h1>
+            </header>
+            <div class="hadith-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">1</div>
+                    <div class="hadith-arabic">إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ</div>
+                    <div class="hadith-translation">"Ameller niyetlere göredir. Herkesin niyet ettiği ne ise eline geçecek olan odur."</div>
+                    <div class="hadith-source">Buhari, Müslim</div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">2</div>
+                    <div class="hadith-arabic">لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ</div>
+                    <div class="hadith-translation">"Sizden biriniz kendisi için sevdiğini kardeşi için de sevmedikçe iman etmiş olmaz."</div>
+                    <div class="hadith-source">Buhari, Müslim</div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">3</div>
+                    <div class="hadith-arabic">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</div>
+                    <div class="hadith-translation">"Allah'a ve ahiret gününe iman eden ya hayır söylesin ya da sussun."</div>
+                    <div class="hadith-source">Buhari, Müslim</div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">4</div>
+                    <div class="hadith-arabic">الْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ</div>
+                    <div class="hadith-translation">"Müslüman, dilinden ve elinden müslümanların güvende olduğu kimsedir."</div>
+                    <div class="hadith-source">Buhari, Müslim</div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">5</div>
+                    <div class="hadith-arabic">الطُّهُورُ شَطْرُ الإِيمَانِ</div>
+                    <div class="hadith-translation">"Temizlik imanın yarısıdır."</div>
+                    <div class="hadith-source">Müslim</div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">6</div>
+                    <div class="hadith-arabic">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</div>
+                    <div class="hadith-translation">"Sizin en hayırlınız Kur'an'ı öğrenen ve öğretendir."</div>
+                    <div class="hadith-source">Buhari</div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">7</div>
+                    <div class="hadith-arabic">الدُّنْيَا سِجْنُ الْمُؤْمِنِ وَجَنَّةُ الْكَافِرِ</div>
+                    <div class="hadith-translation">"Dünya müminin zindanı, kafirin cennetidir."</div>
+                    <div class="hadith-source">Müslim</div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">8</div>
+                    <div class="hadith-arabic">تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ صَدَقَةٌ</div>
+                    <div class="hadith-translation">"Kardeşine tebessüm etmen sadakadır."</div>
+                    <div class="hadith-source">Tirmizi</div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">9</div>
+                    <div class="hadith-arabic">الْجَنَّةُ تَحْتَ أَقْدَامِ الأُمَّهَاتِ</div>
+                    <div class="hadith-translation">"Cennet anaların ayakları altındadır."</div>
+                    <div class="hadith-source">Nesai</div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="hadith-number">10</div>
+                    <div class="hadith-arabic">لَا ضَرَرَ وَلَا ضِرَارَ</div>
+                    <div class="hadith-translation">"Zarar vermek de zarara zararla karşılık vermek de yoktur."</div>
+                    <div class="hadith-source">İbn Mace</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Widget Page -->
+        <div class="page" id="page-widget">
+            <header class="header">
+                <h1 class="app-title">Widget Desteği</h1>
+            </header>
+            <div class="widget-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="widget-preview">
+                    <div class="widget-preview-title">Widget Önizleme</div>
+                    <div class="widget-sample">
+                        <div class="widget-sample-time" id="widget-time">12:30</div>
+                        <div class="widget-sample-prayer">Öğle vaktine 2 saat 15 dk</div>
+                    </div>
+                </div>
+
+                <h3 class="section-title">
+                    <i class="fas fa-sliders-h"></i>
+                    Widget Ayarları
+                </h3>
+
+                <div class="widget-options">
+                    <div class="widget-option">
+                        <div class="widget-option-label">
+                            <i class="fas fa-palette"></i>
+                            <span>Tema</span>
+                        </div>
+                        <select>
+                            <option>Koyu</option>
+                            <option>Açık</option>
+                            <option>Şeffaf</option>
+                        </select>
+                    </div>
+                    <div class="widget-option">
+                        <div class="widget-option-label">
+                            <i class="fas fa-text-height"></i>
+                            <span>Boyut</span>
+                        </div>
+                        <select>
+                            <option>Küçük</option>
+                            <option>Orta</option>
+                            <option>Büyük</option>
+                        </select>
+                    </div>
+                    <div class="widget-option">
+                        <div class="widget-option-label">
+                            <i class="fas fa-clock"></i>
+                            <span>Geri Sayım</span>
+                        </div>
+                        <div class="toggle active" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="widget-option">
+                        <div class="widget-option-label">
+                            <i class="fas fa-location-dot"></i>
+                            <span>Konum Göster</span>
+                        </div>
+                        <div class="toggle active" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div class="widget-code">
+                    <p style="margin-bottom: 10px; color: var(--text-secondary);">Web Widget Kodu:</p>
+                    <code>&lt;iframe src="widget.html" width="300" height="150"&gt;&lt;/iframe&gt;</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Encyclopedia Page -->
+        <div class="page" id="page-encyclopedia">
+            <header class="header">
+                <h1 class="app-title">İslam Ansiklopedisi</h1>
+            </header>
+            <div class="encyclopedia-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <input type="text" class="encyclopedia-search" placeholder="Kavram ara..." id="encyclopedia-search">
+
+                <div class="encyclopedia-categories">
+                    <div class="encyclopedia-category">
+                        <i class="fas fa-mosque"></i>
+                        <span>İbadetler</span>
+                    </div>
+                    <div class="encyclopedia-category">
+                        <i class="fas fa-book-quran"></i>
+                        <span>Kur'an</span>
+                    </div>
+                    <div class="encyclopedia-category">
+                        <i class="fas fa-user"></i>
+                        <span>Peygamberler</span>
+                    </div>
+                    <div class="encyclopedia-category">
+                        <i class="fas fa-star-and-crescent"></i>
+                        <span>İman Esasları</span>
+                    </div>
+                </div>
+
+                <h3 class="section-title">
+                    <i class="fas fa-fire"></i>
+                    Popüler Konular
+                </h3>
+
+                <div class="encyclopedia-articles">
+                    <div class="encyclopedia-article">
+                        <h4>Namaz</h4>
+                        <p>Namaz, İslam'ın beş şartından biridir. Günde beş vakit kılınması farzdır. Namazın farzları, vacipleri ve sünnetleri vardır.</p>
+                    </div>
+                    <div class="encyclopedia-article">
+                        <h4>Oruç</h4>
+                        <p>Ramazan ayında tutulan oruç, İslam'ın beş şartından biridir. İmsak vaktinden iftar vaktine kadar yeme içme ve diğer orucu bozan şeylerden uzak durmaktır.</p>
+                    </div>
+                    <div class="encyclopedia-article">
+                        <h4>Zekat</h4>
+                        <p>Zekat, belirli bir miktara (nisab) ulaşan malın kırkta birinin fakirlere verilmesidir. İslam'ın beş şartından biridir.</p>
+                    </div>
+                    <div class="encyclopedia-article">
+                        <h4>Hac</h4>
+                        <p>Hac, imkanı olan her Müslüman'ın ömründe bir kez yapması gereken ibadettir. Zilhicce ayında Mekke'de eda edilir.</p>
+                    </div>
+                    <div class="encyclopedia-article">
+                        <h4>Kelime-i Şehadet</h4>
+                        <p>Allah'tan başka ilah olmadığına ve Hz. Muhammed'in O'nun kulu ve elçisi olduğuna şahitlik etmektir.</p>
+                    </div>
+                    <div class="encyclopedia-article">
+                        <h4>Abdest</h4>
+                        <p>Namaz kılmak, Kur'an okumak gibi ibadetler için yapılan temizlik ibadetidir. Farzları ve sünnetleri vardır.</p>
+                    </div>
+                    <div class="encyclopedia-article">
+                        <h4>Gusül</h4>
+                        <p>Cünüplük, hayız ve nifas hallerinden sonra yapılması gereken boy abdesti. Farzları ve sünnetleri vardır.</p>
+                    </div>
+                    <div class="encyclopedia-article">
+                        <h4>Tefsir</h4>
+                        <p>Kur'an-ı Kerim ayetlerinin açıklanması ve yorumlanması ilmidir. Birçok tefsir alimi bu alanda eserler vermiştir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
             <div class="nav-item active" onclick="showPage('home')">
@@ -990,9 +1718,9 @@
                 <i class="fas fa-hand-holding-heart"></i>
                 <span>Tesbih</span>
             </div>
-            <div class="nav-item" onclick="showPage('settings')">
-                <i class="fas fa-cog"></i>
-                <span>Ayarlar</span>
+            <div class="nav-item" onclick="showPage('more')">
+                <i class="fas fa-ellipsis-h"></i>
+                <span>Daha</span>
             </div>
         </nav>
     </div>
@@ -1229,9 +1957,16 @@
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
 
             document.getElementById(`page-${pageName}`).classList.add('active');
-            document.querySelectorAll('.nav-item')[
-                ['home', 'qibla', 'calendar', 'tasbeeh', 'settings'].indexOf(pageName)
-            ].classList.add('active');
+
+            // Update bottom nav active state
+            const navPages = ['home', 'qibla', 'calendar', 'tasbeeh', 'more'];
+            const navIndex = navPages.indexOf(pageName);
+            if (navIndex !== -1) {
+                document.querySelectorAll('.nav-item')[navIndex].classList.add('active');
+            } else if (['hajj', 'hadith', 'widget', 'encyclopedia', 'settings'].includes(pageName)) {
+                // These are sub-pages of "more"
+                document.querySelectorAll('.nav-item')[4].classList.add('active');
+            }
 
             if (pageName === 'qibla') {
                 initCompass();
