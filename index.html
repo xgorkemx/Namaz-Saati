@@ -980,6 +980,318 @@
             overflow-x: auto;
         }
 
+        /* New Widget Styles */
+        .widget-info-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .widget-info-banner i {
+            font-size: 1.5rem;
+        }
+
+        .widget-info-banner p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .widget-showcase {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .widget-showcase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .widget-showcase-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+        }
+
+        .widget-badge {
+            background: var(--gold);
+            color: var(--bg-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .widget-preview-box {
+            background: linear-gradient(135deg, #1a2f4a 0%, #0a1628 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .widget-sample {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .widget-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        .widget-prayer-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .widget-prayer-time {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .widget-countdown {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .widget-location {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .qibla-compass-mini {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px auto;
+            font-size: 3rem;
+            color: var(--gold);
+        }
+
+        .widget-direction {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .tasbeeh-count-display {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 15px 0;
+            color: var(--gold);
+        }
+
+        .tasbeeh-btn-mini {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 15px auto 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .tasbeeh-btn-mini:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .widget-info-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .widget-arabic-mini {
+            font-size: 1.3rem;
+            margin: 15px 0;
+            color: var(--gold);
+        }
+
+        .widget-translation-mini {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .widget-hadith-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        .widget-source {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .widget-esma-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 15px;
+        }
+
+        .widget-arabic-large {
+            font-size: 2rem;
+            margin: 15px 0;
+            color: var(--gold);
+        }
+
+        .widget-esma-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 10px 0 5px;
+        }
+
+        .widget-esma-meaning {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .widget-hijri-date {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 15px 0 10px;
+        }
+
+        .widget-miladi-date {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .zikir-text {
+            font-size: 1.8rem;
+            margin: 15px 0;
+            color: var(--gold);
+        }
+
+        .zikir-count {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .zikir-btn-mini {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px auto;
+        }
+
+        .zikir-btn-mini:hover {
+            background: rgba(255, 215, 0, 0.3);
+            transform: scale(1.1);
+        }
+
+        .widget-code-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .widget-code-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .widget-code-text {
+            display: block;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #a0aec0;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 10px;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .widget-footer-info {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .widget-footer-info i {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .widget-footer-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
         /* Encyclopedia Page */
         .encyclopedia-container {
             padding: 20px;
@@ -2454,61 +2766,187 @@
                     <i class="fas fa-arrow-left"></i> Geri
                 </button>
 
-                <div class="widget-preview">
-                    <div class="widget-preview-title">Widget Önizleme</div>
-                    <div class="widget-sample">
-                        <div class="widget-sample-time" id="widget-time">12:30</div>
-                        <div class="widget-sample-prayer">Öğle vaktine 2 saat 15 dk</div>
+                <div class="widget-info-banner">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Anasayfanıza ekleyebileceğiniz kullanışlı widgetlar. Her widget'ı tıklayarak kopyalayabilirsiniz.</p>
+                </div>
+
+                <!-- Widget 1: Namaz Vakitleri -->
+                <div class="widget-showcase">
+                    <div class="widget-showcase-header">
+                        <h3><i class="fas fa-clock"></i> Namaz Vakitleri Widget</h3>
+                        <span class="widget-badge">Dinamik</span>
+                    </div>
+                    <div class="widget-preview-box">
+                        <div class="widget-sample prayer-widget">
+                            <div class="widget-title">Sonraki Namaz</div>
+                            <div class="widget-prayer-name">Öğle</div>
+                            <div class="widget-prayer-time">12:45</div>
+                            <div class="widget-countdown">2 saat 15 dakika kaldı</div>
+                            <div class="widget-location">📍 İstanbul</div>
+                        </div>
+                    </div>
+                    <div class="widget-code-box">
+                        <div class="widget-code-label">Widget Kodu:</div>
+                        <code class="widget-code-text">&lt;iframe src="https://namazsaati.app/widget/prayer-times" width="320" height="200"&gt;&lt;/iframe&gt;</code>
+                        <button class="copy-btn" onclick="copyWidgetCode(this)"><i class="fas fa-copy"></i> Kopyala</button>
                     </div>
                 </div>
 
-                <h3 class="section-title">
-                    <i class="fas fa-sliders-h"></i>
-                    Widget Ayarları
-                </h3>
-
-                <div class="widget-options">
-                    <div class="widget-option">
-                        <div class="widget-option-label">
-                            <i class="fas fa-palette"></i>
-                            <span>Tema</span>
-                        </div>
-                        <select>
-                            <option>Koyu</option>
-                            <option>Açık</option>
-                            <option>Şeffaf</option>
-                        </select>
+                <!-- Widget 2: Kıble Pusulası -->
+                <div class="widget-showcase">
+                    <div class="widget-showcase-header">
+                        <h3><i class="fas fa-compass"></i> Kıble Pusulası Widget</h3>
+                        <span class="widget-badge">Interaktif</span>
                     </div>
-                    <div class="widget-option">
-                        <div class="widget-option-label">
-                            <i class="fas fa-text-height"></i>
-                            <span>Boyut</span>
+                    <div class="widget-preview-box">
+                        <div class="widget-sample qibla-widget">
+                            <div class="widget-title">Kıble Yönü</div>
+                            <div class="qibla-compass-mini">
+                                <i class="fas fa-location-arrow"></i>
+                            </div>
+                            <div class="widget-direction">135° Güneydoğu</div>
+                            <div class="widget-location">📍 İstanbul</div>
                         </div>
-                        <select>
-                            <option>Küçük</option>
-                            <option>Orta</option>
-                            <option>Büyük</option>
-                        </select>
                     </div>
-                    <div class="widget-option">
-                        <div class="widget-option-label">
-                            <i class="fas fa-clock"></i>
-                            <span>Geri Sayım</span>
-                        </div>
-                        <div class="toggle active" onclick="toggleSetting(this)"></div>
-                    </div>
-                    <div class="widget-option">
-                        <div class="widget-option-label">
-                            <i class="fas fa-location-dot"></i>
-                            <span>Konum Göster</span>
-                        </div>
-                        <div class="toggle active" onclick="toggleSetting(this)"></div>
+                    <div class="widget-code-box">
+                        <div class="widget-code-label">Widget Kodu:</div>
+                        <code class="widget-code-text">&lt;iframe src="https://namazsaati.app/widget/qibla" width="280" height="280"&gt;&lt;/iframe&gt;</code>
+                        <button class="copy-btn" onclick="copyWidgetCode(this)"><i class="fas fa-copy"></i> Kopyala</button>
                     </div>
                 </div>
 
-                <div class="widget-code">
-                    <p style="margin-bottom: 10px; color: var(--text-secondary);">Web Widget Kodu:</p>
-                    <code>&lt;iframe src="widget.html" width="300" height="150"&gt;&lt;/iframe&gt;</code>
+                <!-- Widget 3: Dijital Tesbih -->
+                <div class="widget-showcase">
+                    <div class="widget-showcase-header">
+                        <h3><i class="fas fa-hand-holding-heart"></i> Dijital Tesbih Widget</h3>
+                        <span class="widget-badge">Tıklanabilir</span>
+                    </div>
+                    <div class="widget-preview-box">
+                        <div class="widget-sample tasbeeh-widget">
+                            <div class="widget-title">Tesbih Sayacı</div>
+                            <div class="tasbeeh-count-display">33</div>
+                            <div class="tasbeeh-btn-mini">
+                                <i class="fas fa-hand-pointer"></i> Tıkla
+                            </div>
+                            <div class="widget-info-text">Subhanallah (33)</div>
+                        </div>
+                    </div>
+                    <div class="widget-code-box">
+                        <div class="widget-code-label">Widget Kodu:</div>
+                        <code class="widget-code-text">&lt;iframe src="https://namazsaati.app/widget/tasbeeh" width="240" height="260"&gt;&lt;/iframe&gt;</code>
+                        <button class="copy-btn" onclick="copyWidgetCode(this)"><i class="fas fa-copy"></i> Kopyala</button>
+                    </div>
+                </div>
+
+                <!-- Widget 4: Günün Duası -->
+                <div class="widget-showcase">
+                    <div class="widget-showcase-header">
+                        <h3><i class="fas fa-praying-hands"></i> Günün Duası Widget</h3>
+                        <span class="widget-badge">Günlük</span>
+                    </div>
+                    <div class="widget-preview-box">
+                        <div class="widget-sample dua-widget">
+                            <div class="widget-title">Günün Duası</div>
+                            <div class="widget-arabic-mini">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+                            <div class="widget-translation-mini">Rahman ve Rahim olan Allah'ın adıyla</div>
+                        </div>
+                    </div>
+                    <div class="widget-code-box">
+                        <div class="widget-code-label">Widget Kodu:</div>
+                        <code class="widget-code-text">&lt;iframe src="https://namazsaati.app/widget/daily-dua" width="340" height="180"&gt;&lt;/iframe&gt;</code>
+                        <button class="copy-btn" onclick="copyWidgetCode(this)"><i class="fas fa-copy"></i> Kopyala</button>
+                    </div>
+                </div>
+
+                <!-- Widget 5: Günün Hadisi -->
+                <div class="widget-showcase">
+                    <div class="widget-showcase-header">
+                        <h3><i class="fas fa-book-open"></i> Günün Hadisi Widget</h3>
+                        <span class="widget-badge">Günlük</span>
+                    </div>
+                    <div class="widget-preview-box">
+                        <div class="widget-sample hadith-widget">
+                            <div class="widget-title">Günün Hadisi</div>
+                            <div class="widget-hadith-text">"Ameller niyetlere göredir."</div>
+                            <div class="widget-source">Buhari, Müslim</div>
+                        </div>
+                    </div>
+                    <div class="widget-code-box">
+                        <div class="widget-code-label">Widget Kodu:</div>
+                        <code class="widget-code-text">&lt;iframe src="https://namazsaati.app/widget/daily-hadith" width="340" height="160"&gt;&lt;/iframe&gt;</code>
+                        <button class="copy-btn" onclick="copyWidgetCode(this)"><i class="fas fa-copy"></i> Kopyala</button>
+                    </div>
+                </div>
+
+                <!-- Widget 6: Esma-ül Hüsna -->
+                <div class="widget-showcase">
+                    <div class="widget-showcase-header">
+                        <h3><i class="fas fa-star-and-crescent"></i> Günün Esması Widget</h3>
+                        <span class="widget-badge">Günlük</span>
+                    </div>
+                    <div class="widget-preview-box">
+                        <div class="widget-sample esma-widget">
+                            <div class="widget-title">Günün Esma-ül Hüsnası</div>
+                            <div class="widget-esma-number">1</div>
+                            <div class="widget-arabic-large">الرَّحْمَنُ</div>
+                            <div class="widget-esma-name">Ar-Rahman</div>
+                            <div class="widget-esma-meaning">Çok Merhametli</div>
+                        </div>
+                    </div>
+                    <div class="widget-code-box">
+                        <div class="widget-code-label">Widget Kodu:</div>
+                        <code class="widget-code-text">&lt;iframe src="https://namazsaati.app/widget/esma" width="300" height="240"&gt;&lt;/iframe&gt;</code>
+                        <button class="copy-btn" onclick="copyWidgetCode(this)"><i class="fas fa-copy"></i> Kopyala</button>
+                    </div>
+                </div>
+
+                <!-- Widget 7: Hicri Takvim -->
+                <div class="widget-showcase">
+                    <div class="widget-showcase-header">
+                        <h3><i class="fas fa-calendar-alt"></i> Hicri Takvim Widget</h3>
+                        <span class="widget-badge">Otomatik</span>
+                    </div>
+                    <div class="widget-preview-box">
+                        <div class="widget-sample hijri-widget">
+                            <div class="widget-title">Hicri Takvim</div>
+                            <div class="widget-hijri-date">15 Cemaziyelevvel 1446</div>
+                            <div class="widget-miladi-date">18 Kasım 2024</div>
+                        </div>
+                    </div>
+                    <div class="widget-code-box">
+                        <div class="widget-code-label">Widget Kodu:</div>
+                        <code class="widget-code-text">&lt;iframe src="https://namazsaati.app/widget/hijri-calendar" width="300" height="140"&gt;&lt;/iframe&gt;</code>
+                        <button class="copy-btn" onclick="copyWidgetCode(this)"><i class="fas fa-copy"></i> Kopyala</button>
+                    </div>
+                </div>
+
+                <!-- Widget 8: Zikirmatik -->
+                <div class="widget-showcase">
+                    <div class="widget-showcase-header">
+                        <h3><i class="fas fa-hands"></i> Zikirmatik Widget</h3>
+                        <span class="widget-badge">Tıklanabilir</span>
+                    </div>
+                    <div class="widget-preview-box">
+                        <div class="widget-sample zikir-widget">
+                            <div class="widget-title">Zikirmatik</div>
+                            <div class="zikir-text">سُبْحَانَ اللّهِ</div>
+                            <div class="zikir-count">0 / 33</div>
+                            <button class="zikir-btn-mini">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="widget-code-box">
+                        <div class="widget-code-label">Widget Kodu:</div>
+                        <code class="widget-code-text">&lt;iframe src="https://namazsaati.app/widget/zikir" width="260" height="220"&gt;&lt;/iframe&gt;</code>
+                        <button class="copy-btn" onclick="copyWidgetCode(this)"><i class="fas fa-copy"></i> Kopyala</button>
+                    </div>
+                </div>
+
+                <div class="widget-footer-info">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>Widgetları web sitenize, blogunuza veya sosyal medya profilinize ekleyebilirsiniz. Her widget otomatik olarak güncellenir ve responsive tasarıma sahiptir.</p>
                 </div>
             </div>
         </div>
@@ -4373,6 +4811,26 @@
                 detail.style.display = 'block';
                 icon.style.transform = 'rotate(180deg)';
             }
+        }
+
+        // Widget Code Copy Function
+        function copyWidgetCode(button) {
+            const codeBox = button.previousElementSibling;
+            const code = codeBox.textContent;
+
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Kopyalandı!';
+                button.style.background = '#28a745';
+
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Kopyalama hatası:', err);
+                alert('Kod kopyalanamadı. Lütfen manuel olarak kopyalayın.');
+            });
         }
 
         // Ramazan Functions
