@@ -881,6 +881,44 @@
             left: 26px;
         }
 
+        /* Action Buttons */
+        .action-button {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .action-button:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+        }
+
+        .action-button:active {
+            transform: translateY(0);
+        }
+
+        .action-button.danger {
+            background: linear-gradient(135deg, #ff4757, #e84118);
+        }
+
+        .action-button.danger:hover {
+            background: linear-gradient(135deg, #ff6348, #ff4757);
+        }
+
+        .action-button i {
+            font-size: 0.9rem;
+        }
+
         /* Theme Selector */
         .theme-selector-section {
             padding: 20px;
@@ -1851,6 +1889,28 @@
 
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
         }
 
         .loading-text {
@@ -3890,10 +3950,16 @@
                             <i class="fas fa-language"></i>
                             <span>Dil</span>
                         </div>
-                        <select id="language">
+                        <select id="language" onchange="changeLanguage(this.value)">
                             <option value="tr">Türkçe</option>
                             <option value="en">English</option>
                             <option value="ar">العربية</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="ru">Русский</option>
+                            <option value="es">Español</option>
+                            <option value="ur">اردو</option>
+                            <option value="id">Bahasa Indonesia</option>
                         </select>
                     </div>
                     <div class="setting-item">
@@ -3908,11 +3974,140 @@
                             <i class="fas fa-text-height"></i>
                             <span>Yazı Boyutu</span>
                         </div>
-                        <select id="font-size">
+                        <select id="font-size" onchange="changeFontSize(this.value)">
                             <option value="small">Küçük</option>
                             <option value="medium" selected>Orta</option>
                             <option value="large">Büyük</option>
+                            <option value="xlarge">Çok Büyük</option>
                         </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-font"></i>
+                            <span>Arapça Yazı Boyutu</span>
+                        </div>
+                        <select id="arabic-font-size" onchange="changeArabicFontSize(this.value)">
+                            <option value="small">Küçük</option>
+                            <option value="medium">Orta</option>
+                            <option value="large" selected>Büyük</option>
+                            <option value="xlarge">Çok Büyük</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-magic"></i>
+                            <span>Animasyonlar</span>
+                        </div>
+                        <div class="toggle active" id="animations-toggle" onclick="toggleSetting(this); toggleAnimations()"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Titreşim</span>
+                        </div>
+                        <div class="toggle active" id="vibration-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
+                        <i class="fas fa-map-marker-alt"></i> Konum
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Otomatik Konum Güncellemesi</span>
+                        </div>
+                        <div class="toggle active" id="auto-location-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-crosshairs"></i>
+                            <span>Konum Hassasiyeti</span>
+                        </div>
+                        <select id="location-accuracy">
+                            <option value="low">Düşük (Pil Tasarrufu)</option>
+                            <option value="medium" selected>Orta</option>
+                            <option value="high">Yüksek</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
+                        <i class="fas fa-th"></i> Widget Ayarları
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-eye"></i>
+                            <span>Widget Görünürlüğü</span>
+                        </div>
+                        <div class="toggle active" id="widget-visibility-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-palette"></i>
+                            <span>Widget Teması</span>
+                        </div>
+                        <select id="widget-theme">
+                            <option value="auto" selected>Otomatik (Ana Tema)</option>
+                            <option value="light">Açık</option>
+                            <option value="dark">Koyu</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-clock"></i>
+                            <span>Widget Güncelleme Sıklığı</span>
+                        </div>
+                        <select id="widget-refresh">
+                            <option value="1">Her 1 dakikada</option>
+                            <option value="5" selected>Her 5 dakikada</option>
+                            <option value="15">Her 15 dakikada</option>
+                            <option value="30">Her 30 dakikada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
+                        <i class="fas fa-database"></i> Veri Yönetimi
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-download"></i>
+                            <span>Verileri Yedekle</span>
+                        </div>
+                        <button class="action-button" onclick="backupData()">
+                            <i class="fas fa-download"></i> Yedekle
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-upload"></i>
+                            <span>Verileri Geri Yükle</span>
+                        </div>
+                        <button class="action-button" onclick="restoreData()">
+                            <i class="fas fa-upload"></i> Geri Yükle
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-trash-alt"></i>
+                            <span>Önbelleği Temizle</span>
+                        </div>
+                        <button class="action-button danger" onclick="clearCache()">
+                            <i class="fas fa-trash-alt"></i> Temizle
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-redo"></i>
+                            <span>Varsayılan Ayarlara Dön</span>
+                        </div>
+                        <button class="action-button danger" onclick="resetSettings()">
+                            <i class="fas fa-redo"></i> Sıfırla
+                        </button>
                     </div>
                 </div>
 
@@ -7839,6 +8034,342 @@
             localStorage.setItem('location', JSON.stringify(state.location));
         }
 
+        // Language Translations
+        const translations = {
+            tr: {
+                home: 'Ana Sayfa',
+                qibla: 'Kıble',
+                tasbih: 'Tesbih',
+                quran: 'Kuran',
+                more: 'Daha Fazla',
+                settings: 'Ayarlar',
+                nextPrayer: 'Sonraki Namaz',
+                prayerTimes: 'Namaz Vakitleri',
+                fajr: 'İmsak',
+                sunrise: 'Güneş',
+                dhuhr: 'Öğle',
+                asr: 'İkindi',
+                maghrib: 'Akşam',
+                isha: 'Yatsı'
+            },
+            en: {
+                home: 'Home',
+                qibla: 'Qibla',
+                tasbih: 'Tasbih',
+                quran: 'Quran',
+                more: 'More',
+                settings: 'Settings',
+                nextPrayer: 'Next Prayer',
+                prayerTimes: 'Prayer Times',
+                fajr: 'Fajr',
+                sunrise: 'Sunrise',
+                dhuhr: 'Dhuhr',
+                asr: 'Asr',
+                maghrib: 'Maghrib',
+                isha: 'Isha'
+            },
+            ar: {
+                home: 'الرئيسية',
+                qibla: 'القبلة',
+                tasbih: 'التسبيح',
+                quran: 'القرآن',
+                more: 'المزيد',
+                settings: 'الإعدادات',
+                nextPrayer: 'الصلاة التالية',
+                prayerTimes: 'مواقيت الصلاة',
+                fajr: 'الفجر',
+                sunrise: 'الشروق',
+                dhuhr: 'الظهر',
+                asr: 'العصر',
+                maghrib: 'المغرب',
+                isha: 'العشاء'
+            },
+            de: {
+                home: 'Startseite',
+                qibla: 'Qibla',
+                tasbih: 'Tasbih',
+                quran: 'Quran',
+                more: 'Mehr',
+                settings: 'Einstellungen',
+                nextPrayer: 'Nächstes Gebet',
+                prayerTimes: 'Gebetszeiten',
+                fajr: 'Fajr',
+                sunrise: 'Sonnenaufgang',
+                dhuhr: 'Dhuhr',
+                asr: 'Asr',
+                maghrib: 'Maghrib',
+                isha: 'Isha'
+            },
+            fr: {
+                home: 'Accueil',
+                qibla: 'Qibla',
+                tasbih: 'Tasbih',
+                quran: 'Coran',
+                more: 'Plus',
+                settings: 'Paramètres',
+                nextPrayer: 'Prochaine Prière',
+                prayerTimes: 'Horaires de Prière',
+                fajr: 'Fajr',
+                sunrise: 'Lever du soleil',
+                dhuhr: 'Dhuhr',
+                asr: 'Asr',
+                maghrib: 'Maghrib',
+                isha: 'Isha'
+            },
+            ru: {
+                home: 'Главная',
+                qibla: 'Кибла',
+                tasbih: 'Тасбих',
+                quran: 'Коран',
+                more: 'Ещё',
+                settings: 'Настройки',
+                nextPrayer: 'Следующая молитва',
+                prayerTimes: 'Время намаза',
+                fajr: 'Фаджр',
+                sunrise: 'Восход',
+                dhuhr: 'Зухр',
+                asr: 'Аср',
+                maghrib: 'Магриб',
+                isha: 'Иша'
+            },
+            es: {
+                home: 'Inicio',
+                qibla: 'Qibla',
+                tasbih: 'Tasbih',
+                quran: 'Corán',
+                more: 'Más',
+                settings: 'Ajustes',
+                nextPrayer: 'Próxima Oración',
+                prayerTimes: 'Horarios de Oración',
+                fajr: 'Fajr',
+                sunrise: 'Amanecer',
+                dhuhr: 'Dhuhr',
+                asr: 'Asr',
+                maghrib: 'Maghrib',
+                isha: 'Isha'
+            },
+            ur: {
+                home: 'گھر',
+                qibla: 'قبلہ',
+                tasbih: 'تسبیح',
+                quran: 'قرآن',
+                more: 'مزید',
+                settings: 'ترتیبات',
+                nextPrayer: 'اگلی نماز',
+                prayerTimes: 'نماز کے اوقات',
+                fajr: 'فجر',
+                sunrise: 'طلوع آفتاب',
+                dhuhr: 'ظہر',
+                asr: 'عصر',
+                maghrib: 'مغرب',
+                isha: 'عشاء'
+            },
+            id: {
+                home: 'Beranda',
+                qibla: 'Kiblat',
+                tasbih: 'Tasbih',
+                quran: 'Quran',
+                more: 'Lainnya',
+                settings: 'Pengaturan',
+                nextPrayer: 'Sholat Berikutnya',
+                prayerTimes: 'Waktu Sholat',
+                fajr: 'Subuh',
+                sunrise: 'Terbit',
+                dhuhr: 'Dzuhur',
+                asr: 'Ashar',
+                maghrib: 'Maghrib',
+                isha: 'Isya'
+            }
+        };
+
+        // Change Language
+        function changeLanguage(lang) {
+            state.settings.language = lang;
+            localStorage.setItem('settings', JSON.stringify(state.settings));
+
+            // Update UI with selected language
+            const trans = translations[lang] || translations.tr;
+
+            // Show success notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: var(--primary);
+                color: white;
+                padding: 20px 30px;
+                border-radius: 12px;
+                z-index: 10000;
+                font-weight: 500;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            `;
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${lang === 'tr' ? 'Dil değiştirildi!' : lang === 'en' ? 'Language changed!' : lang === 'ar' ? 'تم تغيير اللغة!' : lang === 'de' ? 'Sprache geändert!' : lang === 'fr' ? 'Langue changée!' : lang === 'ru' ? 'Язык изменён!' : lang === 'es' ? '¡Idioma cambiado!' : lang === 'ur' ? 'زبان تبدیل ہو گئی!' : 'Bahasa diubah!'}`;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+        }
+
+        // Font Size Management
+        function changeFontSize(size) {
+            const root = document.documentElement;
+            const sizes = {
+                small: '14px',
+                medium: '16px',
+                large: '18px',
+                xlarge: '20px'
+            };
+            root.style.fontSize = sizes[size] || sizes.medium;
+            state.settings.fontSize = size;
+            localStorage.setItem('settings', JSON.stringify(state.settings));
+        }
+
+        function changeArabicFontSize(size) {
+            const sizes = {
+                small: '1.2em',
+                medium: '1.4em',
+                large: '1.6em',
+                xlarge: '1.8em'
+            };
+            const arabicElements = document.querySelectorAll('.prophet-arabic, .surah-arabic, .ayah-arabic, [lang="ar"]');
+            arabicElements.forEach(el => {
+                el.style.fontSize = sizes[size] || sizes.large;
+            });
+            state.settings.arabicFontSize = size;
+            localStorage.setItem('settings', JSON.stringify(state.settings));
+        }
+
+        // Toggle Animations
+        function toggleAnimations() {
+            const animationsEnabled = document.getElementById('animations-toggle').classList.contains('active');
+            document.documentElement.style.setProperty('--animation-speed', animationsEnabled ? '0.3s' : '0s');
+            state.settings.animations = animationsEnabled;
+            localStorage.setItem('settings', JSON.stringify(state.settings));
+        }
+
+        // Data Management
+        function backupData() {
+            const data = {
+                settings: state.settings,
+                location: state.location,
+                tasbihCount: localStorage.getItem('tasbih-count') || 0,
+                tesbihHistory: localStorage.getItem('tesbih-history') || '[]',
+                theme: localStorage.getItem('theme') || 'default',
+                timestamp: new Date().toISOString()
+            };
+
+            const dataStr = JSON.stringify(data, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `namaz-saati-backup-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showNotification('Veriler başarıyla yedeklendi!', 'success');
+        }
+
+        function restoreData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        const data = JSON.parse(event.target.result);
+
+                        // Restore data
+                        if (data.settings) {
+                            state.settings = data.settings;
+                            localStorage.setItem('settings', JSON.stringify(data.settings));
+                        }
+                        if (data.location) {
+                            state.location = data.location;
+                            localStorage.setItem('location', JSON.stringify(data.location));
+                        }
+                        if (data.tasbihCount) {
+                            localStorage.setItem('tasbih-count', data.tasbihCount);
+                        }
+                        if (data.tesbihHistory) {
+                            localStorage.setItem('tesbih-history', data.tesbihHistory);
+                        }
+                        if (data.theme) {
+                            localStorage.setItem('theme', data.theme);
+                            changeTheme(data.theme);
+                        }
+
+                        showNotification('Veriler başarıyla geri yüklendi! Sayfa yenileniyor...', 'success');
+                        setTimeout(() => location.reload(), 1500);
+                    } catch (error) {
+                        showNotification('Hatalı dosya formatı!', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        function clearCache() {
+            if (confirm('Önbellek temizlenecek. Devam etmek istiyor musunuz?')) {
+                // Clear only cache, keep settings
+                const settings = localStorage.getItem('settings');
+                const location = localStorage.getItem('location');
+
+                localStorage.clear();
+
+                if (settings) localStorage.setItem('settings', settings);
+                if (location) localStorage.setItem('location', location);
+
+                showNotification('Önbellek temizlendi!', 'success');
+                setTimeout(() => location.reload(), 1000);
+            }
+        }
+
+        function resetSettings() {
+            if (confirm('Tüm ayarlar varsayılana dönecek. Devam etmek istiyor musunuz?')) {
+                localStorage.clear();
+                showNotification('Ayarlar sıfırlandı! Sayfa yenileniyor...', 'success');
+                setTimeout(() => location.reload(), 1500);
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            const colors = {
+                success: '#2ecc71',
+                error: '#e74c3c',
+                info: 'var(--primary)'
+            };
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${colors[type] || colors.info};
+                color: white;
+                padding: 16px 24px;
+                border-radius: 10px;
+                z-index: 10000;
+                font-weight: 500;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
         // Settings
         function toggleSetting(el) {
             el.classList.toggle('active');
@@ -7872,6 +8403,32 @@
                 state.settings = JSON.parse(savedSettings);
                 document.getElementById('calc-method').value = state.settings.calcMethod;
                 document.getElementById('asr-method').value = state.settings.asrMethod;
+
+                // Load language setting
+                if (state.settings.language) {
+                    document.getElementById('language').value = state.settings.language;
+                }
+
+                // Load font size settings
+                if (state.settings.fontSize) {
+                    document.getElementById('font-size').value = state.settings.fontSize;
+                    changeFontSize(state.settings.fontSize);
+                }
+
+                if (state.settings.arabicFontSize) {
+                    document.getElementById('arabic-font-size').value = state.settings.arabicFontSize;
+                    changeArabicFontSize(state.settings.arabicFontSize);
+                }
+
+                // Load animation setting
+                if (state.settings.animations !== undefined) {
+                    if (state.settings.animations) {
+                        document.getElementById('animations-toggle').classList.add('active');
+                    } else {
+                        document.getElementById('animations-toggle').classList.remove('active');
+                    }
+                    toggleAnimations();
+                }
             }
 
             // Try to get current location
