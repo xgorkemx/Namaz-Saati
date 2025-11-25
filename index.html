@@ -746,7 +746,20 @@
 
         .more-menu {
             display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .more-menu {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .more-menu {
+                grid-template-columns: 1fr;
+            }
         }
 
         .more-item {
@@ -754,8 +767,10 @@
             border-radius: 15px;
             padding: 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
+            text-align: center;
+            gap: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
