@@ -2613,6 +2613,22 @@
         /* Kandil Page */
         .kandil-container {
             padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .section-divider {
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .section-divider h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .kandil-card {
@@ -2620,24 +2636,58 @@
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 15px;
+            position: relative;
+            border-left: 4px solid var(--primary);
         }
 
-        .kandil-date {
-            font-size: 0.8rem;
-            color: var(--gold);
-            margin-bottom: 5px;
+        .kandil-card.special {
+            background: linear-gradient(135deg, rgba(26, 95, 74, 0.1), rgba(26, 95, 74, 0.05));
+            border-left-color: var(--gold);
         }
 
-        .kandil-name {
-            font-size: 1.1rem;
-            font-weight: 600;
+        .kandil-card.bayram {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-left-color: var(--gold);
+        }
+
+        .kandil-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8941f);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
             margin-bottom: 10px;
         }
 
-        .kandil-desc {
+        .kandil-date {
             font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .kandil-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .kandil-desc {
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.7;
+        }
+
+        .kandil-desc p {
+            margin-bottom: 10px;
+        }
+
+        .kandil-desc strong {
+            color: var(--primary);
+            font-weight: 600;
         }
 
         /* Prayer Tracker */
@@ -5328,9 +5378,15 @@
                         </div>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <div class="prophet-info">Hz. İlyas'ın ardılı</div>
+                    <div class="prophet-info">Hz. İlyas'ın ardılı ve öğrencisi</div>
                     <div class="prophet-story">
-                        Hz. Elyesa, Hz. İlyas'tan sonra İsrailoğullarına peygamber olarak gönderildi. Kavmini doğru yola davet etti.
+                        Hz. Elyesa, Hz. İlyas'ın öğrencisi ve ardılı olarak İsrailoğullarına peygamber olarak gönderildi. Hz. İlyas'ın misyonunu devam ettirdi. Kavmini tevhide, putperestlikten uzaklaşmaya ve doğru yola davet etti. Birçok mucize gösterdiği rivayet edilir.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Görevi:</strong> Hz. İlyas'ın davetini sürdürmek.<br>
+                        <strong>Mucizeleri:</strong> Hastaları iyileştirmek, ölüleri diriltmek gibi mucizeler gösterdiği rivayet edilir.<br>
+                        <strong>Kavmi:</strong> İsrailoğullarını putperestlikten kurtarmaya çalıştı.<br>
+                        <strong>Kur'an'da:</strong> En'am 86 ve Sad 48. ayetlerde salih kullar arasında anılır.</p>
                     </div>
                 </div>
 
@@ -5440,6 +5496,27 @@
                     <div class="prophet-header">
                         <div class="prophet-icon">25</div>
                         <div>
+                            <div class="prophet-name">Hz. Zülkifl (as)</div>
+                            <div class="prophet-arabic">ذُو الْكِفْلِ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Sabırlı ve ahde vefa peygamberi</div>
+                    <div class="prophet-story">
+                        Hz. Zülkifl, Kur'an'da ismi geçen 25 peygamberden biridir. İsmi "kefil olan, sorumluluk alan" anlamına gelir. Bazı kaynaklara göre Hz. Eyyub'un veya Hz. İshak'ın oğludur. Kavmine karşı çok sabırlı olmuş, verdiği sözleri tutmuş ve sorumluluklarını eksiksiz yerine getirmiştir.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>İsmin Anlamı:</strong> "Kefil olan, sorumluluk üstlenen"<br>
+                        <strong>Özelliği:</strong> Verdiği sözleri tutması, sorumluluklarını yerine getirmesi.<br>
+                        <strong>Kur'an'da:</strong> Enbiya 85-86 ve Sad 48. ayetlerde sabreden peygamberler arasında sayılır.<br>
+                        <strong>Ders:</strong> Verilen sözlere bağlılık, sorumluluk bilinci, sabır ve sebat.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">26</div>
+                        <div>
                             <div class="prophet-name">Diğer Peygamberler</div>
                             <div class="prophet-arabic">الْأَنْبِيَاءُ</div>
                         </div>
@@ -5447,12 +5524,13 @@
                     </div>
                     <div class="prophet-info">Adı geçmeyen 124.000 peygamber</div>
                     <div class="prophet-story">
-                        Kur'an'da 25 peygamberin ismi geçer. Ancak hadislerde Allah'ın 124.000 peygamber gönderdiği bildirilir. Bunlardan 313'ü resuldür (kitap veya şeriat getiren).
+                        Kur'an'da 25 peygamberin ismi açıkça geçer. Ancak hadislerde Allah'ın insanlığa 124.000 peygamber gönderdiği bildirilir. Bunlardan 313'ü resuldür (kitap veya şeriat getiren). Her kavme bir peygamber gönderilmiştir.
                     </div>
                     <div class="prophet-detail">
-                        <p><strong>Diğer Bilinen Peygamberler:</strong> Hz. Şit (Adem'in oğlu), Hz. Zülkifl, Hz. Lokman ve daha nicesi.<br>
-                        <strong>Hepsi:</strong> Tevhid (Allah'ın birliği) mesajını getirdi.<br>
-                        <strong>İman Esası:</strong> Tüm peygamberlere iman etmek farzdır.</p>
+                        <p><strong>Diğer Bilinen İsimler:</strong> Hz. Şit (Adem'in oğlu), Hz. Şis, Hz. İrmiya ve daha nicesi.<br>
+                        <strong>Ortak Mesaj:</strong> Hepsi tevhid (Allah'ın birliği) mesajını getirdi.<br>
+                        <strong>İman Esası:</strong> Tüm peygamberlere iman etmek imanın şartlarındandır.<br>
+                        <strong>Hikmet:</strong> Her topluma kendi dilinden bir uyarıcı gönderilmiştir.</p>
                     </div>
                 </div>
             </div>
@@ -5797,46 +5875,154 @@
                     <i class="fas fa-arrow-left"></i> Geri
                 </button>
 
-                <div class="kandil-card">
-                    <div class="kandil-date">25 Aralık 2025</div>
+                <div class="section-divider">
+                    <h3><i class="fas fa-star"></i> Kandil Geceleri</h3>
+                </div>
+
+                <div class="kandil-card special">
+                    <div class="kandil-badge">1. Kandil</div>
+                    <div class="kandil-date">Recep ayının ilk Cuma gecesi</div>
                     <div class="kandil-name">Regaib Kandili</div>
-                    <div class="kandil-desc">Recep ayının ilk Cuma gecesi. Hz. Muhammed'in ana rahmine düştüğü gece olarak bilinir. Bolluk ve bereket gecesidir.</div>
+                    <div class="kandil-desc">
+                        <p><strong>Önemi:</strong> Hz. Muhammed'in (s.a.v) ana rahmine düştüğü gece olarak bilinir. Mübarek üç ayların başlangıcıdır.</p>
+                        <p><strong>Yapılacaklar:</strong> Namaz kılınır, Kur'an okunur, tövbe ve istiğfar edilir, dua edilir.</p>
+                        <p><strong>Hikmet:</strong> Bolluk, bereket ve rahmet gecesidir. Allah'ın rahmetinin bol olduğu bir gecedir.</p>
+                    </div>
                 </div>
 
-                <div class="kandil-card">
-                    <div class="kandil-date">15 Ocak 2026</div>
+                <div class="kandil-card special">
+                    <div class="kandil-badge">2. Kandil</div>
+                    <div class="kandil-date">Recep ayının 27. gecesi</div>
                     <div class="kandil-name">Miraç Kandili</div>
-                    <div class="kandil-desc">Hz. Muhammed'in göğe yükseldiği ve Allah ile görüştüğü gece. Beş vakit namaz bu gece farz kılındı.</div>
+                    <div class="kandil-desc">
+                        <p><strong>Önemi:</strong> Hz. Muhammed'in (s.a.v) Mescid-i Haram'dan Mescid-i Aksa'ya, oradan da göğe yükseldiği mübarek gecedir.</p>
+                        <p><strong>Yapılacaklar:</strong> Namaz kılınır, salat-ı tefriciye okunur, dua edilir, Kur'an okunur.</p>
+                        <p><strong>Hikmet:</strong> Beş vakit namazın farz kılındığı gecedir. Allah ile Peygamberimizin buluştuğu en özel gecelerden biridir.</p>
+                    </div>
                 </div>
 
-                <div class="kandil-card">
-                    <div class="kandil-date">2 Şubat 2026</div>
+                <div class="kandil-card special">
+                    <div class="kandil-badge">3. Kandil</div>
+                    <div class="kandil-date">Şaban ayının 14-15. gecesi</div>
                     <div class="kandil-name">Berat Kandili</div>
-                    <div class="kandil-desc">Şaban ayının 15. gecesi. Bağışlanma ve af gecesi. Bir yıllık kaderin belirlendiği gece olarak bilinir.</div>
+                    <div class="kandil-desc">
+                        <p><strong>Önemi:</strong> Bağışlanma, kurtuluş ve beraat gecesidir. Bir yıllık kaderin belirlendiği gece olarak bilinir.</p>
+                        <p><strong>Yapılacaklar:</strong> Namaz kılınır, Kur'an okunur, tövbe edilir, dua edilir, kabir ziyareti yapılır.</p>
+                        <p><strong>Hikmet:</strong> Allah'ın kullarına af ve mağfiret kapılarını açtığı gecedir. Ramazan'a hazırlık gecesidir.</p>
+                    </div>
                 </div>
 
-                <div class="kandil-card">
-                    <div class="kandil-date">19 Şubat 2026</div>
-                    <div class="kandil-name">Ramazan Başlangıcı</div>
-                    <div class="kandil-desc">Kutsal Ramazan ayının ilk günü. Mübarek üç ayların son ayı ve oruç ayı başlar.</div>
-                </div>
-
-                <div class="kandil-card">
-                    <div class="kandil-date">16 Mart 2026</div>
+                <div class="kandil-card special">
+                    <div class="kandil-badge">4. Kandil</div>
+                    <div class="kandil-date">Ramazan'ın son 10 günü (27. gece ihtimali yüksek)</div>
                     <div class="kandil-name">Kadir Gecesi</div>
-                    <div class="kandil-desc">Kur'an'ın indirilmeye başlandığı mübarek gece. Bin aydan daha hayırlı olan bu gece Ramazan'ın son 10 gününde aranır.</div>
+                    <div class="kandil-desc">
+                        <p><strong>Önemi:</strong> Kur'an-ı Kerim'in indirilmeye başlandığı mübarek gecedir. Bin aydan daha hayırlıdır.</p>
+                        <p><strong>Yapılacaklar:</strong> İbadet edilir, Kur'an okunur, dua edilir, sadaka verilir, itikafa girilir.</p>
+                        <p><strong>Hikmet:</strong> Bir gecede yapılan ibadet, 1000 aydan (83 yıldan) daha değerlidir. Melekler yeryüzüne iner.</p>
+                        <p><strong>Özel Dua:</strong> "Allahümme inneke afüvvün tuhibbül afve fa'fü annî" (Allah'ım! Sen affedicisin, affetmeyi seversin, beni affet)</p>
+                    </div>
+                </div>
+
+                <div class="kandil-card special">
+                    <div class="kandil-badge">5. Kandil</div>
+                    <div class="kandil-date">Rebiülevvel ayının 12. gecesi</div>
+                    <div class="kandil-name">Mevlid Kandili</div>
+                    <div class="kandil-desc">
+                        <p><strong>Önemi:</strong> Hz. Muhammed'in (s.a.v) dünyaya teşrif ettiği mübarek gecedir.</p>
+                        <p><strong>Yapılacaklar:</strong> Mevlid okunur, salat-ı şerife getirilir, Peygamber efendimizin hayatı anlatılır.</p>
+                        <p><strong>Hikmet:</strong> Alemlere rahmet olarak gönderilen Peygamberimizin doğum günü kutlanır, O'na salat ve selam getirilir.</p>
+                    </div>
+                </div>
+
+                <div class="section-divider">
+                    <h3><i class="fas fa-moon"></i> Mübarek Aylar ve Günler</h3>
                 </div>
 
                 <div class="kandil-card">
-                    <div class="kandil-date">20 Mart 2026</div>
-                    <div class="kandil-name">Ramazan Bayramı</div>
-                    <div class="kandil-desc">Üç gün süren mübarek bayram. Oruç ibadetinin tamamlanması şükrüyle kutlanır.</div>
+                    <div class="kandil-name">Muharrem Ayı ve Aşure Günü</div>
+                    <div class="kandil-desc">
+                        <p><strong>Muharrem:</strong> Hicri takvimin ilk ayıdır. Dört haram aydan biridir.</p>
+                        <p><strong>Aşure Günü:</strong> Muharrem ayının 10. günüdür. Hz. Musa'nın (a.s) Firavun'dan kurtulduğu gündür.</p>
+                        <p><strong>Yapılacaklar:</strong> Oruç tutulur, aşure yapılıp dağıtılır, sadaka verilir.</p>
+                        <p><strong>Sevabı:</strong> Aşure günü orucu bir önceki yılın günahlarına kefaret olur.</p>
+                    </div>
                 </div>
 
                 <div class="kandil-card">
-                    <div class="kandil-date">27 Mayıs 2026</div>
-                    <div class="kandil-name">Kurban Bayramı</div>
-                    <div class="kandil-desc">Dört gün süren mübarek bayram. Hz. İbrahim'in kurban kesme olayını anma ve hac ibadeti ile ilişkilidir.</div>
+                    <div class="kandil-name">Mübarek Üç Aylar</div>
+                    <div class="kandil-desc">
+                        <p><strong>Recep:</strong> İlk mübarek aydır. "Allah'ın ayı" olarak bilinir.</p>
+                        <p><strong>Şaban:</strong> İkinci mübarek aydır. "Peygamber'in ayı" olarak bilinir.</p>
+                        <p><strong>Ramazan:</strong> Oruç ayıdır. "Ümmetin ayı" olarak bilinir.</p>
+                        <p><strong>Önemi:</strong> Bu üç ay ibadet, tövbe ve Allah'a yakınlaşma aylarıdır.</p>
+                    </div>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-name">Zilhicce'nin İlk 10 Günü</div>
+                    <div class="kandil-desc">
+                        <p><strong>Önemi:</strong> Yılın en mübarek günleridir. Hac ibadeti bu günlerde yapılır.</p>
+                        <p><strong>Arefe Günü:</strong> Zilhicce'nin 9. günüdür. Hacıların Arafat'ta vakfe yaptığı gündür.</p>
+                        <p><strong>Arefe Orucu:</strong> İki yılın günahlarına kefaret olur (bir önceki ve bir sonraki yıl).</p>
+                        <p><strong>Yapılacaklar:</strong> Oruç tutulur, zikirler çekilir, teşrik tekbirleri getirilir.</p>
+                    </div>
+                </div>
+
+                <div class="section-divider">
+                    <h3><i class="fas fa-calendar-day"></i> Dini Bayramlar</h3>
+                </div>
+
+                <div class="kandil-card bayram">
+                    <div class="kandil-name">Ramazan Bayramı (Şeker Bayramı)</div>
+                    <div class="kandil-desc">
+                        <p><strong>Süre:</strong> 3 gün sürer.</p>
+                        <p><strong>Önemi:</strong> Ramazan ayında tutulan oruçların tamamlanması şükrü olarak kutlanır.</p>
+                        <p><strong>Yapılacaklar:</strong> Bayram namazı kılınır, fıtır sadakası verilir, ziyaretler yapılır, helalleşilir.</p>
+                        <p><strong>Fıtır Sadakası:</strong> Bayram namazından önce yoksullara verilmesi gereken sadakadır.</p>
+                    </div>
+                </div>
+
+                <div class="kandil-card bayram">
+                    <div class="kandil-name">Kurban Bayramı (Büyük Bayram)</div>
+                    <div class="kandil-desc">
+                        <p><strong>Süre:</strong> 4 gün sürer (Arefe günü + 3 gün bayram).</p>
+                        <p><strong>Önemi:</strong> Hz. İbrahim'in (a.s) oğlu İsmail'i kurban etme emrine itaat etmesini anma günüdür.</p>
+                        <p><strong>Yapılacaklar:</strong> Bayram namazı kılınır, kurban kesilir, ziyaretler yapılır, et dağıtılır.</p>
+                        <p><strong>Kurban:</strong> Varlıklı müslümanlar için vaciptir. Eti fakir fukaraya dağıtılır.</p>
+                        <p><strong>Teşrik Tekbirleri:</strong> Arefe günü sabah namazından bayramın 4. günü ikindi namazına kadar her farz namazın ardından getirilir.</p>
+                    </div>
+                </div>
+
+                <div class="section-divider">
+                    <h3><i class="fas fa-info-circle"></i> Diğer Özel Günler</h3>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-name">Hicri Yılbaşı</div>
+                    <div class="kandil-desc">
+                        <p><strong>Tarih:</strong> Muharrem ayının 1. günüdür.</p>
+                        <p><strong>Önemi:</strong> Hz. Muhammed'in (s.a.v) Mekke'den Medine'ye hicret etmesiyle başlayan takvimin yılbaşısıdır.</p>
+                        <p><strong>Hikmet:</strong> Müslümanların kendi takviminin başlangıcıdır.</p>
+                    </div>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-name">Cuma Günleri</div>
+                    <div class="kandil-desc">
+                        <p><strong>Önemi:</strong> Haftanın en mübarek günüdür. "Günlerin efendisi" olarak bilinir.</p>
+                        <p><strong>Yapılacaklar:</strong> Cuma namazı kılınır, Kehf suresi okunur, çok salat-ı şerife getirilir.</p>
+                        <p><strong>İcabet Saati:</strong> Cumada duaların kabul edildiği özel bir saat vardır.</p>
+                    </div>
+                </div>
+
+                <div class="kandil-card">
+                    <div class="kandil-name">Beraat Ayı (Şaban)</div>
+                    <div class="kandil-desc">
+                        <p><strong>Önemi:</strong> Peygamberimizin en çok oruç tuttuğu aydır.</p>
+                        <p><strong>Yapılacaklar:</strong> Nafile oruçlar tutulur, Ramazan'a hazırlık yapılır.</p>
+                        <p><strong>Hikmet:</strong> Ramazan öncesi ruhani hazırlık ayıdır.</p>
+                    </div>
                 </div>
             </div>
         </div>
