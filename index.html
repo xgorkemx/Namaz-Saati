@@ -511,6 +511,240 @@
             margin: 10px 0;
         }
 
+        /* AI Assistant Page */
+        .assistant-container {
+            padding: 20px;
+            height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 12px;
+            animation: messageSlide 0.3s ease;
+        }
+
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .user-message {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .assistant-message .message-avatar {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .user-message .message-avatar {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .message-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .message-text {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 16px;
+            border-radius: 15px;
+            line-height: 1.6;
+            max-width: 100%;
+            word-wrap: break-word;
+        }
+
+        .assistant-message .message-text {
+            background: linear-gradient(135deg, rgba(26, 95, 74, 0.2), rgba(26, 95, 74, 0.1));
+            border: 1px solid rgba(26, 95, 74, 0.3);
+        }
+
+        .user-message .message-text {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.1));
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            padding: 0 5px;
+        }
+
+        .user-message .message-time {
+            text-align: right;
+        }
+
+        .quick-questions {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-question-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .quick-question-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .quick-question-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 10px 12px;
+            color: var(--text-primary);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .quick-question-btn:hover {
+            background: rgba(26, 95, 74, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .quick-question-btn i {
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 10px;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+        }
+
+        .chat-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .chat-send-btn {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(26, 95, 74, 0.4);
+        }
+
+        .chat-send-btn:active {
+            transform: scale(0.95);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
         /* Settings Page */
         .settings-container {
             padding: 20px;
@@ -2918,6 +3152,65 @@
             </div>
         </div>
 
+        <!-- AI Assistant Page -->
+        <div class="page" id="page-assistant">
+            <header class="header">
+                <h1 class="app-title">AI Asistan</h1>
+            </header>
+            <div class="assistant-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="chat-container" id="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="chat-message assistant-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-text">
+                                    Merhaba! Ben size yardımcı olmak için buradayım. İslami konular, namaz vakitleri, dualar, ibadetler ve daha birçok konuda size yardımcı olabilirim. Ne öğrenmek istersiniz?
+                                </div>
+                                <div class="message-time">Şimdi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-questions">
+                        <div class="quick-question-title">Hızlı Sorular:</div>
+                        <div class="quick-question-buttons">
+                            <button class="quick-question-btn" onclick="askQuestion('Namaz nasıl kılınır?')">
+                                <i class="fas fa-pray"></i> Namaz nasıl kılınır?
+                            </button>
+                            <button class="quick-question-btn" onclick="askQuestion('Abdest nasıl alınır?')">
+                                <i class="fas fa-hand-holding-water"></i> Abdest nasıl alınır?
+                            </button>
+                            <button class="quick-question-btn" onclick="askQuestion('Oruç tutmanın şartları nelerdir?')">
+                                <i class="fas fa-moon"></i> Oruç şartları
+                            </button>
+                            <button class="quick-question-btn" onclick="askQuestion('Zekat nedir?')">
+                                <i class="fas fa-hand-holding-heart"></i> Zekat nedir?
+                            </button>
+                            <button class="quick-question-btn" onclick="askQuestion('Kıble hangi yöndedir?')">
+                                <i class="fas fa-compass"></i> Kıble yönü
+                            </button>
+                            <button class="quick-question-btn" onclick="askQuestion('Esmaül Hüsna nedir?')">
+                                <i class="fas fa-star"></i> Esmaül Hüsna
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <input type="text" id="chat-input" class="chat-input" placeholder="Sorunuzu yazın..." onkeypress="handleChatKeypress(event)">
+                        <button class="chat-send-btn" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Settings Page -->
         <div class="page" id="page-settings">
             <header class="header">
@@ -3346,6 +3639,15 @@
                         <div class="more-item-info">
                             <h3>Yakındaki Camiler</h3>
                             <p>Çevrenizdeki camileri bulun</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('assistant')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>AI Asistan</h3>
+                            <p>Her türlü sorunuza kapsamlı cevaplar</p>
                         </div>
                     </div>
                     <div class="more-item" onclick="showPage('settings')">
@@ -5940,7 +6242,7 @@
             const navIndex = navPages.indexOf(pageName);
             if (navIndex !== -1) {
                 document.querySelectorAll('.nav-item')[navIndex].classList.add('active');
-            } else if (['hajj', 'hadith', 'widget', 'encyclopedia', 'settings', 'ramazan', 'kandil', 'friday', 'tracker', 'abdest', 'namazguide', 'zekat', 'mosques', 'esma', 'prayers', 'prophets'].includes(pageName)) {
+            } else if (['hajj', 'hadith', 'widget', 'encyclopedia', 'settings', 'ramazan', 'kandil', 'friday', 'tracker', 'abdest', 'namazguide', 'zekat', 'mosques', 'esma', 'prayers', 'prophets', 'assistant'].includes(pageName)) {
                 // These are sub-pages of "more"
                 document.querySelectorAll('.nav-item')[4].classList.add('active');
             }
@@ -7063,6 +7365,201 @@
 
             // Initialize tasbeeh
             initTasbeeh();
+        }
+
+        // AI Assistant Functions
+        const aiKnowledgeBase = {
+            "namaz": {
+                keywords: ["namaz", "salat", "kıl", "rükun", "farz", "vacip", "sünnet"],
+                answer: "Namaz, İslam'ın 5 şartından biridir ve günde 5 vakit kılınır. Namazın farzları:\n\n1. Abdestli olmak\n2. Avret yerini örtmek\n3. Kıbleye dönmek\n4. Niyet etmek\n5. İftitah tekbiri almak\n6. Kıyamda durmak\n7. Kur'an okumak\n8. Rükuya varmak\n9. Secde etmek\n10. Son oturuşta bulunmak\n\nNamaz kılmayı öğrenmek için 'Namaz Kılma Rehberi' sayfamızı ziyaret edebilirsiniz."
+            },
+            "abdest": {
+                keywords: ["abdest", "abdest al", "temizlik", "taharet"],
+                answer: "Abdest, namaz için gerekli bir temizliktir. Abdest alırken yapılması gerekenler:\n\n**Farzlar:**\n1. Yüzü yıkamak\n2. Dirseklere kadar elleri yıkamak\n3. Başın dörtte birini mesh etmek\n4. Topuklara kadar ayakları yıkamak\n\n**Sünnetler:**\n1. Niyet etmek\n2. Besmele çekmek\n3. Her organı 3 kez yıkamak\n4. Ağız ve burun temizliği\n\nDetaylı bilgi için 'Abdest Alma Rehberi' sayfamıza bakabilirsiniz."
+            },
+            "oruç": {
+                keywords: ["oruç", "ramazan", "tutmak", "iftar", "sahur"],
+                answer: "Oruç, İslam'ın 5 şartından biridir. Ramazan ayında tutulması farzdır.\n\n**Oruç Tutmanın Şartları:**\n1. Müslüman olmak\n2. Akıllı olmak\n3. Ergenlik çağına gelmiş olmak\n4. Mukim olmak (yolcu değil)\n5. Oruç tutmaya gücü yetmek\n6. Kadınlar için hayızlı veya nifaslı olmamak\n\n**Oruç Bozan Durumlar:**\n- Kasıtlı yemek-içmek\n- Cinsel ilişki\n- Kusma\n- Hayız ve nifas hali"
+            },
+            "zekat": {
+                keywords: ["zekat", "sadaka", "malın zek", "hesapla"],
+                answer: "Zekat, İslam'ın 5 şartından biridir. Zenginlerin mallarından alınan ve fakirlere verilen zorunlu bir ibadettir.\n\n**Zekat Şartları:**\n1. Müslüman olmak\n2. Hür olmak\n3. Nisap miktarı mala sahip olmak\n4. Malın üzerinden bir yıl (kameri) geçmesi\n\n**Zekat Miktarı:**\n- Para ve ticaret mallarının %2.5'i (1/40)\n- Altının nisabı: 85 gram\n- Gümüşün nisabı: 595 gram\n\nZekat hesaplamak için 'Zekat Hesaplayıcı' aracımızı kullanabilirsiniz."
+            },
+            "kıble": {
+                keywords: ["kıble", "yön", "kabe", "mekke", "hangi"],
+                answer: "Kıble, Müslümanların namaz kılarken yöneldikleri istikamettir ve Mekke'deki Kâbe'yi gösterir.\n\n**Kıble Bulma Yöntemleri:**\n1. Pusula kullanarak\n2. Güneş ve yıldızlardan yararlanarak\n3. Modern teknoloji (GPS, dijital kıble pusulası)\n\nUygulamanın 'Kıble' sayfasında dijital pusula ile anlık olarak kıble yönünü bulabilirsiniz. Telefonunuzu yatay tutup pusulayı kullanın."
+            },
+            "hac": {
+                keywords: ["hac", "umre", "kabe", "mekke", "tavaf"],
+                answer: "Hac, gücü yeten her Müslüman için ömründe bir kez farz olan ibadettir.\n\n**Haccın Farzları:**\n1. İhrama girmek\n2. Vakfe (Arafat'ta bulunma)\n3. Tavaf-ı Ziyaret\n\n**Haccın Vacipleri:**\n1. Safa ile Merve arasında sa'y\n2. Muzdalife'de vakfe\n3. Şeytan taşlama\n4. Saç tıraşı veya kesimi\n5. Veda tavafı\n\n**Umre**, küçük hac olarak bilinir ve yıl boyunca yapılabilir. Detaylar için 'Hac ve Umre Rehberi' sayfamızı inceleyebilirsiniz."
+            },
+            "dua": {
+                keywords: ["dua", "zikirler", "ezan", "kunut", "sabah", "akşam"],
+                answer: "Dua, kulun Allah'a yönelip istekte bulunmasıdır. En değerli ibadetlerden biridir.\n\n**Önemli Dualar:**\n- Sabah-akşam duaları\n- Yemek duaları\n- Yolculuk duaları\n- Hasta ziyareti duaları\n- Kunut duası\n\n**Dua Edilecek Zamanlar:**\n- Ezan ile kamet arası\n- Secde halinde\n- Yatsı namazının son oturuşu\n- Cuma günü ikindi ile akşam arası\n- Ramazan ve Arefe günü\n\n'Dualar Koleksiyonu' sayfamızda günlük duaları bulabilirsiniz."
+            },
+            "esmaülhüsna": {
+                keywords: ["esma", "hüsna", "allah", "isim", "99"],
+                answer: "Esmaül Hüsna, Allah'ın güzel isimleridir ve 99 tanedir.\n\n**Bazı Esma ve Anlamları:**\n- Er-Rahman: Çok merhametli\n- Er-Rahim: Çok esirgeyici\n- El-Malik: Hükümdar\n- El-Kuddüs: Mukaddes\n- Es-Selam: Selam, esenlik veren\n\n**Esmaül Hüsna'nın Faydaları:**\n- Allah'ı tanımaya vesile olur\n- Zikirde kullanılır\n- Dua edilirken tevessül yapılır\n\nTüm isimleri görmek için 'Esma-ül Hüsna' sayfamızı ziyaret edin."
+            },
+            "ramazan": {
+                keywords: ["ramazan", "imsakiye", "sahur", "iftar", "teravih"],
+                answer: "Ramazan, İslam takviminin 9. ayıdır ve oruç tutulması farz olan mübarek bir aydır.\n\n**Ramazan'ın Özellikleri:**\n- Kur'an bu ayda indirilmeye başlanmıştır\n- Kadir Gecesi bu aydadır\n- İyiliklerin sevabı kat kat artar\n- Şeytanlar zincire vurulur\n\n**Ramazan İbadetleri:**\n- Oruç tutmak\n- Teravih namazı\n- Kur'an okumak\n- Sadaka vermek\n- İftar yemeği vermek\n\n'Ramazan Özel' sayfamızda güncel imsakiye ve Ramazan bilgilerini bulabilirsiniz."
+            },
+            "tesbih": {
+                keywords: ["tesbih", "zikir", "sayaç", "subhanallah", "elhamdülillah"],
+                answer: "Tesbih, Allah'ı zikretmek için kullanılan bir ibadettir.\n\n**Sık Çekilen Zikirler:**\n- Subhanallah (33 kez): Allah noksan sıfatlardan münezzehtir\n- Elhamdülillah (33 kez): Hamd Allah'a mahsustur\n- Allahu Ekber (33-34 kez): Allah en büyüktür\n\n**Zikir Çeşitleri:**\n- Namaz sonrası tesbihler\n- Sabah-akşam zikirleri\n- İstiğfar (Estağfirullah)\n- Salavat (Salli-Barik)\n- Kelime-i Tevhid (La ilahe illallah)\n\n'Dijital Tesbih' sayfamızda pratik bir tesbih sayacı bulabilirsiniz."
+            },
+            "hadis": {
+                keywords: ["hadis", "peygamber", "sözler", "rivayet", "sahih"],
+                answer: "Hadis, Hz. Muhammed'in (sav) söz, fiil ve takrirleridir.\n\n**Hadis Çeşitleri:**\n- Sahih: Güvenilir hadis\n- Hasen: İyi hadis\n- Zayıf: Zayıf hadis\n- Mevzu: Uydurma hadis\n\n**En Önemli Hadis Kitapları:**\n- Buhari\n- Müslim\n- Ebu Davud\n- Tirmizi\n- Nesai\n- İbn Mace\n\n'40 Hadis Koleksiyonu' sayfamızda en meşhur hadislerden bir seçki bulabilirsiniz."
+            },
+            "cuma": {
+                keywords: ["cuma", "namazı", "hutbe", "öğle"],
+                answer: "Cuma namazı, erkekler için farz olan haftalık cemaat namazıdır.\n\n**Cuma Namazının Şartları:**\n- Müslüman olmak\n- Erkek olmak\n- Hür olmak\n- Mukim olmak\n- Sıhhatli olmak\n\n**Cuma Günü Yapılacaklar:**\n- Cuma namazına gitmek\n- Gusül abdesti almak\n- Güzel koku sürünmek\n- Temiz elbise giymek\n- Salavat getirmek\n- Kur'an-ı Kerim okumak\n\n'Cuma Hatırlatıcı' sayfamızda Cuma namazı öncesi kontrol listesi bulunmaktadır."
+            },
+            "kandil": {
+                keywords: ["kandil", "regaip", "mirac", "berat", "kadir", "mevlid"],
+                answer: "Kandil geceleri, İslam'da önem verilen mübarek gecelerdir.\n\n**5 Kandil Gecesi:**\n1. Regaip Kandili: Recep ayının ilk cuma gecesi\n2. Miraç Kandili: Recep ayının 27. gecesi\n3. Berat Kandili: Şaban ayının 15. gecesi\n4. Kadir Gecesi: Ramazan'ın son 10 gününde\n5. Mevlid Kandili: Rebiülevvel ayının 12. gecesi (Hz. Muhammed'in doğum günü)\n\n**Kandil Gecelerinde Yapılacak İbadetler:**\n- Namaz kılmak\n- Kur'an okumak\n- Tövbe ve istiğfar etmek\n- Dua etmek\n\n'Kandil & Özel Günler' sayfamızda yaklaşan kandilleri görebilirsiniz."
+            },
+            "peygamber": {
+                keywords: ["peygamber", "nebi", "resul", "muhammed", "isa", "musa"],
+                answer: "Peygamberler, Allah'ın insanlara yol göstermek için seçtiği elçilerdir.\n\n**25 Peygamber:**\nKur'an'da isimleri geçen 25 peygamber vardır. Başlıcaları:\n- Hz. Adem (a.s.)\n- Hz. Nuh (a.s.)\n- Hz. İbrahim (a.s.)\n- Hz. Musa (a.s.)\n- Hz. İsa (a.s.)\n- Hz. Muhammed (s.a.v.) - Son Peygamber\n\n**Peygamberlerin Özellikleri:**\n- Güvenilir (Emin)\n- Doğru (Sadık)\n- Akıllı (Fetîn)\n- Allah'ın mesajını tam aktarır (Tebliğ)\n\n'Peygamber Kıssaları' sayfamızda 25 peygamberin hikayelerini okuyabilirsiniz."
+            }
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            // Simulate AI response delay
+            setTimeout(() => {
+                const response = getAIResponse(message);
+                hideTypingIndicator();
+                addMessage(response, 'assistant');
+            }, 1000 + Math.random() * 1000);
+        }
+
+        function askQuestion(question) {
+            document.getElementById('chat-input').value = question;
+            sendMessage();
+        }
+
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function addMessage(text, type) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const time = new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${type}-message`;
+
+            const avatar = type === 'assistant' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    ${avatar}
+                </div>
+                <div class="message-content">
+                    <div class="message-text">${text}</div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('chat-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message assistant-message';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-text">
+                        <div class="typing-indicator">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        function getAIResponse(question) {
+            const lowerQuestion = question.toLowerCase();
+
+            // Check knowledge base
+            for (const [topic, data] of Object.entries(aiKnowledgeBase)) {
+                if (data.keywords.some(keyword => lowerQuestion.includes(keyword))) {
+                    return data.answer;
+                }
+            }
+
+            // Location-based responses
+            if (lowerQuestion.includes('nerede') || lowerQuestion.includes('konum')) {
+                if (state.location) {
+                    return `Şu anda ${state.location.city}, ${state.location.country} konumundasınız. Namaz vakitleri bu konuma göre ayarlanmıştır. Yakındaki camileri görmek için 'Yakındaki Camiler' sayfasını ziyaret edebilirsiniz.`;
+                }
+                return "Konumunuz henüz ayarlanmamış. Ana sayfadan şehir seçerek konum belirleyebilirsiniz.";
+            }
+
+            // Prayer times
+            if (lowerQuestion.includes('vakit') || lowerQuestion.includes('saat')) {
+                const times = state.prayerTimes;
+                return `Bugünkü namaz vakitleri:\n\n🌙 İmsak: ${times.fajr}\n🌅 Güneş: ${times.sunrise}\n☀️ Öğle: ${times.dhuhr}\n🌤️ İkindi: ${times.asr}\n🌆 Akşam: ${times.maghrib}\n⭐ Yatsı: ${times.isha}\n\nBu vakitler ${state.location?.city || 'seçili şehir'} için geçerlidir.`;
+            }
+
+            // Qibla direction
+            if (lowerQuestion.includes('derece') && lowerQuestion.includes('kıble')) {
+                return "Kıble yönünü bulmak için uygulamanın 'Kıble' sayfasına gidin. Dijital pusula ile tam kıble yönünü bulabilirsiniz.";
+            }
+
+            // General Islamic queries
+            if (lowerQuestion.includes('allah') || lowerQuestion.includes('inanç') || lowerQuestion.includes('iman')) {
+                return "İslam'ın 6 temel inanç esası (İmanın Şartları):\n\n1. Allah'a iman\n2. Meleklere iman\n3. Kitaplara iman\n4. Peygamberlere iman\n5. Ahiret gününe iman\n6. Kader ve kazaya iman\n\nDaha fazla bilgi için 'İslam Ansiklopedisi' sayfamızı ziyaret edebilirsiniz.";
+            }
+
+            // App features
+            if (lowerQuestion.includes('özellik') || lowerQuestion.includes('neler var') || lowerQuestion.includes('yapabilir')) {
+                return "Uygulamamızda şu özellikler bulunmaktadır:\n\n📿 Namaz Vakitleri\n🧭 Kıble Pusulası\n📅 İslami Takvim\n🕌 Yakındaki Camiler\n📖 40 Hadis Koleksiyonu\n🤲 Dualar\n📿 Dijital Tesbih\n⭐ Esma-ül Hüsna\n📚 Peygamber Kıssaları\n🌙 Ramazan İmsakiyesi\n✨ Kandil Günleri\n🕋 Hac ve Umre Rehberi\n💰 Zekat Hesaplayıcı\n\nVe daha fazlası!";
+            }
+
+            // Default responses
+            const defaultResponses = [
+                "Bu konuda size daha iyi yardımcı olabilmem için sorunuzu biraz daha açar mısınız? Namaz, oruç, hac, zekat, abdest gibi konularda size yardımcı olabilirim.",
+                "Sorunuzu tam olarak anlayamadım. İslami konular, ibadetler, namaz vakitleri ve uygulama özellikleri hakkında sorular sorabilirsiniz.",
+                "Size nasıl yardımcı olabilirim? Hızlı sorular butonlarını kullanabilir veya namaz, oruç, hac, zekat gibi konularda soru sorabilirsiniz.",
+                "İslami konular, ibadetler ve uygulama özellikleri hakkında size yardımcı olmak için buradayım. Lütfen sorunuzu daha açık bir şekilde sorar mısınız?"
+            ];
+
+            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
         }
 
         // Start app
