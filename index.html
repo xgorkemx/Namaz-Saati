@@ -1419,6 +1419,206 @@
             background: var(--primary);
         }
 
+        /* Esma-ul Husna Page */
+        .esma-container {
+            padding: 20px;
+        }
+
+        .esma-grid {
+            display: grid;
+            gap: 10px;
+        }
+
+        .esma-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .esma-card:hover {
+            background: rgba(45, 143, 111, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .esma-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .esma-number {
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .esma-arabic {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .esma-turkish {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .esma-meaning {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Prayers Page */
+        .prayers-container {
+            padding: 20px;
+        }
+
+        .prayer-category {
+            margin-bottom: 20px;
+        }
+
+        .prayer-category-title {
+            background: var(--primary);
+            padding: 12px 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prayer-card-full {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .prayer-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .prayer-arabic-text {
+            font-size: 1.2rem;
+            text-align: right;
+            color: var(--gold);
+            line-height: 2;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        .prayer-transliteration {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        .prayer-translation {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* Prophets Page */
+        .prophets-container {
+            padding: 20px;
+        }
+
+        .prophet-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .prophet-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .prophet-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .prophet-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .prophet-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .prophet-arabic {
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+
+        .prophet-info {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .prophet-story {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .prophet-detail {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .prophet-card.expanded .prophet-detail {
+            display: block;
+        }
+
+        .expand-icon {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .prophet-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
         /* Responsive */
         @media (max-width: 360px) {
             .current-time {
@@ -1697,6 +1897,33 @@
                         <div class="more-item-info">
                             <h3>İslam Ansiklopedisi</h3>
                             <p>İslami kavramlar ve bilgiler</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('esma')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-star-and-crescent"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Esma-ül Hüsna</h3>
+                            <p>Allah'ın 99 güzel ismi</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('prayers')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-hands-praying"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Dualar Koleksiyonu</h3>
+                            <p>Günlük dualar ve zikirler</p>
+                        </div>
+                    </div>
+                    <div class="more-item" onclick="showPage('prophets')">
+                        <div class="more-item-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="more-item-info">
+                            <h3>Peygamber Kıssaları</h3>
+                            <p>25 peygamberin hayat hikayesi</p>
                         </div>
                     </div>
                     <div class="more-item" onclick="showPage('ramazan')">
@@ -2129,6 +2356,724 @@
                     <div class="encyclopedia-article">
                         <h4>Tefsir</h4>
                         <p>Kur'an-ı Kerim ayetlerinin açıklanması ve yorumlanması ilmidir. Birçok tefsir alimi bu alanda eserler vermiştir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Esma-ul Husna Page -->
+        <div class="page" id="page-esma">
+            <header class="header">
+                <h1 class="app-title">Esma-ül Hüsna</h1>
+            </header>
+            <div class="esma-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="esma-grid" id="esma-grid"></div>
+            </div>
+        </div>
+
+        <!-- Prayers Collection Page -->
+        <div class="page" id="page-prayers">
+            <header class="header">
+                <h1 class="app-title">Dualar Koleksiyonu</h1>
+            </header>
+            <div class="prayers-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="prayer-category">
+                    <div class="prayer-category-title">
+                        <i class="fas fa-sun"></i> Sabah-Akşam Duaları
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Ayetel Kürsi</div>
+                        <div class="prayer-arabic-text">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ</div>
+                        <div class="prayer-transliteration">Allâhu lâ ilâhe illâ huvel-hayyul-qayyûm</div>
+                        <div class="prayer-translation">Allah, O'ndan başka ilâh yoktur. O, Hayy'dır (diri, sonsuz), Kayyûm'dur (kâinatı ayakta tutan). O'nu ne uyuklama tutabilir, ne de uyku.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">İhlas Suresi</div>
+                        <div class="prayer-arabic-text">قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ</div>
+                        <div class="prayer-transliteration">Kul huvallahu ehad, Allahus-samed, Lem yelid ve lem yuled, Ve lem yekün lehu küfüven ehad</div>
+                        <div class="prayer-translation">De ki: O, Allah'tır, bir tektir. Allah Samed'dir (Her şey O'na muhtaçtır, O, hiçbir şeye muhtaç değildir). O, doğurmamıştır ve doğurulmamıştır. Hiçbir şey O'na denk değildir.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Felak Suresi</div>
+                        <div class="prayer-arabic-text">قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ مِن شَرِّ مَا خَلَقَ</div>
+                        <div class="prayer-transliteration">Kul eûzü birabbil-felak, Min şerri mâ halak</div>
+                        <div class="prayer-translation">De ki: Yarattığı şeylerin şerrinden, karanlığını yayan gecenin şerrinden, düğümlere üfleyenlerin şerrinden ve hased edenlerin şerrinden aydınlığın Rabbi'ne sığınırım.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Nas Suresi</div>
+                        <div class="prayer-arabic-text">قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَٰهِ النَّاسِ</div>
+                        <div class="prayer-transliteration">Kul eûzü birabbin-nas, Melikin-nas, İlahin-nas</div>
+                        <div class="prayer-translation">De ki: İnsanların Rabbi, insanların Mâliki (gerçek sahibi), insanların İlâhı olan Allah'a sığınırım; sinsi vesvesecinin şerrinden...</div>
+                    </div>
+                </div>
+
+                <div class="prayer-category">
+                    <div class="prayer-category-title">
+                        <i class="fas fa-praying-hands"></i> Namaz Duaları
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Subhaneke</div>
+                        <div class="prayer-arabic-text">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلاَ إِلَهَ غَيْرُكَ</div>
+                        <div class="prayer-transliteration">Sübhâneke'llâhümme ve bihamdike ve tebâreke'smüke ve teâlâ ceddüke ve lâ ilâhe gayrük</div>
+                        <div class="prayer-translation">Seni noksan sıfatlardan tenzih ederim Allahım, Seni hamd ile tesbih ederim. İsmin ne yücedir, şânın ne yüksektir. Senden başka ilâh yoktur.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Ettehiyyatü</div>
+                        <div class="prayer-arabic-text">اَلتَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ اَلسَّلاَمُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</div>
+                        <div class="prayer-transliteration">Ettehıyyâtü lillâhi vessalevâtü vettayyibât, esselâmü aleyke eyyühennebiyyü ve rahmetullâhi ve berekâtüh</div>
+                        <div class="prayer-translation">Dil ile, beden ile ve mal ile yapılan bütün ibadetler Allah içindir. Ey Peygamber! Allah'ın selamı, rahmeti ve bereketleri senin üzerine olsun.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Allahumme Salli</div>
+                        <div class="prayer-arabic-text">اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ</div>
+                        <div class="prayer-transliteration">Allahümme salli alâ Muhammedin ve alâ âli Muhammed</div>
+                        <div class="prayer-translation">Allah'ım! Muhammed'e ve Muhammed'in âilesine rahmet et.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Allahumme Barik</div>
+                        <div class="prayer-arabic-text">اَللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ</div>
+                        <div class="prayer-transliteration">Allahümme bârik alâ Muhammedin ve alâ âli Muhammed</div>
+                        <div class="prayer-translation">Allah'ım! Muhammed'e ve Muhammed'in âilesine bereket ver.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Rabbena Duası</div>
+                        <div class="prayer-arabic-text">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+                        <div class="prayer-transliteration">Rabbenâ âtinâ fi'd-dünyâ haseneten ve fi'l-âhıreti haseneten ve kınâ azâben-nâr</div>
+                        <div class="prayer-translation">Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru!</div>
+                    </div>
+                </div>
+
+                <div class="prayer-category">
+                    <div class="prayer-category-title">
+                        <i class="fas fa-utensils"></i> Yemek Duaları
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Yemekten Önce</div>
+                        <div class="prayer-arabic-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+                        <div class="prayer-transliteration">Bismillahirrahmanirrahim</div>
+                        <div class="prayer-translation">Rahman ve Rahim olan Allah'ın adıyla.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Yemekten Sonra</div>
+                        <div class="prayer-arabic-text">اَلْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ</div>
+                        <div class="prayer-transliteration">Elhamdülillahillezi et'amena ve sekana ve cealena müslimin</div>
+                        <div class="prayer-translation">Bize yediren, içiren ve bizi müslüman kılan Allah'a hamdolsun.</div>
+                    </div>
+                </div>
+
+                <div class="prayer-category">
+                    <div class="prayer-category-title">
+                        <i class="fas fa-bed"></i> Uyku Duaları
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Yatmadan Önce</div>
+                        <div class="prayer-arabic-text">بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا</div>
+                        <div class="prayer-transliteration">Bismike Allahümme emûtu ve ahya</div>
+                        <div class="prayer-translation">Senin adınla ölürüm (uyurum) ve diriliyim (uyanırım) Allahım.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Uyanınca</div>
+                        <div class="prayer-arabic-text">اَلْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ</div>
+                        <div class="prayer-transliteration">Elhamdülillahillezi ahyana ba'de ma ematena ve ileyhin-nüşur</div>
+                        <div class="prayer-translation">Bizi ölümden sonra dirilten Allah'a hamd olsun. Dönüş ancak O'nadır.</div>
+                    </div>
+                </div>
+
+                <div class="prayer-category">
+                    <div class="prayer-category-title">
+                        <i class="fas fa-road"></i> Yolculuk Duaları
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Yolculuğa Çıkarken</div>
+                        <div class="prayer-arabic-text">سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ</div>
+                        <div class="prayer-transliteration">Sübhanellezi sehhara lena haza ve ma künna lehu mukriniyn ve inna ila rabbina lemünkalibun</div>
+                        <div class="prayer-translation">Bunu bize boyun eğdiren Allah'ı tesbih ederim. Biz onu emrimize alacak güçte değildik. Muhakkak biz Rabbimize döneceğiz.</div>
+                    </div>
+                </div>
+
+                <div class="prayer-category">
+                    <div class="prayer-category-title">
+                        <i class="fas fa-home"></i> Evle İlgili Dualar
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Eve Girerken</div>
+                        <div class="prayer-arabic-text">بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا</div>
+                        <div class="prayer-transliteration">Bismillahi velecna ve bismillahi haracna ve alallahi rabbina tevekkelnا</div>
+                        <div class="prayer-translation">Allah'ın adıyla girdik, Allah'ın adıyla çıktık ve Rabbimiz Allah'a tevekkül ettik.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Evden Çıkarken</div>
+                        <div class="prayer-arabic-text">بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ</div>
+                        <div class="prayer-transliteration">Bismillahi tevekkeltü alallahi la havle ve la kuvvete illa billah</div>
+                        <div class="prayer-translation">Allah'ın adıyla, Allah'a tevekkül ettim. Güç ve kuvvet ancak Allah'tandır.</div>
+                    </div>
+                </div>
+
+                <div class="prayer-category">
+                    <div class="prayer-category-title">
+                        <i class="fas fa-heart"></i> Diğer Önemli Dualar
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">İstiğfar</div>
+                        <div class="prayer-arabic-text">أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لاَ إِلَهَ إِلاَّ هُوَ الْحَيَّ الْقَيُّومَ وَأَتُوبُ إِلَيْهِ</div>
+                        <div class="prayer-transliteration">Estağfirullahel azîm ellezi la ilahe illa hüvel hayyel kayyum ve etûbü ileyh</div>
+                        <div class="prayer-translation">Kendisinden başka ilah olmayan, Hayy ve Kayyum olan Yüce Allah'tan mağfiret dilerim ve O'na tevbe ederim.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Salavat</div>
+                        <div class="prayer-arabic-text">اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ وَسَلِّمْ</div>
+                        <div class="prayer-transliteration">Allahumme salli ala seyyidina Muhammedin ve ala alihi ve sahbihi ve sellim</div>
+                        <div class="prayer-translation">Allah'ım! Efendimiz Muhammed'e, âline ve ashabına salât ü selam et.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Tövbe Duası</div>
+                        <div class="prayer-arabic-text">رَبِّ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي</div>
+                        <div class="prayer-transliteration">Rabbi inni zalemtü nefsi fagfir li</div>
+                        <div class="prayer-translation">Rabbim! Muhakkak ben nefsime zulmettim, beni bağışla.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Hastalıktan Şifa Duası</div>
+                        <div class="prayer-arabic-text">اَللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَأْسَ وَاشْفِ أَنْتَ الشَّافِي</div>
+                        <div class="prayer-transliteration">Allahumme rabben-nasi ezhib'il ba'se veşfi ente'ş-şafi</div>
+                        <div class="prayer-translation">Allahım! İnsanların Rabbi! Hastalığı gider ve şifa ver. Şifa veren Sensin.</div>
+                    </div>
+                    <div class="prayer-card-full">
+                        <div class="prayer-title">Sıkıntıdan Kurtulma Duası</div>
+                        <div class="prayer-arabic-text">لاَ إِلَهَ إِلاَّ اللَّهُ الْعَظِيمُ الْحَلِيمُ لاَ إِلَهَ إِلاَّ اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ</div>
+                        <div class="prayer-transliteration">La ilahe illallahul azimul halim, la ilahe illallahu rabbul arşil azim</div>
+                        <div class="prayer-translation">Yüce ve Halim olan Allah'tan başka ilah yoktur. Büyük Arş'ın Rabbi olan Allah'tan başka ilah yoktur.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prophets Stories Page -->
+        <div class="page" id="page-prophets">
+            <header class="header">
+                <h1 class="app-title">Peygamber Kıssaları</h1>
+            </header>
+            <div class="prophets-container">
+                <button class="back-button" onclick="showPage('more')">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </button>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">1</div>
+                        <div>
+                            <div class="prophet-name">Hz. Adem (as)</div>
+                            <div class="prophet-arabic">آدَم عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">İlk insan ve ilk peygamber</div>
+                    <div class="prophet-story">
+                        Allah, Hz. Adem'i kendi eliyle yaratmış ve ona ruh üflemişti. Meleklere Hz. Adem'e secde etmelerini emretti ve hepsi secde etti, ancak İblis (Şeytan) kibrine yenilip secde etmedi. Hz. Adem cennete yerleştirildi ve eşi Hz. Havva ile birlikte yaşadı.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Öne Çıkan Olaylar:</strong></p>
+                        <p>• İlk insan olarak yaratılması<br>
+                        • Meleklerin secde etmesi<br>
+                        • Cennetten çıkarılması<br>
+                        • Dünyada ilk aile<br>
+                        • Tövbesi ve affedilmesi<br>
+                        • İki oğlu Habil ve Kabil</p>
+                        <p><strong>Alınacak Dersler:</strong> Tövbenin önemi, şeytana karşı uyanık olmak, kibir ve haset gibi kötü huylardan sakınmak.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">2</div>
+                        <div>
+                            <div class="prophet-name">Hz. İdris (as)</div>
+                            <div class="prophet-arabic">إِدْرِيسُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">İlk yazıyı kullanan peygamber</div>
+                    <div class="prophet-story">
+                        Hz. İdris, Hz. Adem'in torunudur. İlk defa kalem ile yazmayı ve dikiş dikmeyi öğreten peygamberdir. Yüksek bir makama yükseltildiği Kur'an'da bildirilir.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Öne Çıkan Özellikler:</strong> İlk yazıyı yazan, astronomi ve matematik ile ilgilenen, sabırlı ve takvalı bir peygamber.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">3</div>
+                        <div>
+                            <div class="prophet-name">Hz. Nuh (as)</div>
+                            <div class="prophet-arabic">نُوحٌ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Tufan peygamberi - 950 yıl yaşadı</div>
+                    <div class="prophet-story">
+                        Hz. Nuh, kavmini 950 yıl boyunca Allah'a iman etmeye davet etti. Ancak çok az kişi iman etti. Allah'ın emriyle büyük bir gemi (tufan gemisi) yaptı. Sonra büyük tufan geldi ve inkarcılar helak oldu.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Öne Çıkan Olaylar:</strong><br>
+                        • 950 yıl tebliğ<br>
+                        • Geminin inşası<br>
+                        • Büyük tufan<br>
+                        • Her hayvandan çift alması<br>
+                        • Oğlunun boğulması</p>
+                        <p><strong>İbretler:</strong> Sabır, sebat, Allah'a güven. Akrabayı korumak önemli ama iman daha önemlidir.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">4</div>
+                        <div>
+                            <div class="prophet-name">Hz. Hud (as)</div>
+                            <div class="prophet-arabic">هُودٌ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Ad kavmine gönderildi</div>
+                    <div class="prophet-story">
+                        Hz. Hud, Ad kavmine gönderilmiştir. Ad kavmi güçlü ve zengin bir toplumdu ancak Allah'ı inkâr ediyorlardı. Hz. Hud onları uyardı fakat dinlemediler. Sonunda şiddetli bir rüzgarla helak oldular.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Ad Kavmi:</strong> Yemen'de yaşayan, büyük binalar yapan güçlü bir toplum.<br>
+                        <strong>Azap:</strong> 7 gün 8 gece süren kasırga.<br>
+                        <strong>Ders:</strong> Güç ve zenginlik kibre sebebiyet vermemeli.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">5</div>
+                        <div>
+                            <div class="prophet-name">Hz. Salih (as)</div>
+                            <div class="prophet-arabic">صَالِحٌ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Semud kavmine gönderildi - Deve mucizesi</div>
+                    <div class="prophet-story">
+                        Hz. Salih, Semud kavmine gönderildi. Kavmi mucize olarak bir deve istediler. Allah kayadan bir deve çıkardı. Ancak kavim deveyi kestiler ve helak oldular.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Mucize:</strong> Kayadan çıkan deve.<br>
+                        <strong>Semud Kavmi:</strong> Kayalara evler oyuyorlardı.<br>
+                        <strong>Azap:</strong> Korkunç ses ve deprem.<br>
+                        <strong>İbret:</strong> Mucize gösterildikten sonra inkâr etmek büyük vebaldir.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">6</div>
+                        <div>
+                            <div class="prophet-name">Hz. İbrahim (as)</div>
+                            <div class="prophet-arabic">إِبْرَاهِيمُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Halilullah - Peygamberlerin babası</div>
+                    <div class="prophet-story">
+                        Hz. İbrahim putperest bir toplumda doğdu. Babasının putları kırdı. Ateşe atıldı ama Allah ateşi soğuk yaptı. Oğlu Hz. İsmail'i kurban etmekle sınandı. Kabe'yi inşa etti.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Önemli Olaylar:</strong><br>
+                        • Putları kırması<br>
+                        • Ateşe atılması<br>
+                        • İsmail'i kurban etmesi<br>
+                        • Kabe'yi yapması<br>
+                        • Hac ibadetinin başlangıcı</p>
+                        <p><strong>Unvanı:</strong> Halilullah (Allah'ın dostu)</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">7</div>
+                        <div>
+                            <div class="prophet-name">Hz. Lut (as)</div>
+                            <div class="prophet-arabic">لُوطٌ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Sodom kavmine gönderildi</div>
+                    <div class="prophet-story">
+                        Hz. Lut, ahlaksızlık yapan bir kavme gönderildi. Kavmini uyardı ama dinlemediler. Melekler gelip Hz. Lut'u ve ailesi kurtarıldı, kavim helak edildi.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Kavminin Günahı:</strong> Eşcinsellik ve fuhuş.<br>
+                        <strong>Azap:</strong> Şehir baş aşağı çevrildi ve taş yağmuru.<br>
+                        <strong>İbret:</strong> Ahlaki çöküntü toplumları yok eder.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">8</div>
+                        <div>
+                            <div class="prophet-name">Hz. İsmail (as)</div>
+                            <div class="prophet-arabic">إِسْمَاعِيلُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Hz. İbrahim'in oğlu - Kurban edilmek istenen</div>
+                    <div class="prophet-story">
+                        Hz. İsmail, Hz. İbrahim'in ilk oğludur. Çöle bırakıldı, Zemzem suyu çıktı. Babası onu kurban etmekle sınandığında razı oldu ve Allah onun yerine bir koç gönderdi.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Zemzem:</strong> Hz. Hacer'in su araması sonucu Allah'ın mucizevi olarak çıkardığı su.<br>
+                        <strong>Kurban:</strong> Babasına itaat ederek kurban olmayı kabul etti.<br>
+                        <strong>Kabe:</strong> Babasıyla Kabe'yi inşa etti.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">9</div>
+                        <div>
+                            <div class="prophet-name">Hz. İshak (as)</div>
+                            <div class="prophet-arabic">إِسْحَاقُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Hz. İbrahim'in ikinci oğlu</div>
+                    <div class="prophet-story">
+                        Hz. İshak, Hz. İbrahim'in yaşlılığında müjdelenen oğludur. İsrailoğullarının atası sayılır. Hz. Yakub'un babasıdır.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Özellik:</strong> İsrail oğullarının (Yahudi ve Hristiyanların) atası.<br>
+                        <strong>Soy:</strong> Hz. Yakub, Hz. Yusuf onun soyundan gelir.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">10</div>
+                        <div>
+                            <div class="prophet-name">Hz. Yakub (as)</div>
+                            <div class="prophet-arabic">يَعْقُوبُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">İsrail - Hz. Yusuf'un babası</div>
+                    <div class="prophet-story">
+                        Hz. Yakub'un lakabı "İsrail"dir. 12 oğlu vardı ve en çok Hz. Yusuf'u severdi. Hz. Yusuf kaybolunca çok üzüldü ve gözleri görmez oldu. Yıllar sonra Yusuf'un gömleği ile şifa buldu.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>İsrail Adı:</strong> Yakub'un lakabı "İsrail" olup, soyundan gelenlere "İsrailoğulları" denir.<br>
+                        <strong>Sabır:</strong> Oğlunu kaybedince sabretti ve Allah'a güvendi.<br>
+                        <strong>12 Oğul:</strong> Bunlardan biri Hz. Yusuf'tur.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">11</div>
+                        <div>
+                            <div class="prophet-name">Hz. Yusuf (as)</div>
+                            <div class="prophet-arabic">يُوسُفُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Güzellik ve iffet peygamberi</div>
+                    <div class="prophet-story">
+                        Kardeşleri tarafından kuyuya atıldı, köle olarak satıldı. Mısır'da vezirin karısı tarafından günaha davet edildi ama kabul etmedi. Hapse atıldı. Sonra rüya tabiri ile hükümdarın veziri oldu. Ailesi ile kavuştu.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Kıssası:</strong> Kur'an'da tam bir sure olarak anlatılır (Yusuf Suresi).<br>
+                        <strong>İffet Örneği:</strong> Zina teklifini reddetti.<br>
+                        <strong>Rüya Tabiri:</strong> Rüyaları yorumlama yeteneği vardı.<br>
+                        <strong>Af:</strong> Kendisine kötülük yapan kardeşlerini affetti.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">12</div>
+                        <div>
+                            <div class="prophet-name">Hz. Eyyub (as)</div>
+                            <div class="prophet-arabic">أَيُّوبُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Sabır peygamberi</div>
+                    <div class="prophet-story">
+                        Çok zengin ve sağlıklıydı. Sınandı, malı, evlatları gitti, ağır hastalandı. Hiç şikayet etmedi, sabırla Allah'a yalvardı. Allah onu tekrar sağlığına kavuşturdu ve her şeyini iki kat verdi.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Sabır Sembolü:</strong> Yıllarca hasta olmasına rağmen şikayet etmedi.<br>
+                        <strong>İmtihan:</strong> Mali, ailevi ve sağlık bakımından sınandı.<br>
+                        <strong>Mükafat:</strong> Sabrının karşılığını dünyada ve ahirette gördü.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">13</div>
+                        <div>
+                            <div class="prophet-name">Hz. Şuayb (as)</div>
+                            <div class="prophet-arabic">شُعَيْبٌ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Medyen kavmine gönderildi</div>
+                    <div class="prophet-story">
+                        Hz. Şuayb, Medyen halkına gönderildi. Kavmi ölçü ve tartıda hile yapıyordu. Onları uyardı ama dinlemediler ve helak oldular.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Uyarısı:</strong> Ticari ahlak, dürüstlük, ölçü ve tartıda adalet.<br>
+                        <strong>Medyen Kavmi:</strong> Yolları kesen, haksızlık yapan bir kavim.<br>
+                        <strong>İbret:</strong> Ticari hile ve haksızlık toplumları yok eder.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">14</div>
+                        <div>
+                            <div class="prophet-name">Hz. Musa (as)</div>
+                            <div class="prophet-arabic">مُوسَى عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Kelimullah - Tevrat'ın sahibi</div>
+                    <div class="prophet-story">
+                        Firavun'un zulmünden kurtarılmak için nehire bırakıldı, sarayda büyüdü. Tur Dağı'nda Allah ile konuştu. Tevrat'ı aldı. Asası ile mucizeleri: denizi yarmak, Firavun'u boğmak, taştan su çıkarmak.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Mucizeleri:</strong> Asa, el, denizi yarmak, Firavun'u boğmak.<br>
+                        <strong>Tevrat:</strong> Allah'tan aldığı kitap.<br>
+                        <strong>Kelimullah:</strong> Allah ile konuşan.<br>
+                        <strong>İsrailoğulları:</strong> Onları Mısır'dan kurtardı.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">15</div>
+                        <div>
+                            <div class="prophet-name">Hz. Harun (as)</div>
+                            <div class="prophet-arabic">هَارُونُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Hz. Musa'nın kardeşi ve yardımcısı</div>
+                    <div class="prophet-story">
+                        Hz. Harun, Hz. Musa'nın ağabeyi ve peygamberlik görevinde yardımcısıydı. Güzel konuşurdu. Hz. Musa Tur Dağı'na gittiğinde kavme liderlik yaptı.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Özelliği:</strong> Hitabeti güçlüydü.<br>
+                        <strong>Görevi:</strong> Hz. Musa'ya yardımcı olmak.<br>
+                        <strong>Altın Buzağı:</strong> Musa dağdayken kavim buzağıya taptı, Harun engellemeye çalıştı.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">16</div>
+                        <div>
+                            <div class="prophet-name">Hz. Davud (as)</div>
+                            <div class="prophet-arabic">دَاوُدُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Zebur'un sahibi - Kral peygamber</div>
+                    <div class="prophet-story">
+                        Genç yaşta dev Calut'u öldürdü ve kahraman oldu. Peygamber ve kral oldu. Zebur kitabı ona verildi. Güzel sesi vardı, kuşlar ve dağlar ona eşlik ederdi. Demiri yumuşatma mucizesi vardı.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Mucizesi:</strong> Demiri yumuşatmak, zırh yapmak.<br>
+                        <strong>Zebur:</strong> Allah'tan aldığı ilahi kitap.<br>
+                        <strong>Sesi:</strong> Çok güzel Kur'an (Zebur) okurdu.<br>
+                        <strong>Adalet:</strong> Çok adil bir hükümdardı.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">17</div>
+                        <div>
+                            <div class="prophet-name">Hz. Süleyman (as)</div>
+                            <div class="prophet-arabic">سُلَيْمَانُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Hz. Davud'un oğlu - Benzersiz hükümdar</div>
+                    <div class="prophet-story">
+                        Hz. Süleyman'a hayvanların, cinlerin dilini anlama ve rüzgarı emrine alma gücü verildi. Hüdhüd kuşu ona Saba Melikesi'nden haber getirdi. Büyük bir mabet (Mescid-i Aksa) yaptırdı.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Mucizeleri:</strong> Hayvan dili, cin ve rüzgarı yönetme.<br>
+                        <strong>Krallığı:</strong> Tarihte eşi benzeri olmayan bir hükümdar.<br>
+                        <strong>Saba Melikesi:</strong> Onu İslam'a davet etti.<br>
+                        <strong>Mescid-i Aksa:</strong> Kudüs'te yaptırdığı mabet.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">18</div>
+                        <div>
+                            <div class="prophet-name">Hz. İlyas (as)</div>
+                            <div class="prophet-arabic">إِلْيَاسُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">İsrailoğullarına gönderildi</div>
+                    <div class="prophet-story">
+                        Hz. İlyas, puta tapan İsrailoğullarını uyardı. Kavmi ona inanmadı. Allah'a dua etti ve yağmur kesildi. Kavim zor durumda kalınca tövbe ettiler.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Mücadelesi:</strong> Baal putuna karşı mücadele.<br>
+                        <strong>Kuraklık:</strong> Duası ile yağmur kesildi.<br>
+                        <strong>İbret:</strong> Allah'ın gücü her şeye hakimdir.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">19</div>
+                        <div>
+                            <div class="prophet-name">Hz. Elyesa (as)</div>
+                            <div class="prophet-arabic">الْيَسَعُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Hz. İlyas'ın ardılı</div>
+                    <div class="prophet-story">
+                        Hz. Elyesa, Hz. İlyas'tan sonra İsrailoğullarına peygamber olarak gönderildi. Kavmini doğru yola davet etti.
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">20</div>
+                        <div>
+                            <div class="prophet-name">Hz. Yunus (as)</div>
+                            <div class="prophet-arabic">يُونُسُ عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Balık peygamberi - Zinnun</div>
+                    <div class="prophet-story">
+                        Kavmi inanmayınca sabırsızlıkla ayrıldı. Gemiye bindi, fırtına çıktı, kura çekildi ve denize atıldı. Balık yuttu. Balığın karnında tevbe etti ve kurtuldu. Kavmi ona iman etti.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Duası:</strong> "Lâ ilâhe illâ ente sübhâneke innî küntü minez-zâlimîn" (Senden başka ilah yok, sen münezzehsin, ben zalimlerden oldum).<br>
+                        <strong>Ders:</strong> Sabırsızlık, Allah'ın rahmetinin genişliği, tevbenin kabulü.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">21</div>
+                        <div>
+                            <div class="prophet-name">Hz. Zekeriya (as)</div>
+                            <div class="prophet-arabic">زَكَرِيَّا عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Hz. Yahya'nın babası</div>
+                    <div class="prophet-story">
+                        Çocuğu yoktu, çok yaşlıydı. Allah'a dua etti. Mescitte dua ederken melekler ona Hz. Yahya'yı müjdelediler. İhtiyarlıkta çocuk sahibi oldu.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Duası:</strong> Kabul edilen dua örneği.<br>
+                        <strong>Mucize:</strong> Yaşlılıkta çocuk sahibi olmak.<br>
+                        <strong>Hz. Meryem:</strong> Onun himayesinde büyüdü.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">22</div>
+                        <div>
+                            <div class="prophet-name">Hz. Yahya (as)</div>
+                            <div class="prophet-arabic">يَحْيَى عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Çocukluğunda peygamber oldu</div>
+                    <div class="prophet-story">
+                        Hz. Zekeriya'nın oğludur. Çocukluğunda peygamber oldu. Çok takvalı, zahid ve âlim biriydi. Tevrat'ı çok iyi bilirdi. Genç yaşta şehit edildi.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Özelliği:</strong> Çocukluğunda hikmet (peygamberlik) verildi.<br>
+                        <strong>Ahlakı:</strong> Annesine çok iyi davranırdı.<br>
+                        <strong>Şehadeti:</strong> Hakkı söylediği için öldürüldü.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">23</div>
+                        <div>
+                            <div class="prophet-name">Hz. İsa (as)</div>
+                            <div class="prophet-arabic">عِيسَى عَلَيْهِ السَّلاَمُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Mesih - Ruhullah - İncil'in sahibi</div>
+                    <div class="prophet-story">
+                        Babasız olarak Hz. Meryem'den doğdu. Beşikte konuştu. Birçok mucize gösterdi: ölüleri diriltmek, hastaları iyileştirmek, çamurdan kuş yapmak. İncil kitabı ona verildi. Öldürülmedi, göğe yükseltildi.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Mucizeleri:</strong> Ölüleri diriltmek, kör ve cüzamlıyı iyileştirmek, çamurdan kuş, sofra indirmek.<br>
+                        <strong>İncil:</strong> Allah'tan aldığı kitap.<br>
+                        <strong>Göğe Yükselme:</strong> Öldürülmedi, Allah onu göğe yükseltti.<br>
+                        <strong>Kıyamet Alametlerinden:</strong> Kıyametten önce tekrar dünyaya inecektir.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">24</div>
+                        <div>
+                            <div class="prophet-name">Hz. Muhammed (sav)</div>
+                            <div class="prophet-arabic">مُحَمَّدٌ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Son Peygamber - Habibullah - Kur'an'ın sahibi</div>
+                    <div class="prophet-story">
+                        571 yılında Mekke'de doğdu. 40 yaşında peygamber oldu. Kur'an-ı Kerim ona vahyedildi. 23 yıl tebliğ yaptı. Hicret etti. İslam'ı yaydı. 632'de vefat etti. Peygamberlerin sonuncusu ve en üstünüdür.
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Mucizeleri:</strong> Kur'an, Miraç, parmağından su akması, ayı ikiye bölmek, taşların selamı ve daha fazlası.<br>
+                        <strong>Kur'an:</strong> Son ilahi kitap.<br>
+                        <strong>Unvanları:</strong> Habibullah, Hatem'ül Enbiya, Rahmet'en lil Alemin.<br>
+                        <strong>Ahlakı:</strong> En güzel ahlak örneği.<br>
+                        <strong>Son Peygamber:</strong> Ondan sonra peygamber gelmeyecektir.</p>
+                    </div>
+                </div>
+
+                <div class="prophet-card" onclick="toggleProphet(this)">
+                    <div class="prophet-header">
+                        <div class="prophet-icon">25</div>
+                        <div>
+                            <div class="prophet-name">Diğer Peygamberler</div>
+                            <div class="prophet-arabic">الْأَنْبِيَاءُ</div>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="prophet-info">Adı geçmeyen 124.000 peygamber</div>
+                    <div class="prophet-story">
+                        Kur'an'da 25 peygamberin ismi geçer. Ancak hadislerde Allah'ın 124.000 peygamber gönderdiği bildirilir. Bunlardan 313'ü resuldür (kitap veya şeriat getiren).
+                    </div>
+                    <div class="prophet-detail">
+                        <p><strong>Diğer Bilinen Peygamberler:</strong> Hz. Şit (Adem'in oğlu), Hz. Zülkifl, Hz. Lokman ve daha nicesi.<br>
+                        <strong>Hepsi:</strong> Tevhid (Allah'ın birliği) mesajını getirdi.<br>
+                        <strong>İman Esası:</strong> Tüm peygamberlere iman etmek farzdır.</p>
                     </div>
                 </div>
             </div>
@@ -3051,7 +3996,7 @@
             const navIndex = navPages.indexOf(pageName);
             if (navIndex !== -1) {
                 document.querySelectorAll('.nav-item')[navIndex].classList.add('active');
-            } else if (['hajj', 'hadith', 'widget', 'encyclopedia', 'settings', 'ramazan', 'kandil', 'friday', 'tracker', 'abdest', 'namazguide', 'zekat', 'mosques'].includes(pageName)) {
+            } else if (['hajj', 'hadith', 'widget', 'encyclopedia', 'settings', 'ramazan', 'kandil', 'friday', 'tracker', 'abdest', 'namazguide', 'zekat', 'mosques', 'esma', 'prayers', 'prophets'].includes(pageName)) {
                 // These are sub-pages of "more"
                 document.querySelectorAll('.nav-item')[4].classList.add('active');
             }
@@ -3066,6 +4011,142 @@
                 updateFridayTime();
             } else if (pageName === 'tracker') {
                 loadTrackerData();
+            } else if (pageName === 'esma') {
+                populateEsmaGrid();
+            }
+        }
+
+        // Esma-ul Husna Data and Functions
+        const esmaUlHusna = [
+            {no: 1, arabic: 'الرَّحْمَنُ', transliteration: 'Ar-Rahman', meaning: 'Çok Merhametli'},
+            {no: 2, arabic: 'الرَّحِيمُ', transliteration: 'Ar-Rahim', meaning: 'Çok Esirgeyici'},
+            {no: 3, arabic: 'الْمَلِكُ', transliteration: 'Al-Malik', meaning: 'Hükümdar'},
+            {no: 4, arabic: 'الْقُدُّوسُ', transliteration: 'Al-Quddus', meaning: 'Mukaddes'},
+            {no: 5, arabic: 'السَّلاَمُ', transliteration: 'As-Salam', meaning: 'Selam, Esenlik'},
+            {no: 6, arabic: 'الْمُؤْمِنُ', transliteration: 'Al-Mumin', meaning: 'Güven Veren'},
+            {no: 7, arabic: 'الْمُهَيْمِنُ', transliteration: 'Al-Muhaymin', meaning: 'Gözetip Koruyan'},
+            {no: 8, arabic: 'الْعَزِيزُ', transliteration: 'Al-Aziz', meaning: 'Mutlak Güç Sahibi'},
+            {no: 9, arabic: 'الْجَبَّارُ', transliteration: 'Al-Jabbar', meaning: 'Kahredici'},
+            {no: 10, arabic: 'الْمُتَكَبِّرُ', transliteration: 'Al-Mutakabbir', meaning: 'Büyüklükte Eşsiz'},
+            {no: 11, arabic: 'الْخَالِقُ', transliteration: 'Al-Khaliq', meaning: 'Yaratan'},
+            {no: 12, arabic: 'الْبَارِئُ', transliteration: 'Al-Bari', meaning: 'Yoktan Var Eden'},
+            {no: 13, arabic: 'الْمُصَوِّرُ', transliteration: 'Al-Musawwir', meaning: 'Şekil Veren'},
+            {no: 14, arabic: 'الْغَفَّارُ', transliteration: 'Al-Ghaffar', meaning: 'Çok Bağışlayan'},
+            {no: 15, arabic: 'الْقَهَّارُ', transliteration: 'Al-Qahhar', meaning: 'Kahır Sahibi'},
+            {no: 16, arabic: 'الْوَهَّابُ', transliteration: 'Al-Wahhab', meaning: 'Çokça Bağışlayan'},
+            {no: 17, arabic: 'الرَّزَّاقُ', transliteration: 'Ar-Razzaq', meaning: 'Rızık Veren'},
+            {no: 18, arabic: 'الْفَتَّاحُ', transliteration: 'Al-Fattah', meaning: 'Açan, Fetih Veren'},
+            {no: 19, arabic: 'اَلْعَلِيْمُ', transliteration: 'Al-Alim', meaning: 'Her Şeyi Bilen'},
+            {no: 20, arabic: 'الْقَابِضُ', transliteration: 'Al-Qabid', meaning: 'Daraltan'},
+            {no: 21, arabic: 'الْبَاسِطُ', transliteration: 'Al-Basit', meaning: 'Genişleten'},
+            {no: 22, arabic: 'الْخَافِضُ', transliteration: 'Al-Khafid', meaning: 'Alçaltan'},
+            {no: 23, arabic: 'الرَّافِعُ', transliteration: 'Ar-Rafi', meaning: 'Yükselten'},
+            {no: 24, arabic: 'الْمُعِزُّ', transliteration: 'Al-Muizz', meaning: 'Aziz Kılan'},
+            {no: 25, arabic: 'المُذِلُّ', transliteration: 'Al-Muzill', meaning: 'Zelil Kılan'},
+            {no: 26, arabic: 'السَّمِيعُ', transliteration: 'As-Sami', meaning: 'Her Şeyi İşiten'},
+            {no: 27, arabic: 'الْبَصِيرُ', transliteration: 'Al-Basir', meaning: 'Her Şeyi Gören'},
+            {no: 28, arabic: 'الْحَكَمُ', transliteration: 'Al-Hakam', meaning: 'Hakem'},
+            {no: 29, arabic: 'الْعَدْلُ', transliteration: 'Al-Adl', meaning: 'Adil'},
+            {no: 30, arabic: 'اللَّطِيفُ', transliteration: 'Al-Latif', meaning: 'Latif, İnce'},
+            {no: 31, arabic: 'الْخَبِيرُ', transliteration: 'Al-Khabir', meaning: 'Her Şeyden Haberdar'},
+            {no: 32, arabic: 'الْحَلِيمُ', transliteration: 'Al-Halim', meaning: 'Halim, Yumuşak'},
+            {no: 33, arabic: 'الْعَظِيمُ', transliteration: 'Al-Azim', meaning: 'Azamet Sahibi'},
+            {no: 34, arabic: 'الْغَفُورُ', transliteration: 'Al-Ghafur', meaning: 'Çok Bağışlayıcı'},
+            {no: 35, arabic: 'الشَّكُورُ', transliteration: 'Ash-Shakur', meaning: 'Şükreden'},
+            {no: 36, arabic: 'الْعَلِيُّ', transliteration: 'Al-Aliyy', meaning: 'Yüce'},
+            {no: 37, arabic: 'الْكَبِيرُ', transliteration: 'Al-Kabir', meaning: 'Büyük'},
+            {no: 38, arabic: 'الْحَفِيظُ', transliteration: 'Al-Hafiz', meaning: 'Koruyan'},
+            {no: 39, arabic: 'المُقيِت', transliteration: 'Al-Muqit', meaning: 'Rızık Veren'},
+            {no: 40, arabic: 'الْحسِيبُ', transliteration: 'Al-Hasib', meaning: 'Hesap Gören'},
+            {no: 41, arabic: 'الْجَلِيلُ', transliteration: 'Al-Jalil', meaning: 'Celil, Yüce'},
+            {no: 42, arabic: 'الْكَرِيمُ', transliteration: 'Al-Karim', meaning: 'Kerem Sahibi'},
+            {no: 43, arabic: 'الرَّقِيبُ', transliteration: 'Ar-Raqib', meaning: 'Gözetleyen'},
+            {no: 44, arabic: 'الْمُجِيبُ', transliteration: 'Al-Mujib', meaning: 'Duaları Kabul Eden'},
+            {no: 45, arabic: 'الْوَاسِعُ', transliteration: 'Al-Wasi', meaning: 'Geniş, Sınırsız'},
+            {no: 46, arabic: 'الْحَكِيمُ', transliteration: 'Al-Hakim', meaning: 'Hakim, Bilge'},
+            {no: 47, arabic: 'الْوَدُودُ', transliteration: 'Al-Wadud', meaning: 'Sevgili'},
+            {no: 48, arabic: 'الْمَجِيدُ', transliteration: 'Al-Majid', meaning: 'Şanlı, Yüce'},
+            {no: 49, arabic: 'الْبَاعِثُ', transliteration: 'Al-Baith', meaning: 'Dirilten'},
+            {no: 50, arabic: 'الشَّهِيدُ', transliteration: 'Ash-Shahid', meaning: 'Şahit'},
+            {no: 51, arabic: 'الْحَقُّ', transliteration: 'Al-Haqq', meaning: 'Hak'},
+            {no: 52, arabic: 'الْوَكِيلُ', transliteration: 'Al-Wakil', meaning: 'Vekil'},
+            {no: 53, arabic: 'الْقَوِيُّ', transliteration: 'Al-Qawiyy', meaning: 'Kuvvetli'},
+            {no: 54, arabic: 'الْمَتِينُ', transliteration: 'Al-Matin', meaning: 'Sağlam'},
+            {no: 55, arabic: 'الْوَلِيُّ', transliteration: 'Al-Waliyy', meaning: 'Dost'},
+            {no: 56, arabic: 'الْحَمِيدُ', transliteration: 'Al-Hamid', meaning: 'Övülmeye Layık'},
+            {no: 57, arabic: 'الْمُحْصِي', transliteration: 'Al-Muhsi', meaning: 'Her Şeyi Sayan'},
+            {no: 58, arabic: 'الْمُبْدِئُ', transliteration: 'Al-Mubdi', meaning: 'Başlatan'},
+            {no: 59, arabic: 'الْمُعِيدُ', transliteration: 'Al-Muid', meaning: 'Tekrar Dirten'},
+            {no: 60, arabic: 'الْمُحْيِي', transliteration: 'Al-Muhyi', meaning: 'Dirilt en'},
+            {no: 61, arabic: 'اَلْمُمِيتُ', transliteration: 'Al-Mumit', meaning: 'Öldüren'},
+            {no: 62, arabic: 'الْحَيُّ', transliteration: 'Al-Hayy', meaning: 'Diri, Hayat Sahibi'},
+            {no: 63, arabic: 'الْقَيُّومُ', transliteration: 'Al-Qayyum', meaning: 'Kaim, Ayakta Tutan'},
+            {no: 64, arabic: 'الْوَاجِدُ', transliteration: 'Al-Wajid', meaning: 'Bulan'},
+            {no: 65, arabic: 'الْمَاجِدُ', transliteration: 'Al-Majid', meaning: 'Şerefli'},
+            {no: 66, arabic: 'الْواحِدُ', transliteration: 'Al-Wahid', meaning: 'Bir, Tek'},
+            {no: 67, arabic: 'اَلاَحَدُ', transliteration: 'Al-Ahad', meaning: 'Bir, Eşsiz'},
+            {no: 68, arabic: 'الصَّمَدُ', transliteration: 'As-Samad', meaning: 'Samed'},
+            {no: 69, arabic: 'الْقَادِرُ', transliteration: 'Al-Qadir', meaning: 'Kadir, Güç Sahibi'},
+            {no: 70, arabic: 'الْمُقْتَدِرُ', transliteration: 'Al-Muqtadir', meaning: 'Herşeye Gücü Yeten'},
+            {no: 71, arabic: 'الْمُقَدِّمُ', transliteration: 'Al-Muqaddim', meaning: 'Öne Alan'},
+            {no: 72, arabic: 'الْمُؤَخِّرُ', transliteration: 'Al-Muakhkhir', meaning: 'Geriye Alan'},
+            {no: 73, arabic: 'الأوَّلُ', transliteration: 'Al-Awwal', meaning: 'İlk, Evvel'},
+            {no: 74, arabic: 'الآخِرُ', transliteration: 'Al-Akhir', meaning: 'Son'},
+            {no: 75, arabic: 'الظَّاهِرُ', transliteration: 'Az-Zahir', meaning: 'Zahir, Açık'},
+            {no: 76, arabic: 'الْبَاطِنُ', transliteration: 'Al-Batin', meaning: 'Gizli'},
+            {no: 77, arabic: 'الْوَالِي', transliteration: 'Al-Wali', meaning: 'Vali, Yöneten'},
+            {no: 78, arabic: 'الْمُتَعَالِي', transliteration: 'Al-Mutaali', meaning: 'Yüceler Yücesi'},
+            {no: 79, arabic: 'الْبَرُّ', transliteration: 'Al-Barr', meaning: 'İyilik Eden'},
+            {no: 80, arabic: 'التَّوَابُ', transliteration: 'At-Tawwab', meaning: 'Tevbeleri Kabul Eden'},
+            {no: 81, arabic: 'الْمُنْتَقِمُ', transliteration: 'Al-Muntaqim', meaning: 'İntikam Alan'},
+            {no: 82, arabic: 'العَفُوُّ', transliteration: 'Al-Afuww', meaning: 'Affeden'},
+            {no: 83, arabic: 'الرَّؤُوفُ', transliteration: 'Ar-Rauf', meaning: 'Şefkatli'},
+            {no: 84, arabic: 'مَالِكُ الْمُلْكِ', transliteration: 'Malik-ul-Mulk', meaning: 'Mülkün Sahibi'},
+            {no: 85, arabic: 'ذُوالْجَلاَلِ وَالإكْرَامِ', transliteration: 'Dhul-Jalali wal-Ikram', meaning: 'Celal ve İkram Sahibi'},
+            {no: 86, arabic: 'الْمُقْسِطُ', transliteration: 'Al-Muqsit', meaning: 'Adil'},
+            {no: 87, arabic: 'الْجَامِعُ', transliteration: 'Al-Jami', meaning: 'Toplayan'},
+            {no: 88, arabic: 'الْغَنِيُّ', transliteration: 'Al-Ghani', meaning: 'Zengin, Muhtaç Olmayan'},
+            {no: 89, arabic: 'الْمُغْنِي', transliteration: 'Al-Mughni', meaning: 'Zengin Kılan'},
+            {no: 90, arabic: 'اَلْمَانِعُ', transliteration: 'Al-Mani', meaning: 'Engelleyen'},
+            {no: 91, arabic: 'الضَّارَّ', transliteration: 'Ad-Darr', meaning: 'Zarar Veren'},
+            {no: 92, arabic: 'النَّافِعُ', transliteration: 'An-Nafi', meaning: 'Fayda Veren'},
+            {no: 93, arabic: 'النُّورُ', transliteration: 'An-Nur', meaning: 'Nur'},
+            {no: 94, arabic: 'الْهَادِي', transliteration: 'Al-Hadi', meaning: 'Hidayet Veren'},
+            {no: 95, arabic: 'الْبَدِيعُ', transliteration: 'Al-Badi', meaning: 'Eşsiz Yaratan'},
+            {no: 96, arabic: 'اَلْبَاقِي', transliteration: 'Al-Baqi', meaning: 'Baki, Kalıcı'},
+            {no: 97, arabic: 'الْوَارِثُ', transliteration: 'Al-Warith', meaning: 'Varis'},
+            {no: 98, arabic: 'الرَّشِيدُ', transliteration: 'Ar-Rashid', meaning: 'Doğru Yolu Gösteren'},
+            {no: 99, arabic: 'الصَّبُورُ', transliteration: 'As-Sabur', meaning: 'Sabırlı'}
+        ];
+
+        function populateEsmaGrid() {
+            const grid = document.getElementById('esma-grid');
+            if (!grid || grid.children.length > 0) return; // Already populated
+
+            esmaUlHusna.forEach(esma => {
+                const card = document.createElement('div');
+                card.className = 'esma-card';
+                card.innerHTML = `
+                    <div class="esma-number">${esma.no}</div>
+                    <div class="esma-arabic">${esma.arabic}</div>
+                    <div class="esma-transliteration">${esma.transliteration}</div>
+                    <div class="esma-meaning">${esma.meaning}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Prophet Toggle Function
+        function toggleProphet(card) {
+            const detail = card.querySelector('.prophet-detail');
+            const icon = card.querySelector('.expand-icon');
+
+            if (detail.style.display === 'block') {
+                detail.style.display = 'none';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                detail.style.display = 'block';
+                icon.style.transform = 'rotate(180deg)';
             }
         }
 
