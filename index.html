@@ -28,6 +28,8 @@
             --text-primary: #ffffff;
             --text-secondary: #a0aec0;
             --gold: #ffd700;
+            --spacing: 16px;
+            --transition-speed: 0.3s;
         }
 
         /* Theme: Ocean */
@@ -903,8 +905,12 @@
             transform: translateY(-1px);
         }
 
-        .action-button:active {
+        .action-button:active,
+        .action-button:focus {
             transform: translateY(0);
+            background: var(--primary-dark);
+            color: white;
+            outline: none;
         }
 
         .action-button.danger {
@@ -913,6 +919,12 @@
 
         .action-button.danger:hover {
             background: linear-gradient(135deg, #ff6348, #ff4757);
+        }
+
+        .action-button.danger:active,
+        .action-button.danger:focus {
+            background: linear-gradient(135deg, #e84118, #c23616);
+            color: white;
         }
 
         .action-button i {
@@ -3251,6 +3263,75 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Compact View */
+        .compact-view .setting-item {
+            padding: 8px 0;
+        }
+
+        .compact-view .settings-group {
+            padding: 12px;
+        }
+
+        .compact-view .prayer-card {
+            padding: 10px 12px;
+        }
+
+        .compact-view .more-item {
+            padding: 12px 15px;
+        }
+
+        /* Show Dividers */
+        .show-dividers .setting-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .show-dividers .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .show-dividers .prayer-card {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .show-dividers .more-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Low Power Mode */
+        .low-power-mode * {
+            animation: none !important;
+            transition: none !important;
+        }
+
+        /* Additional Button States for Better Visibility */
+        select:focus,
+        button:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        select {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            border-color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        select:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
     </style>
 </head>
 <body>
@@ -4113,6 +4194,305 @@
 
                 <div class="settings-group">
                     <div class="settings-group-title">
+                        <i class="fas fa-shield-alt"></i> Gizlilik & Güvenlik
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-lock"></i>
+                            <span>Uygulama Kilidi</span>
+                        </div>
+                        <div class="toggle" id="app-lock-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-key"></i>
+                            <span>PIN Kodu Kur</span>
+                        </div>
+                        <button class="action-button" onclick="setupPIN()">
+                            <i class="fas fa-key"></i> PIN Ayarla
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-fingerprint"></i>
+                            <span>Biyometrik Kimlik</span>
+                        </div>
+                        <div class="toggle" id="biometric-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-user-secret"></i>
+                            <span>Gizli Mod</span>
+                        </div>
+                        <div class="toggle" id="privacy-mode-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-history"></i>
+                            <span>Geçmişi Sakla</span>
+                        </div>
+                        <div class="toggle active" id="history-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
+                        <i class="fas fa-universal-access"></i> Erişilebilirlik
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-eye"></i>
+                            <span>Yüksek Kontrast</span>
+                        </div>
+                        <div class="toggle" id="high-contrast-toggle" onclick="toggleSetting(this); toggleHighContrast()"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-volume-up"></i>
+                            <span>Sesli Okuma</span>
+                        </div>
+                        <div class="toggle" id="screen-reader-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-text-width"></i>
+                            <span>Kalın Yazı Tipi</span>
+                        </div>
+                        <div class="toggle" id="bold-text-toggle" onclick="toggleSetting(this); toggleBoldText()"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <span>Dokunma Alanı Boyutu</span>
+                        </div>
+                        <select id="touch-target-size">
+                            <option value="small">Küçük</option>
+                            <option value="medium" selected>Orta</option>
+                            <option value="large">Büyük</option>
+                            <option value="xlarge">Çok Büyük</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-adjust"></i>
+                            <span>Renk Körlüğü Desteği</span>
+                        </div>
+                        <select id="colorblind-mode">
+                            <option value="none" selected>Yok</option>
+                            <option value="protanopia">Protanopia</option>
+                            <option value="deuteranopia">Deuteranopia</option>
+                            <option value="tritanopia">Tritanopia</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
+                        <i class="fas fa-bell-slash"></i> Gelişmiş Bildirimler
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-volume-down"></i>
+                            <span>Bildirim Ses Seviyesi</span>
+                        </div>
+                        <select id="notification-volume">
+                            <option value="low">Düşük</option>
+                            <option value="medium" selected>Orta</option>
+                            <option value="high">Yüksek</option>
+                            <option value="max">Maksimum</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-broadcast-tower"></i>
+                            <span>Bildirim Deseni</span>
+                        </div>
+                        <select id="notification-pattern">
+                            <option value="single" selected>Tek Uyarı</option>
+                            <option value="double">Çift Uyarı</option>
+                            <option value="triple">Üçlü Uyarı</option>
+                            <option value="continuous">Sürekli</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-moon"></i>
+                            <span>Rahatsız Etmeyin Modu</span>
+                        </div>
+                        <div class="toggle" id="dnd-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-clock"></i>
+                            <span>Sessiz Saat Aralığı</span>
+                        </div>
+                        <button class="action-button" onclick="setQuietHours()">
+                            <i class="fas fa-clock"></i> Ayarla
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Ekran Flaşı (İşitme Engelliler)</span>
+                        </div>
+                        <div class="toggle" id="screen-flash-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
+                        <i class="fas fa-cloud-upload-alt"></i> Yedekleme & Senkronizasyon
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-sync"></i>
+                            <span>Otomatik Yedekleme</span>
+                        </div>
+                        <div class="toggle" id="auto-backup-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Yedekleme Sıklığı</span>
+                        </div>
+                        <select id="backup-frequency">
+                            <option value="daily" selected>Günlük</option>
+                            <option value="weekly">Haftalık</option>
+                            <option value="monthly">Aylık</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-wifi"></i>
+                            <span>Sadece Wi-Fi'de Yedekle</span>
+                        </div>
+                        <div class="toggle active" id="wifi-only-backup-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-cloud"></i>
+                            <span>Bulut Senkronizasyonu</span>
+                        </div>
+                        <div class="toggle" id="cloud-sync-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Şifreli Yedekleme</span>
+                        </div>
+                        <div class="toggle active" id="encrypted-backup-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
+                        <i class="fas fa-tachometer-alt"></i> Performans
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-battery-half"></i>
+                            <span>Düşük Güç Modu</span>
+                        </div>
+                        <div class="toggle" id="low-power-toggle" onclick="toggleSetting(this); toggleLowPowerMode()"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-image"></i>
+                            <span>Görsel Kalitesi</span>
+                        </div>
+                        <select id="image-quality">
+                            <option value="low">Düşük (Hızlı)</option>
+                            <option value="medium">Orta</option>
+                            <option value="high" selected>Yüksek</option>
+                            <option value="ultra">Ultra</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-microchip"></i>
+                            <span>Bellek Optimizasyonu</span>
+                        </div>
+                        <div class="toggle active" id="memory-optimization-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-database"></i>
+                            <span>Önbellek Boyutu</span>
+                        </div>
+                        <select id="cache-size">
+                            <option value="small">Küçük (50 MB)</option>
+                            <option value="medium" selected>Orta (100 MB)</option>
+                            <option value="large">Büyük (200 MB)</option>
+                            <option value="xlarge">Çok Büyük (500 MB)</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-rocket"></i>
+                            <span>Hızlandırılmış Render</span>
+                        </div>
+                        <div class="toggle active" id="hardware-acceleration-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
+                        <i class="fas fa-paint-brush"></i> Görünüm Özelleştirme
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-border-style"></i>
+                            <span>Kenarlık Stili</span>
+                        </div>
+                        <select id="border-style">
+                            <option value="rounded" selected>Yuvarlak</option>
+                            <option value="square">Kare</option>
+                            <option value="sharp">Keskin</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-th-large"></i>
+                            <span>Kartların Gölge Efekti</span>
+                        </div>
+                        <div class="toggle active" id="card-shadow-toggle" onclick="toggleSetting(this); toggleCardShadow()"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-glass"></i>
+                            <span>Cam Efekti (Blur)</span>
+                        </div>
+                        <div class="toggle active" id="blur-effect-toggle" onclick="toggleSetting(this); toggleBlurEffect()"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-grip-lines"></i>
+                            <span>Bölücü Çizgiler</span>
+                        </div>
+                        <div class="toggle active" id="dividers-toggle" onclick="toggleSetting(this); toggleDividers()"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-icons"></i>
+                            <span>İkon Stili</span>
+                        </div>
+                        <select id="icon-style">
+                            <option value="solid" selected>Dolu</option>
+                            <option value="regular">Normal</option>
+                            <option value="light">İnce</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span>Kompakt Görünüm</span>
+                        </div>
+                        <div class="toggle" id="compact-view-toggle" onclick="toggleSetting(this); toggleCompactView()"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
                         <i class="fas fa-info-circle"></i> Hakkında
                     </div>
                     <div class="setting-item">
@@ -4121,6 +4501,38 @@
                             <span>Versiyon</span>
                         </div>
                         <div class="setting-value">1.0.0</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Yapı Numarası</span>
+                        </div>
+                        <div class="setting-value">2025.11.25</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-heart"></i>
+                            <span>Geliştirici</span>
+                        </div>
+                        <div class="setting-value">Namaz Saati Ekibi</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-file-contract"></i>
+                            <span>Gizlilik Politikası</span>
+                        </div>
+                        <button class="action-button" onclick="showPrivacyPolicy()">
+                            <i class="fas fa-external-link-alt"></i> Görüntüle
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-balance-scale"></i>
+                            <span>Kullanım Koşulları</span>
+                        </div>
+                        <button class="action-button" onclick="showTerms()">
+                            <i class="fas fa-external-link-alt"></i> Görüntüle
+                        </button>
                     </div>
                 </div>
             </div>
@@ -8339,6 +8751,125 @@
                 showNotification('Ayarlar sıfırlandı! Sayfa yenileniyor...', 'success');
                 setTimeout(() => location.reload(), 1500);
             }
+        }
+
+        // Security & Privacy Functions
+        function setupPIN() {
+            const pin = prompt('Lütfen 4 haneli bir PIN girin:');
+            if (pin && pin.length === 4 && !isNaN(pin)) {
+                localStorage.setItem('appPIN', pin);
+                showNotification('PIN başarıyla ayarlandı!', 'success');
+            } else if (pin !== null) {
+                showNotification('Geçersiz PIN! 4 haneli sayı giriniz.', 'error');
+            }
+        }
+
+        function setQuietHours() {
+            const startTime = prompt('Başlangıç saati (Örn: 22:00):');
+            const endTime = prompt('Bitiş saati (Örn: 07:00):');
+            if (startTime && endTime) {
+                localStorage.setItem('quietHours', JSON.stringify({start: startTime, end: endTime}));
+                showNotification('Sessiz saat aralığı ayarlandı!', 'success');
+            }
+        }
+
+        function showPrivacyPolicy() {
+            showNotification('Gizlilik politikası açılıyor...', 'info');
+            // Gizlilik politikası sayfasına yönlendirme
+        }
+
+        function showTerms() {
+            showNotification('Kullanım koşulları açılıyor...', 'info');
+            // Kullanım koşulları sayfasına yönlendirme
+        }
+
+        // Accessibility Functions
+        function toggleHighContrast() {
+            const isActive = document.getElementById('high-contrast-toggle').classList.contains('active');
+            if (isActive) {
+                document.body.style.filter = 'contrast(1.5)';
+                localStorage.setItem('highContrast', 'true');
+            } else {
+                document.body.style.filter = '';
+                localStorage.removeItem('highContrast');
+            }
+        }
+
+        function toggleBoldText() {
+            const isActive = document.getElementById('bold-text-toggle').classList.contains('active');
+            if (isActive) {
+                document.body.style.fontWeight = '600';
+                localStorage.setItem('boldText', 'true');
+            } else {
+                document.body.style.fontWeight = '';
+                localStorage.removeItem('boldText');
+            }
+        }
+
+        // Performance Functions
+        function toggleLowPowerMode() {
+            const isActive = document.getElementById('low-power-toggle').classList.contains('active');
+            if (isActive) {
+                document.body.classList.add('low-power-mode');
+                // Animasyonları azalt
+                document.documentElement.style.setProperty('--transition-speed', '0s');
+                localStorage.setItem('lowPowerMode', 'true');
+                showNotification('Düşük güç modu aktif', 'success');
+            } else {
+                document.body.classList.remove('low-power-mode');
+                document.documentElement.style.setProperty('--transition-speed', '0.3s');
+                localStorage.removeItem('lowPowerMode');
+                showNotification('Düşük güç modu kapatıldı', 'info');
+            }
+        }
+
+        // Appearance Functions
+        function toggleCardShadow() {
+            const isActive = document.getElementById('card-shadow-toggle').classList.contains('active');
+            const cards = document.querySelectorAll('.prayer-card, .more-item, .theme-card, .settings-group');
+            cards.forEach(card => {
+                if (isActive) {
+                    card.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+                } else {
+                    card.style.boxShadow = 'none';
+                }
+            });
+            localStorage.setItem('cardShadow', isActive);
+        }
+
+        function toggleBlurEffect() {
+            const isActive = document.getElementById('blur-effect-toggle').classList.contains('active');
+            const blurElements = document.querySelectorAll('.header, .bottom-nav');
+            blurElements.forEach(el => {
+                if (isActive) {
+                    el.style.backdropFilter = 'blur(10px)';
+                } else {
+                    el.style.backdropFilter = 'none';
+                }
+            });
+            localStorage.setItem('blurEffect', isActive);
+        }
+
+        function toggleDividers() {
+            const isActive = document.getElementById('dividers-toggle').classList.contains('active');
+            if (isActive) {
+                document.body.classList.add('show-dividers');
+            } else {
+                document.body.classList.remove('show-dividers');
+            }
+            localStorage.setItem('showDividers', isActive);
+        }
+
+        function toggleCompactView() {
+            const isActive = document.getElementById('compact-view-toggle').classList.contains('active');
+            if (isActive) {
+                document.body.classList.add('compact-view');
+                document.documentElement.style.setProperty('--spacing', '8px');
+            } else {
+                document.body.classList.remove('compact-view');
+                document.documentElement.style.setProperty('--spacing', '16px');
+            }
+            localStorage.setItem('compactView', isActive);
         }
 
         function showNotification(message, type = 'info') {
