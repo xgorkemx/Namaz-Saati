@@ -210,6 +210,18 @@
             box-shadow: 0 10px 30px rgba(26, 95, 74, 0.3);
         }
 
+        .next-prayer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .next-prayer-main {
+            flex: 1;
+        }
+
         .next-prayer-label {
             font-size: 0.85rem;
             opacity: 0.9;
@@ -223,26 +235,70 @@
         }
 
         .next-prayer-time {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
 
         .countdown {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: right;
         }
 
         .countdown-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             opacity: 0.8;
             margin-bottom: 8px;
         }
 
         .countdown-time {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 600;
             letter-spacing: 2px;
+        }
+
+        .compact-prayer-times {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .compact-prayer-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .compact-prayer-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .compact-prayer-item.passed {
+            opacity: 0.5;
+        }
+
+        .compact-prayer-item.current {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .compact-prayer-icon {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .compact-prayer-name {
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            opacity: 0.9;
+        }
+
+        .compact-prayer-time {
+            font-size: 0.95rem;
+            font-weight: 700;
         }
 
         /* Prayer Times Grid */
@@ -2568,23 +2624,21 @@
                 <div class="current-time" id="current-time">00:00</div>
 
                 <div class="next-prayer-card">
-                    <div class="next-prayer-label">Sonraki Namaz</div>
-                    <div class="next-prayer-name" id="next-prayer-name">-</div>
-                    <div class="next-prayer-time" id="next-prayer-time">--:--</div>
-                    <div class="countdown">
-                        <div class="countdown-label">Kalan Süre</div>
-                        <div class="countdown-time" id="countdown">--:--:--</div>
+                    <div class="next-prayer-header">
+                        <div class="next-prayer-main">
+                            <div class="next-prayer-label">Sonraki Namaz</div>
+                            <div class="next-prayer-name" id="next-prayer-name">-</div>
+                            <div class="next-prayer-time" id="next-prayer-time">--:--</div>
+                        </div>
+                        <div class="countdown">
+                            <div class="countdown-label">Kalan Süre</div>
+                            <div class="countdown-time" id="countdown">--:--:--</div>
+                        </div>
                     </div>
-                </div>
-            </section>
 
-            <section class="prayer-times-section">
-                <h2 class="section-title">
-                    <i class="fas fa-mosque"></i>
-                    Günlük Namaz Vakitleri
-                </h2>
-                <div class="prayer-times-grid" id="prayer-times-grid">
-                    <!-- Prayer times will be inserted here -->
+                    <div class="compact-prayer-times" id="compact-prayer-times">
+                        <!-- Compact prayer times will be inserted here -->
+                    </div>
                 </div>
             </section>
         </div>
@@ -6466,7 +6520,7 @@
             const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
             let nextPrayerIndex = -1;
-            let grid = '';
+            let compactGrid = '';
 
             prayers.forEach((prayer, index) => {
                 const [h, m] = times[prayer.key].split(':').map(Number);
@@ -6475,28 +6529,23 @@
                 let status = '';
                 if (nextPrayerIndex === -1 && prayerMinutes > currentMinutes) {
                     nextPrayerIndex = index;
-                    status = 'active';
+                    status = 'current';
                 } else if (nextPrayerIndex === -1 || prayerMinutes <= currentMinutes) {
                     status = 'passed';
                 }
 
-                grid += `
-                    <div class="prayer-card ${status}">
-                        <div class="prayer-info">
-                            <div class="prayer-icon">
-                                <i class="fas ${prayer.icon}"></i>
-                            </div>
-                            <div>
-                                <div class="prayer-name">${prayer.name}</div>
-                                <div class="prayer-arabic">${prayer.arabic}</div>
-                            </div>
+                compactGrid += `
+                    <div class="compact-prayer-item ${status}">
+                        <div class="compact-prayer-icon">
+                            <i class="fas ${prayer.icon}"></i>
                         </div>
-                        <div class="prayer-time-value">${times[prayer.key]}</div>
+                        <div class="compact-prayer-name">${prayer.name}</div>
+                        <div class="compact-prayer-time">${times[prayer.key]}</div>
                     </div>
                 `;
             });
 
-            document.getElementById('prayer-times-grid').innerHTML = grid;
+            document.getElementById('compact-prayer-times').innerHTML = compactGrid;
 
             // Update next prayer info
             if (nextPrayerIndex === -1) nextPrayerIndex = 0;
