@@ -818,75 +818,402 @@
         /* Tasbeeh Page */
         .tasbeeh-container {
             padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .tasbeeh-main-section {
+            text-align: center;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tasbeeh-current-zikir {
+            margin-bottom: 20px;
+        }
+
+        .zikir-arabic {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .zikir-turkish {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .progress-ring-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-circle-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 8;
+        }
+
+        .progress-ring-circle {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 565.48;
+            stroke-dashoffset: 565.48;
+            transition: stroke-dashoffset 0.3s ease;
+        }
+
+        .tasbeeh-counter-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
         }
 
         .tasbeeh-counter {
-            font-size: 5rem;
+            font-size: 3.5rem;
             font-weight: 700;
             color: var(--gold);
-            margin: 30px 0;
+            line-height: 1;
+        }
+
+        .tasbeeh-target {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
         }
 
         .tasbeeh-button {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             border: none;
             color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(26, 95, 74, 0.5);
-            transition: all 0.1s ease;
-            margin: 20px auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 5px;
+            margin: 20px auto;
+        }
+
+        .tasbeeh-button i {
+            font-size: 2rem;
+        }
+
+        .tasbeeh-button span {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .tasbeeh-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
         }
 
         .tasbeeh-button:active {
             transform: scale(0.95);
+            animation: pulse 0.3s ease;
         }
 
-        .tasbeeh-presets {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.95); }
+            50% { transform: scale(1.1); }
+        }
+
+        .tasbeeh-actions {
+            display: flex;
             gap: 10px;
-            margin-top: 30px;
-        }
-
-        .tasbeeh-preset {
-            background: var(--bg-card);
-            padding: 15px 10px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tasbeeh-preset.active {
-            background: var(--primary);
-        }
-
-        .tasbeeh-preset-name {
-            font-size: 0.8rem;
-            margin-bottom: 5px;
-        }
-
-        .tasbeeh-preset-arabic {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .tasbeeh-reset {
+            justify-content: center;
             margin-top: 20px;
-            padding: 12px 30px;
+        }
+
+        .tasbeeh-action-btn {
+            padding: 10px 20px;
             background: rgba(255, 255, 255, 0.1);
             border: none;
             border-radius: 10px;
             color: white;
             cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tasbeeh-action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .tasbeeh-section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .section-title i {
+            margin-right: 8px;
+        }
+
+        .target-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .target-btn {
+            flex: 1;
+            min-width: 60px;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .target-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .target-btn.active {
+            background: var(--primary);
+            border-color: var(--gold);
+        }
+
+        .zikir-category {
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .category-header {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .category-header:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .category-header span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .category-content.active {
+            max-height: 1000px;
+        }
+
+        .zikir-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .zikir-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 15px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .zikir-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .zikir-card.active {
+            background: var(--primary);
+            border-color: var(--gold);
+        }
+
+        .zikir-card-arabic {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .zikir-card-turkish {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+        }
+
+        .zikir-card-count {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 8px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .clear-history-btn {
+            padding: 8px 15px;
+            background: rgba(220, 38, 38, 0.2);
+            border: none;
+            border-radius: 8px;
+            color: #ef4444;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .clear-history-btn:hover {
+            background: rgba(220, 38, 38, 0.3);
+        }
+
+        .history-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-info {
+            flex: 1;
+        }
+
+        .history-zikir {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .history-details {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .history-count {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .zikir-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tasbeeh-actions {
+                flex-direction: column;
+            }
+
+            .target-selector {
+                flex-direction: column;
+            }
+
+            .target-btn {
+                width: 100%;
+            }
         }
 
         /* Loading */
@@ -2314,30 +2641,226 @@
         <!-- Tasbeeh Page -->
         <div class="page" id="page-tasbeeh">
             <header class="header">
-                <h1 class="app-title">Tesbih</h1>
+                <h1 class="app-title">Dijital Tesbih</h1>
             </header>
             <div class="tasbeeh-container">
-                <div class="tasbeeh-counter" id="tasbeeh-counter">0</div>
-                <button class="tasbeeh-button" onclick="incrementTasbeeh()">
-                    <i class="fas fa-hand-pointer"></i>
-                </button>
-                <div class="tasbeeh-presets">
-                    <div class="tasbeeh-preset active" onclick="setTasbeehPreset(this, 'Sübhanallah', 33)">
-                        <div class="tasbeeh-preset-name">33</div>
-                        <div class="tasbeeh-preset-arabic">سبحان الله</div>
+                <!-- Counter Section -->
+                <div class="tasbeeh-main-section">
+                    <div class="tasbeeh-current-zikir" id="current-zikir-display">
+                        <div class="zikir-arabic">سبحان الله</div>
+                        <div class="zikir-turkish">Sübhanallah</div>
                     </div>
-                    <div class="tasbeeh-preset" onclick="setTasbeehPreset(this, 'Elhamdülillah', 33)">
-                        <div class="tasbeeh-preset-name">33</div>
-                        <div class="tasbeeh-preset-arabic">الحمد لله</div>
+
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" width="200" height="200">
+                            <circle class="progress-ring-circle-bg" cx="100" cy="100" r="90" />
+                            <circle class="progress-ring-circle" cx="100" cy="100" r="90" id="progress-circle" />
+                        </svg>
+                        <div class="tasbeeh-counter-wrapper">
+                            <div class="tasbeeh-counter" id="tasbeeh-counter">0</div>
+                            <div class="tasbeeh-target" id="tasbeeh-target-display">/ 33</div>
+                        </div>
                     </div>
-                    <div class="tasbeeh-preset" onclick="setTasbeehPreset(this, 'Allahu Ekber', 33)">
-                        <div class="tasbeeh-preset-name">33</div>
-                        <div class="tasbeeh-preset-arabic">الله أكبر</div>
+
+                    <button class="tasbeeh-button" onclick="incrementTasbeeh()">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Tıkla</span>
+                    </button>
+
+                    <div class="tasbeeh-actions">
+                        <button class="tasbeeh-action-btn" onclick="resetTasbeeh()">
+                            <i class="fas fa-redo"></i> Sıfırla
+                        </button>
+                        <button class="tasbeeh-action-btn" onclick="toggleTasbeehSound()">
+                            <i class="fas fa-volume-up" id="sound-icon"></i> Ses
+                        </button>
+                        <button class="tasbeeh-action-btn" onclick="saveTasbeehSession()">
+                            <i class="fas fa-save"></i> Kaydet
+                        </button>
                     </div>
                 </div>
-                <button class="tasbeeh-reset" onclick="resetTasbeeh()">
-                    <i class="fas fa-redo"></i> Sıfırla
-                </button>
+
+                <!-- Target Selection -->
+                <div class="tasbeeh-section">
+                    <h3 class="section-title"><i class="fas fa-bullseye"></i> Hedef Seç</h3>
+                    <div class="target-selector">
+                        <button class="target-btn active" onclick="setTarget(33)">33</button>
+                        <button class="target-btn" onclick="setTarget(99)">99</button>
+                        <button class="target-btn" onclick="setTarget(100)">100</button>
+                        <button class="target-btn" onclick="setTarget(1000)">1000</button>
+                        <button class="target-btn" onclick="showCustomTarget()">
+                            <i class="fas fa-edit"></i> Özel
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Zikir Categories -->
+                <div class="tasbeeh-section">
+                    <h3 class="section-title"><i class="fas fa-list"></i> Zikir Seç</h3>
+
+                    <div class="zikir-category">
+                        <div class="category-header" onclick="toggleCategory('tesbih-category')">
+                            <span><i class="fas fa-star"></i> Tesbih (33'lük)</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="category-content active" id="tesbih-category">
+                            <div class="zikir-grid">
+                                <div class="zikir-card active" onclick="selectZikir(this, 'سبحان الله', 'Sübhanallah', 33)">
+                                    <div class="zikir-card-arabic">سبحان الله</div>
+                                    <div class="zikir-card-turkish">Sübhanallah</div>
+                                    <div class="zikir-card-count">33</div>
+                                </div>
+                                <div class="zikir-card" onclick="selectZikir(this, 'الحمد لله', 'Elhamdülillah', 33)">
+                                    <div class="zikir-card-arabic">الحمد لله</div>
+                                    <div class="zikir-card-turkish">Elhamdülillah</div>
+                                    <div class="zikir-card-count">33</div>
+                                </div>
+                                <div class="zikir-card" onclick="selectZikir(this, 'الله أكبر', 'Allahu Ekber', 33)">
+                                    <div class="zikir-card-arabic">الله أكبر</div>
+                                    <div class="zikir-card-turkish">Allahu Ekber</div>
+                                    <div class="zikir-card-count">33</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="zikir-category">
+                        <div class="category-header" onclick="toggleCategory('salavat-category')">
+                            <span><i class="fas fa-pray"></i> Salavat</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="category-content" id="salavat-category">
+                            <div class="zikir-grid">
+                                <div class="zikir-card" onclick="selectZikir(this, 'اللهم صل على محمد', 'Allahumme Salli Ala Muhammed', 100)">
+                                    <div class="zikir-card-arabic">اللهم صل على محمد</div>
+                                    <div class="zikir-card-turkish">Allahumme Salli Ala Muhammed</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                                <div class="zikir-card" onclick="selectZikir(this, 'صلى الله عليه وسلم', 'Sallallahu Aleyhi Vesellem', 100)">
+                                    <div class="zikir-card-arabic">صلى الله عليه وسلم</div>
+                                    <div class="zikir-card-turkish">Sallallahu Aleyhi Vesellem</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="zikir-category">
+                        <div class="category-header" onclick="toggleCategory('istigfar-category')">
+                            <span><i class="fas fa-hands"></i> İstiğfar</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="category-content" id="istigfar-category">
+                            <div class="zikir-grid">
+                                <div class="zikir-card" onclick="selectZikir(this, 'أستغفر الله', 'Estağfirullah', 100)">
+                                    <div class="zikir-card-arabic">أستغفر الله</div>
+                                    <div class="zikir-card-turkish">Estağfirullah</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                                <div class="zikir-card" onclick="selectZikir(this, 'أستغفر الله العظيم', 'Estağfirullah-el Azim', 100)">
+                                    <div class="zikir-card-arabic">أستغفر الله العظيم</div>
+                                    <div class="zikir-card-turkish">Estağfirullah-el Azim</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="zikir-category">
+                        <div class="category-header" onclick="toggleCategory('kelime-category')">
+                            <span><i class="fas fa-book"></i> Kelime-i Tevhid & Şehadet</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="category-content" id="kelime-category">
+                            <div class="zikir-grid">
+                                <div class="zikir-card" onclick="selectZikir(this, 'لا إله إلا الله', 'La İlahe İllallah', 100)">
+                                    <div class="zikir-card-arabic">لا إله إلا الله</div>
+                                    <div class="zikir-card-turkish">La İlahe İllallah</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                                <div class="zikir-card" onclick="selectZikir(this, 'لا إله إلا الله محمد رسول الله', 'Eşhedü en La İlahe İllallah ve Eşhedü Enne Muhammeden Resulullah', 100)">
+                                    <div class="zikir-card-arabic">لا إله إلا الله محمد رسول الله</div>
+                                    <div class="zikir-card-turkish">Kelime-i Şehadet</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="zikir-category">
+                        <div class="category-header" onclick="toggleCategory('other-category')">
+                            <span><i class="fas fa-mosque"></i> Diğer Zikirler</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="category-content" id="other-category">
+                            <div class="zikir-grid">
+                                <div class="zikir-card" onclick="selectZikir(this, 'لا حول ولا قوة إلا بالله', 'La Havle Vela Kuvvete İlla Billah', 100)">
+                                    <div class="zikir-card-arabic">لا حول ولا قوة إلا بالله</div>
+                                    <div class="zikir-card-turkish">La Havle Vela Kuvvete İlla Billah</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                                <div class="zikir-card" onclick="selectZikir(this, 'حسبي الله', 'Hasbiyallah', 100)">
+                                    <div class="zikir-card-arabic">حسبي الله</div>
+                                    <div class="zikir-card-turkish">Hasbiyallah</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                                <div class="zikir-card" onclick="selectZikir(this, 'سبحان الله وبحمده', 'Sübhanallahi Ve Bihamdihi', 100)">
+                                    <div class="zikir-card-arabic">سبحان الله وبحمده</div>
+                                    <div class="zikir-card-turkish">Sübhanallahi Ve Bihamdihi</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                                <div class="zikir-card" onclick="selectZikir(this, 'سبحان الله العظيم وبحمده', 'Sübhanallahi-l Azim Ve Bihamdihi', 100)">
+                                    <div class="zikir-card-arabic">سبحان الله العظيم وبحمده</div>
+                                    <div class="zikir-card-turkish">Sübhanallahi-l Azim Ve Bihamdihi</div>
+                                    <div class="zikir-card-count">100</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="tasbeeh-section">
+                    <h3 class="section-title"><i class="fas fa-chart-bar"></i> İstatistikler</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-calendar-day"></i></div>
+                            <div class="stat-value" id="today-count">0</div>
+                            <div class="stat-label">Bugün</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-calendar-week"></i></div>
+                            <div class="stat-value" id="week-count">0</div>
+                            <div class="stat-label">Bu Hafta</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-infinity"></i></div>
+                            <div class="stat-value" id="total-count">0</div>
+                            <div class="stat-label">Toplam</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                            <div class="stat-value" id="sessions-count">0</div>
+                            <div class="stat-label">Oturum</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History -->
+                <div class="tasbeeh-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-history"></i> Geçmiş
+                        <button class="clear-history-btn" onclick="clearHistory()">
+                            <i class="fas fa-trash"></i> Temizle
+                        </button>
+                    </h3>
+                    <div class="history-list" id="history-list">
+                        <div class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <p>Henüz kayıtlı oturum yok</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -4883,7 +5406,9 @@
             },
             currentMonth: new Date(),
             tasbeehCount: 0,
-            tasbeehTarget: 33
+            tasbeehTarget: 33,
+            tasbeehSound: false,
+            currentZikir: null
         };
 
         // Turkish cities with coordinates
@@ -5645,25 +6170,264 @@
         }
 
         // Tasbeeh
+        // Tasbeeh Functions
         function incrementTasbeeh() {
             state.tasbeehCount++;
+            updateTasbeehDisplay();
+
+            // Play sound if enabled
+            if (state.tasbeehSound) {
+                playTasbeehSound();
+            }
+
+            // Vibrate
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+
+            // Check if target reached
+            if (state.tasbeehCount === state.tasbeehTarget) {
+                onTargetReached();
+            }
+
+            // Update total count
+            updateTasbeehStats();
+        }
+
+        function updateTasbeehDisplay() {
             document.getElementById('tasbeeh-counter').textContent = state.tasbeehCount;
 
-            if (state.tasbeehCount >= state.tasbeehTarget) {
-                if (navigator.vibrate) navigator.vibrate(200);
-            }
+            // Update progress ring
+            const progressCircle = document.getElementById('progress-circle');
+            const circumference = 2 * Math.PI * 90;
+            const progress = (state.tasbeehCount / state.tasbeehTarget) * circumference;
+            const offset = circumference - progress;
+            progressCircle.style.strokeDashoffset = offset;
         }
 
         function resetTasbeeh() {
             state.tasbeehCount = 0;
-            document.getElementById('tasbeeh-counter').textContent = '0';
+            updateTasbeehDisplay();
         }
 
-        function setTasbeehPreset(el, name, target) {
-            document.querySelectorAll('.tasbeeh-preset').forEach(p => p.classList.remove('active'));
-            el.classList.add('active');
+        function setTarget(target) {
             state.tasbeehTarget = target;
+            document.getElementById('tasbeeh-target-display').textContent = `/ ${target}`;
+
+            // Update active button
+            document.querySelectorAll('.target-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
             resetTasbeeh();
+        }
+
+        function showCustomTarget() {
+            const custom = prompt('Özel hedef sayısını girin:', '100');
+            if (custom && !isNaN(custom) && custom > 0) {
+                setTarget(parseInt(custom));
+            }
+        }
+
+        function toggleCategory(categoryId) {
+            const category = document.getElementById(categoryId);
+            category.classList.toggle('active');
+
+            // Rotate chevron
+            const header = category.previousElementSibling;
+            const chevron = header.querySelector('.fa-chevron-down');
+            if (category.classList.contains('active')) {
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function selectZikir(el, arabic, turkish, defaultTarget) {
+            // Remove active from all cards
+            document.querySelectorAll('.zikir-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            el.classList.add('active');
+
+            // Update current zikir display
+            document.querySelector('.zikir-arabic').textContent = arabic;
+            document.querySelector('.zikir-turkish').textContent = turkish;
+
+            // Update state
+            state.currentZikir = { arabic, turkish };
+
+            // Set target to the zikir's default
+            setTarget(defaultTarget);
+
+            resetTasbeeh();
+        }
+
+        function toggleTasbeehSound() {
+            state.tasbeehSound = !state.tasbeehSound;
+            const icon = document.getElementById('sound-icon');
+
+            if (state.tasbeehSound) {
+                icon.className = 'fas fa-volume-up';
+            } else {
+                icon.className = 'fas fa-volume-mute';
+            }
+
+            localStorage.setItem('tasbeehSound', state.tasbeehSound);
+        }
+
+        function playTasbeehSound() {
+            // Create a simple beep sound
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+
+        function onTargetReached() {
+            // Vibrate longer
+            if (navigator.vibrate) {
+                navigator.vibrate([200, 100, 200]);
+            }
+
+            // Show celebration animation
+            const counter = document.getElementById('tasbeeh-counter');
+            counter.style.animation = 'none';
+            setTimeout(() => {
+                counter.style.animation = 'pulse 0.5s ease';
+            }, 10);
+
+            // Show notification
+            setTimeout(() => {
+                alert(`Tebrikler! ${state.tasbeehTarget} ${state.currentZikir?.turkish || 'zikir'} tamamlandı!`);
+            }, 300);
+        }
+
+        function saveTasbeehSession() {
+            if (state.tasbeehCount === 0) {
+                alert('Henüz zikir çekmediniz.');
+                return;
+            }
+
+            const session = {
+                zikir: state.currentZikir || { arabic: 'سبحان الله', turkish: 'Sübhanallah' },
+                count: state.tasbeehCount,
+                target: state.tasbeehTarget,
+                date: new Date().toISOString(),
+                completed: state.tasbeehCount >= state.tasbeehTarget
+            };
+
+            // Load existing history
+            let history = JSON.parse(localStorage.getItem('tasbeehHistory') || '[]');
+            history.unshift(session);
+
+            // Keep only last 50 sessions
+            history = history.slice(0, 50);
+
+            localStorage.setItem('tasbeehHistory', JSON.stringify(history));
+
+            // Update display
+            loadTasbeehHistory();
+            updateTasbeehStats();
+
+            alert('Oturum kaydedildi!');
+            resetTasbeeh();
+        }
+
+        function loadTasbeehHistory() {
+            const history = JSON.parse(localStorage.getItem('tasbeehHistory') || '[]');
+            const historyList = document.getElementById('history-list');
+
+            if (history.length === 0) {
+                historyList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>Henüz kayıtlı oturum yok</p>
+                    </div>
+                `;
+                return;
+            }
+
+            historyList.innerHTML = history.map(session => {
+                const date = new Date(session.date);
+                const dateStr = date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+                const completedIcon = session.completed ? '<i class="fas fa-check-circle" style="color: var(--gold); margin-left: 5px;"></i>' : '';
+
+                return `
+                    <div class="history-item">
+                        <div class="history-info">
+                            <div class="history-zikir">${session.zikir.turkish} ${completedIcon}</div>
+                            <div class="history-details">${dateStr} • Hedef: ${session.target}</div>
+                        </div>
+                        <div class="history-count">${session.count}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function clearHistory() {
+            if (confirm('Tüm geçmişi silmek istediğinizden emin misiniz?')) {
+                localStorage.removeItem('tasbeehHistory');
+                loadTasbeehHistory();
+                updateTasbeehStats();
+            }
+        }
+
+        function updateTasbeehStats() {
+            const history = JSON.parse(localStorage.getItem('tasbeehHistory') || '[]');
+            const today = new Date().toDateString();
+            const weekAgo = new Date();
+            weekAgo.setDate(weekAgo.getDate() - 7);
+
+            // Today's count
+            const todayCount = history
+                .filter(s => new Date(s.date).toDateString() === today)
+                .reduce((sum, s) => sum + s.count, 0);
+
+            // Week count
+            const weekCount = history
+                .filter(s => new Date(s.date) >= weekAgo)
+                .reduce((sum, s) => sum + s.count, 0);
+
+            // Total count
+            const totalCount = history.reduce((sum, s) => sum + s.count, 0);
+
+            // Sessions count
+            const sessionsCount = history.filter(s => s.completed).length;
+
+            document.getElementById('today-count').textContent = todayCount;
+            document.getElementById('week-count').textContent = weekCount;
+            document.getElementById('total-count').textContent = totalCount;
+            document.getElementById('sessions-count').textContent = sessionsCount;
+        }
+
+        function initTasbeeh() {
+            // Load saved settings
+            state.tasbeehSound = localStorage.getItem('tasbeehSound') === 'true';
+            state.currentZikir = { arabic: 'سبحان الله', turkish: 'Sübhanallah' };
+
+            // Update sound icon
+            const icon = document.getElementById('sound-icon');
+            if (icon) {
+                icon.className = state.tasbeehSound ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+            }
+
+            // Load history and stats
+            loadTasbeehHistory();
+            updateTasbeehStats();
+            updateTasbeehDisplay();
         }
 
         // Location
@@ -5812,6 +6576,9 @@
 
             // Load saved theme
             loadSavedTheme();
+
+            // Initialize tasbeeh
+            initTasbeeh();
         }
 
         // Start app
