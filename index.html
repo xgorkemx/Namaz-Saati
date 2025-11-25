@@ -30,6 +30,83 @@
             --gold: #ffd700;
         }
 
+        /* Theme: Ocean */
+        [data-theme="ocean"] {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #06b6d4;
+            --accent: #0ea5e9;
+            --bg-dark: #0c1e42;
+            --bg-card: #1e3a5f;
+        }
+
+        /* Theme: Sunset */
+        [data-theme="sunset"] {
+            --primary: #dc2626;
+            --primary-light: #f97316;
+            --primary-dark: #991b1b;
+            --secondary: #fb923c;
+            --accent: #fbbf24;
+            --bg-dark: #1a0a0a;
+            --bg-card: #3d1616;
+        }
+
+        /* Theme: Purple */
+        [data-theme="purple"] {
+            --primary: #7c3aed;
+            --primary-light: #a78bfa;
+            --primary-dark: #5b21b6;
+            --secondary: #c084fc;
+            --accent: #d946ef;
+            --bg-dark: #1a0a2e;
+            --bg-card: #2d1b4e;
+        }
+
+        /* Theme: Forest */
+        [data-theme="forest"] {
+            --primary: #065f46;
+            --primary-light: #10b981;
+            --primary-dark: #064e3b;
+            --secondary: #34d399;
+            --accent: #6ee7b7;
+            --bg-dark: #0a2818;
+            --bg-card: #153a2a;
+        }
+
+        /* Theme: Rose */
+        [data-theme="rose"] {
+            --primary: #be123c;
+            --primary-light: #fb7185;
+            --primary-dark: #881337;
+            --secondary: #f472b6;
+            --accent: #fda4af;
+            --bg-dark: #1a0a12;
+            --bg-card: #3d1626;
+        }
+
+        /* Theme: Midnight */
+        [data-theme="midnight"] {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #60a5fa;
+            --accent: #93c5fd;
+            --bg-dark: #020617;
+            --bg-card: #0f172a;
+        }
+
+        /* Theme: Autumn */
+        [data-theme="autumn"] {
+            --primary: #92400e;
+            --primary-light: #d97706;
+            --primary-dark: #78350f;
+            --secondary: #f59e0b;
+            --accent: #fbbf24;
+            --bg-dark: #1a1008;
+            --bg-card: #2d1f12;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, var(--bg-dark) 0%, #1a2f4a 100%);
@@ -464,6 +541,174 @@
 
         .toggle.active::after {
             left: 26px;
+        }
+
+        /* Theme Selector */
+        .theme-selector-section {
+            padding: 20px;
+        }
+
+        .theme-info-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .theme-info-text i {
+            color: var(--gold);
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .theme-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .theme-card.active {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .theme-preview {
+            width: 100%;
+            height: 100px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .theme-preview-header {
+            height: 30%;
+            background: var(--primary);
+        }
+
+        .theme-preview-content {
+            flex: 1;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .theme-preview-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        .theme-preview-bar.short {
+            width: 60%;
+        }
+
+        /* Theme Previews */
+        .default-preview {
+            background: #0a1628;
+        }
+
+        .default-preview .theme-preview-header {
+            background: linear-gradient(135deg, #1a5f4a 0%, #2d8f6f 100%);
+        }
+
+        .ocean-preview {
+            background: #0c1e42;
+        }
+
+        .ocean-preview .theme-preview-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+        .sunset-preview {
+            background: #1a0a0a;
+        }
+
+        .sunset-preview .theme-preview-header {
+            background: linear-gradient(135deg, #dc2626 0%, #f97316 100%);
+        }
+
+        .purple-preview {
+            background: #1a0a2e;
+        }
+
+        .purple-preview .theme-preview-header {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+        }
+
+        .forest-preview {
+            background: #0a2818;
+        }
+
+        .forest-preview .theme-preview-header {
+            background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+        }
+
+        .rose-preview {
+            background: #1a0a12;
+        }
+
+        .rose-preview .theme-preview-header {
+            background: linear-gradient(135deg, #be123c 0%, #fb7185 100%);
+        }
+
+        .midnight-preview {
+            background: #020617;
+        }
+
+        .midnight-preview .theme-preview-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .autumn-preview {
+            background: #1a1008;
+        }
+
+        .autumn-preview .theme-preview-header {
+            background: linear-gradient(135deg, #92400e 0%, #d97706 100%);
+        }
+
+        .theme-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .theme-check {
+            color: var(--gold);
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .theme-card.active .theme-check {
+            opacity: 1;
+        }
+
+        .theme-description {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
         }
 
         /* Calendar Page */
@@ -2103,7 +2348,169 @@
             </header>
             <div class="settings-container">
                 <div class="settings-group">
-                    <div class="settings-group-title">Hesaplama Ayarları</div>
+                    <div class="settings-group-title">
+                        <i class="fas fa-palette"></i> Görünüm & Temalar
+                    </div>
+
+                    <!-- Theme Selector -->
+                    <div class="theme-selector-section">
+                        <div class="theme-info-text">
+                            <i class="fas fa-brush"></i>
+                            <span>Uygulamanın görünümünü kişiselleştirin</span>
+                        </div>
+
+                        <div class="theme-grid">
+                            <div class="theme-card" data-theme="default" onclick="changeTheme('default')">
+                                <div class="theme-preview default-preview">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-bar"></div>
+                                        <div class="theme-preview-bar short"></div>
+                                        <div class="theme-preview-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">
+                                    <i class="fas fa-check-circle theme-check"></i>
+                                    Varsayılan
+                                </div>
+                                <div class="theme-description">Klasik yeşil tema</div>
+                            </div>
+
+                            <div class="theme-card" data-theme="ocean" onclick="changeTheme('ocean')">
+                                <div class="theme-preview ocean-preview">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-bar"></div>
+                                        <div class="theme-preview-bar short"></div>
+                                        <div class="theme-preview-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">
+                                    <i class="fas fa-check-circle theme-check"></i>
+                                    Okyanus
+                                </div>
+                                <div class="theme-description">Mavi tonları</div>
+                            </div>
+
+                            <div class="theme-card" data-theme="sunset" onclick="changeTheme('sunset')">
+                                <div class="theme-preview sunset-preview">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-bar"></div>
+                                        <div class="theme-preview-bar short"></div>
+                                        <div class="theme-preview-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">
+                                    <i class="fas fa-check-circle theme-check"></i>
+                                    Günbatımı
+                                </div>
+                                <div class="theme-description">Turuncu & pembe</div>
+                            </div>
+
+                            <div class="theme-card" data-theme="purple" onclick="changeTheme('purple')">
+                                <div class="theme-preview purple-preview">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-bar"></div>
+                                        <div class="theme-preview-bar short"></div>
+                                        <div class="theme-preview-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">
+                                    <i class="fas fa-check-circle theme-check"></i>
+                                    Mor
+                                </div>
+                                <div class="theme-description">Mor & lacivert</div>
+                            </div>
+
+                            <div class="theme-card" data-theme="forest" onclick="changeTheme('forest')">
+                                <div class="theme-preview forest-preview">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-bar"></div>
+                                        <div class="theme-preview-bar short"></div>
+                                        <div class="theme-preview-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">
+                                    <i class="fas fa-check-circle theme-check"></i>
+                                    Orman
+                                </div>
+                                <div class="theme-description">Koyu yeşil</div>
+                            </div>
+
+                            <div class="theme-card" data-theme="rose" onclick="changeTheme('rose')">
+                                <div class="theme-preview rose-preview">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-bar"></div>
+                                        <div class="theme-preview-bar short"></div>
+                                        <div class="theme-preview-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">
+                                    <i class="fas fa-check-circle theme-check"></i>
+                                    Gül
+                                </div>
+                                <div class="theme-description">Pembe & bordo</div>
+                            </div>
+
+                            <div class="theme-card" data-theme="midnight" onclick="changeTheme('midnight')">
+                                <div class="theme-preview midnight-preview">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-bar"></div>
+                                        <div class="theme-preview-bar short"></div>
+                                        <div class="theme-preview-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">
+                                    <i class="fas fa-check-circle theme-check"></i>
+                                    Gece Yarısı
+                                </div>
+                                <div class="theme-description">Koyu mavi</div>
+                            </div>
+
+                            <div class="theme-card" data-theme="autumn" onclick="changeTheme('autumn')">
+                                <div class="theme-preview autumn-preview">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-bar"></div>
+                                        <div class="theme-preview-bar short"></div>
+                                        <div class="theme-preview-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">
+                                    <i class="fas fa-check-circle theme-check"></i>
+                                    Sonbahar
+                                </div>
+                                <div class="theme-description">Kahverengi & turuncu</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-moon"></i>
+                            <span>Karanlık Mod</span>
+                        </div>
+                        <div class="toggle active" id="dark-mode-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-adjust"></i>
+                            <span>Otomatik Tema (Sistem)</span>
+                        </div>
+                        <div class="toggle" id="auto-theme-toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group-title">
+                        <i class="fas fa-calculator"></i> Hesaplama Ayarları
+                    </div>
                     <div class="setting-item">
                         <div class="setting-label">
                             <i class="fas fa-calculator"></i>
@@ -2131,7 +2538,9 @@
                 </div>
 
                 <div class="settings-group">
-                    <div class="settings-group-title">Bildirimler</div>
+                    <div class="settings-group-title">
+                        <i class="fas fa-bell"></i> Bildirimler
+                    </div>
                     <div class="setting-item">
                         <div class="setting-label">
                             <i class="fas fa-bell"></i>
@@ -2146,10 +2555,25 @@
                         </div>
                         <div class="toggle" id="sound-toggle" onclick="toggleSetting(this)"></div>
                     </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-clock"></i>
+                            <span>Namaz Öncesi Hatırlatma</span>
+                        </div>
+                        <select id="reminder-time">
+                            <option value="0">Kapalı</option>
+                            <option value="5">5 dakika önce</option>
+                            <option value="10">10 dakika önce</option>
+                            <option value="15">15 dakika önce</option>
+                            <option value="30">30 dakika önce</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="settings-group">
-                    <div class="settings-group-title">Uygulama</div>
+                    <div class="settings-group-title">
+                        <i class="fas fa-cog"></i> Uygulama
+                    </div>
                     <div class="setting-item">
                         <div class="setting-label">
                             <i class="fas fa-language"></i>
@@ -2168,10 +2592,23 @@
                         </div>
                         <div class="toggle active" id="24h-toggle" onclick="toggleSetting(this)"></div>
                     </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-text-height"></i>
+                            <span>Yazı Boyutu</span>
+                        </div>
+                        <select id="font-size">
+                            <option value="small">Küçük</option>
+                            <option value="medium" selected>Orta</option>
+                            <option value="large">Büyük</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="settings-group">
-                    <div class="settings-group-title">Hakkında</div>
+                    <div class="settings-group-title">
+                        <i class="fas fa-info-circle"></i> Hakkında
+                    </div>
                     <div class="setting-item">
                         <div class="setting-label">
                             <i class="fas fa-info-circle"></i>
@@ -4833,6 +5270,51 @@
             });
         }
 
+        // Theme Change Function
+        function changeTheme(themeName) {
+            // Remove active class from all theme cards
+            document.querySelectorAll('.theme-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            // Add active class to selected theme card
+            const selectedCard = document.querySelector(`.theme-card[data-theme="${themeName}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('active');
+            }
+
+            // Apply theme to body
+            if (themeName === 'default') {
+                document.body.removeAttribute('data-theme');
+            } else {
+                document.body.setAttribute('data-theme', themeName);
+            }
+
+            // Save theme preference
+            localStorage.setItem('selectedTheme', themeName);
+
+            // Show success message
+            const themeTitles = {
+                'default': 'Varsayılan',
+                'ocean': 'Okyanus',
+                'sunset': 'Günbatımı',
+                'purple': 'Mor',
+                'forest': 'Orman',
+                'rose': 'Gül',
+                'midnight': 'Gece Yarısı',
+                'autumn': 'Sonbahar'
+            };
+
+            // Optional: Show a toast notification
+            console.log(`Tema değiştirildi: ${themeTitles[themeName]}`);
+        }
+
+        // Load saved theme on page load
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+            changeTheme(savedTheme);
+        }
+
         // Ramazan Functions
         function updateRamazanCountdown() {
             const ramazanDate = new Date('2025-03-31');
@@ -5327,6 +5809,9 @@
                     hideLocationModal();
                 }
             });
+
+            // Load saved theme
+            loadSavedTheme();
         }
 
         // Start app
