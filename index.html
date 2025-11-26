@@ -8397,12 +8397,12 @@
         // Prayer time calculation (simplified Adhan algorithm)
         function calculatePrayerTimes(date, lat, lng, method = 'Turkey') {
             const methods = {
-                'Turkey': { fajr: 18, isha: 17 },
-                'MWL': { fajr: 18, isha: 17 },
-                'ISNA': { fajr: 15, isha: 15 },
-                'Egypt': { fajr: 19.5, isha: 17.5 },
-                'Makkah': { fajr: 18.5, isha: 90 },
-                'Karachi': { fajr: 18, isha: 18 }
+                'Turkey': { fajr: 18, isha: 17, maghrib: 0, midnight: 'Standard' },
+                'MWL': { fajr: 18, isha: 17, maghrib: 0, midnight: 'Standard' },
+                'ISNA': { fajr: 15, isha: 15, maghrib: 0, midnight: 'Standard' },
+                'Egypt': { fajr: 19.5, isha: 17.5, maghrib: 0, midnight: 'Standard' },
+                'Makkah': { fajr: 18.5, isha: 90, maghrib: 0, midnight: 'Standard' },
+                'Karachi': { fajr: 18, isha: 18, maghrib: 0, midnight: 'Standard' }
             };
 
             const params = methods[method] || methods['Turkey'];
@@ -8415,7 +8415,7 @@
             const sunrise = transit - hourAngle(lat, decl, 0.833) / 15;
             const sunset = transit + hourAngle(lat, decl, 0.833) / 15;
             const fajr = transit - hourAngle(lat, decl, params.fajr) / 15;
-            const dhuhr = transit + 1/60; // Add 1 minute after transit
+            const dhuhr = transit + 5/60; // Add 5 minutes after transit (Diyanet standard)
             const asr = transit + asrTime(lat, decl, state.settings.asrMethod === 'Hanafi' ? 2 : 1);
 
             let isha;
@@ -8436,8 +8436,8 @@
         }
 
         function julianDate(date) {
-            const y = date.getFullYear();
-            const m = date.getMonth() + 1;
+            let y = date.getFullYear();
+            let m = date.getMonth() + 1;
             const d = date.getDate();
 
             if (m <= 2) {
@@ -8495,8 +8495,11 @@
             const declRad = toRad(decl);
             const angleRad = toRad(angle);
 
-            const cosHA = (Math.sin(angleRad) - Math.sin(latRad) * Math.sin(declRad)) /
-                         (Math.cos(latRad) * Math.cos(declRad));
+            let cosHA = (Math.sin(angleRad) - Math.sin(latRad) * Math.sin(declRad)) /
+                        (Math.cos(latRad) * Math.cos(declRad));
+
+            // Clamp cosHA to [-1, 1] range to avoid NaN from acos
+            cosHA = Math.max(-1, Math.min(1, cosHA));
 
             return toDeg(Math.acos(cosHA));
         }
@@ -8512,9 +8515,18 @@
         function toDeg(rad) { return rad * 180 / Math.PI; }
 
         function formatTime(hours) {
-            const h = Math.floor(hours);
-            const m = Math.floor((hours - h) * 60);
-            return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+            // Normalize hours to 0-24 range
+            let normalizedHours = hours % 24;
+            if (normalizedHours < 0) normalizedHours += 24;
+
+            const h = Math.floor(normalizedHours);
+            const m = Math.round((normalizedHours - h) * 60);
+
+            // Handle minute overflow
+            const finalH = m >= 60 ? (h + 1) % 24 : h;
+            const finalM = m >= 60 ? m - 60 : m;
+
+            return `${String(finalH).padStart(2, '0')}:${String(finalM).padStart(2, '0')}`;
         }
 
         // Qibla calculation
