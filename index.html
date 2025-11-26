@@ -7255,7 +7255,8 @@
             tasbeehCount: 0,
             tasbeehTarget: 33,
             tasbeehSound: false,
-            currentZikir: null
+            currentZikir: null,
+            lastPrayerUpdate: null
         };
 
         // Turkish cities with coordinates
@@ -8115,6 +8116,19 @@
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('gregorian-date').textContent = now.toLocaleDateString('tr-TR', options);
             document.getElementById('hijri-date').textContent = toHijri(now);
+
+            // Check if we need to update prayer times (every minute or when day changes)
+            const currentDateKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}-${now.getMinutes()}`;
+            if (state.lastPrayerUpdate !== currentDateKey) {
+                state.lastPrayerUpdate = currentDateKey;
+                state.prayerTimes = calculatePrayerTimes(
+                    now,
+                    state.location.lat,
+                    state.location.lng,
+                    state.settings.calcMethod
+                );
+                updatePrayerTimesDisplay();
+            }
         }
 
         // Compass
