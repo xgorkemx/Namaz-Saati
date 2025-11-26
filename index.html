@@ -3438,7 +3438,11 @@
                 <h1 class="app-title">Kıble Pusulası</h1>
             </header>
             <div class="qibla-container">
-                <p>Telefonunuzu düz tutun ve Kıble yönünü bulun</p>
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(0, 150, 136, 0.15)); padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: center;">
+                    <i class="fas fa-info-circle" style="color: var(--primary-color); margin-right: 8px;"></i>
+                    <span>Telefonunuzu düz tutun ve Kıble yönünü bulun</span>
+                </div>
+
                 <div class="compass-wrapper">
                     <div class="compass" id="compass">
                         <span class="compass-direction compass-n">K</span>
@@ -3449,10 +3453,198 @@
                         <i class="fas fa-kaaba kaaba-icon"></i>
                     </div>
                 </div>
+
                 <div class="qibla-info">
-                    <p>Kıble Açısı</p>
-                    <div class="qibla-degree" id="qibla-degree">--°</div>
-                    <p id="qibla-direction">Kuzeyden saat yönünde</p>
+                    <div style="display: flex; justify-content: space-around; gap: 15px; margin-bottom: 20px;">
+                        <div style="flex: 1; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: center;">
+                            <p style="opacity: 0.8; font-size: 0.85rem; margin-bottom: 5px;">Kıble Açısı</p>
+                            <div class="qibla-degree" id="qibla-degree" style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">--°</div>
+                            <p id="qibla-direction" style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Kuzeyden saat yönünde</p>
+                        </div>
+                        <div style="flex: 1; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: center;">
+                            <p style="opacity: 0.8; font-size: 0.85rem; margin-bottom: 5px;">Kabe'ye Uzaklık</p>
+                            <div id="qibla-distance" style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">-- km</div>
+                            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Düz mesafe</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kıble Hakkında Bilgiler -->
+                <div class="hajj-section" style="margin-top: 30px;">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-book-open"></i>
+                        Kıble Nedir?
+                    </div>
+                    <div class="hajj-section-content">
+                        <p style="padding: 15px; line-height: 1.8; text-align: justify;">
+                            Kıble, Müslümanların namaz kılarken yöneldikleri kutsal yöndür. Bu yön Mekke'de bulunan Kâbe'ye doğrudur.
+                            Namaz kılmak, tavaf etmek ve kurban kesmek gibi ibadetlerde Kâbe'ye yönelmek farzdır.
+                        </p>
+                        <p style="padding: 15px; line-height: 1.8; text-align: justify;">
+                            Kur'an-ı Kerim'de Allah (c.c.) şöyle buyurur: <em>"Artık yüzünü Mescid-i Haram tarafına çevir. Nerede olursanız olun, yüzlerinizi o tarafa çevirin."</em> (Bakara Suresi, 144)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pusula Kullanım Rehberi -->
+                <div class="hajj-section">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-compass"></i>
+                        Pusula Nasıl Kullanılır?
+                    </div>
+                    <div class="hajj-section-content">
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">1</div>
+                            <div class="hajj-step-content">
+                                <h4>Cihazı Düz Tutun</h4>
+                                <p>Telefonunuzu yere paralel, düz bir şekilde tutun. Eğik tutarsanız pusula doğru çalışmayabilir.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">2</div>
+                            <div class="hajj-step-content">
+                                <h4>Metalik Cisimlerden Uzak Durun</h4>
+                                <p>Manyetik alanı etkileyebilecek metal objelerden ve elektronik cihazlardan uzaklaşın.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">3</div>
+                            <div class="hajj-step-content">
+                                <h4>Kırmızı Ok Kabe'yi Gösterir</h4>
+                                <p>Pusulada kırmızı ok Kabe'nin yönünü gösterir. Vücudunuzu oka doğru çevirin.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">4</div>
+                            <div class="hajj-step-content">
+                                <h4>Konumunuzu Doğrulayın</h4>
+                                <p>Daha doğru sonuç için tarayıcınızın konum iznini aktif hale getirin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kıble ile İlgili Önemli Bilgiler -->
+                <div class="hajj-section">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-lightbulb"></i>
+                        Önemli Bilgiler
+                    </div>
+                    <div class="hajj-section-content">
+                        <div class="hajj-step">
+                            <div class="hajj-step-number"><i class="fas fa-check"></i></div>
+                            <div class="hajj-step-content">
+                                <h4>Kıble Farzdır</h4>
+                                <p>Namaz kılarken Kıble'ye yönelmek farzdır. Kıble'ye yönelmeden kılınan namaz geçersizdir.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number"><i class="fas fa-check"></i></div>
+                            <div class="hajj-step-content">
+                                <h4>Yön Bilinmiyorsa</h4>
+                                <p>Kıble yönü kesin olarak bilinmiyorsa, araştırma yapılır ve en doğru olduğu düşünülen yöne yönelinir.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number"><i class="fas fa-check"></i></div>
+                            <div class="hajj-step-content">
+                                <h4>Araç İçinde Namaz</h4>
+                                <p>Yolculukta nafile namaz kılarken Kıble şartı aranmaz. Ancak farz namazlar için Kıble'ye yönelmek gerekir.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number"><i class="fas fa-check"></i></div>
+                            <div class="hajj-step-content">
+                                <h4>Hasta ve Özürlüler</h4>
+                                <p>Kıble'ye yönelmeye gücü yetmeyen hasta ve özürlüler bulundukları yönde namaz kılabilirler.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number"><i class="fas fa-check"></i></div>
+                            <div class="hajj-step-content">
+                                <h4>Tehlike Anında</h4>
+                                <p>Savaş veya can güvenliği söz konusu olan durumlarda Kıble şartı düşer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hadisler -->
+                <div class="hajj-section">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-book-quran"></i>
+                        Hadislerden
+                    </div>
+                    <div class="hajj-section-content">
+                        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid var(--primary-color);">
+                            <p style="line-height: 1.8; font-style: italic; margin-bottom: 10px;">
+                                "Doğu ile batı arasındaki yön Kıble'dir."
+                            </p>
+                            <p style="font-size: 0.9em; opacity: 0.8;">- Hz. Peygamber (s.a.v.)</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid var(--primary-color);">
+                            <p style="line-height: 1.8; font-style: italic; margin-bottom: 10px;">
+                                "Mescid-i Haram'ın (Kâbe'nin) bulunduğu yöne doğru yüzünüzü çevirin."
+                            </p>
+                            <p style="font-size: 0.9em; opacity: 0.8;">- Bakara Suresi, 144</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border-left: 4px solid var(--primary-color);">
+                            <p style="line-height: 1.8; font-style: italic; margin-bottom: 10px;">
+                                "Kıble'ye yönelmek namazın şartlarındandır. Kıble'nin doğru yönünü bulmak için çaba gösterilmelidir."
+                            </p>
+                            <p style="font-size: 0.9em; opacity: 0.8;">- Fıkıh Kitapları</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kabe Hakkında -->
+                <div class="hajj-section">
+                    <div class="hajj-section-title">
+                        <i class="fas fa-kaaba"></i>
+                        Kâbe Hakkında
+                    </div>
+                    <div class="hajj-section-content">
+                        <p style="padding: 15px; line-height: 1.8; text-align: justify;">
+                            Kâbe, dünyanın ilk mabedidir ve Hz. İbrahim (a.s.) ve oğlu Hz. İsmail (a.s.) tarafından inşa edilmiştir.
+                            Müslümanların kıblesi olan Kâbe, Mekke'de Mescid-i Haram'ın ortasında yer alır.
+                        </p>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">📍</div>
+                            <div class="hajj-step-content">
+                                <h4>Konum</h4>
+                                <p>Suudi Arabistan, Mekke - Mescid-i Haram</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">📏</div>
+                            <div class="hajj-step-content">
+                                <h4>Boyutlar</h4>
+                                <p>Yükseklik: 13.1 metre, Genişlik: 11.03 x 12.86 metre</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">🕋</div>
+                            <div class="hajj-step-content">
+                                <h4>Hacer-i Esved</h4>
+                                <p>Kâbe'nin doğu köşesinde bulunan kutsal siyah taştır. Tavafa buradan başlanır.</p>
+                            </div>
+                        </div>
+                        <div class="hajj-step">
+                            <div class="hajj-step-number">🌙</div>
+                            <div class="hajj-step-content">
+                                <h4>Kisve</h4>
+                                <p>Kâbe'yi kaplayan siyah örtüye kisve denir. Her yıl yenilenir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(0, 150, 136, 0.2)); padding: 20px; border-radius: 15px; margin-top: 20px; text-align: center;">
+                    <i class="fas fa-heart" style="font-size: 2em; margin-bottom: 10px; color: var(--primary-color);"></i>
+                    <p style="line-height: 1.8; margin-top: 10px;">
+                        "Muhakkak ki, insanlar için kurulan ilk ev (ibadet yeri), Mekke'de bulunan, bereketli ve alemler için hidayet rehberi kılınan evidir."
+                    </p>
+                    <p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">- Al-i İmran Suresi, 96</p>
                 </div>
             </div>
         </div>
@@ -8349,6 +8541,22 @@
             document.getElementById('qibla-degree').textContent = `${Math.round(qiblaAngle)}°`;
             document.getElementById('qibla-arrow').style.transform =
                 `translate(-50%, -100%) rotate(${qiblaAngle}deg)`;
+
+            // Calculate distance to Kaaba (Mecca coordinates: 21.4225, 39.8262)
+            const kaabaLat = 21.4225;
+            const kaabaLng = 39.8262;
+            const distance = calculateDistance(
+                state.location.lat,
+                state.location.lng,
+                kaabaLat,
+                kaabaLng
+            );
+
+            // Update distance display
+            const distanceElement = document.getElementById('qibla-distance');
+            if (distanceElement) {
+                distanceElement.textContent = `${Math.round(distance).toLocaleString('tr-TR')} km`;
+            }
 
             if (window.DeviceOrientationEvent) {
                 window.addEventListener('deviceorientation', (e) => {
