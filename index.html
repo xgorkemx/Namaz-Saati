@@ -3414,6 +3414,243 @@
             border-color: var(--primary);
             background: rgba(255, 255, 255, 0.08);
         }
+
+        /* Home Widgets Section */
+        .home-widgets-section {
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .widgets-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .widgets-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .widget-manage-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .widget-manage-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        .home-widgets-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .widget-empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-card);
+            border-radius: 15px;
+            display: none;
+        }
+
+        .widget-empty-state.active {
+            display: block;
+        }
+
+        .widget-empty-state i {
+            font-size: 3rem;
+            opacity: 0.3;
+            margin-bottom: 15px;
+        }
+
+        .widget-empty-state p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .widget-add-first-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .widget-add-first-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Home Widget Cards */
+        .home-widget-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .home-widget-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .widget-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .widget-card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .widget-card-remove {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff5252;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .widget-card-remove:hover {
+            background: rgba(255, 0, 0, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .widget-card-content {
+            text-align: center;
+        }
+
+        /* Widget Selector Modal */
+        .widget-modal-content {
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .widget-selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .widget-option-card {
+            background: var(--bg-card);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .widget-option-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .widget-option-card.added {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: var(--primary);
+        }
+
+        .widget-option-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .widget-option-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .widget-option-desc {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .widget-added-check {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--primary);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        .widget-option-card.added .widget-added-check {
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -3472,6 +3709,26 @@
                     <div class="compact-prayer-times" id="compact-prayer-times">
                         <!-- Compact prayer times will be inserted here -->
                     </div>
+                </div>
+            </section>
+
+            <!-- Home Widgets Section -->
+            <section class="home-widgets-section" id="home-widgets-section">
+                <div class="widgets-header">
+                    <h3><i class="fas fa-th"></i> Widget'larım</h3>
+                    <button class="widget-manage-btn" onclick="showWidgetSelector()">
+                        <i class="fas fa-plus-circle"></i> Ekle
+                    </button>
+                </div>
+                <div class="home-widgets-container" id="home-widgets-container">
+                    <!-- Widgets will be inserted here -->
+                </div>
+                <div class="widget-empty-state" id="widget-empty-state">
+                    <i class="fas fa-th-large"></i>
+                    <p>Henüz widget eklemediniz</p>
+                    <button class="widget-add-first-btn" onclick="showWidgetSelector()">
+                        <i class="fas fa-plus"></i> İlk Widget'ınızı Ekleyin
+                    </button>
                 </div>
             </section>
         </div>
@@ -8068,6 +8325,21 @@
         </div>
     </div>
 
+    <!-- Widget Selector Modal -->
+    <div class="modal" id="widget-selector-modal">
+        <div class="modal-content widget-modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fas fa-th"></i> Widget Ekle</h3>
+                <button class="modal-close-btn" onclick="closeWidgetSelector()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="widget-selector-grid" id="widget-selector-grid">
+                <!-- Widget options will be inserted here -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // App State
         const state = {
@@ -8513,6 +8785,236 @@
             }, 3000);
         }
 
+        // Home Widgets Management
+        const availableWidgets = [
+            {
+                id: 'prayer-times',
+                name: 'Namaz Vakitleri',
+                icon: '🕌',
+                description: 'Günlük namaz vakitleri',
+                render: function() {
+                    const times = state.prayerTimes;
+                    return `
+                        <div class="widget-prayer-name">${getNextPrayerName()}</div>
+                        <div class="widget-prayer-time" style="font-size: 2rem; font-weight: 700; color: var(--primary);">
+                            ${document.getElementById('next-prayer-time')?.textContent || '--:--'}
+                        </div>
+                        <div class="widget-countdown" style="margin-top: 10px; opacity: 0.7;">
+                            ${document.getElementById('countdown')?.textContent || '--:--:--'}
+                        </div>
+                    `;
+                }
+            },
+            {
+                id: 'hijri-date',
+                name: 'Hicri Takvim',
+                icon: '📅',
+                description: 'Hicri tarih',
+                render: function() {
+                    return `
+                        <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 10px;">
+                            ${document.getElementById('hijri-date')?.textContent || ''}
+                        </div>
+                        <div style="opacity: 0.7; font-size: 0.9rem;">
+                            ${document.getElementById('gregorian-date')?.textContent || ''}
+                        </div>
+                    `;
+                }
+            },
+            {
+                id: 'qibla',
+                name: 'Kıble Yönü',
+                icon: '🧭',
+                description: 'Kıble pusulası',
+                render: function() {
+                    const degree = calculateQiblaAngle();
+                    return `
+                        <div style="font-size: 3rem; margin: 10px 0;">
+                            <i class="fas fa-location-arrow" style="transform: rotate(${degree}deg); transition: transform 0.5s;"></i>
+                        </div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">
+                            ${Math.round(degree)}°
+                        </div>
+                        <div style="opacity: 0.7; margin-top: 5px;">
+                            ${getDirectionName(degree)}
+                        </div>
+                    `;
+                }
+            },
+            {
+                id: 'weather',
+                name: 'Hava Durumu',
+                icon: '🌤️',
+                description: 'Anlık hava durumu',
+                render: function() {
+                    const weatherEl = document.getElementById('weather-widget');
+                    const weatherHTML = weatherEl?.innerHTML || '<div>Yükleniyor...</div>';
+                    return weatherHTML;
+                }
+            },
+            {
+                id: 'location',
+                name: 'Konum',
+                icon: '📍',
+                description: 'Mevcut konum',
+                render: function() {
+                    return `
+                        <div style="font-size: 1.3rem; font-weight: 600;">
+                            ${state.location.city || 'İstanbul'}
+                        </div>
+                        <div style="opacity: 0.7; margin-top: 5px; font-size: 0.85rem;">
+                            ${state.location.lat?.toFixed(4)}, ${state.location.lng?.toFixed(4)}
+                        </div>
+                    `;
+                }
+            },
+            {
+                id: 'esma',
+                name: 'Günün Esması',
+                icon: '⭐',
+                description: 'Esma-ül Hüsna',
+                render: function() {
+                    const today = new Date().getDate();
+                    const esmaIndex = (today - 1) % 99;
+                    const esma = esmaUlHusna[esmaIndex];
+                    return `
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Günün Esma-ül Hüsnası</div>
+                        <div style="font-size: 2rem; margin: 10px 0;">${esma.arabic}</div>
+                        <div style="font-weight: 600; margin-bottom: 5px;">${esma.transliteration}</div>
+                        <div style="opacity: 0.7; font-size: 0.85rem;">${esma.meaning}</div>
+                    `;
+                }
+            }
+        ];
+
+        let activeWidgets = [];
+
+        function showWidgetSelector() {
+            const modal = document.getElementById('widget-selector-modal');
+            const grid = document.getElementById('widget-selector-grid');
+
+            // Render widget options
+            grid.innerHTML = availableWidgets.map(widget => `
+                <div class="widget-option-card ${activeWidgets.includes(widget.id) ? 'added' : ''}"
+                     onclick="toggleWidget('${widget.id}')"
+                     data-widget-id="${widget.id}"
+                     style="position: relative;">
+                    <div class="widget-added-check">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="widget-option-icon">${widget.icon}</div>
+                    <div class="widget-option-name">${widget.name}</div>
+                    <div class="widget-option-desc">${widget.description}</div>
+                </div>
+            `).join('');
+
+            modal.classList.add('active');
+        }
+
+        function closeWidgetSelector() {
+            document.getElementById('widget-selector-modal').classList.remove('active');
+        }
+
+        function toggleWidget(widgetId) {
+            const index = activeWidgets.indexOf(widgetId);
+
+            if (index > -1) {
+                // Remove widget
+                activeWidgets.splice(index, 1);
+                showToast('Widget kaldırıldı');
+            } else {
+                // Add widget
+                if (activeWidgets.length >= 6) {
+                    showToast('En fazla 6 widget ekleyebilirsiniz');
+                    return;
+                }
+                activeWidgets.push(widgetId);
+                showToast('Widget eklendi');
+            }
+
+            // Save to localStorage
+            localStorage.setItem('activeWidgets', JSON.stringify(activeWidgets));
+
+            // Update UI
+            const card = document.querySelector(`[data-widget-id="${widgetId}"]`);
+            if (card) {
+                card.classList.toggle('added');
+            }
+
+            // Render home widgets
+            renderHomeWidgets();
+        }
+
+        function removeWidget(widgetId) {
+            const index = activeWidgets.indexOf(widgetId);
+            if (index > -1) {
+                activeWidgets.splice(index, 1);
+                localStorage.setItem('activeWidgets', JSON.stringify(activeWidgets));
+                renderHomeWidgets();
+                showToast('Widget kaldırıldı');
+            }
+        }
+
+        function renderHomeWidgets() {
+            const container = document.getElementById('home-widgets-container');
+            const emptyState = document.getElementById('widget-empty-state');
+            const section = document.getElementById('home-widgets-section');
+
+            if (activeWidgets.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.add('active');
+                section.style.display = 'block';
+                return;
+            }
+
+            emptyState.classList.remove('active');
+            section.style.display = 'block';
+
+            container.innerHTML = activeWidgets.map(widgetId => {
+                const widget = availableWidgets.find(w => w.id === widgetId);
+                if (!widget) return '';
+
+                return `
+                    <div class="home-widget-card">
+                        <div class="widget-card-header">
+                            <div class="widget-card-title">
+                                <span>${widget.icon}</span>
+                                <span>${widget.name}</span>
+                            </div>
+                            <button class="widget-card-remove" onclick="removeWidget('${widget.id}')">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="widget-card-content">
+                            ${widget.render()}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getNextPrayerName() {
+            const nextPrayerEl = document.getElementById('next-prayer-name');
+            return nextPrayerEl ? nextPrayerEl.textContent : 'Sonraki Namaz';
+        }
+
+        function getDirectionName(degree) {
+            const directions = [
+                { min: 0, max: 22.5, name: 'Kuzey' },
+                { min: 22.5, max: 67.5, name: 'Kuzeydoğu' },
+                { min: 67.5, max: 112.5, name: 'Doğu' },
+                { min: 112.5, max: 157.5, name: 'Güneydoğu' },
+                { min: 157.5, max: 202.5, name: 'Güney' },
+                { min: 202.5, max: 247.5, name: 'Güneybatı' },
+                { min: 247.5, max: 292.5, name: 'Batı' },
+                { min: 292.5, max: 337.5, name: 'Kuzeybatı' },
+                { min: 337.5, max: 360, name: 'Kuzey' }
+            ];
+
+            const direction = directions.find(d => degree >= d.min && degree < d.max);
+            return direction ? direction.name : 'Kuzey';
+        }
+
         // Load saved background on page load
         document.addEventListener('DOMContentLoaded', function() {
             const savedBgId = localStorage.getItem('homeBackgroundId');
@@ -8541,6 +9043,28 @@
                 `;
                 document.head.appendChild(style);
             }
+
+            // Load saved widgets
+            const savedWidgets = localStorage.getItem('activeWidgets');
+            if (savedWidgets) {
+                try {
+                    activeWidgets = JSON.parse(savedWidgets);
+                    renderHomeWidgets();
+                } catch (e) {
+                    console.error('Error loading widgets:', e);
+                    activeWidgets = [];
+                }
+            } else {
+                // Show empty state on first load
+                document.getElementById('widget-empty-state').classList.add('active');
+            }
+
+            // Update widgets periodically
+            setInterval(() => {
+                if (activeWidgets.length > 0 && document.getElementById('page-home').classList.contains('active')) {
+                    renderHomeWidgets();
+                }
+            }, 30000); // Update every 30 seconds
         });
 
         // Esma-ul Husna Data and Functions
@@ -10147,6 +10671,13 @@
             document.getElementById('location-modal').addEventListener('click', (e) => {
                 if (e.target.id === 'location-modal') {
                     hideLocationModal();
+                }
+            });
+
+            // Close widget selector modal on outside click
+            document.getElementById('widget-selector-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'widget-selector-modal') {
+                    closeWidgetSelector();
                 }
             });
 
